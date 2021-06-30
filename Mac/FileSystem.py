@@ -1,5 +1,6 @@
 ## FileSystem
 import os
+import getpass
 
 ProjectName = str()
 FolderLocation = str()
@@ -16,21 +17,23 @@ def CreateFiles():
     ReadmeFile = open(EnvironFolders.ReadmeFile, "w")
     ErrorListFile = open(EnvironFolders.ErrorListFile, "w")
     
-    # Linux
+    ## Linux
     SplashLinux = open(EnvironFolders.SplashLinux, "w")
     LinuxFile = open(EnvironFolders.LinuxFile, "w")
     LinuxAppFile = open(EnvironFolders.LinuxAppFile, "w")
-    # Mac
+
+    ## Mac
     SplashMac = open(EnvironFolders.SplashMac, "w")
     MacFile = open(EnvironFolders.MacFile, "w")
     MacAppFile = open(EnvironFolders.MacAppFile, "w")
-    # Windows
+
+    ## Windows
     SplashWindows = open(EnvironFolders.SplashWindows, "w")
     WindowsFile = open(EnvironFolders.WindowsFile, "w")
     WindowsAppFile = open(EnvironFolders.WindowsAppFile, "w")
 
 def EnvironFolders():
-    # Environment Folders
+    ## Environment Folders
     EnvironFolders.ErrorReportPath = f'{FolderLocation}ErrorReport/'
     EnvironFolders.LinuxPath = f'{FolderLocation}Linux/'
     EnvironFolders.MacPath = f'{FolderLocation}Mac/'
@@ -41,248 +44,259 @@ def EnvironFolders():
     EnvironFolders.ReadmeFile = f'{FolderLocation}README.md'
     EnvironFolders.ErrorListFile = f'{EnvironFolders.ErrorReportPath}ErrorList.py'
     
-    # Linux
+    ## Linux
     EnvironFolders.SplashLinux = f'{EnvironFolders.LinuxPath}SplashScreen.py'
     EnvironFolders.LinuxFile = f'{EnvironFolders.LinuxPath}Linux.py'
     EnvironFolders.LinuxAppFile = f'{EnvironFolders.LinuxPath}LinuxApp.py'
-    # Mac
+
+    ## Mac
     EnvironFolders.SplashMac = f'{EnvironFolders.MacPath}SplashScreen.py'
     EnvironFolders.MacFile = f'{EnvironFolders.MacPath}Mac.py'
     EnvironFolders.MacAppFile = f'{EnvironFolders.MacPath}MacApp.py'
-    # Windows
+
+    ## Windows
     EnvironFolders.SplashWindows = f'{EnvironFolders.WindowsPath}SplashScreen.py'
     EnvironFolders.WindowsFile = f'{EnvironFolders.WindowsPath}Windows.py'
     EnvironFolders.WindowsAppFile = f'{EnvironFolders.WindowsPath}WindowsApp.py'
 
+    # Run Functions
     CreateArch()
     CreateFiles()
     CreateBridge()
 
-def WriteMyApp():
+def ProjectStruct():
     ## Launcher Script
-    WriteApp = open(EnvironFolders.UserAppName, "a")
-    WriteApp.write(f'## {ProjectName} File\n')
-    WriteApp.write(f'## Here the contents will be processed to choose the best platform to go\n\n')
-
-    WriteApp.write(f'try:\n')
-    WriteApp.write(f'   # Imported Libraries\n')
-    WriteApp.write(f'   from sys import platform\n\n')
-
-    WriteApp.write(f'   # Local Libraries\n')
-    WriteApp.write(f'   from ErrorReport import ErrorList\n')
-    WriteApp.write(f'   from Linux import Linux\n')
-    WriteApp.write(f'   from Mac import Mac\n')
-    WriteApp.write(f'   from Windows import Windows\n\n')
-
-    WriteApp.write(f'   Platform = platform\n\n')
-        
-    WriteApp.write(f'except:\n')
-    WriteApp.write(f'   ErrorList.ImportLib()\n\n')
-
-    WriteApp.write(f'def Main():\n')
-        
-    WriteApp.write(f'   if Platform == "linux" or Platform == "linux2":\n')
-    WriteApp.write(f'      # Linux\n')
-    WriteApp.write(f'      Linux.Linux()\n\n')
-            
-    WriteApp.write(f'   elif Platform == "darwin":\n')
-    WriteApp.write(f'      # Mac\n')
-    WriteApp.write(f'      Mac.Mac()\n\n')
-            
-    WriteApp.write(f'   elif Platform == "win32":\n')
-    WriteApp.write(f'      # Windows\n')
-    WriteApp.write(f'      Windows.Windows()\n\n')
-            
-    WriteApp.write(f'Main()')
-
-    # README File
+    ProjStruct = open(EnvironFolders.UserAppName, "a")
+    ProjStruct.write(f'## {ProjectName} File\n')
+    ProjStruct.write(f'## Here the contents will be processed to choose the best platform to go\n\n')
+    ProjStruct.write(f'try:\n')
+    ProjStruct.write(f'   # Imported Libraries\n')
+    ProjStruct.write(f'   from sys import platform\n\n')
+    ProjStruct.write(f'   # Local Libraries\n')
+    ProjStruct.write(f'   from ErrorReport import ErrorList\n')
+    ProjStruct.write(f'   from Linux import Linux\n')
+    ProjStruct.write(f'   from Mac import Mac\n')
+    ProjStruct.write(f'   from Windows import Windows\n\n')
+    ProjStruct.write(f'   Platform = platform\n\n')
+    ProjStruct.write(f'except:\n')
+    ProjStruct.write(f'   ErrorList.ImportLib()\n\n')
+    ProjStruct.write(f'def Main():\n')
+    ProjStruct.write(f'   if Platform == "linux" or Platform == "linux2":\n')
+    ProjStruct.write(f'      # Linux\n')
+    ProjStruct.write(f'      Linux.Linux()\n\n')
+    ProjStruct.write(f'   elif Platform == "darwin":\n')
+    ProjStruct.write(f'      # Mac\n')
+    ProjStruct.write(f'      Mac.Mac()\n\n')
+    ProjStruct.write(f'   elif Platform == "win32":\n')
+    ProjStruct.write(f'      # Windows\n')
+    ProjStruct.write(f'      Windows.Windows()\n\n')
+    ProjStruct.write(f'Main()')
+    ProjStruct.close()
     
-    WriteMD = open(EnvironFolders.ReadmeFile, "a")
-    WriteMD.write(f'# {ProjectName}\n\n')
-    WriteMD.write(f'This project was created using PyBridge\n')
+def CreateReadMe():
+    ## README File
+    CreateMD = open(EnvironFolders.ReadmeFile, "a")
+    CreateMD.write(f'# {ProjectName}\n\n')
+    CreateMD.write(f'This project was created using PyBridge\n')
+    CreateMD.close()
     
-def WriteExceptions():
-    WriteExc = open(EnvironFolders.ErrorListFile, "a")
-    WriteExc.write(f'## ErrorList File\n')
-    WriteExc.write(f'## This file contains events thats raised when the program must to stop\n\n')
+def CreateExceptions():
+    CreateExc = open(EnvironFolders.ErrorListFile, "a")
+    CreateExc.write(f'## ErrorList File\n')
+    CreateExc.write(f'## This file contains events thats raised when the program must to stop\n\n')
+    CreateExc.write(f'def ImportLib():\n')
+    CreateExc.write(f'   raise RuntimeError(">> Could Not Import Library: Check if the libraries are installed and run the program again.")\n\n')
+    CreateExc.write(f'def FileExists():\n')
+    CreateExc.write(f'   raise RuntimeError(">> The File Already Exists!")\n\n')
+    CreateExc.write(f'def DirectoryExists():\n')
+    CreateExc.write(f'   raise RuntimeError(">> The Directory Already Exists!")\n\n')
+    CreateExc.close()
 
-    WriteExc.write(f'def ImportLib():\n')
-    WriteExc.write(f'   raise RuntimeError(">> Erro ao importar biblioteca: Verifique se as bibliotecas do sistema estão instaladas e execute o programa novamente.")\n\n')
-
-    WriteExc.write(f'def FileExists():\n')
-    WriteExc.write(f'   raise RuntimeError(">> O arquivo já existe: Verifique o arquivo e tente novamente...")\n\n')
-
-def WriteLinuxFiles():
-    # Linux
+def LinuxSplash():
+    ## Linux SplashScreen
     Splash = open(EnvironFolders.SplashLinux, "a")
-
     Splash.write(f'## SplashScreen File\n')
     Splash.write(f'## This file contains information about your project\n\n')
-
     Splash.write(f'from datetime import date\n')
     Splash.write(f'import getpass\n\n')
-
-    Splash.write(f'AnoAtual = date.today().year\n')
+    Splash.write(f'CurrentYear = date.today().year\n')
     Splash.write(f'SoftwareName = "{ProjectName}"\n')
     Splash.write(f'Version = "1.0"\n')
-    Splash.write(f'CopyrightName = getpass.getuser().capitalize()\n\n')
-
-    Splash.write(f'print("Nome:", SoftwareName)\n')
-    Splash.write(f'print("Versão:", Version)\n')
-    Splash.write(f'print("Criado por:", CopyrightName)\n\n')
-
-    Splash.write(f'if AnoAtual == 2021:\n')
-    Splash.write(f'   print("Copyright ©", AnoAtual, "|", CopyrightName, "All rights reserved.")\n')
+    Splash.write(f'CopyrightName = "{getpass.getuser().capitalize()}"\n\n')
+    Splash.write(f'print("Name:", SoftwareName)\n')
+    Splash.write(f'print("Version:", Version)\n')
+    Splash.write(f'print("Created By:", CopyrightName)\n\n')
+    Splash.write(f'if CurrentYear == 2021:\n')
+    Splash.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
     Splash.write(f'else:\n')
-    Splash.write(f'   print("Copyright © 2021 -", AnoAtual, "|", CopyrightName, "All rights reserved.")\n\n')
+    Splash.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
     Splash.write(f'print("="*80)\n')
-    Splash.write("print(f'[{SoftwareName} for Linux] - Em Execução...')\n")
+    Splash.write("print(f'[{SoftwareName} for Linux] - Running...')\n")
     Splash.write(f'print("="*80)\n')
+    Splash.close()
 
-    # Linux File
+def CreateLinuxFile():
+    ## Linux File
     LinuxFile = open(EnvironFolders.LinuxFile, "a")
     LinuxFile.write(f'## Linux File\n')
     LinuxFile.write(f'## This file is used to implement code used to run scripts for Linux\n')
     LinuxFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
-
     LinuxFile.write(f'def Linux():\n')
     LinuxFile.write(f'   ## NOTE: You can use this function\n')
     LinuxFile.write(f'   ## To load information before the app starts running\n\n')
-
     LinuxFile.write(f'   ## Lets run the SplashScreen\n')
     LinuxFile.write(f'   from Linux import SplashScreen\n\n')
-
     LinuxFile.write(f'   ## Start App for Linux\n')
     LinuxFile.write(f'   from Linux import LinuxApp\n\n')
+    LinuxFile.close()
 
-    # LinuxApp File
+def CreateLinuxAppFile():
+    ## LinuxApp File
     LinuxAppFile = open(EnvironFolders.LinuxAppFile, "a")
     LinuxAppFile.write(f'## LinuxApp File\n')
     LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
-
     LinuxAppFile.write(f'def Main():\n')
     LinuxAppFile.write(f'   print("Hello World!")\n\n')
-        
     LinuxAppFile.write(f'Main()\n')
+    LinuxAppFile.close()
     
-def WriteMacFiles():
-    # SplashScreen
+def MacSplash():
+    ## Mac SplashScreen
     Splash = open(EnvironFolders.SplashMac, "a")
-
     Splash.write(f'## SplashScreen File\n')
     Splash.write(f'## This file contains information about your project\n\n')
-
     Splash.write(f'from datetime import date\n')
     Splash.write(f'import getpass\n\n')
-
-    Splash.write(f'AnoAtual = date.today().year\n')
+    Splash.write(f'CurrentYear = date.today().year\n')
     Splash.write(f'SoftwareName = "{ProjectName}"\n')
     Splash.write(f'Version = "1.0"\n')
-    Splash.write(f'CopyrightName = getpass.getuser().capitalize()\n\n')
-
-    Splash.write(f'print("Nome:", SoftwareName)\n')
-    Splash.write(f'print("Versão:", Version)\n')
-    Splash.write(f'print("Criado por:", CopyrightName)\n\n')
-
-    Splash.write(f'if AnoAtual == 2021:\n')
-    Splash.write(f'   print("Copyright ©", AnoAtual, "|", CopyrightName, "All rights reserved.")\n')
+    Splash.write(f'CopyrightName = "{getpass.getuser().capitalize()}"\n\n')
+    Splash.write(f'print("Name:", SoftwareName)\n')
+    Splash.write(f'print("Version:", Version)\n')
+    Splash.write(f'print("Created By:", CopyrightName)\n\n')
+    Splash.write(f'if CurrentYear == 2021:\n')
+    Splash.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
     Splash.write(f'else:\n')
-    Splash.write(f'   print("Copyright © 2021 -", AnoAtual, "|", CopyrightName, "All rights reserved.")\n\n')
+    Splash.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
     Splash.write(f'print("="*80)\n')
-    Splash.write("print(f'[{SoftwareName} for Mac] - Em Execução...')\n")
+    Splash.write("print(f'[{SoftwareName} for Mac] - Running...')\n")
     Splash.write(f'print("="*80)\n')
+    Splash.close()
 
-    # Mac File
+def CreateMacFile():
+    ## Mac File
     MacFile = open(EnvironFolders.MacFile, "a")
     MacFile.write(f'## Mac File\n')
     MacFile.write(f'## This file is used to implement code used to run scripts for Mac\n')
     MacFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
-
     MacFile.write(f'def Mac():\n')
     MacFile.write(f'   ## NOTE: You can use this function\n')
     MacFile.write(f'   ## To load information before the app starts running\n\n')
-
     MacFile.write(f'   ## Lets run the SplashScreen\n')
     MacFile.write(f'   from Mac import SplashScreen\n\n')
-
     MacFile.write(f'   ## Start App for Mac\n')
     MacFile.write(f'   from Mac import MacApp\n\n')
+    MacFile.close()
 
-    # MacApp File
+def CreateMacAppFile():
+    ## MacApp File
     MacAppFile = open(EnvironFolders.MacAppFile, "a")
     MacAppFile.write(f'## MacApp File\n')
     MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
-
     MacAppFile.write(f'def Main():\n')
     MacAppFile.write(f'   print("Hello World!")\n\n')
-        
     MacAppFile.write(f'Main()\n')
+    MacAppFile.close()
     
-def WriteWindowsFiles():
+def WindowsSplash():
+    ## Windows SplashScreen
     Splash = open(EnvironFolders.SplashWindows, "a")
-
     Splash.write(f'## SplashScreen File\n')
     Splash.write(f'## This file contains information about your project\n\n')
-
     Splash.write(f'from datetime import date\n')
     Splash.write(f'import getpass\n\n')
-
-    Splash.write(f'AnoAtual = date.today().year\n')
+    Splash.write(f'CurrentYear = date.today().year\n')
     Splash.write(f'SoftwareName = "{ProjectName}"\n')
     Splash.write(f'Version = "1.0"\n')
-    Splash.write(f'CopyrightName = getpass.getuser().capitalize()\n\n')
-
-    Splash.write(f'print("Nome:", SoftwareName)\n')
-    Splash.write(f'print("Versão:", Version)\n')
-    Splash.write(f'print("Criado por:", CopyrightName)\n\n')
-
-    Splash.write(f'if AnoAtual == 2021:\n')
-    Splash.write(f'   print("Copyright ©", AnoAtual, "|", CopyrightName, "All rights reserved.")\n')
+    Splash.write(f'CopyrightName = "{getpass.getuser().capitalize()}"\n\n')
+    Splash.write(f'print("Name:", SoftwareName)\n')
+    Splash.write(f'print("Version:", Version)\n')
+    Splash.write(f'print("Created By:", CopyrightName)\n\n')
+    Splash.write(f'if CurrentYear == 2021:\n')
+    Splash.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
     Splash.write(f'else:\n')
-    Splash.write(f'   print("Copyright © 2021 -", AnoAtual, "|", CopyrightName, "All rights reserved.")\n\n')
+    Splash.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
     Splash.write(f'print("="*80)\n')
-    Splash.write("print(f'[{SoftwareName} for Windows] - Em Execução...')\n")
+    Splash.write("print(f'[{SoftwareName} for Windows] - Running...')\n")
     Splash.write(f'print("="*80)\n')
+    Splash.close()
 
-    # Windows File
+def CreateWindowsFile():
+    ## Windows File
     WindowsFile = open(EnvironFolders.WindowsFile, "a")
     WindowsFile.write(f'## Windows File\n')
     WindowsFile.write(f'## This file is used to implement code used to run scripts for Windows\n')
     WindowsFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
-
     WindowsFile.write(f'def Windows():\n')
     WindowsFile.write(f'   ## NOTE: You can use this function\n')
     WindowsFile.write(f'   ## To load information before the app starts running\n\n')
-
     WindowsFile.write(f'   ## Lets run the SplashScreen\n')
     WindowsFile.write(f'   from Windows import SplashScreen\n\n')
-
     WindowsFile.write(f'   ## Start App for Windows\n')
     WindowsFile.write(f'   from Windows import WindowsApp\n\n')
+    WindowsFile.close()
 
-    # WindowsApp File
+def CreateWindowsAppFile():
+    ## WindowsApp File
     WindowsAppFile = open(EnvironFolders.WindowsAppFile, "a")
     WindowsAppFile.write(f'## WindowsApp File\n')
     WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
-
     WindowsAppFile.write(f'def Main():\n')
-    WindowsAppFile.write(f'   print("Hello World!")\n\n')
-        
+    WindowsAppFile.write(f'   print("Hello World!")\n\n') 
     WindowsAppFile.write(f'Main()\n')
+    WindowsAppFile.close()
 
 def CreateBridge():
+    ## Project Structure
     print(">> Creating Bridge...")
-    WriteMyApp()
+    ProjectStruct()
+    print()
+
+    ## Reports Module
     print(">> Creating ErrorReports Module...")
-    WriteExceptions()
+    CreateExceptions()
+    print()
+
+    ## Readme File
+    print(">> Creating Readme File...")
+    CreateReadMe()
+    print()
+    
+    ## Linux Modules
     print(">> Creating Linux Modules...")
-    WriteLinuxFiles()
-    print(">> Creating Mac Modules...")
-    WriteMacFiles()
+    print("> Creating SplashScreen...")
+    LinuxSplash()
+    print("> Creating Linux File...")
+    CreateLinuxFile()
+    print("> Creating LinuxApp File...")
+    CreateLinuxAppFile()
+    print()
+
+    ## macOS Modules
+    print(">> Creating macOS Modules...")
+    print("> Creating SplashScreen...")
+    MacSplash()
+    print("> Creating Mac File...")
+    CreateMacFile()
+    print("> Creating MacApp File...")
+    CreateMacAppFile()
+    print()
+
+    ## Windows Modules
     print(">> Creating Windows Modules...")
-    WriteWindowsFiles()
-
-    ## Nome do projeto
-    # Salvar no local preestabelecido
-
-    # Criar o arquivo Core pra verificar e criar as pastas do sistema
+    print("> Creating SplashScreen...")
+    WindowsSplash()
+    print("> Creating Windows File...")
+    CreateWindowsFile()
+    print("> Creating WindowsApp File...")
+    CreateWindowsAppFile()

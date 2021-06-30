@@ -11,19 +11,19 @@ PythonExtension = ".py"
 
 def VerifyFolders():
     try:
-        print(">> PyBridge: Verificando Sistema...")
+        print(">> PyBridge: Checking System...")
         os.mkdir(PyBridgeFolder)
         os.mkdir(ProjectsRepo)
-        print(">> PyBridge: Verificação Concluída.")
+        print(">> PyBridge System Files: OK!")
     except:
-        print(">> PyBridge: Verificação Concluída.")
+        print(">> PyBridge System Files: OK!")
 
 def CreateProject():
     print("="*80)
-    print(">> CRIAR PROJETO")
+    print(">> CREATE PROJECT")
     print("="*80)
     ProjectName = str(input(">> Project Name: "))
-    print(f'>> Criando projeto "{ProjectName}"...')
+    print(f'>> Creating Project "{ProjectName}"...')
     try:
         FolderLocation = f'{ProjectsRepo}{ProjectName}/'
         from Mac import FileSystem
@@ -31,11 +31,10 @@ def CreateProject():
         FileSystem.ProjectName = ProjectName
         FileSystem.FolderLocation = FolderLocation
         FileSystem.EnvironFolders()
-        print(f'>> Seu projeto "{ProjectName}" foi criado com sucesso!')
+        print(f'>> The project "{ProjectName}" was created successfully!')
     except:
         print()
-        print(">> Não foi possível criar o projeto:")
-        print(f'> Provavelmente já exista um projeto com o nome "{ProjectName}".\n> Verifique o projeto e tente novamente...')
+        print(">> Could not create your project:")
+        print(f'> Check if "{ProjectName}" already exists and try again.')
         from ErrorReport import ErrorList
-        ErrorList.ProjectExists()
-
+        ErrorList.FileExists()

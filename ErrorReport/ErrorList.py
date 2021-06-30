@@ -1,8 +1,12 @@
 ## ErrorList File
-## This file contains events that's raised when the program must to stop
+## This file contains events thats raised when the program must to stop
 
 def ImportLib():
-    raise RuntimeError("\n\n>> Erro ao importar biblioteca: Verifique se as bibliotecas do sistema estão instaladas e execute o programa novamente.`")
+   raise RuntimeError(">> Could Not Import Library: Check if the libraries are installed and run the program again.")
 
-def ProjectExists():
-    raise RuntimeError("\n\n>> O arquivo já existe:\n> Verifique o arquivo e tente novamente...")
+def FileExists():
+   raise RuntimeError(">> The File Already Exists!")
+
+def DirectoryExists():
+   raise RuntimeError(">> The Directory Already Exists!")
+
