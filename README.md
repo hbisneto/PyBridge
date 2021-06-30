@@ -1,7 +1,7 @@
 # PyBridge
 
 ## Log de Atualização
-###### Last repository update: 06/07/2021
+###### Last repository update: 30/06/2021
 
 > **BETA 1:**
 <br>>> Lançamento da primeira versão de testes
