@@ -26,6 +26,8 @@
 
 #
 
+# Sobre o PyBridge
+
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 Uso sugerido pra quem precisa coletar dados de diferentes locais do sistema de arquivos do ambiente em que o projeto é executado.
 
