@@ -14,15 +14,15 @@
 > **BETA 2:**
 >
 > > **Novidades:**
-> <br>>> Adicionado suporte ao Windows
-> <br>> Adicionado método ```DirectoryExists()``` em ```ErrorReport```
-> <br>>> Removido método ```ProjectExists()``` em ```ErrorReport```
-> <br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
-> <br>
-> **Correções de Erros:**
+> > <br>>> Adicionado suporte ao Windows
+> > <br>> Adicionado método ```DirectoryExists()``` em ```ErrorReport```
+> > <br>>> Removido método ```ProjectExists()``` em ```ErrorReport```
+> > <br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
+> >
+> > **Correções de Erros:**
 > > <br>Correção de erro no ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
-> <br>>> Correções de erros no módulo ```Core.py```
-> <br>>> Correções de erros no módulo ```Readme.md``` - O arquivo era criado sem que nenhum conteúdo fosse gravado.
+> > <br>>> Correções de erros no módulo ```Core.py```
+> > <br>>> Correções de erros no módulo ```Readme.md``` - O arquivo era criado sem que nenhum conteúdo fosse gravado.
 
 #
 
