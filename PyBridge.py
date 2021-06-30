@@ -10,9 +10,9 @@ try:
     from ErrorReport import ErrorList
     from Linux import Linux
     from Mac import Mac
+    from Windows import Windows
 
     Platform = platform
-    print(Platform)
     
 except:
     ErrorList.ImportLib()
@@ -26,6 +26,10 @@ def Main():
     elif Platform == "darwin":
         # Mac
         Mac.Mac()
+        
+    elif Platform == "win32":
+        # Mac
+        Windows.Windows()
 
 Main()
 

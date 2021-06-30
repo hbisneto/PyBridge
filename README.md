@@ -1,5 +1,30 @@
 # PyBridge
-###### Last repository update: 29/06/2021
+
+## Log de Atualização
+###### Last repository update: 06/07/2021
+
+> **BETA 1:**
+<br>>> Lançamento da primeira versão de testes
+<br>>> Suporte a criação de projetos para Linux
+<br>>> Suporte a criação de projetos para macOS
+<br>>> Suporte a criação de projetos para Windows
+
+#
+
+> **BETA 2:**
+>> **Novidades:**
+<br>>> Adicionado suporte ao Windows
+<br>> Adicionado método ```DirectoryExists()``` em ```ErrorReport```
+<br>>> Removido método ```ProjectExists()``` em ```ErrorReport```
+<br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
+<br>
+<br>
+>> **Correções de Erros:**
+<br>>> Correção de erro no ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
+<br>>> Correções de erros no módulo ```Core.py```
+<br>>> Correções de erros no módulo ```Readme.md``` - O arquivo era criado sem que nenhum conteúdo fosse gravado.
+
+#
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 Uso sugerido pra quem precisa coletar dados de diferentes locais do sistema de arquivos do ambiente em que o projeto é executado.
@@ -17,25 +42,25 @@ O PyBridge conta com uma biblioteca de ***tratamento de erros*** padrão que pod
 
 ## Estrutura do projeto
 
-O exemplo a seguir mostra a estrutura do projeto ```HelloWorld``` criado pelo PyBridge.
+O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo PyBridge.
 
 ```
 .
-├── HelloWorld.py
+├── Hello_World.py
 ├── ErrorReport
 │   └── ErrorList.py
 ├── Linux
-│   ├── SplashScreen.py
 │   ├── Linux.py
-│   └── LinuxApp.py
+│   ├── LinuxApp.py
+│   └── SplashScreen.py
 ├── Mac
-│   ├── SplashScreen.py
 │   ├── Mac.py
-│   └── MacApp.py
+│   ├── MacApp.py
+│   └── SplashScreen.py
 ├── Windows
-│   ├── SplashScreen.py
 │   ├── Windows.py
-│   └── WindowsApp.py
+│   ├── WindowsApp.py
+│   └── SplashScreen.py
 └── README.md
 ```
 
