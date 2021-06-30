@@ -20,7 +20,7 @@
 > > <br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
 > >
 > > **Correções de Erros:**
-> > <br>Correção de erro no ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
+> > <br>>> Correção de erro no ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
 > > <br>>> Correções de erros no módulo ```Core.py```
 > > <br>>> Correções de erros no módulo ```Readme.md``` - O arquivo era criado sem que nenhum conteúdo fosse gravado.
 
