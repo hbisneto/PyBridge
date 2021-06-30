@@ -15,7 +15,7 @@
 >
 > > **Novidades:**
 > > <br>>> Adicionado suporte ao Windows
-> > <br>> Adicionado método ```DirectoryExists()``` em ```ErrorReport```
+> > <br>>> Adicionado método ```DirectoryExists()``` em ```ErrorReport```
 > > <br>>> Removido método ```ProjectExists()``` em ```ErrorReport```
 > > <br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
 > >
