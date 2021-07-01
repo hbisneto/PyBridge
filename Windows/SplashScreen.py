@@ -4,20 +4,20 @@
 from datetime import date
 import getpass
 
-AnoAtual = date.today().year
+CurrentYear = date.today().year
 SoftwareName = "PyBridge"
-Version = "BETA 2"
+Version = "BETA 3"
 CopyrightName = getpass.getuser().capitalize()
 
-print("Nome:", SoftwareName)
-print("Versão:", Version)
-print("Criado por:", CopyrightName)
+print("Name:", SoftwareName)
+print("Version:", Version)
+print("Created By:", CopyrightName)
 
-if AnoAtual == 2021:
-    print("Copyright ©", AnoAtual, "|", CopyrightName, "All rights reserved.")
+if CurrentYear == 2021:
+    print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")
 else:
-    print("Copyright © 2021 -", AnoAtual, "|", CopyrightName, "All rights reserved.")
+    print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")
 print()
 print("="*80)
-print(f'[{SoftwareName} for Windows] - Em Execução...')
+print(f'[{SoftwareName} for Windows] - Running...')
 print("="*80)
