@@ -19,5 +19,5 @@ else:
     print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")
 print()
 print("="*80)
-print(f'[{SoftwareName} for Mac] - Running...')
+print(f'[{SoftwareName} for Linux] - Running...')
 print("="*80)
