@@ -3,10 +3,10 @@
 ## Here the contents will be processed to choose the best platform to go
 
 try:
-    # Imported Libraries
+    ## Imported Libraries
     from sys import platform
 
-    # Local Libraries
+    ## Local Libraries
     from ErrorReport import ErrorList
     from Linux import Linux
     from Mac import Mac
@@ -18,17 +18,16 @@ except:
     ErrorList.ImportLib()
 
 def Main():
-    
+    ## Linux
     if Platform == "linux" or Platform == "linux2":
-        # Linux
         Linux.Linux()
-        
+
+    ## Mac    
     elif Platform == "darwin":
-        # Mac
         Mac.Mac()
-        
+
+    ## Windows
     elif Platform == "win32":
-        # Mac
         Windows.Windows()
 
 Main()

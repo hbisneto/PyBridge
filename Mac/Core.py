@@ -19,11 +19,14 @@ def VerifyFolders():
         print(">> PyBridge System Files: OK!")
 
 def CreateProject():
+    print()
     print("="*80)
     print(">> CREATE PROJECT")
     print("="*80)
     ProjectName = str(input(">> Project Name: "))
-    print(f'>> Creating Project "{ProjectName}"...')
+    print(f'>> Creating bridge to the project "{ProjectName}"...')
+    print("-"*80)
+    print()
     try:
         FolderLocation = f'{ProjectsRepo}{ProjectName}/'
         from Mac import FileSystem
@@ -31,7 +34,9 @@ def CreateProject():
         FileSystem.ProjectName = ProjectName
         FileSystem.FolderLocation = FolderLocation
         FileSystem.EnvironFolders()
-        print(f'>> The project "{ProjectName}" was created successfully!')
+        print("="*80)
+        print(f'>> The bridge to the project "{ProjectName}" was created successfully!')
+        print("="*80)
     except:
         print()
         print(">> Could not create your project:")

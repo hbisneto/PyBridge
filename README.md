@@ -1,7 +1,7 @@
 # PyBridge
 
 ## Log de Atualização
-###### Last repository update: 30/06/2021
+###### Last repository update: 01/07/2021
 
 > **BETA 1:**
 <br>>> Lançamento da primeira versão de testes
@@ -23,6 +23,27 @@
 > > <br>>> Correção de erro no ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
 > > <br>>> Correções de erros no módulo ```Core.py```
 > > <br>>> Correções de erros no módulo ```Readme.md``` - O arquivo era criado sem que nenhum conteúdo fosse gravado.
+
+#
+
+> **BETA 3:**
+> <br> De forma geral, essa versão traz melhorias na organização do projeto
+> > **Novidades:**
+> > <br>>> Alterações no módulo ```Linux```
+> > <br>>> Alterações no módulo ```Mac```
+> > <br>>> Alterações no módulo ```Windows```
+> > <br>>> Alterações em ```Core.py```
+> > <br>>> Alterações em ```FileSystem.py```
+> > <br>>> Melhorias no sistema de criação de projetos
+> > <br>- Implementado sistema de criação de projetos de acordo com as regras do charset UTF-8
+> > <br>>> A biblioteca ```getpass``` não é mais importada por padrão nos módulos de sistema em ```SplashScreen.py```
+> >
+> > **Correções de Erros:**
+> > <br>>> Correção de erros em ```PyBridge.py```
+> > <br>>> Corrigido o problema de codificação de caracteres no Windows após a criação de um projeto
+
+> Leia mais sobre a biblioteca ```getpass``` em [getpass — Portable Password Input](https://docs.python.org/3/library/getpass.html)
+ 
 
 #
 
