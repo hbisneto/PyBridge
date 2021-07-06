@@ -2,7 +2,6 @@
 ## This file is used to implement code used to run scripts for Linux
 
 from Linux import Core
-from Linux import FileSystem
 
 def Main():
     Core.VerifyFolders()

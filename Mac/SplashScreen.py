@@ -6,7 +6,7 @@ import getpass
 
 CurrentYear = date.today().year
 SoftwareName = "PyBridge"
-Version = "BETA 3"
+Version = "BETA 4"
 CopyrightName = getpass.getuser().capitalize()
 
 print("Name:", SoftwareName)

@@ -1,7 +1,7 @@
 # PyBridge
 
 ## Log de Atualização
-###### Last repository update: 01/07/2021
+###### Last repository update: 06/07/2021
 
 > **BETA 1:**
 <br>>> Lançamento da primeira versão de testes
@@ -20,9 +20,9 @@
 > > <br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
 > >
 > > **Correções de Erros:**
-> > <br>>> Correção de erro no ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
-> > <br>>> Correções de erros no módulo ```Core.py```
-> > <br>>> Correções de erros no módulo ```Readme.md``` - O arquivo era criado sem que nenhum conteúdo fosse gravado.
+> > <br>>> Correção de erro na biblioteca ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
+> > <br>>> Correções de erros na biblioteca ```Core.py```
+> > <br>>> Correções de erros no processo de criação do arquivo ```Readme.md```: O arquivo era criado sem que nenhum conteúdo fosse gravado.
 
 #
 
@@ -32,8 +32,8 @@
 > > <br>>> Alterações no módulo ```Linux```
 > > <br>>> Alterações no módulo ```Mac```
 > > <br>>> Alterações no módulo ```Windows```
-> > <br>>> Alterações em ```Core.py```
-> > <br>>> Alterações em ```FileSystem.py```
+> > <br>>> Alterações na biblioteca ```Core.py```
+> > <br>>> Alterações na biblioteca ```FileSystem.py```
 > > <br>>> Melhorias no sistema de criação de projetos
 > > <br>- Implementado sistema de criação de projetos de acordo com as regras do charset UTF-8
 > > <br>>> A biblioteca ```getpass``` não é mais importada por padrão nos módulos de sistema em ```SplashScreen.py```
@@ -44,6 +44,35 @@
 
 > Leia mais sobre a biblioteca ```getpass``` em [getpass — Portable Password Input](https://docs.python.org/3/library/getpass.html)
  
+#
+
+> **BETA 4:**
+> <br> Atualização focada em correções de erros, melhorias de importação de bibliotecas publicas e atualização de estrutura de projeto
+> > **Novidades:**
+> > <br>**1. Bibliotecas Redesenhadas**
+> > <br>- ```FileSystem.py```:
+> > <br>Os principais diretórios dos sistemas operacionais foram adicionados a essa biblioteca. Agora é ainda mais fácil referenciar um diretório especial usando menos linhas de código.
+> > <br>- ```Core.py```:
+> > <br>Todo o gerenciamento de criação de projetos será feito através dessa biblioteca em futuras atualizações.
+> > <br> A biblioteca foi atualizada e agora obtém a versão do Python no SO em momento de execução.
+> > <br><br>**2. ErrorReport**: 
+> > <br> - Implementação da biblioteca ```SystemRequirements.py``` em ```ErrorReport```
+> > <br>- Adicionada classe ```RequirementsCheck``` em ```ErrorList.py```
+> > <br><br> **3. Requisitos de Sistema**:
+> > <br>- Novo recurso permite determinar um requisito minimo de sistema (limitado a versões do Python) para que o script possa ser executado.
+>> <br> Para permitir a verificação de requesitos minimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```True```. O valor padrão é ```False```.
+<br>Os requisitos mínimos podem ser definidos pelo usuário através das entradas:
+>>
+```
+TargetMajor;
+TargetMinor;
+TargetBuild;
+```
+>> Por padrão, o projeto criado terá como requisito minimo a mesma versão do Python usada para criar o projeto
+> > <br><br> **Correções de Erros:**
+> > <br>>> ```ErrorReport```: 
+> > <br>- Correções de importação da biblioteca ```ErrorList.py```
+> > <br>- Pequenas correções de textos em ```ErrosList.py``` 
 
 #
 
@@ -54,12 +83,12 @@ Uso sugerido pra quem precisa coletar dados de diferentes locais do sistema de a
 
 Com o PyBridge é possível a implementação de scripts para:
 
-1. Linux;
-2. macOS;
-3. Windows;
+1. **Linux**;
+2. **macOS**;
+3. **Windows**;
 
-> Observação: O PyBridge ainda não tem suporte ao sistema de arquivos do Windows. Em breve a plataforma estará disponível no ambiente Windows e projetos em Python poderão ser criados.
-<br> Verifique a aba ```issues``` para informações sobre melhorias e atualizações.
+> Observação:
+> <br>>> Verifique a aba ```issues``` para informações sobre melhorias e atualizações.
 
 O PyBridge conta com uma biblioteca de ***tratamento de erros*** padrão que pode ser executada em qualquer ambiente. Todo método implementado dentro da biblioteca pode ser chamado de qualquer parte do código. Desse jeito, não é necessário a implementação da chamada de exceção ```raise RuntimeError()``` dentro do módulo de execução do programa. Basta referenciar a chamada da função condizente com o tratamento que deve ser executado.
 
@@ -72,6 +101,7 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 ├── Hello_World.py
 ├── ErrorReport
 │   └── ErrorList.py
+│   └── SystemRequirements.py
 ├── Linux
 │   ├── Linux.py
 │   ├── LinuxApp.py
