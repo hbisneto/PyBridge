@@ -2,7 +2,6 @@
 ## This file is used to implement code used to run scripts for Windows
 
 from Windows import Core
-from Windows import FileSystem
 
 def Main():
     Core.VerifyFolders()
