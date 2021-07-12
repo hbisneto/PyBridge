@@ -43,16 +43,17 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 ## Log de Atualização
 
 > **BETA 5:**
-> <br> Texto sobre a atualização
+> <br> De forma geral, essa versão traz melhorias na organização do projeto
 > > **Novidades:**
-> > <br> Completar com algum texto
+> > <br>- Alterações na biblioteca ```Core.py```
+> > <br> 
 > > <br><br> **Correções de Erros:**
-> > <br> Completar com algum texto
+> > <br> --
 
 #
 
 > **BETA 4:**
-> <br> Atualização focada em correções de erros, melhorias de importação de bibliotecas públicas e atualização de estrutura de projeto
+> <br> Atualização focada em correções de erros, melhorias na importação de bibliotecas públicas e melhor estruturação do projeto.
 > > **Novidades:**
 > > <br>**1. Bibliotecas Redesenhadas**
 > > <br>- ```FileSystem.py```:
@@ -64,8 +65,8 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 > > <br> - Implementação da biblioteca ```SystemRequirements.py``` em ```ErrorReport```
 > > <br>- Adicionada classe ```RequirementsCheck``` em ```ErrorList.py```
 > > <br><br> **3. Requisitos de Sistema**:
-> > <br>- Novo recurso permite determinar um requisito minimo de sistema (limitado a versões do Python) para que o script possa ser executado.
->> <br> Para permitir a verificação de requisitos minimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```True```. O valor padrão é ```False```.
+> > <br>- Novo recurso permite determinar um requisito mínimo de sistema (limitado a versões do Python) para que o script possa ser executado.
+>> <br> Para permitir a verificação de requisitos mínimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```True```. O valor padrão é ```False```.
 <br>Os requisitos mínimos podem ser definidos pelo usuário através das entradas:
 >>
 >>```
@@ -73,7 +74,7 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 >>TargetMinor;
 >>TargetBuild;
 >>```
->> Por padrão, o projeto criado terá como requisito minimo a mesma versão do Python usada para criar o projeto
+>> Por padrão, o projeto criado terá como requisito mínimo a mesma versão do Python usada para criar o projeto
 > > <br><br> **Correções de Erros:**
 > > <br>>> ```ErrorReport```: 
 > > <br>- Correções de importação da biblioteca ```ErrorList.py```
@@ -94,7 +95,7 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 > > <br>>> A biblioteca ```getpass``` não é mais importada por padrão nos módulos de sistema em ```SplashScreen.py```
 > >
 > > **Correções de Erros:**
-> > <br>>> Correção de erros em ```PyBridge.py```
+> > <br>>> Correções de erros em ```PyBridge.py```
 > > <br>>> Corrigido o problema de codificação de caracteres no Windows após a criação de um projeto
 
 > Leia mais sobre a biblioteca ```getpass``` em [getpass — Portable Password Input](https://docs.python.org/3/library/getpass.html)
@@ -110,7 +111,7 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 > > <br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
 > >
 > > **Correções de Erros:**
-> > <br>>> Correção de erro na biblioteca ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
+> > <br>>> Correção de erro na biblioteca ```SplashScreen.py``` que fixava o nome do usuário logado no copyright.
 > > <br>>> Correções de erros na biblioteca ```Core.py```
 > > <br>>> Correções de erros no processo de criação do arquivo ```Readme.md```: O arquivo era criado sem que nenhum conteúdo fosse gravado.
 
