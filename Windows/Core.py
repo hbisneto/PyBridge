@@ -121,6 +121,9 @@ def EnvironFolders():
 
 def ProjectStruct():
     ## Launcher Script
+    print("="*80)
+    print(">> Project <<")
+    print("="*80)
     with codecs.open(EnvironFolders.UserAppName, "w", "utf-8-sig") as ProjStruct:
         ProjStruct.write(f'## {Explorer.ProjectName} File\n')
         ProjStruct.write(f'## Here the contents will be processed to choose the best platform to go\n\n')
@@ -148,15 +151,15 @@ def ProjectStruct():
         ProjStruct.write(f'Main()')
         ProjStruct.close()
 
-def CreateReadMe():
     ## README File
+    print("> Creating 'README' File...")
     with codecs.open(EnvironFolders.ReadmeFile, "w", "utf-8-sig") as Readme:
         Readme.write(f'# {Explorer.ProjectName}\n\n')
         Readme.write(f'This project was created using PyBridge\n')
         Readme.close()
     
-def CreateExceptions():
     ## Exception Triggers
+    print("> Creating ErrorReports Module...")
     with codecs.open(EnvironFolders.ErrorListFile, "w", "utf-8-sig") as Exceptions:
         Exceptions.write(f'## ErrorList File\n')
         Exceptions.write(f'## This file contains events thats raised when the program must to stop\n\n')
@@ -187,8 +190,8 @@ def CreateExceptions():
         Exceptions.write(f'   raise RuntimeError(">> The directory already exists!")\n\n')
         Exceptions.close()
 
-def CreateSystemRequirements():
     ## System Requirements File
+    print("> Creating SystemRequirements Library...")
     with codecs.open(EnvironFolders.SystemRequirements, "w", "utf-8-sig") as Requirements:
         Requirements.write(f'## SystemRequirements File\n')
         Requirements.write(f'## This file is used to check if system matches with the minimum requirements to run\n\n')
@@ -219,8 +222,13 @@ def CreateSystemRequirements():
         Requirements.write(f'      ErrorList.Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n\n')
         Requirements.close()
 
-def CreateLinuxFile():
+def LinuxPlat():
+    print("="*80)
+    print(">> Creating Linux Modules <<")
+    print("="*80)
+    
     ## Linux File
+    print("> Creating Linux Library...")
     with codecs.open(EnvironFolders.LinuxFile, "w", "utf-8-sig") as LinuxFile:
         LinuxFile.write(f'## Linux File\n')
         LinuxFile.write(f'## This file is used to implement code used to run scripts for Linux\n')
@@ -235,9 +243,9 @@ def CreateLinuxFile():
         LinuxFile.write(f'   ## Start App for Linux\n')
         LinuxFile.write(f'   from Linux import LinuxApp\n\n')
         LinuxFile.close()
-
-def CreateLinuxAppFile():
+    
     ## LinuxApp File
+    print("> Creating LinuxApp Library...")
     with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
         LinuxAppFile.write(f'## LinuxApp File\n')
         LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
@@ -246,27 +254,9 @@ def CreateLinuxAppFile():
         LinuxAppFile.write(f'   print("Hello World!")\n\n')
         LinuxAppFile.write(f'Main()\n')
         LinuxAppFile.close()
-
-def CreateLinuxFS():
-    ## Linux FileSystem
-    with codecs.open(EnvironFolders.LinuxFS, "w", "utf-8-sig") as LinuxFS:
-        Linux = "User = f'/home/{os.environ"
-        FileSystem = '["USER"]}/'
-        SUser = f"{Linux}{FileSystem}'"
-        LinuxFS.write(f'## FileSystem\n')
-        LinuxFS.write(f'## This file contains some default directories of your system\n')
-        LinuxFS.write(f'import os\n\n')
-        LinuxFS.write(f'## Special Directories\n')
-        LinuxFS.write(f'CurrentPath = os.getcwd()\n')
-        LinuxFS.write(f'{SUser}\n')
-        LinuxFS.write("Desktop = f'{User}Desktop/'\n")
-        LinuxFS.write("Documents = f'{User}Documents/'\n")
-        LinuxFS.write("Downloads = f'{User}Downloads/'\n")
-        LinuxFS.write("Music = f'{User}Music/'\n\n")
-        LinuxFS.close()
-
-def LinuxSplash():
+    
     ## Linux SplashScreen
+    print("> Creating SplashScreen...")
     with codecs.open(EnvironFolders.SplashLinux, "w", "utf-8-sig") as SplashLinux:
         SplashLinux.write(f'## SplashScreen File\n')
         SplashLinux.write(f'## This file contains information about your project\n\n')
@@ -286,9 +276,32 @@ def LinuxSplash():
         SplashLinux.write("print(f'[{SoftwareName} for Linux] - Running...')\n")
         SplashLinux.write(f'print("="*80)\n')
         SplashLinux.close()
+    
+    ## Linux FileSystem
+    print("> Creating Linux FileSystem Library...")
+    with codecs.open(EnvironFolders.LinuxFS, "w", "utf-8-sig") as LinuxFS:
+        Linux = "User = f'/home/{os.environ"
+        FileSystem = '["USER"]}/'
+        SUser = f"{Linux}{FileSystem}'"
+        LinuxFS.write(f'## FileSystem\n')
+        LinuxFS.write(f'## This file contains some default directories of your system\n')
+        LinuxFS.write(f'import os\n\n')
+        LinuxFS.write(f'## Special Directories\n')
+        LinuxFS.write(f'CurrentPath = os.getcwd()\n')
+        LinuxFS.write(f'{SUser}\n')
+        LinuxFS.write("Desktop = f'{User}Desktop/'\n")
+        LinuxFS.write("Documents = f'{User}Documents/'\n")
+        LinuxFS.write("Downloads = f'{User}Downloads/'\n")
+        LinuxFS.write("Music = f'{User}Music/'\n\n")
+        LinuxFS.close()
 
-def CreateMacFile():
+def MacPlat():
+    print("="*80)
+    print(">> Creating Mac Modules <<")
+    print("="*80)
+
     ## Mac File
+    print("> Creating Mac Library...")
     with codecs.open(EnvironFolders.MacFile, "w", "utf-8-sig") as MacFile:
         MacFile.write(f'## Mac File\n')
         MacFile.write(f'## This file is used to implement code used to run scripts for Mac\n')
@@ -304,8 +317,8 @@ def CreateMacFile():
         MacFile.write(f'   from Mac import MacApp\n\n')
         MacFile.close()
 
-def CreateMacAppFile():
     ## MacApp File
+    print("> Creating MacApp Library...")
     with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
         MacAppFile.write(f'## MacApp File\n')
         MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
@@ -315,30 +328,8 @@ def CreateMacAppFile():
         MacAppFile.write(f'Main()\n')
         MacAppFile.close()
 
-def CreateMacFS():
-    ## Mac FileSystem
-    with codecs.open(EnvironFolders.MacFS, "w", "utf-8-sig") as MacFS:
-        Mac = "User = f'/Users/{os.environ"
-        FileSystem = '["USER"]}/'
-        SUser = f"{Mac}{FileSystem}'"
-        MacFS.write(f'## FileSystem\n')
-        MacFS.write(f'## This file contains some default directories of your system\n')
-        MacFS.write(f'import os\n\n')
-        MacFS.write(f'## Special Directories\n')
-        MacFS.write(f'CurrentPath = os.getcwd()\n')
-        MacFS.write(f'{SUser}\n')
-        MacFS.write("Applications = f'{User}Applications/'\n")
-        MacFS.write("Desktop = f'{User}Desktop/'\n")
-        MacFS.write("Documents = f'{User}Documents/'\n")
-        MacFS.write("Downloads = f'{User}Downloads/'\n")
-        MacFS.write("Movies = f'{User}Movies/'\n")
-        MacFS.write("Music = f'{User}Music/'\n")
-        MacFS.write("Pictures = f'{User}Pictures/'\n")
-        MacFS.write("Public = f'{User}Public/'\n")
-        MacFS.close()
-
-def MacSplash():
     ## Mac SplashScreen
+    print("> Creating SplashScreen...")
     with codecs.open(EnvironFolders.SplashMac, "w", "utf-8-sig") as SplashMac:
         SplashMac.write(f'## SplashScreen File\n')
         SplashMac.write(f'## This file contains information about your project\n\n')
@@ -359,8 +350,35 @@ def MacSplash():
         SplashMac.write(f'print("="*80)\n')
         SplashMac.close()
 
-def CreateWindowsFile():
+    ## Mac FileSystem
+    print("> Creating Mac FileSystem Library...")
+    with codecs.open(EnvironFolders.MacFS, "w", "utf-8-sig") as MacFS:
+        Mac = "User = f'/Users/{os.environ"
+        FileSystem = '["USER"]}/'
+        SUser = f"{Mac}{FileSystem}'"
+        MacFS.write(f'## FileSystem\n')
+        MacFS.write(f'## This file contains some default directories of your system\n')
+        MacFS.write(f'import os\n\n')
+        MacFS.write(f'## Special Directories\n')
+        MacFS.write(f'CurrentPath = os.getcwd()\n')
+        MacFS.write(f'{SUser}\n')
+        MacFS.write("Applications = f'{User}Applications/'\n")
+        MacFS.write("Desktop = f'{User}Desktop/'\n")
+        MacFS.write("Documents = f'{User}Documents/'\n")
+        MacFS.write("Downloads = f'{User}Downloads/'\n")
+        MacFS.write("Movies = f'{User}Movies/'\n")
+        MacFS.write("Music = f'{User}Music/'\n")
+        MacFS.write("Pictures = f'{User}Pictures/'\n")
+        MacFS.write("Public = f'{User}Public/'\n")
+        MacFS.close()
+
+def WindowsPlat():
+    print("="*80)
+    print(">> Creating Windows Modules <<")
+    print("="*80)
+    
     ## Windows File
+    print("> Creating Windows Library...")
     with codecs.open(EnvironFolders.WindowsFile, "w", "utf-8-sig") as WindowsFile:
         WindowsFile.write(f'## Windows File\n')
         WindowsFile.write(f'## This file is used to implement code used to run scripts for Windows\n')
@@ -376,8 +394,8 @@ def CreateWindowsFile():
         WindowsFile.write(f'   from Windows import WindowsApp\n\n')
         WindowsFile.close()
 
-def CreateWindowsAppFile():
     ## WindowsApp File
+    print("> Creating WindowsApp Library...")
     with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
         WindowsAppFile.write(f'## WindowsApp File\n')
         WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
@@ -387,28 +405,8 @@ def CreateWindowsAppFile():
         WindowsAppFile.write(f'Main()\n')
         WindowsAppFile.close()
 
-def CreateWindowsFS():
-    ## Windows FileSystem
-    with codecs.open(EnvironFolders.WindowsFS, "w", "utf-8-sig") as WindowsFS:
-        WindowsFS.write(f'## FileSystem\n')
-        WindowsFS.write(f'## This file contains some default directories of your system\n')
-        WindowsFS.write(f'import os\n\n')
-        WindowsFS.write(f'## Special Directories\n')
-        WindowsFS.write(f'CurrentPath = os.getcwd()\n')
-        WindowsFS.write(f"User = os.environ['USERPROFILE']\n")
-        
-        WindowsFS.write("ApplicationData = f'{User}AppData/Roaming/'\n")
-        WindowsFS.write("Desktop = f'{User}Desktop/'\n")
-        WindowsFS.write("Documents = f'{User}Documents/'\n")
-        WindowsFS.write("Downloads = f'{User}Downloads/'\n")
-        WindowsFS.write("LocalAppData = f'{User}AppData/Local/'\n")
-        WindowsFS.write("Temp = f'{LocalAppData}Temp'\n")
-        WindowsFS.write("Pictures = f'{User}Pictures/'\n")
-        WindowsFS.write("Favorites = f'{User}Favorites/'\n")
-        WindowsFS.close()
-
-def WindowsSplash():
     ## Windows SplashScreen
+    print("> Creating SplashScreen...")
     with codecs.open(EnvironFolders.SplashWindows, "w", "utf-8-sig") as SplashWindows:
         SplashWindows.write(f'## SplashScreen File\n')
         SplashWindows.write(f'## This file contains information about your project\n\n')
@@ -429,68 +427,46 @@ def WindowsSplash():
         SplashWindows.write(f'print("="*80)\n')
         SplashWindows.close()
 
+    ## Windows FileSystem
+    print("> Creating Windows FileSystem Library...")
+    with codecs.open(EnvironFolders.WindowsFS, "w", "utf-8-sig") as WindowsFS:
+        WindowsFS.write(f'## FileSystem\n')
+        WindowsFS.write(f'## This file contains some default directories of your system\n')
+        WindowsFS.write(f'import os\n\n')
+        WindowsFS.write(f'## Special Directories\n')
+        WindowsFS.write(f'CurrentPath = os.getcwd()\n')
+        WindowsFS.write(f"User = os.environ['USERPROFILE']\n")
+        
+        WindowsFS.write("ApplicationData = f'{User}AppData/Roaming/'\n")
+        WindowsFS.write("Desktop = f'{User}Desktop/'\n")
+        WindowsFS.write("Documents = f'{User}Documents/'\n")
+        WindowsFS.write("Downloads = f'{User}Downloads/'\n")
+        WindowsFS.write("LocalAppData = f'{User}AppData/Local/'\n")
+        WindowsFS.write("Temp = f'{LocalAppData}Temp'\n")
+        WindowsFS.write("Pictures = f'{User}Pictures/'\n")
+        WindowsFS.write("Favorites = f'{User}Favorites/'\n")
+        WindowsFS.close()
+
 def CreateBridge():
     ## Project Structure
-    print("="*80)
-    print(">> Project Structure <<")
-    print("="*80)
-    ProjectStruct()
-
     ## Readme File
-    print("> Creating Readme File...")
-    CreateReadMe()
-
     ## Reports Module
-    print("> Creating ErrorReports Module...")
-    CreateExceptions()
-
     ## System Requirements Module
-    print("> Creating SystemRequirements Library...")
-    CreateSystemRequirements()
+    ProjectStruct()
     print("-"*80)
     print()
 
     ## Linux Module
-    print("="*80)
-    print(">> Creating Linux Modules <<")
-    print("="*80)
-    print("> Creating Linux Library...")
-    CreateLinuxFile()
-    print("> Creating LinuxApp Library...")
-    CreateLinuxAppFile()
-    print("> Creating Linux FileSystem Library...")
-    CreateLinuxFS()
-    print("> Creating SplashScreen...")
-    LinuxSplash()
+    LinuxPlat()
     print("-"*80)
     print()
-
     ## macOS Modules
-    print("="*80)
-    print(">> Creating Mac Modules <<")
-    print("="*80)
-    print("> Creating Mac Library...")
-    CreateMacFile()
-    print("> Creating MacApp Library...")
-    CreateMacAppFile()
-    print("> Creating Mac FileSystem Library...")
-    CreateMacFS()
-    print("> Creating SplashScreen...")
-    MacSplash()
+    MacPlat()
+    print("-"*80)
+    print()
+    ## Windows Modules
+    WindowsPlat()
     print("-"*80)
     print()
 
-    ## Windows Modules
-    print("="*80)
-    print(">> Creating Windows Modules <<")
-    print("="*80)
-    print("> Creating Windows Library...")
-    CreateWindowsFile()
-    print("> Creating WindowsApp Library...")
-    CreateWindowsAppFile()
-    print("> Creating Windows FileSystem Library...")
-    CreateWindowsFS()
-    print("> Creating SplashScreen...")
-    WindowsSplash()
-    print("-"*80)
-    print()
+## Abaixo de 496 linhas?
