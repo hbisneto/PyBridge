@@ -310,6 +310,7 @@ def LinuxPlat():
         SplashLinux.write(f'print("="*80)\n')
         SplashLinux.write("print(f'[{SoftwareName} for Linux] - Running...')\n")
         SplashLinux.write(f'print("="*80)\n')
+        SplashLinux.write(f'print()\n')
         SplashLinux.close()
     
     ## Linux FileSystem
@@ -319,7 +320,7 @@ def LinuxPlat():
         FileSystem = '["USER"]}/'
         SUser = f"{Linux}{FileSystem}'"
         LinuxFS.write(f'## FileSystem\n')
-        LinuxFS.write(f'## This file contains some default directories of your system\n')
+        LinuxFS.write(f'## This file contains some default directories of your system\n\n')
         LinuxFS.write(f'import os\n\n')
         LinuxFS.write(f'## Special Directories\n')
         LinuxFS.write(f'CurrentPath = os.getcwd()\n')
@@ -414,6 +415,7 @@ def MacPlat():
         SplashMac.write(f'print("="*80)\n')
         SplashMac.write("print(f'[{SoftwareName} for Mac] - Running...')\n")
         SplashMac.write(f'print("="*80)\n')
+        SplashMac.write(f'print()\n')
         SplashMac.close()
 
     ## Mac FileSystem
@@ -423,7 +425,7 @@ def MacPlat():
         FileSystem = '["USER"]}/'
         SUser = f"{Mac}{FileSystem}'"
         MacFS.write(f'## FileSystem\n')
-        MacFS.write(f'## This file contains some default directories of your system\n')
+        MacFS.write(f'## This file contains some default directories of your system\n\n')
         MacFS.write(f'import os\n\n')
         MacFS.write(f'## Special Directories\n')
         MacFS.write(f'CurrentPath = os.getcwd()\n')
@@ -522,13 +524,14 @@ def WindowsPlat():
         SplashWindows.write(f'print("="*80)\n')
         SplashWindows.write("print(f'[{SoftwareName} for Windows] - Running...')\n")
         SplashWindows.write(f'print("="*80)\n')
+        SplashWindows.write(f'print()\n')
         SplashWindows.close()
 
     ## Windows FileSystem
     print("> Creating Windows FileSystem Library...")
     with codecs.open(EnvironFolders.WindowsFS, "w", "utf-8-sig") as WindowsFS:
         WindowsFS.write(f'## FileSystem\n')
-        WindowsFS.write(f'## This file contains some default directories of your system\n')
+        WindowsFS.write(f'## This file contains some default directories of your system\n\n')
         WindowsFS.write(f'import os\n\n')
         WindowsFS.write(f'## Special Directories\n')
         WindowsFS.write(f'CurrentPath = os.getcwd()\n')

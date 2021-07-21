@@ -310,6 +310,7 @@ def LinuxPlat():
         SplashLinux.write(f'print("="*80)\n')
         SplashLinux.write("print(f'[{SoftwareName} for Linux] - Running...')\n")
         SplashLinux.write(f'print("="*80)\n')
+        SplashLinux.write(f'print()\n')
         SplashLinux.close()
     
     ## Linux FileSystem
@@ -414,6 +415,7 @@ def MacPlat():
         SplashMac.write(f'print("="*80)\n')
         SplashMac.write("print(f'[{SoftwareName} for Mac] - Running...')\n")
         SplashMac.write(f'print("="*80)\n')
+        SplashMac.write(f'print()\n')
         SplashMac.close()
 
     ## Mac FileSystem
@@ -522,6 +524,7 @@ def WindowsPlat():
         SplashWindows.write(f'print("="*80)\n')
         SplashWindows.write("print(f'[{SoftwareName} for Windows] - Running...')\n")
         SplashWindows.write(f'print("="*80)\n')
+        SplashWindows.write(f'print()\n')
         SplashWindows.close()
 
     ## Windows FileSystem
