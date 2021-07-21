@@ -6,20 +6,26 @@ from Mac import FileSystem
 
 def Main():
     Core.VerifyFolders()
-    print("="*80)
-    print(">> MENU")
-    print("="*80)
-    print(">> 1. Create Project")
-    print()
-    Opc = int(input(">> Type The Item Number: "))
+    while True:
+        print("="*80)
+        print(">> MENU")
+        print("="*80)
+        print(">> 1. Create Project")
+        print(">> 2. Create a 'LoopingMenu' Project")
+        print()
+        Opc = int(input(">> Type The Item Number: "))
+        print("="*80)
 
-    if Opc == 1:
-        Core.CreateProject()
-    else:
-        print("="*80)
-        print(">> Invalid Option!")
-        print("="*80)
-        print(f'>> You typed an invalid option.\n>> Run the program again!')
-        print("="*80)
+        if Opc == 1:
+            Core.CreateProject()
+        elif Opc == 2:
+            Core.LoopApp = True
+            Core.CreateProject()
+        else:
+            print("="*80)
+            print(">> Invalid Option!")
+            print("="*80)
+            print(f'>> You typed an invalid option.\n>> Run the program again!')
+            print("="*80)
     
 Main()

@@ -9,6 +9,7 @@ import sys
 from Mac import FileSystem
 
 PythonExtension = ".py"
+LoopApp = False
 
 MajorVersion = sys.version_info[0]
 MinorVersion = sys.version_info[1]
@@ -245,15 +246,49 @@ def LinuxPlat():
         LinuxFile.close()
     
     ## LinuxApp File
-    print("> Creating LinuxApp Library...")
-    with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
-        LinuxAppFile.write(f'## LinuxApp File\n')
-        LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
-        LinuxAppFile.write(f'from ErrorReport import ErrorList\n\n')
-        LinuxAppFile.write(f'def Main():\n')
-        LinuxAppFile.write(f'   print("Hello World!")\n\n')
-        LinuxAppFile.write(f'Main()\n')
-        LinuxAppFile.close()
+    if LoopApp == True:
+        print("> Creating LinuxApp Library...")
+        with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
+            LinuxAppFile.write(f'## LinuxApp File\n')
+            LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
+
+            LinuxAppFile.write(f'from ErrorReport import ErrorList\n\n')
+            LinuxAppFile.write(f'def Main():\n')
+            LinuxAppFile.write(f'   while True:\n')
+            LinuxAppFile.write(f'      print("="*80)\n')
+            LinuxAppFile.write(f'      print(">> Options Menu<<")\n')
+            LinuxAppFile.write(f'      print(">> 1. Option One")\n')
+            LinuxAppFile.write(f'      print(">> 2. Option Two")\n')
+            LinuxAppFile.write(f'      print(">> 3. Option Three")\n\n')
+
+            LinuxAppFile.write(f'      try:\n')
+            LinuxAppFile.write(f'         UserInput = int(input(">> Type the option number: "))\n')
+            LinuxAppFile.write(f'         print("="*80)\n')
+            LinuxAppFile.write(f'         if UserInput == 1:\n')
+            LinuxAppFile.write(f'            print("> Option 1")\n')
+            LinuxAppFile.write(f'         elif UserInput == 2:\n')
+            LinuxAppFile.write(f'            print("> Option 2")\n')
+            LinuxAppFile.write(f'         elif UserInput == 3:\n')
+            LinuxAppFile.write(f'            print("> Option 3")\n')
+            LinuxAppFile.write(f'         else:\n')
+            LinuxAppFile.write(f'            print(">> This option is unavailable at this time")\n')
+            LinuxAppFile.write(f'      except:\n')
+            LinuxAppFile.write(f'         print("-"*80)\n')
+            LinuxAppFile.write(f'         print(">> This option is unavailable at this time")\n')
+            LinuxAppFile.write(f'         print("-"*80)\n\n')
+                 
+            LinuxAppFile.write(f'Main()\n')
+            LinuxAppFile.close()
+    else:
+        print("> Creating LinuxApp Library...")
+        with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
+            LinuxAppFile.write(f'## LinuxApp File\n')
+            LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
+            LinuxAppFile.write(f'from ErrorReport import ErrorList\n\n')
+            LinuxAppFile.write(f'def Main():\n')
+            LinuxAppFile.write(f'   print("Hello World!")\n\n')
+            LinuxAppFile.write(f'Main()\n')
+            LinuxAppFile.close()
     
     ## Linux SplashScreen
     print("> Creating SplashScreen...")
@@ -284,7 +319,7 @@ def LinuxPlat():
         FileSystem = '["USER"]}/'
         SUser = f"{Linux}{FileSystem}'"
         LinuxFS.write(f'## FileSystem\n')
-        LinuxFS.write(f'## This file contains some default directories of your system\n')
+        LinuxFS.write(f'## This file contains some default directories of your system\n\n')
         LinuxFS.write(f'import os\n\n')
         LinuxFS.write(f'## Special Directories\n')
         LinuxFS.write(f'CurrentPath = os.getcwd()\n')
@@ -318,15 +353,46 @@ def MacPlat():
         MacFile.close()
 
     ## MacApp File
-    print("> Creating MacApp Library...")
-    with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
-        MacAppFile.write(f'## MacApp File\n')
-        MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
-        MacAppFile.write(f'from ErrorReport import ErrorList\n\n')
-        MacAppFile.write(f'def Main():\n')
-        MacAppFile.write(f'   print("Hello World!")\n\n')
-        MacAppFile.write(f'Main()\n')
-        MacAppFile.close()
+    if LoopApp == True:
+        print("> Creating MacApp Library...")
+        with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
+            MacAppFile.write(f'## MacApp File\n')
+            MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
+            MacAppFile.write(f'from ErrorReport import ErrorList\n\n')
+            MacAppFile.write(f'def Main():\n')
+            MacAppFile.write(f'   while True:\n')
+            MacAppFile.write(f'      print("="*80)\n')
+            MacAppFile.write(f'      print(">> Options Menu<<")\n')
+            MacAppFile.write(f'      print(">> 1. Option One")\n')
+            MacAppFile.write(f'      print(">> 2. Option Two")\n')
+            MacAppFile.write(f'      print(">> 3. Option Three")\n\n')
+            MacAppFile.write(f'      try:\n')
+            MacAppFile.write(f'         UserInput = int(input(">> Type the option number: "))\n')
+            MacAppFile.write(f'         print("="*80)\n')
+            MacAppFile.write(f'         if UserInput == 1:\n')
+            MacAppFile.write(f'            print("> Option 1")\n')
+            MacAppFile.write(f'         elif UserInput == 2:\n')
+            MacAppFile.write(f'            print("> Option 2")\n')
+            MacAppFile.write(f'         elif UserInput == 3:\n')
+            MacAppFile.write(f'            print("> Option 3")\n')
+            MacAppFile.write(f'         else:\n')
+            MacAppFile.write(f'            print(">> This option is unavailable at this time")\n')
+            MacAppFile.write(f'      except:\n')
+            MacAppFile.write(f'         print("-"*80)\n')
+            MacAppFile.write(f'         print(">> This option is unavailable at this time")\n')
+            MacAppFile.write(f'         print("-"*80)\n\n')
+            MacAppFile.write(f'Main()\n')
+            MacAppFile.close()
+    else:
+        print("> Creating MacApp Library...")
+        with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
+            MacAppFile.write(f'## MacApp File\n')
+            MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
+            MacAppFile.write(f'from ErrorReport import ErrorList\n\n')
+            MacAppFile.write(f'def Main():\n')
+            MacAppFile.write(f'   print("Hello World!")\n\n')
+            MacAppFile.write(f'Main()\n')
+            MacAppFile.close()
 
     ## Mac SplashScreen
     print("> Creating SplashScreen...")
@@ -357,7 +423,7 @@ def MacPlat():
         FileSystem = '["USER"]}/'
         SUser = f"{Mac}{FileSystem}'"
         MacFS.write(f'## FileSystem\n')
-        MacFS.write(f'## This file contains some default directories of your system\n')
+        MacFS.write(f'## This file contains some default directories of your system\n\n')
         MacFS.write(f'import os\n\n')
         MacFS.write(f'## Special Directories\n')
         MacFS.write(f'CurrentPath = os.getcwd()\n')
@@ -395,15 +461,46 @@ def WindowsPlat():
         WindowsFile.close()
 
     ## WindowsApp File
-    print("> Creating WindowsApp Library...")
-    with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
-        WindowsAppFile.write(f'## WindowsApp File\n')
-        WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
-        WindowsAppFile.write(f'from ErrorReport import ErrorList\n\n')
-        WindowsAppFile.write(f'def Main():\n')
-        WindowsAppFile.write(f'   print("Hello World!")\n\n') 
-        WindowsAppFile.write(f'Main()\n')
-        WindowsAppFile.close()
+    if LoopApp == True:
+        print("> Creating WindowsApp Library...")
+        with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
+            WindowsAppFile.write(f'## WindowsApp File\n')
+            WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
+            WindowsAppFile.write(f'from ErrorReport import ErrorList\n\n')
+            WindowsAppFile.write(f'def Main():\n')
+            WindowsAppFile.write(f'   while True:\n')
+            WindowsAppFile.write(f'      print("="*80)\n')
+            WindowsAppFile.write(f'      print(">> Options Menu<<")\n')
+            WindowsAppFile.write(f'      print(">> 1. Option One")\n')
+            WindowsAppFile.write(f'      print(">> 2. Option Two")\n')
+            WindowsAppFile.write(f'      print(">> 3. Option Three")\n\n')
+            WindowsAppFile.write(f'      try:\n')
+            WindowsAppFile.write(f'         UserInput = int(input(">> Type the option number: "))\n')
+            WindowsAppFile.write(f'         print("="*80)\n')
+            WindowsAppFile.write(f'         if UserInput == 1:\n')
+            WindowsAppFile.write(f'            print("> Option 1")\n')
+            WindowsAppFile.write(f'         elif UserInput == 2:\n')
+            WindowsAppFile.write(f'            print("> Option 2")\n')
+            WindowsAppFile.write(f'         elif UserInput == 3:\n')
+            WindowsAppFile.write(f'            print("> Option 3")\n')
+            WindowsAppFile.write(f'         else:\n')
+            WindowsAppFile.write(f'            print(">> This option is unavailable at this time")\n')
+            WindowsAppFile.write(f'      except:\n')
+            WindowsAppFile.write(f'         print("-"*80)\n')
+            WindowsAppFile.write(f'         print(">> This option is unavailable at this time")\n')
+            WindowsAppFile.write(f'         print("-"*80)\n\n')  
+            WindowsAppFile.write(f'Main()\n')
+            WindowsAppFile.close()
+    else:
+        print("> Creating WindowsApp Library...")
+        with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
+            WindowsAppFile.write(f'## WindowsApp File\n')
+            WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
+            WindowsAppFile.write(f'from ErrorReport import ErrorList\n\n')
+            WindowsAppFile.write(f'def Main():\n')
+            WindowsAppFile.write(f'   print("Hello World!")\n\n') 
+            WindowsAppFile.write(f'Main()\n')
+            WindowsAppFile.close()
 
     ## Windows SplashScreen
     print("> Creating SplashScreen...")
@@ -431,7 +528,7 @@ def WindowsPlat():
     print("> Creating Windows FileSystem Library...")
     with codecs.open(EnvironFolders.WindowsFS, "w", "utf-8-sig") as WindowsFS:
         WindowsFS.write(f'## FileSystem\n')
-        WindowsFS.write(f'## This file contains some default directories of your system\n')
+        WindowsFS.write(f'## This file contains some default directories of your system\n\n')
         WindowsFS.write(f'import os\n\n')
         WindowsFS.write(f'## Special Directories\n')
         WindowsFS.write(f'CurrentPath = os.getcwd()\n')
@@ -468,5 +565,3 @@ def CreateBridge():
     WindowsPlat()
     print("-"*80)
     print()
-
-## Abaixo de 496 linhas?
