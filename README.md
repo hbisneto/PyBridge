@@ -68,7 +68,8 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 >> 
 >>```
 >>Observação:
->>A partir dessa versão, o PyBridge adiciona a biblioteca "FileSystem.py" em cada módulo de sistema
+>>A partir dessa versão, o PyBridge adiciona a biblioteca "FileSystem.py"
+>>em cada módulo de sistema quando "Criando projeto..."
 >>```
 > > <br>- ```Core.py```:
 > > <br>Todo o gerenciamento de criação de projetos será feito através dessa biblioteca em futuras atualizações.
