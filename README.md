@@ -23,19 +23,22 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 .
 ├── Hello_World.py
 ├── ErrorReport
-│   └── ErrorList.py
+│   ├── ErrorList.py
 │   └── SystemRequirements.py
 ├── Linux
 │   ├── Linux.py
 │   ├── LinuxApp.py
+│   ├── FileSystem.py
 │   └── SplashScreen.py
 ├── Mac
 │   ├── Mac.py
 │   ├── MacApp.py
+│   ├── FileSystem.py
 │   └── SplashScreen.py
 ├── Windows
 │   ├── Windows.py
 │   ├── WindowsApp.py
+│   ├── FileSystem.py
 │   └── SplashScreen.py
 └── README.md
 ```
@@ -43,12 +46,16 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 ## Log de Atualização
 
 > **BETA 5:**
-> <br> De forma geral, essa versão traz melhorias na organização do projeto
+> <br> Nessa nova versão, novos recursos foram adicionados e alguns erros foram corrigidos
 > > **Novidades:**
-> > <br>- Alterações na biblioteca ```Core.py```
-> > <br> 
+> > <br>**1.** Adicionado novo modelo de projeto: **```LoopingMenu Project```**
+> > <br>- Cria um projeto de menu predefinido que permanece em looping enquanto estiver em execução
+> > <br>**2.** Agora o PyBridge é reiniciado após a criação de um novo projeto
 > > <br><br> **Correções de Erros:**
-> > <br> --
+> > <br>- Alterações na biblioteca ```Core.py```
+> > <br>- Correções de erros no módulo ```Linux```
+> > <br>- Correções de erros no módulo ```Mac```
+> > <br>- Correções de erros no módulo ```Windows```
 
 #
 
@@ -58,6 +65,11 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 > > <br>**1. Bibliotecas Redesenhadas**
 > > <br>- ```FileSystem.py```:
 > > <br>Os principais diretórios dos sistemas operacionais foram adicionados a essa biblioteca. Agora é ainda mais fácil referenciar um diretório especial usando menos linhas de código.
+>> 
+>>```
+>>Observação:
+>>A partir dessa versão, o PyBridge adiciona a biblioteca "FileSystem.py" em cada módulo de sistema
+>>```
 > > <br>- ```Core.py```:
 > > <br>Todo o gerenciamento de criação de projetos será feito através dessa biblioteca em futuras atualizações.
 > > <br> A biblioteca foi atualizada e agora obtém a versão do Python no SO em momento de execução.
