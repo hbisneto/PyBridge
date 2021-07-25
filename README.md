@@ -100,6 +100,26 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 
 ## Log de Atualização
 
+> **BETA 6:**
+> <br> Todo o projeto foi revisado e melhorias foram aplicadas
+> > **Novidades:**
+> > <br>**1. Nova opção de menu - ```Listar Projetos```:** 
+> > <br>- Todos os projetos criados pelo PyBridge agora podem ser listados diretamente pelo sistema
+> > <br><br>**2. :**
+> > <br>- 
+> > <br><br>**3. :**
+> > <br>- 
+> > <br><br> **Melhorias:**
+> > <br> 1. Alterações na biblioteca ```Core.py```:
+> > <br>- Melhorias no sistema de verificação do ambiente
+> > <br>- 
+> > <br>- Alterações no módulo ```ErrorReport```
+> > <br>- Alterações no módulo ```Linux```
+> > <br>- Alterações no módulo ```Mac```
+> > <br>- Alterações no módulo ```Windows```
+
+#
+
 > **BETA 5:**
 > <br> Nessa nova versão, novos recursos foram adicionados e alguns erros foram corrigidos
 > > **Novidades:**
@@ -128,7 +148,6 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br>- Alterações no módulo ```Linux```
 > > <br>- Alterações no módulo ```Mac```
 > > <br>- Alterações no módulo ```Windows```
-> > 
 
 #
 
