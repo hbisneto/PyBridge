@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 06/07/2021
+###### Last repository update: 25/07/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
@@ -36,7 +36,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > Leia mais sobre a biblioteca ```sys ``` em [sys — System-specific parameters and functions](https://docs.python.org/pt-br/3/library/sys.html)
 
 * **tweepy:** Uma biblioteca de fácil uso para acessar a API do Twitter.
-> Leia mais sobre a biblioteca ```tweepy ``` em [tweepy — An easy-to-use Python library for accessing the Twitter API](https://docs.tweepy.org/en/stable/)
+> Leia mais sobre a biblioteca ```tweepy``` em [tweepy — An easy-to-use Python library for accessing the Twitter API](https://docs.tweepy.org/en/stable/)
 > > O uso da biblioteca tweepy é opcional e apenas mandatório em casos de "Twitter Application Project" criados no PyBridge.
 
 #
