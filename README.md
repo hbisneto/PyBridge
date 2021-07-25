@@ -2,7 +2,6 @@
 ###### Last repository update: 06/07/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
-Uso sugerido pra quem precisa coletar dados de diferentes locais do sistema de arquivos do ambiente em que o projeto é executado.
 
 Com o PyBridge é possível a implementação de scripts para:
 
@@ -11,13 +10,40 @@ Com o PyBridge é possível a implementação de scripts para:
 3. **Windows**;
 
 > Observação:
-> <br>>> Verifique a aba ```issues``` para informações sobre melhorias e atualizações.
+> > O PyBridge nasceu do Python 3.9. Por esse motivo, é recomendado a mesma versão do Python (3.9) ou superior para executar o sistema.
 
 O PyBridge conta com uma biblioteca de ***tratamento de erros*** padrão que pode ser executada em qualquer ambiente. Todo método implementado dentro da biblioteca pode ser chamado de qualquer parte do código. Desse jeito, não é necessário a implementação da chamada de exceção ```raise RuntimeError()``` dentro do módulo de execução do programa. Basta referenciar a chamada da função condizente com o tratamento que deve ser executado.
 
+#
+
+## Bibliotecas usadas
+
+As seguintes bibliotecas foram usadas para a implementação da ferramenta:
+
+* **codecs:** O módulo define funções para codificação e decodificação com qualquer codec.
+> Leia mais sobre a biblioteca ```codecs ``` em [codecs — Codec registry and base classes](https://docs.python.org/3/library/codecs.html)
+
+* **datetime:** O módulo ```datetime``` fornece as classes para manipulação de datas e horas.
+> Leia mais sobre a biblioteca ```datetime ``` em [datetime — Basic date and time types](https://docs.python.org/3/library/datetime.html)
+
+* **getpass:** Entrada de senha portátil.
+> Leia mais sobre a biblioteca ```getpass``` em [getpass — Portable Password Input](https://docs.python.org/3/library/getpass.html)
+
+* **os:** Este módulo fornece uma maneira simples de usar funcionalidades que são dependentes do Sistema Operacional.
+> Leia mais sobre a biblioteca ```os ``` em [os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
+
+* **sys:** Este módulo fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador e a funções que interagem fortemente com o interpretador.
+> Leia mais sobre a biblioteca ```sys ``` em [sys — System-specific parameters and functions](https://docs.python.org/pt-br/3/library/sys.html)
+
+* **tweepy:** Uma biblioteca de fácil uso para acessar a API do Twitter.
+> Leia mais sobre a biblioteca ```tweepy ``` em [tweepy — An easy-to-use Python library for accessing the Twitter API](https://docs.tweepy.org/en/stable/)
+> > O uso da biblioteca tweepy é opcional e apenas mandatório em casos de "Twitter Application Project" criados no PyBridge.
+
+#
+
 ## Estrutura do projeto
 
-O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo PyBridge.
+* **Blank Project** & **Menu Application Loop Project:** O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo PyBridge.
 
 ```
 .
@@ -43,19 +69,66 @@ O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo P
 └── README.md
 ```
 
+* **Twitter Application Project:** O exemplo a seguir mostra a estrutura do projeto ```MyTweet``` criado pelo Pybridge:
+
+```
+.
+├── MyTweets.py
+├── ErrorReport
+│   ├── ErrorList.py
+│   └── SystemRequirements.py
+├── Linux
+│   ├── Linux.py
+│   ├── LinuxApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+├── Mac
+│   ├── Mac.py
+│   ├── MacApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+├── Windows
+│   ├── Windows.py
+│   ├── WindowsApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+├── Tokens.py
+└── README.md
+```
+
+#
+
 ## Log de Atualização
 
 > **BETA 5:**
 > <br> Nessa nova versão, novos recursos foram adicionados e alguns erros foram corrigidos
 > > **Novidades:**
-> > <br>**1.** Adicionado novo modelo de projeto: **```LoopingMenu Project```**
+> > <br>**1.** Agora o ```PyBridge``` é reiniciado após a criação de um novo projeto
+> > <br><br>**2. Adicionado novo modelo de projeto: ```Menu Application Loop Project```**
 > > <br>- Cria um projeto de menu predefinido que permanece em looping enquanto estiver em execução
-> > <br>**2.** Agora o PyBridge é reiniciado após a criação de um novo projeto
-> > <br><br> **Correções de Erros:**
+> > <br><br>**3. Adicionado novo modelo de projeto: ```Twitter Application Project```**
+> > <br>- Cria um projeto contendo o recurso necessário para o uso das APIs do Twitter
+> > 
+> > ```
+> > Para que projetos usando a API do Twitter sejam executados,
+> > alguns componentes extras são necessários:
+> > 
+> > - Tokens de acesso:
+> > >> API Key;
+> > >> API Key Secret;
+> > >> Access Token;
+> > >> Access Token Secret;
+> > Os Tokens são obtidos no painel de desenvolverdores do Twitter
+> > 
+> > - Biblioteca TweePy:
+> > A biblioteca pode ser baixada gratuitamente através do pip3
+> > ```
+> > <br><br> **Melhorias:**
 > > <br>- Alterações na biblioteca ```Core.py```
-> > <br>- Correções de erros no módulo ```Linux```
-> > <br>- Correções de erros no módulo ```Mac```
-> > <br>- Correções de erros no módulo ```Windows```
+> > <br>- Alterações no módulo ```Linux```
+> > <br>- Alterações no módulo ```Mac```
+> > <br>- Alterações no módulo ```Windows```
+> > 
 
 #
 
