@@ -1,28 +1,170 @@
 # PyBridge
+###### Last repository update: 25/07/2021
 
-## Log de Atualização
-###### Last repository update: 06/07/2021
+Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
-> **BETA 1:**
-<br>>> Lançamento da primeira versão de testes
-<br>>> Suporte a criação de projetos para Linux
-<br>>> Suporte a criação de projetos para macOS
-<br>>> Suporte a criação de projetos para Windows
+Com o PyBridge é possível a implementação de scripts para:
+
+1. **Linux**;
+2. **macOS**;
+3. **Windows**;
+
+> Observação:
+> > O PyBridge nasceu do Python 3.9. Por esse motivo, é recomendado a mesma versão do Python (3.9) ou superior para executar o sistema.
+
+O PyBridge conta com uma biblioteca de ***tratamento de erros*** padrão que pode ser executada em qualquer ambiente. Todo método implementado dentro da biblioteca pode ser chamado de qualquer parte do código. Desse jeito, não é necessário a implementação da chamada de exceção ```raise RuntimeError()``` dentro do módulo de execução do programa. Basta referenciar a chamada da função condizente com o tratamento que deve ser executado.
 
 #
 
-> **BETA 2:**
->
+## Bibliotecas usadas
+
+As seguintes bibliotecas foram usadas para a implementação da ferramenta:
+
+* **codecs:** O módulo define funções para codificação e decodificação com qualquer codec.
+> Leia mais sobre a biblioteca ```codecs ``` em [codecs — Codec registry and base classes](https://docs.python.org/3/library/codecs.html)
+
+* **datetime:** O módulo ```datetime``` fornece as classes para manipulação de datas e horas.
+> Leia mais sobre a biblioteca ```datetime ``` em [datetime — Basic date and time types](https://docs.python.org/3/library/datetime.html)
+
+* **getpass:** Entrada de senha portátil.
+> Leia mais sobre a biblioteca ```getpass``` em [getpass — Portable Password Input](https://docs.python.org/3/library/getpass.html)
+
+* **os:** Este módulo fornece uma maneira simples de usar funcionalidades que são dependentes do Sistema Operacional.
+> Leia mais sobre a biblioteca ```os ``` em [os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
+
+* **sys:** Este módulo fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador e a funções que interagem fortemente com o interpretador.
+> Leia mais sobre a biblioteca ```sys ``` em [sys — System-specific parameters and functions](https://docs.python.org/pt-br/3/library/sys.html)
+
+* **tweepy:** Uma biblioteca de fácil uso para acessar a API do Twitter.
+> Leia mais sobre a biblioteca ```tweepy``` em [tweepy — An easy-to-use Python library for accessing the Twitter API](https://docs.tweepy.org/en/stable/)
+> > O uso da biblioteca tweepy é opcional e apenas mandatório em casos de "Twitter Application Project" criados no PyBridge.
+
+#
+
+## Estrutura do projeto
+
+* **Blank Project** & **Menu Application Loop Project:** O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo PyBridge.
+
+```
+.
+├── Hello_World.py
+├── ErrorReport
+│   ├── ErrorList.py
+│   └── SystemRequirements.py
+├── Linux
+│   ├── Linux.py
+│   ├── LinuxApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+├── Mac
+│   ├── Mac.py
+│   ├── MacApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+├── Windows
+│   ├── Windows.py
+│   ├── WindowsApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+└── README.md
+```
+
+* **Twitter Application Project:** O exemplo a seguir mostra a estrutura do projeto ```MyTweet``` criado pelo Pybridge:
+
+```
+.
+├── MyTweets.py
+├── ErrorReport
+│   ├── ErrorList.py
+│   └── SystemRequirements.py
+├── Linux
+│   ├── Linux.py
+│   ├── LinuxApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+├── Mac
+│   ├── Mac.py
+│   ├── MacApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+├── Windows
+│   ├── Windows.py
+│   ├── WindowsApp.py
+│   ├── FileSystem.py
+│   └── SplashScreen.py
+├── Tokens.py
+└── README.md
+```
+
+#
+
+## Log de Atualização
+
+> **BETA 5:**
+> <br> Nessa nova versão, novos recursos foram adicionados e alguns erros foram corrigidos
 > > **Novidades:**
-> > <br>>> Adicionado suporte ao Windows
-> > <br>>> Adicionado método ```DirectoryExists()``` em ```ErrorReport```
-> > <br>>> Removido método ```ProjectExists()``` em ```ErrorReport```
-> > <br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
-> >
-> > **Correções de Erros:**
-> > <br>>> Correção de erro na biblioteca ```SplashScreen.py``` que fixava o nome do usuário logado no copyright do módulo.
-> > <br>>> Correções de erros na biblioteca ```Core.py```
-> > <br>>> Correções de erros no processo de criação do arquivo ```Readme.md```: O arquivo era criado sem que nenhum conteúdo fosse gravado.
+> > <br>**1.** Agora o ```PyBridge``` é reiniciado após a criação de um novo projeto
+> > <br><br>**2. Adicionado novo modelo de projeto: ```Menu Application Loop Project```**
+> > <br>- Cria um projeto de menu predefinido que permanece em looping enquanto estiver em execução
+> > <br><br>**3. Adicionado novo modelo de projeto: ```Twitter Application Project```**
+> > <br>- Cria um projeto contendo o recurso necessário para o uso das APIs do Twitter
+> > 
+> > ```
+> > Para que projetos usando a API do Twitter sejam executados,
+> > alguns componentes extras são necessários:
+> > 
+> > - Tokens de acesso:
+> > >> API Key;
+> > >> API Key Secret;
+> > >> Access Token;
+> > >> Access Token Secret;
+> > Os Tokens são obtidos no painel de desenvolverdores do Twitter
+> > 
+> > - Biblioteca TweePy:
+> > A biblioteca pode ser baixada gratuitamente através do pip3
+> > ```
+> > <br><br> **Melhorias:**
+> > <br>- Alterações na biblioteca ```Core.py```
+> > <br>- Alterações no módulo ```Linux```
+> > <br>- Alterações no módulo ```Mac```
+> > <br>- Alterações no módulo ```Windows```
+> > 
+
+#
+
+> **BETA 4:**
+> <br> Atualização focada em correções de erros, melhorias na importação de bibliotecas públicas e melhor estruturação do projeto.
+> > **Novidades:**
+> > <br>**1. Bibliotecas Redesenhadas**
+> > <br>- ```FileSystem.py```:
+> > <br>Os principais diretórios dos sistemas operacionais foram adicionados a essa biblioteca. Agora é ainda mais fácil referenciar um diretório especial usando menos linhas de código.
+>> 
+>>```
+>>Observação:
+>>A partir dessa versão, o PyBridge adiciona a biblioteca "FileSystem.py"
+>>em cada módulo de sistema quando "Criando projeto..."
+>>```
+> > <br>- ```Core.py```:
+> > <br>Todo o gerenciamento de criação de projetos será feito através dessa biblioteca em futuras atualizações.
+> > <br> A biblioteca foi atualizada e agora obtém a versão do Python no SO em momento de execução.
+> > <br><br>**2. ErrorReport**: 
+> > <br> - Implementação da biblioteca ```SystemRequirements.py``` em ```ErrorReport```
+> > <br>- Adicionada classe ```RequirementsCheck``` em ```ErrorList.py```
+> > <br><br> **3. Requisitos de Sistema**:
+> > <br>- Novo recurso permite determinar um requisito mínimo de sistema (limitado a versões do Python) para que o script possa ser executado.
+>> <br> Para permitir a verificação de requisitos mínimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```True```. O valor padrão é ```False```.
+<br>Os requisitos mínimos podem ser definidos pelo usuário através das entradas:
+>>
+>>```
+>>TargetMajor;
+>>TargetMinor;
+>>TargetBuild;
+>>```
+>> Por padrão, o projeto criado terá como requisito mínimo a mesma versão do Python usada para criar o projeto
+> > <br><br> **Correções de Erros:**
+> > <br>>> ```ErrorReport```: 
+> > <br>- Correções de importação da biblioteca ```ErrorList.py```
+> > <br>- Pequenas correções de textos em ```ErrorList.py``` 
 
 #
 
@@ -39,83 +181,33 @@
 > > <br>>> A biblioteca ```getpass``` não é mais importada por padrão nos módulos de sistema em ```SplashScreen.py```
 > >
 > > **Correções de Erros:**
-> > <br>>> Correção de erros em ```PyBridge.py```
+> > <br>>> Correções de erros em ```PyBridge.py```
 > > <br>>> Corrigido o problema de codificação de caracteres no Windows após a criação de um projeto
 
 > Leia mais sobre a biblioteca ```getpass``` em [getpass — Portable Password Input](https://docs.python.org/3/library/getpass.html)
  
 #
 
-> **BETA 4:**
-> <br> Atualização focada em correções de erros, melhorias de importação de bibliotecas publicas e atualização de estrutura de projeto
+> **BETA 2:**
+>
 > > **Novidades:**
-> > <br>**1. Bibliotecas Redesenhadas**
-> > <br>- ```FileSystem.py```:
-> > <br>Os principais diretórios dos sistemas operacionais foram adicionados a essa biblioteca. Agora é ainda mais fácil referenciar um diretório especial usando menos linhas de código.
-> > <br>- ```Core.py```:
-> > <br>Todo o gerenciamento de criação de projetos será feito através dessa biblioteca em futuras atualizações.
-> > <br> A biblioteca foi atualizada e agora obtém a versão do Python no SO em momento de execução.
-> > <br><br>**2. ErrorReport**: 
-> > <br> - Implementação da biblioteca ```SystemRequirements.py``` em ```ErrorReport```
-> > <br>- Adicionada classe ```RequirementsCheck``` em ```ErrorList.py```
-> > <br><br> **3. Requisitos de Sistema**:
-> > <br>- Novo recurso permite determinar um requisito minimo de sistema (limitado a versões do Python) para que o script possa ser executado.
->> <br> Para permitir a verificação de requesitos minimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```True```. O valor padrão é ```False```.
-<br>Os requisitos mínimos podem ser definidos pelo usuário através das entradas:
->>
-```
-TargetMajor;
-TargetMinor;
-TargetBuild;
-```
->> Por padrão, o projeto criado terá como requisito minimo a mesma versão do Python usada para criar o projeto
-> > <br><br> **Correções de Erros:**
-> > <br>>> ```ErrorReport```: 
-> > <br>- Correções de importação da biblioteca ```ErrorList.py```
-> > <br>- Pequenas correções de textos em ```ErrosList.py``` 
+> > <br>>> Adicionado suporte ao Windows
+> > <br>>> Adicionado método ```DirectoryExists()``` em ```ErrorReport```
+> > <br>>> Removido método ```ProjectExists()``` em ```ErrorReport```
+> > <br>>> Remoção das opções ***2. Criar Nova Classe*** e ***3. Listar Projetos*** do programa.
+> >
+> > **Correções de Erros:**
+> > <br>>> Correção de erro na biblioteca ```SplashScreen.py``` que fixava o nome do usuário logado no copyright.
+> > <br>>> Correções de erros na biblioteca ```Core.py```
+> > <br>>> Correções de erros no processo de criação do arquivo ```Readme.md```: O arquivo era criado sem que nenhum conteúdo fosse gravado.
 
 #
 
-# Sobre o PyBridge
-
-Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
-Uso sugerido pra quem precisa coletar dados de diferentes locais do sistema de arquivos do ambiente em que o projeto é executado.
-
-Com o PyBridge é possível a implementação de scripts para:
-
-1. **Linux**;
-2. **macOS**;
-3. **Windows**;
-
-> Observação:
-> <br>>> Verifique a aba ```issues``` para informações sobre melhorias e atualizações.
-
-O PyBridge conta com uma biblioteca de ***tratamento de erros*** padrão que pode ser executada em qualquer ambiente. Todo método implementado dentro da biblioteca pode ser chamado de qualquer parte do código. Desse jeito, não é necessário a implementação da chamada de exceção ```raise RuntimeError()``` dentro do módulo de execução do programa. Basta referenciar a chamada da função condizente com o tratamento que deve ser executado.
-
-## Estrutura do projeto
-
-O exemplo a seguir mostra a estrutura do projeto ```Hello_World``` criado pelo PyBridge.
-
-```
-.
-├── Hello_World.py
-├── ErrorReport
-│   └── ErrorList.py
-│   └── SystemRequirements.py
-├── Linux
-│   ├── Linux.py
-│   ├── LinuxApp.py
-│   └── SplashScreen.py
-├── Mac
-│   ├── Mac.py
-│   ├── MacApp.py
-│   └── SplashScreen.py
-├── Windows
-│   ├── Windows.py
-│   ├── WindowsApp.py
-│   └── SplashScreen.py
-└── README.md
-```
+> **BETA 1:**
+<br>>> Lançamento da primeira versão de testes
+<br>>> Suporte a criação de projetos para Linux
+<br>>> Suporte a criação de projetos para macOS
+<br>>> Suporte a criação de projetos para Windows
 
 #
 
