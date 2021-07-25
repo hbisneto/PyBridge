@@ -26,17 +26,45 @@ def CreationSuccess():
     print("="*80)
 
 def VerifyFolders():
-    try:
-        print(">> PyBridge: Checking System...")
-        os.mkdir(FileSystem.PyBridgeFolder)
-        os.mkdir(FileSystem.ProjectsRepo)
-        print(">> PyBridge System Files: OK!")
-        print("="*80)
-        print()
-    except:
-        print(">> PyBridge System Files: OK!")
-        print("="*80)
-        print()
+    def BridgeFolder():
+        try:
+            os.mkdir(FileSystem.PyBridgeFolder)
+            print(f'>> PyBridge: "{FileSystem.PyBridgeFolder}" created')
+        except:
+            return
+
+    def ProjectsFolder():
+        try:
+            os.mkdir(FileSystem.ProjectsRepo)
+            print(f'>> PyBridge: "{FileSystem.ProjectsRepo}" created')
+        except:
+            print()
+            return
+
+    BridgeFolder()
+    ProjectsFolder()
+        
+def ProjectList(Projects = []):
+    Projects.clear()
+
+    Process = os.listdir(FileSystem.ProjectsRepo)
+    
+    for Application in Process:
+        Projects.append(Application)
+        if '.DS_Store' in Projects:
+            Projects.remove('.DS_Store')
+
+    print(f'>> Projects List:')
+    print("="*80)
+    Count = 0
+    for App in Projects:
+        Count += 1
+        print(f'{Count}. {App}')
+
+    if Count == 0:
+        print(f'>> Your list of projects is empty')
+    print("="*80)
+    print('')
 
 def CreateProject():
     print()

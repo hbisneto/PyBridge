@@ -13,6 +13,7 @@ def Main():
         print(">> 1. Create Blank Project")
         print(">> 2. Create a Menu Application Loop Project")
         print(">> 3. Create Twitter Application Project")
+        print(">> 4. Projects List")
         print(">> 0. Quit PyBridge")
         print()
         Opc = int(input(">> Type The Item Number: "))
@@ -37,6 +38,8 @@ def Main():
             Core.CreateProject()
             Core.ApplyTwitterProject()
             Core.CreationSuccess()
+        elif Opc == 4:
+            Core.ProjectList()
         else:
             print("="*80)
             print(">> Invalid Option!")

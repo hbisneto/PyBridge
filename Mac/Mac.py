@@ -9,5 +9,8 @@ def Mac():
     ## Lets run the SplashScreen
     from Mac import SplashScreen
 
+    ## Lets check system requirements
+    from ErrorReport import SystemRequirements
+
     ## Start App for Mac
     from Mac import MacApp

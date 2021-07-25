@@ -5,7 +5,7 @@ from datetime import date
 
 CurrentYear = date.today().year
 SoftwareName = "PyBridge"
-Version = "BETA 5"
+Version = "BETA 6"
 CopyrightName = "Heitor Bisneto"
 
 print("="*80)
