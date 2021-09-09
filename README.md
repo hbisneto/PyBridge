@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 25/07/2021
+###### Last repository update: 09/09/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
@@ -21,7 +21,7 @@ O PyBridge conta com uma biblioteca de ***tratamento de erros*** padrão que pod
 As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 
 * **codecs:** O módulo define funções para codificação e decodificação com qualquer codec.
-> Leia mais sobre a biblioteca ```codecs ``` em [codecs — Codec registry and base classes](https://docs.python.org/3/library/codecs.html)
+> Leia mais sobre a biblioteca ```codecs``` em [codecs — Codec registry and base classes](https://docs.python.org/3/library/codecs.html)
 
 * **datetime:** O módulo ```datetime``` fornece as classes para manipulação de datas e horas.
 > Leia mais sobre a biblioteca ```datetime ``` em [datetime — Basic date and time types](https://docs.python.org/3/library/datetime.html)
@@ -30,10 +30,10 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > Leia mais sobre a biblioteca ```getpass``` em [getpass — Portable Password Input](https://docs.python.org/3/library/getpass.html)
 
 * **os:** Este módulo fornece uma maneira simples de usar funcionalidades que são dependentes do Sistema Operacional.
-> Leia mais sobre a biblioteca ```os ``` em [os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
+> Leia mais sobre a biblioteca ```os``` em [os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
 
 * **sys:** Este módulo fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador e a funções que interagem fortemente com o interpretador.
-> Leia mais sobre a biblioteca ```sys ``` em [sys — System-specific parameters and functions](https://docs.python.org/pt-br/3/library/sys.html)
+> Leia mais sobre a biblioteca ```sys``` em [sys — System-specific parameters and functions](https://docs.python.org/pt-br/3/library/sys.html)
 
 * **tweepy:** Uma biblioteca de fácil uso para acessar a API do Twitter.
 > Leia mais sobre a biblioteca ```tweepy``` em [tweepy — An easy-to-use Python library for accessing the Twitter API](https://docs.tweepy.org/en/stable/)
@@ -69,7 +69,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 └── README.md
 ```
 
-* **Twitter Application Project:** O exemplo a seguir mostra a estrutura do projeto ```MyTweet``` criado pelo Pybridge:
+* **Twitter Application Project:** O exemplo a seguir mostra a estrutura do projeto ```MyTweets``` criado pelo Pybridge:
 
 ```
 .
@@ -100,23 +100,28 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 
 ## Log de Atualização
 
-> **BETA 6:**
-> <br> Todo o projeto foi revisado e melhorias foram aplicadas
+> **BETA 6: (REPLICAR ALTERAÇÕES NOS MÓDULOS LINUX E WINDOWS)**
+> <br> Todo o projeto foi revisado trazendo melhorias consideráveis para o sistema. Entre essas melhorias, a capacidade de listar projetos, criar novos módulos para o sistema já existente e também criar novas bibliotecas para um ou mais ambientes operacionais.
 > > **Novidades:**
 > > <br>**1. Nova opção de menu - ```Listar Projetos```:** 
 > > <br>- Todos os projetos criados pelo PyBridge agora podem ser listados diretamente pelo sistema
-> > <br><br>**2. :**
+> > <br><br>**2. Criar novo módulo:**
 > > <br>- 
-> > <br><br>**3. :**
+> > <br><br>**3. Criar nova biblioteca:**
 > > <br>- 
 > > <br><br> **Melhorias:**
 > > <br> 1. Alterações na biblioteca ```Core.py```:
 > > <br>- Melhorias no sistema de verificação do ambiente
 > > <br>- 
-> > <br>- Alterações no módulo ```ErrorReport```
-> > <br>- Alterações no módulo ```Linux```
-> > <br>- Alterações no módulo ```Mac```
-> > <br>- Alterações no módulo ```Windows```
+> > 
+> > <br> 2. Alterações no módulo ```ErrorReport```
+> > <br>- Implementação da função ```InputFormat()``` em ```ErrorList.py```
+> > 
+> > <br> 3. Alterações nos módulos ```Linux```, ```Mac``` e ```Windows```:
+> > <br>- Alterações nas bibliotecas ```SplashScreen.py``` nos módulos de sistema.
+> > <br>- Alterações nas bibliotecas ```Linux.py```, ```Mac.py``` e ```Windows.py```
+> > <br>- Alterações nas bibliotecas ```LinuxApp.py```, ```MacApp.py``` e ```WindowsApp.py```
+> > 
 
 #
 
