@@ -2,23 +2,23 @@
 ## This file contains information about your project
 
 from datetime import date
-import getpass
 
 CurrentYear = date.today().year
 SoftwareName = "PyBridge"
 Version = "BETA 6"
-CopyrightName = getpass.getuser().capitalize()
+CopyrightName = "Heitor Bisneto"
 
-print("Name:", SoftwareName)
-print("Version:", Version)
-print("Created By:", CopyrightName)
-
-if CurrentYear == 2021:
-    print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")
-else:
-    print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")
-print()
 print("="*80)
 print(f'[{SoftwareName} for Windows] - Running...')
 print("="*80)
-print()
+
+print(f'Name: {SoftwareName}')
+print(f'Version: {Version}')
+print(f'Created By: {CopyrightName}')
+
+if CurrentYear == 2021:
+    print(f'Copyright © {CurrentYear} | {CopyrightName}. All rights reserved.')
+    print("="*80)
+else:
+    print(f'Copyright © 2021 - {CurrentYear} | {CopyrightName}. All rights reserved.')
+    print("="*80)

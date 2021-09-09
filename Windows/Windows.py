@@ -8,6 +8,9 @@ def Windows():
 
     ## Lets run the SplashScreen
     from Windows import SplashScreen
+
+    ## Lets check system requirements
+    from ErrorReport import SystemRequirements
     
-    ## Start App for Mac
+    ## Start App for Windows
     from Windows import WindowsApp

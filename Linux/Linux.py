@@ -8,6 +8,9 @@ def Linux():
 
     ## Lets run the SplashScreen
     from Linux import SplashScreen
-    
-    ## Start App for Mac
+
+    ## Lets check system requirements
+    from ErrorReport import SystemRequirements
+
+    ## Start App for Linux
     from Linux import LinuxApp

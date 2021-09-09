@@ -34,3 +34,5 @@ def FileExists():
 def DirectoryExists():
    raise RuntimeError(">> The directory already exists!")
 
+def InputFormat():
+   print("\n\n>> Your input is not valid: Check your input and try again\n\n")

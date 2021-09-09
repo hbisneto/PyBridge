@@ -1,5 +1,6 @@
 ## FileSystem
 ## This file contains some default directories of your system
+
 import os
 
 ## Special Directories
