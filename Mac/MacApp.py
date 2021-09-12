@@ -39,6 +39,8 @@ def Main():
             Core.ApplyTwitterProject()
             Core.CreationSuccess()
         elif Opc == 4:
+            Core.ProjList.clear()
+            Core.ListProjects()
             Core.ProjectList()
         else:
             print("="*80)

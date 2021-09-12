@@ -18,6 +18,18 @@ MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
 
+def ListProjects():
+    try:        
+        BridgeRepo = os.listdir(FileSystem.ProjectsRepo)
+        for Project in BridgeRepo:
+            ProjList.append(Project)
+            if '.DS_Store' in ProjList:
+                ProjList.remove('.DS_Store')
+    except:
+        print("="*80)
+        print(f'>> ERROR: Couldn`t load projects...')
+        print("="*80)
+    
 def Explorer():
     ProjectName = str()
     FolderLocation = str()
@@ -140,7 +152,7 @@ def ProjOptions():
         elif SubMenu == 2:
             # Criar Biblioteca Universal
             CreateUniversalLib(AppliesTo)
-            print(f'>> Created the Library: (NomeDaLIB)')
+            print(f'>> [100%]: Library Created!')
         elif SubMenu == 3:
             # Criar Modulo
             print(">> Ta criada essa caralha!")
