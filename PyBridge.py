@@ -8,26 +8,25 @@ try:
 
     ## Local Libraries
     from ErrorReport import ErrorList
-    from Linux import Linux
-    from Mac import Mac
-    from Windows import Windows
-
-    Platform = platform
-    
 except:
     ErrorList.ImportLib()
-
+    
 def Main():
+    Platform = platform
+    
     ## Linux
     if Platform == "linux" or Platform == "linux2":
+        from Linux import Linux
         Linux.Linux()
 
     ## Mac    
     elif Platform == "darwin":
+        from Mac import Mac
         Mac.Mac()
         
     ## Windows
     elif Platform == "win32":
+        from Windows import Windows
         Windows.Windows()
 
 Main()

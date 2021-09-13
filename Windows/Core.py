@@ -5,7 +5,8 @@ import codecs
 import getpass
 import os
 import sys
-from Mac import FileSystem
+from ErrorReport import ErrorList
+from Windows import FileSystem
 
 PythonExtension = ".py"
 ProjectType = ""
@@ -15,7 +16,20 @@ TweetStr = "{Tweet}"
 MajorVersion = sys.version_info[0]
 MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
+ProjList = []
 
+def ListProjects():
+    try:        
+        BridgeRepo = os.listdir(FileSystem.ProjectsRepo)
+        for Project in BridgeRepo:
+            ProjList.append(Project)
+            if '.DS_Store' in ProjList:
+                ProjList.remove('.DS_Store')
+    except:
+        print("="*80)
+        print(f'>> ERROR: Couldn`t load projects...')
+        print("="*80)
+    
 def Explorer():
     ProjectName = str()
     FolderLocation = str()
@@ -26,17 +40,132 @@ def CreationSuccess():
     print("="*80)
 
 def VerifyFolders():
-    try:
-        print(">> PyBridge: Checking System...")
-        os.mkdir(FileSystem.PyBridgeFolder)
-        os.mkdir(FileSystem.ProjectsRepo)
-        print(">> PyBridge System Files: OK!")
+    def BridgeFolder():
+        try:
+            os.mkdir(FileSystem.PyBridgeFolder)
+            print(f'>> PyBridge: "{FileSystem.PyBridgeFolder}" created')
+        except:
+            return
+
+    def ProjectsFolder():
+        try:
+            os.mkdir(FileSystem.ProjectsRepo)
+            print(f'>> PyBridge: "{FileSystem.ProjectsRepo}" created')
+        except:
+            print()
+            return
+
+    BridgeFolder()
+    ProjectsFolder()
+
+def Teste():
+    print(ProjList)
+    
+def ProjectList():
+    BridgeLoop = True
+    while BridgeLoop == True:
+        print(f'>> Projects List:')
+        print("="*80)
+
+        Count = 0
+        for App in ProjList:
+            Count += 1
+            print(f'{Count}. {App}')
+        
+        if Count == 0:
+            print("="*80)
+            print(f'>> Your list of projects is empty')
+            print("="*80)
+            print()
+        BridgeLoop = False
+        ProjOptions()
+
+def ProjOptions():
+    def CreateUniversalLib(AppliesTo):
+        LibName = str(input(">> Type the Lib name: "))
+        LibFileLocation = f'{AppliesTo}/{LibName}{PythonExtension}'
+        with codecs.open(LibFileLocation, "w", "utf-8-sig") as UniversalLib:
+            UniversalLib.write(f'## {LibName} File\n')
+            UniversalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+            UniversalLib.write(f'try:\n')
+            UniversalLib.write(f'   ## Imported Libraries\n')
+            UniversalLib.write(f'   from sys import platform\n\n')
+            UniversalLib.write(f'   ## Local Libraries\n')
+            UniversalLib.write(f'   from ErrorReport import ErrorList\n')
+            UniversalLib.write(f'   from Linux import Linux\n')
+            UniversalLib.write(f'   from Mac import Mac\n')
+            UniversalLib.write(f'   from Windows import Windows\n\n')
+            UniversalLib.write(f'   Platform = platform\n\n')
+            UniversalLib.write(f'except:\n')
+            UniversalLib.write(f'   ErrorList.ImportLib()\n\n')
+            UniversalLib.write(f'def Main():\n')
+            UniversalLib.write(f'   print(">> Custom Universal Library")\n\n')
+            UniversalLib.write(f'Main()')
+            UniversalLib.close()
+
+    print(f'0. << Go Back')
+    print("="*80)
+
+    #try:
+    Opc = int(input(">> Type a number to get options or go back: "))
+    if Opc != 0:
+        AppliesTo = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
+        ## print(f'>> Will Apply to: {AppliesTo}')
+
+        print()
+        print("="*80)
+        print(">> Opcões de gerenciamento")
+        print("="*80)
+        print(">> 1. Create Library")
+        print("="*80)
+        print("Will add a Library in all OS Modules")
+        print("-"*80)
+        print("="*80)
+        print(">> 2. Create Universal Library")
+        print("="*80)
+        print("Will add a new Library on the root of project")
+        print("-"*80)
+        print("="*80)
+        print(">> 3. Create Module")
+        print("="*80)
+        print("Will add a Module in all OS Modules")
+        print("-"*80)
+        print("="*80)
+        print(">> 4. Create Universal Module")
+        print("="*80)
+        print("Will add a new Module on the root of project")
+        print("-"*80)
+
+        print("="*80)
+        SubMenu = int(input(">> Type your choice: "))
+        print("="*80)
+
+        ## Criar biblioteca: Cria uma biblioteca para cada sistema operacional
+        ## Criar biblioteca Universal: Cria uma biblioteca na raiz do projeto
+        ## --------------------------
+        ## Criar modulo: Cria um modulo para cada sistema operacional
+        ## Criar modulo universal: Cria um modulo na raiz do projeto
+
+        if SubMenu == 1:
+            # Criar Biblioteca
+            print("I'm done!")
+        elif SubMenu == 2:
+            # Criar Biblioteca Universal
+            CreateUniversalLib(AppliesTo)
+            print(f'>> [100%]: Library Created!')
+        elif SubMenu == 3:
+            # Criar Modulo
+            print(">> Ta criada essa caralha!")
+        elif SubMenu == 4:
+            # Criar Modulo Universal
+            print(">> Ta criada essa caralha!")
+        
+        print("="*80)
+        print(">> Opcões de gerenciamento")
         print("="*80)
         print()
-    except:
-        print(">> PyBridge System Files: OK!")
-        print("="*80)
-        print()
+    #except:
+        #ErrorList.InputFormat()
 
 def CreateProject():
     print()
@@ -131,7 +260,7 @@ def EnvironFolders():
 def ProjectStruct():
     ## Launcher Script
     print("="*80)
-    print(f'>> {ProjectType} Project <<')
+    print(f'>> {ProjectType} <<')
     print("="*80)
     with codecs.open(EnvironFolders.UserAppName, "w", "utf-8-sig") as AppName:
         AppName.write(f'## {Explorer.ProjectName} File\n')
@@ -448,7 +577,6 @@ def WindowsPlat():
         WindowsFS.write(f'## Special Directories\n')
         WindowsFS.write(f'CurrentPath = os.getcwd()\n')
         WindowsFS.write(f"User = os.environ['USERPROFILE']\n")
-        
         WindowsFS.write("ApplicationData = f'{User}AppData/Roaming/'\n")
         WindowsFS.write("Desktop = f'{User}Desktop/'\n")
         WindowsFS.write("Documents = f'{User}Documents/'\n")
@@ -458,6 +586,7 @@ def WindowsPlat():
         WindowsFS.write("Pictures = f'{User}Pictures/'\n")
         WindowsFS.write("Favorites = f'{User}Favorites/'\n")
         WindowsFS.close()
+
 
 def ApplyLoopApp():
     print(">> Applying Loop Application on Environment on Linux...\n>> Please wait...")
