@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 14/09/2021
+###### Last repository update: 15/09/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
