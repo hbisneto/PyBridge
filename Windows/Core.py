@@ -81,92 +81,187 @@ def ProjectList():
         ProjOptions()
 
 def ProjOptions():
+    ## Create Local Library (Inside all OS Modules)
+    def CreateLib(AppliesTo):
+        LibName = str(input(">> Type the Lib name: "))
+        LinuxLibLocation = f'{AppliesTo}/Linux/{LibName}{PythonExtension}'
+        MacLibLocation = f'{AppliesTo}/Mac/{LibName}{PythonExtension}'
+        WindowsLibLocation = f'{AppliesTo}/Windows/{LibName}{PythonExtension}'
+
+        try:
+            with codecs.open(LinuxLibLocation, "w", "utf-8-sig") as LocalLib:
+                LocalLib.write(f'## {LibName} File\n')
+                LocalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+                LocalLib.write(f'try:\n')
+                LocalLib.write(f'   ## Imported Libraries\n')
+                LocalLib.write(f'   from sys import platform\n\n')
+                LocalLib.write(f'   ## Local Libraries\n')
+                LocalLib.write(f'   from ErrorReport import ErrorList\n')
+                LocalLib.write(f'   from Linux import Linux\n\n')
+                LocalLib.write(f'   Platform = platform\n\n')
+                LocalLib.write(f'except:\n')
+                LocalLib.write(f'   ErrorList.ImportLib()\n\n')
+                LocalLib.write(f'def Main():\n')
+                LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
+                LocalLib.write(f'Main()')
+                LocalLib.close()
+            print(f'>> [100%] Created Linux Library: "{LibName}{PythonExtension}"')
+        except:
+            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Linux" module')
+
+        try:
+            with codecs.open(MacLibLocation, "w", "utf-8-sig") as LocalLib:
+                LocalLib.write(f'## {LibName} File\n')
+                LocalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+                LocalLib.write(f'try:\n')
+                LocalLib.write(f'   ## Imported Libraries\n')
+                LocalLib.write(f'   from sys import platform\n\n')
+                LocalLib.write(f'   ## Local Libraries\n')
+                LocalLib.write(f'   from ErrorReport import ErrorList\n')
+                LocalLib.write(f'   from Mac import Mac\n\n')
+                LocalLib.write(f'   Platform = platform\n\n')
+                LocalLib.write(f'except:\n')
+                LocalLib.write(f'   ErrorList.ImportLib()\n\n')
+                LocalLib.write(f'def Main():\n')
+                LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
+                LocalLib.write(f'Main()')
+                LocalLib.close()
+            print(f'>> [100%] Created Mac Library: "{LibName}{PythonExtension}"')
+        except:
+            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Mac" module')
+
+        try:
+            with codecs.open(WindowsLibLocation, "w", "utf-8-sig") as LocalLib:
+                LocalLib.write(f'## {LibName} File\n')
+                LocalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+                LocalLib.write(f'try:\n')
+                LocalLib.write(f'   ## Imported Libraries\n')
+                LocalLib.write(f'   from sys import platform\n\n')
+                LocalLib.write(f'   ## Local Libraries\n')
+                LocalLib.write(f'   from ErrorReport import ErrorList\n')
+                LocalLib.write(f'   from Windows import Windows\n\n')
+                LocalLib.write(f'   Platform = platform\n\n')
+                LocalLib.write(f'except:\n')
+                LocalLib.write(f'   ErrorList.ImportLib()\n\n')
+                LocalLib.write(f'def Main():\n')
+                LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
+                LocalLib.write(f'Main()')
+                LocalLib.close()
+            print(f'>> [100%] Created Windows Library: "{LibName}{PythonExtension}"')
+        except:
+            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Windows" module')
+
+    ## Create Local Module (Inside all OS Modules)
+    def CreateMod(AppliesTo):
+        ModName = str(input(">> Type the module name: "))
+        LinuxModLocation = f'{AppliesTo}/Linux/{ModName}'
+        MacModLocation = f'{AppliesTo}/Mac/{ModName}'
+        WindowsModLocation = f'{AppliesTo}/Windows/{ModName}'
+
+        try:
+            os.mkdir(LinuxModLocation)
+            print(f'>> [100%] Created Linux Module: "{ModName}"')
+        except:
+            print(f'>> [!] Skipped creation of "{ModName}" in "Linux" module')
+
+        try:
+            os.mkdir(MacModLocation)
+            print(f'>> [100%] Created Mac Module: "{ModName}"')
+        except:
+            print(f'>> [!] Skipped creation of "{ModName}" in "Mac" module')
+
+        try:
+            os.mkdir(WindowsModLocation)
+            print(f'>> [100%] Created Windows Module: "{ModName}"')
+        except:
+            print(f'>> [!] Skipped creation of "{ModName}" in "Windows" module')
+
+    ## Create an Universal Library (Inside the root of project)
     def CreateUniversalLib(AppliesTo):
         LibName = str(input(">> Type the Lib name: "))
         LibFileLocation = f'{AppliesTo}/{LibName}{PythonExtension}'
-        with codecs.open(LibFileLocation, "w", "utf-8-sig") as UniversalLib:
-            UniversalLib.write(f'## {LibName} File\n')
-            UniversalLib.write(f'## Custom Universal Library: {LibName}\n\n')
-            UniversalLib.write(f'try:\n')
-            UniversalLib.write(f'   ## Imported Libraries\n')
-            UniversalLib.write(f'   from sys import platform\n\n')
-            UniversalLib.write(f'   ## Local Libraries\n')
-            UniversalLib.write(f'   from ErrorReport import ErrorList\n')
-            UniversalLib.write(f'   from Linux import Linux\n')
-            UniversalLib.write(f'   from Mac import Mac\n')
-            UniversalLib.write(f'   from Windows import Windows\n\n')
-            UniversalLib.write(f'   Platform = platform\n\n')
-            UniversalLib.write(f'except:\n')
-            UniversalLib.write(f'   ErrorList.ImportLib()\n\n')
-            UniversalLib.write(f'def Main():\n')
-            UniversalLib.write(f'   print(">> Custom Universal Library")\n\n')
-            UniversalLib.write(f'Main()')
-            UniversalLib.close()
 
+        try:
+            with codecs.open(LibFileLocation, "w", "utf-8-sig") as UniversalLib:
+                UniversalLib.write(f'## {LibName} File\n')
+                UniversalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+                UniversalLib.write(f'try:\n')
+                UniversalLib.write(f'   ## Imported Libraries\n')
+                UniversalLib.write(f'   from sys import platform\n\n')
+                UniversalLib.write(f'   ## Local Libraries\n')
+                UniversalLib.write(f'   from ErrorReport import ErrorList\n')
+                UniversalLib.write(f'   from Linux import Linux\n')
+                UniversalLib.write(f'   from Mac import Mac\n')
+                UniversalLib.write(f'   from Windows import Windows\n\n')
+                UniversalLib.write(f'   Platform = platform\n\n')
+                UniversalLib.write(f'except:\n')
+                UniversalLib.write(f'   ErrorList.ImportLib()\n\n')
+                UniversalLib.write(f'def Main():\n')
+                UniversalLib.write(f'   print(">> Custom Universal Library")\n\n')
+                UniversalLib.write(f'Main()')
+                UniversalLib.close()
+            print(f'>> [100%] Created Library: "{LibName}{PythonExtension}"')
+        except:
+            print(f'>> [!] Could not create "{LibName}{PythonExtension}" inside root of project...')
+
+    ## Create an Universal Module (Inside the root of project)
+    def CreateUniversalMod(AppliesTo):
+        ModName = str(input(">> Type the module name: "))
+        ModLocation = f'{AppliesTo}/{ModName}'
+
+        try:
+            os.mkdir(ModLocation)
+            print(f'>> [100%] Created Module: "{ModName}"')
+        except:
+            print(f'>> [!] Could not create "{ModName}" inside root of project...')
+        
+        
     print(f'0. << Go Back')
     print("="*80)
 
-    #try:
     Opc = int(input(">> Type a number to get options or go back: "))
     if Opc != 0:
         AppliesTo = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
-        ## print(f'>> Will Apply to: {AppliesTo}')
+        print(f'>> Will Apply to: {AppliesTo}')
 
         print()
         print("="*80)
-        print(">> Opcões de gerenciamento")
+        print(">> Management Options")
         print("="*80)
+        
         print(">> 1. Create Library")
-        print("="*80)
-        print("Will add a Library in all OS Modules")
+        print("> Will add a Library in all OS Modules")
         print("-"*80)
-        print("="*80)
+        
         print(">> 2. Create Universal Library")
-        print("="*80)
-        print("Will add a new Library on the root of project")
-        print("-"*80)
-        print("="*80)
-        print(">> 3. Create Module")
-        print("="*80)
-        print("Will add a Module in all OS Modules")
-        print("-"*80)
-        print("="*80)
-        print(">> 4. Create Universal Module")
-        print("="*80)
-        print("Will add a new Module on the root of project")
+        print("> Will add a new Library on the root of project")
         print("-"*80)
 
+        print(">> 3. Create Module")
+        print("> Will add a Module in all OS Modules")
+        print("-"*80)
+
+        print(">> 4. Create Universal Module")
+        print("> Will add a new Module on the root of project")
+        
         print("="*80)
         SubMenu = int(input(">> Type your choice: "))
         print("="*80)
 
-        ## Criar biblioteca: Cria uma biblioteca para cada sistema operacional
-        ## Criar biblioteca Universal: Cria uma biblioteca na raiz do projeto
-        ## --------------------------
-        ## Criar modulo: Cria um modulo para cada sistema operacional
-        ## Criar modulo universal: Cria um modulo na raiz do projeto
-
         if SubMenu == 1:
-            # Criar Biblioteca
-            print("I'm done!")
+            CreateLib(AppliesTo)
         elif SubMenu == 2:
-            # Criar Biblioteca Universal
             CreateUniversalLib(AppliesTo)
-            print(f'>> [100%]: Library Created!')
         elif SubMenu == 3:
-            # Criar Modulo
-            print(">> Ta criada essa caralha!")
+            CreateMod(AppliesTo)
         elif SubMenu == 4:
-            # Criar Modulo Universal
-            print(">> Ta criada essa caralha!")
+            CreateUniversalMod(AppliesTo)
         
         print("="*80)
         print(">> Opcões de gerenciamento")
         print("="*80)
         print()
-    #except:
-        #ErrorList.InputFormat()
-
+    
 def CreateProject():
     print()
     print("="*80)
