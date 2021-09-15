@@ -51,8 +51,5 @@ def Salutation():
         print(f'Hello {UserName}. Nice to see you again! - {TimeAccess}')
         print("="*80)
 
-    ## Guardar informação no arquivo de log
-    ## Formato de data: 12/11/2021 - 23:32:57
-
 Main()
 Salutation()
