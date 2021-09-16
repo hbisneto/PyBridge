@@ -5,7 +5,8 @@ import codecs
 import getpass
 import os
 import sys
-from Mac import FileSystem
+from ErrorReport import ErrorList
+from Windows import FileSystem
 
 PythonExtension = ".py"
 ProjectType = ""
@@ -15,7 +16,20 @@ TweetStr = "{Tweet}"
 MajorVersion = sys.version_info[0]
 MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
+ProjList = []
 
+def ListProjects():
+    try:        
+        BridgeRepo = os.listdir(FileSystem.ProjectsRepo)
+        for Project in BridgeRepo:
+            ProjList.append(Project)
+            if '.DS_Store' in ProjList:
+                ProjList.remove('.DS_Store')
+    except:
+        print("="*80)
+        print(f'>> ERROR: Couldn`t load projects...')
+        print("="*80)
+    
 def Explorer():
     ProjectName = str()
     FolderLocation = str()
@@ -26,27 +40,233 @@ def CreationSuccess():
     print("="*80)
 
 def VerifyFolders():
-    try:
-        print(">> PyBridge: Checking System...")
-        os.mkdir(FileSystem.PyBridgeFolder)
-        os.mkdir(FileSystem.ProjectsRepo)
-        print(">> PyBridge System Files: OK!")
-        print("="*80)
-        print()
-    except:
-        print(">> PyBridge System Files: OK!")
-        print("="*80)
-        print()
+    def BridgeFolder():
+        try:
+            os.mkdir(FileSystem.PyBridgeFolder)
+            print(f'>> PyBridge: "{FileSystem.PyBridgeFolder}" created')
+        except:
+            return
 
+    def ProjectsFolder():
+        try:
+            os.mkdir(FileSystem.ProjectsRepo)
+            print(f'>> PyBridge: "{FileSystem.ProjectsRepo}" created')
+        except:
+            print()
+            return
+
+    BridgeFolder()
+    ProjectsFolder()
+
+def ProjectList():
+    BridgeLoop = True
+    while BridgeLoop == True:
+        print(f'>> Projects List:')
+        print("="*80)
+
+        Count = 0
+        for App in ProjList:
+            Count += 1
+            print(f'{Count}. {App}')
+        
+        if Count == 0:
+            print("="*80)
+            print(f'>> Your list of projects is empty')
+            print("="*80)
+            print()
+        BridgeLoop = False
+        ProjOptions()
+
+def ProjOptions():
+    ## Create Local Library (Inside all OS Modules)
+    def CreateLib(AppliesTo):
+        LibName = str(input(">>[!] Type the Lib name: "))
+        LinuxLibLocation = f'{AppliesTo}/Linux/{LibName}{PythonExtension}'
+        MacLibLocation = f'{AppliesTo}/Mac/{LibName}{PythonExtension}'
+        WindowsLibLocation = f'{AppliesTo}/Windows/{LibName}{PythonExtension}'
+
+        try:
+            with codecs.open(LinuxLibLocation, "w", "utf-8-sig") as LocalLib:
+                LocalLib.write(f'## {LibName} File\n')
+                LocalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+                LocalLib.write(f'try:\n')
+                LocalLib.write(f'   ## Imported Libraries\n')
+                LocalLib.write(f'   from sys import platform\n\n')
+                LocalLib.write(f'   ## Local Libraries\n')
+                LocalLib.write(f'   from ErrorReport import ErrorList\n')
+                LocalLib.write(f'   from Linux import Linux\n\n')
+                LocalLib.write(f'   Platform = platform\n\n')
+                LocalLib.write(f'except:\n')
+                LocalLib.write(f'   ErrorList.ImportLib()\n\n')
+                LocalLib.write(f'def Main():\n')
+                LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
+                LocalLib.write(f'Main()')
+                LocalLib.close()
+            print(f'>> [100%] Created Linux Library: "{LibName}{PythonExtension}"')
+        except:
+            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Linux" module')
+
+        try:
+            with codecs.open(MacLibLocation, "w", "utf-8-sig") as LocalLib:
+                LocalLib.write(f'## {LibName} File\n')
+                LocalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+                LocalLib.write(f'try:\n')
+                LocalLib.write(f'   ## Imported Libraries\n')
+                LocalLib.write(f'   from sys import platform\n\n')
+                LocalLib.write(f'   ## Local Libraries\n')
+                LocalLib.write(f'   from ErrorReport import ErrorList\n')
+                LocalLib.write(f'   from Mac import Mac\n\n')
+                LocalLib.write(f'   Platform = platform\n\n')
+                LocalLib.write(f'except:\n')
+                LocalLib.write(f'   ErrorList.ImportLib()\n\n')
+                LocalLib.write(f'def Main():\n')
+                LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
+                LocalLib.write(f'Main()')
+                LocalLib.close()
+            print(f'>> [100%] Created Mac Library: "{LibName}{PythonExtension}"')
+        except:
+            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Mac" module')
+
+        try:
+            with codecs.open(WindowsLibLocation, "w", "utf-8-sig") as LocalLib:
+                LocalLib.write(f'## {LibName} File\n')
+                LocalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+                LocalLib.write(f'try:\n')
+                LocalLib.write(f'   ## Imported Libraries\n')
+                LocalLib.write(f'   from sys import platform\n\n')
+                LocalLib.write(f'   ## Local Libraries\n')
+                LocalLib.write(f'   from ErrorReport import ErrorList\n')
+                LocalLib.write(f'   from Windows import Windows\n\n')
+                LocalLib.write(f'   Platform = platform\n\n')
+                LocalLib.write(f'except:\n')
+                LocalLib.write(f'   ErrorList.ImportLib()\n\n')
+                LocalLib.write(f'def Main():\n')
+                LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
+                LocalLib.write(f'Main()')
+                LocalLib.close()
+            print(f'>> [100%] Created Windows Library: "{LibName}{PythonExtension}"')
+        except:
+            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Windows" module')
+
+    ## Create Local Module (Inside all OS Modules)
+    def CreateMod(AppliesTo):
+        ModName = str(input(">>[!] Type the module name: "))
+        LinuxModLocation = f'{AppliesTo}/Linux/{ModName}'
+        MacModLocation = f'{AppliesTo}/Mac/{ModName}'
+        WindowsModLocation = f'{AppliesTo}/Windows/{ModName}'
+
+        try:
+            os.mkdir(LinuxModLocation)
+            print(f'>> [100%] Created Linux Module: "{ModName}"')
+        except:
+            print(f'>> [!] Skipped creation of "{ModName}" in "Linux" module')
+
+        try:
+            os.mkdir(MacModLocation)
+            print(f'>> [100%] Created Mac Module: "{ModName}"')
+        except:
+            print(f'>> [!] Skipped creation of "{ModName}" in "Mac" module')
+
+        try:
+            os.mkdir(WindowsModLocation)
+            print(f'>> [100%] Created Windows Module: "{ModName}"')
+        except:
+            print(f'>> [!] Skipped creation of "{ModName}" in "Windows" module')
+
+    ## Create an Universal Library (Inside the root of project)
+    def CreateUniversalLib(AppliesTo):
+        LibName = str(input(">>[!] Type the Lib name: "))
+        LibFileLocation = f'{AppliesTo}/{LibName}{PythonExtension}'
+
+        try:
+            with codecs.open(LibFileLocation, "w", "utf-8-sig") as UniversalLib:
+                UniversalLib.write(f'## {LibName} File\n')
+                UniversalLib.write(f'## Custom Universal Library: {LibName}\n\n')
+                UniversalLib.write(f'try:\n')
+                UniversalLib.write(f'   ## Imported Libraries\n')
+                UniversalLib.write(f'   from sys import platform\n\n')
+                UniversalLib.write(f'   ## Local Libraries\n')
+                UniversalLib.write(f'   from ErrorReport import ErrorList\n')
+                UniversalLib.write(f'   from Linux import Linux\n')
+                UniversalLib.write(f'   from Mac import Mac\n')
+                UniversalLib.write(f'   from Windows import Windows\n\n')
+                UniversalLib.write(f'   Platform = platform\n\n')
+                UniversalLib.write(f'except:\n')
+                UniversalLib.write(f'   ErrorList.ImportLib()\n\n')
+                UniversalLib.write(f'def Main():\n')
+                UniversalLib.write(f'   print(">> Custom Universal Library")\n\n')
+                UniversalLib.write(f'Main()')
+                UniversalLib.close()
+            print(f'>> [100%] Created Library: "{LibName}{PythonExtension}"')
+        except:
+            print(f'>> [!] Could not create "{LibName}{PythonExtension}" inside root of project...')
+
+    ## Create an Universal Module (Inside the root of project)
+    def CreateUniversalMod(AppliesTo):
+        ModName = str(input(">>[!] Type the module name: "))
+        ModLocation = f'{AppliesTo}/{ModName}'
+
+        try:
+            os.mkdir(ModLocation)
+            print(f'>> [100%] Created Module: "{ModName}"')
+        except:
+            print(f'>> [!] Could not create "{ModName}" inside root of project...')
+        
+    print(f'0. << Go Back')
+    print("="*80)
+
+    Opc = int(input(">>[!] Type a number to get options or go back: "))
+    if Opc != 0:
+        AppliesTo = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
+
+        print()
+        print("="*80)
+        print(">> Management Options")
+        print("="*80)
+        
+        print(">> 1. Create Library")
+        print("> Will add a Library in all OS Modules")
+        print("-"*80)
+        
+        print(">> 2. Create Universal Library")
+        print("> Will add a new Library on the root of project")
+        print("-"*80)
+
+        print(">> 3. Create Module")
+        print("> Will add a Module in all OS Modules")
+        print("-"*80)
+
+        print(">> 4. Create Universal Module")
+        print("> Will add a new Module on the root of project")
+        
+        print("="*80)
+        SubMenu = int(input(">>[!] Type your choice: "))
+        print("="*80)
+
+        if SubMenu == 1:
+            CreateLib(AppliesTo)
+        elif SubMenu == 2:
+            CreateUniversalLib(AppliesTo)
+        elif SubMenu == 3:
+            CreateMod(AppliesTo)
+        elif SubMenu == 4:
+            CreateUniversalMod(AppliesTo)
+        
+        print("="*80)
+        print(">> Management Options")
+        print("="*80)
+        print()
+    
 def CreateProject():
     print()
     print("="*80)
     print(">> CREATE PROJECT")
     print("="*80)
-    ProjectName = str(input(">> Project Name: "))
+    ProjectName = str(input(">>[!] Project Name: "))
     print(f'>> Creating bridge to the project "{ProjectName}"...')
     print("-"*80)
     print()
+    
     try:
         FolderLocation = f'{FileSystem.ProjectsRepo}{ProjectName}/'
         os.mkdir(FolderLocation)
@@ -57,7 +277,6 @@ def CreateProject():
         print()
         print(">> Could not create your project:")
         print(f'> Check if "{ProjectName}" already exists and try again.')
-        from ErrorReport import ErrorList
         ErrorList.FileExists()
 
 def CreateArch():
@@ -131,8 +350,9 @@ def EnvironFolders():
 def ProjectStruct():
     ## Launcher Script
     print("="*80)
-    print(f'>> {ProjectType} Project <<')
+    print(f'>> {ProjectType} <<')
     print("="*80)
+    
     with codecs.open(EnvironFolders.UserAppName, "w", "utf-8-sig") as AppName:
         AppName.write(f'## {Explorer.ProjectName} File\n')
         AppName.write(f'## Here the contents will be processed to choose the best platform to go\n\n')
@@ -448,7 +668,6 @@ def WindowsPlat():
         WindowsFS.write(f'## Special Directories\n')
         WindowsFS.write(f'CurrentPath = os.getcwd()\n')
         WindowsFS.write(f"User = os.environ['USERPROFILE']\n")
-        
         WindowsFS.write("ApplicationData = f'{User}AppData/Roaming/'\n")
         WindowsFS.write("Desktop = f'{User}Desktop/'\n")
         WindowsFS.write("Documents = f'{User}Documents/'\n")
@@ -460,13 +679,13 @@ def WindowsPlat():
         WindowsFS.close()
 
 def ApplyLoopApp():
-    print(">> Applying Loop Application on Environment on Linux...\n>> Please wait...")
     ## LinuxApp File
+    print(">> Applying Loop Application on Environment on Linux...\n>> Please wait...")
     print("> Creating LinuxApp Library...")
+    
     with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
         LinuxAppFile.write(f'## LinuxApp File\n')
         LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
-
         LinuxAppFile.write(f'from ErrorReport import ErrorList\n\n')
         LinuxAppFile.write(f'def Main():\n')
         LinuxAppFile.write(f'   while True:\n')
@@ -475,9 +694,8 @@ def ApplyLoopApp():
         LinuxAppFile.write(f'      print(">> 1. Option One")\n')
         LinuxAppFile.write(f'      print(">> 2. Option Two")\n')
         LinuxAppFile.write(f'      print(">> 3. Option Three")\n\n')
-
         LinuxAppFile.write(f'      try:\n')
-        LinuxAppFile.write(f'         UserInput = int(input(">> Type the option number: "))\n')
+        LinuxAppFile.write(f'         UserInput = int(input(">>[!] Type the option number: "))\n')
         LinuxAppFile.write(f'         print("="*80)\n')
         LinuxAppFile.write(f'         if UserInput == 1:\n')
         LinuxAppFile.write(f'            print("> Option 1")\n')
@@ -490,14 +708,14 @@ def ApplyLoopApp():
         LinuxAppFile.write(f'      except:\n')
         LinuxAppFile.write(f'         print("-"*80)\n')
         LinuxAppFile.write(f'         print(">> This option is unavailable at this time")\n')
-        LinuxAppFile.write(f'         print("-"*80)\n\n')
-             
+        LinuxAppFile.write(f'         print("-"*80)\n\n')  
         LinuxAppFile.write(f'Main()\n')
         LinuxAppFile.close()
     
     ## MacApp File
     print(">> Applying Loop Application on Environment on Mac...\n>> Please wait...")
     print("> Creating MacApp Library...")
+    
     with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
         MacAppFile.write(f'## MacApp File\n')
         MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
@@ -510,7 +728,7 @@ def ApplyLoopApp():
         MacAppFile.write(f'      print(">> 2. Option Two")\n')
         MacAppFile.write(f'      print(">> 3. Option Three")\n\n')
         MacAppFile.write(f'      try:\n')
-        MacAppFile.write(f'         UserInput = int(input(">> Type the option number: "))\n')
+        MacAppFile.write(f'         UserInput = int(input(">>[!] Type the option number: "))\n')
         MacAppFile.write(f'         print("="*80)\n')
         MacAppFile.write(f'         if UserInput == 1:\n')
         MacAppFile.write(f'            print("> Option 1")\n')
@@ -530,6 +748,7 @@ def ApplyLoopApp():
     ## WindowsApp File
     print(">> Applying Loop Application on Environment on Windows...\n>> Please wait...")
     print("> Creating WindowsApp Library...")
+    
     with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
         WindowsAppFile.write(f'## WindowsApp File\n')
         WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
@@ -542,7 +761,7 @@ def ApplyLoopApp():
         WindowsAppFile.write(f'      print(">> 2. Option Two")\n')
         WindowsAppFile.write(f'      print(">> 3. Option Three")\n\n')
         WindowsAppFile.write(f'      try:\n')
-        WindowsAppFile.write(f'         UserInput = int(input(">> Type the option number: "))\n')
+        WindowsAppFile.write(f'         UserInput = int(input(">>[!] Type the option number: "))\n')
         WindowsAppFile.write(f'         print("="*80)\n')
         WindowsAppFile.write(f'         if UserInput == 1:\n')
         WindowsAppFile.write(f'            print("> Option 1")\n')
@@ -568,22 +787,17 @@ def ApplyTwitterProject():
         Tokens.write(f'## Setup and connect you Twitter account here!\n')
         Tokens.write(f'# Note: DO NOT share your tokens\n')
         Tokens.write(f'## You can generate and regenerate tokens on Twitter Developer Platform\n\n')
-
         Tokens.write(f'import tweepy\n')
         Tokens.write(f'from tweepy import OAuthHandler\n\n')
-
         Tokens.write(f'## API Key and API Key Secret\n')
         Tokens.write(f"ConsumerKey = str('')\n")
         Tokens.write(f"ConsumerSecret = str('')\n\n")
-
         Tokens.write(f'## Access Token and Access Token Secret\n')
         Tokens.write(f'AccessToken = str("")\n')
         Tokens.write(f'AccessTokenSecret = str("")\n\n')
-
         Tokens.write(f'## Authorization\n')
         Tokens.write(f'Auth = tweepy.OAuthHandler(ConsumerKey, ConsumerSecret)\n')
         Tokens.write(f'Auth.set_access_token(AccessToken, AccessTokenSecret)\n\n')
-
         Tokens.write(f'## Create an API Object\n')
         Tokens.write(f'Twitter = tweepy.API(Auth, wait_on_rate_limit = True)')
         Tokens.close()
@@ -616,15 +830,13 @@ def ApplyTwitterProject():
     with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
         LinuxAppFile.write(f'## LinuxApp File\n')
         LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
-
         LinuxAppFile.write(f'from ErrorReport import ErrorList\n')
         LinuxAppFile.write(f'import Tokens\n\n')
-
         LinuxAppFile.write(f'def NewTweet():\n')
         LinuxAppFile.write(f'   print("="*80)\n')
         LinuxAppFile.write(f'   print("NEW TWEET")\n')
         LinuxAppFile.write(f'   print("="*80)\n')
-        LinuxAppFile.write(f'   Tweet = str(input(">> Whats happening? "))\n')
+        LinuxAppFile.write(f'   Tweet = str(input(">>[!] Whats happening? "))\n')
         LinuxAppFile.write(f'   print("="*80)\n')
         LinuxAppFile.write(f'   print()\n')
         LinuxAppFile.write(f'   print("-"*80)\n')
@@ -632,7 +844,6 @@ def ApplyTwitterProject():
         LinuxAppFile.write(f'   print("-"*80)\n')
         LinuxAppFile.write(f'   print()\n')
         LinuxAppFile.write(f'   print("="*80)\n\n')
-
         LinuxAppFile.write(f'   try:\n')
         LinuxAppFile.write(f'      Tokens.Twitter.update_status(Tweet)\n')
         LinuxAppFile.write(f"      print(f'>> Your last tweet:')\n")
@@ -640,10 +851,8 @@ def ApplyTwitterProject():
         LinuxAppFile.write(f'      print("-" * 80)\n')
         LinuxAppFile.write(f'   except:\n')
         LinuxAppFile.write(f'      print(">>  Something went wrong: Unabled to connect to Twitter.")\n\n')
-           
         LinuxAppFile.write(f'def Main():\n')
         LinuxAppFile.write(f'   NewTweet()\n\n')
-
         LinuxAppFile.write(f'Main()\n')
         LinuxAppFile.close()
 
@@ -675,15 +884,13 @@ def ApplyTwitterProject():
     with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
         MacAppFile.write(f'## MacApp File\n')
         MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
-
         MacAppFile.write(f'from ErrorReport import ErrorList\n')
         MacAppFile.write(f'import Tokens\n\n')
-
         MacAppFile.write(f'def NewTweet():\n')
         MacAppFile.write(f'   print("="*80)\n')
         MacAppFile.write(f'   print("NEW TWEET")\n')
         MacAppFile.write(f'   print("="*80)\n')
-        MacAppFile.write(f'   Tweet = str(input(">> Whats happening? "))\n')
+        MacAppFile.write(f'   Tweet = str(input(">>[!] Whats happening? "))\n')
         MacAppFile.write(f'   print("="*80)\n')
         MacAppFile.write(f'   print()\n')
         MacAppFile.write(f'   print("-"*80)\n')
@@ -691,18 +898,15 @@ def ApplyTwitterProject():
         MacAppFile.write(f'   print("-"*80)\n')
         MacAppFile.write(f'   print()\n')
         MacAppFile.write(f'   print("="*80)\n\n')
-
         MacAppFile.write(f'   try:\n')
         MacAppFile.write(f'      Tokens.Twitter.update_status(Tweet)\n')
         MacAppFile.write(f"      print(f'>> Your last tweet:')\n")
         MacAppFile.write(f"      print(f' > {TweetStr}')\n")
         MacAppFile.write(f'      print("-" * 80)\n')
         MacAppFile.write(f'   except:\n')
-        MacAppFile.write(f'      print(">>  Something went wrong: Unabled to connect to Twitter.")\n\n')
-           
+        MacAppFile.write(f'      print(">>  Something went wrong: Unabled to connect to Twitter.")\n\n') 
         MacAppFile.write(f'def Main():\n')
         MacAppFile.write(f'   NewTweet()\n\n')
-
         MacAppFile.write(f'Main()\n')
         MacAppFile.close()
 
@@ -734,15 +938,13 @@ def ApplyTwitterProject():
     with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
         WindowsAppFile.write(f'## MacApp File\n')
         WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
-
         WindowsAppFile.write(f'from ErrorReport import ErrorList\n')
         WindowsAppFile.write(f'import Tokens\n\n')
-
         WindowsAppFile.write(f'def NewTweet():\n')
         WindowsAppFile.write(f'   print("="*80)\n')
         WindowsAppFile.write(f'   print("NEW TWEET")\n')
         WindowsAppFile.write(f'   print("="*80)\n')
-        WindowsAppFile.write(f'   Tweet = str(input(">> Whats happening? "))\n')
+        WindowsAppFile.write(f'   Tweet = str(input(">>[!] Whats happening? "))\n')
         WindowsAppFile.write(f'   print("="*80)\n')
         WindowsAppFile.write(f'   print()\n')
         WindowsAppFile.write(f'   print("-"*80)\n')
@@ -750,18 +952,15 @@ def ApplyTwitterProject():
         WindowsAppFile.write(f'   print("-"*80)\n')
         WindowsAppFile.write(f'   print()\n')
         WindowsAppFile.write(f'   print("="*80)\n\n')
-
         WindowsAppFile.write(f'   try:\n')
         WindowsAppFile.write(f'      Tokens.Twitter.update_status(Tweet)\n')
         WindowsAppFile.write(f"      print(f'>> Your last tweet:')\n")
         WindowsAppFile.write(f"      print(f' > {TweetStr}')\n")
         WindowsAppFile.write(f'      print("-" * 80)\n')
         WindowsAppFile.write(f'   except:\n')
-        WindowsAppFile.write(f'      print(">>  Something went wrong: Unabled to connect to Twitter.")\n\n')
-           
+        WindowsAppFile.write(f'      print(">>  Something went wrong: Unabled to connect to Twitter.")\n\n')  
         WindowsAppFile.write(f'def Main():\n')
         WindowsAppFile.write(f'   NewTweet()\n\n')
-
         WindowsAppFile.write(f'Main()\n')
         WindowsAppFile.close()
 
