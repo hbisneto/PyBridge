@@ -6,6 +6,7 @@ from Windows import Core
 def Main():
     BridgeLoop = True
     Core.VerifyFolders()
+
     while BridgeLoop == True:
         print("="*80)
         print(">> MENU")
@@ -16,7 +17,7 @@ def Main():
         print(">> 4. Projects List")
         print(">> 0. Quit PyBridge")
         print()
-        Opc = int(input(">> Type The Item Number: "))
+        Opc = int(input(">>[!] Type The Item Number: "))
         print("="*80)
 
         if Opc == 0:
