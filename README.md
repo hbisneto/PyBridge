@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 15/09/2021
+###### Last repository update: 16/09/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
@@ -24,7 +24,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > Leia mais sobre a biblioteca ```codecs``` em [codecs — Codec registry and base classes](https://docs.python.org/3/library/codecs.html)
 
 * **datetime:** O módulo ```datetime``` fornece as classes para manipulação de datas e horas.
-> Leia mais sobre a biblioteca ```datetime ``` em [datetime — Basic date and time types](https://docs.python.org/3/library/datetime.html)
+> Leia mais sobre a biblioteca ```datetime``` em [datetime — Basic date and time types](https://docs.python.org/3/library/datetime.html)
 
 * **getpass:** Entrada de senha portátil.
 > Leia mais sobre a biblioteca ```getpass``` em [getpass — Portable Password Input](https://docs.python.org/3/library/getpass.html)
@@ -117,13 +117,13 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br>- Visual mais limpo e intuitivo
 > > 
 > > <br> 2. Alterações no módulo ```ErrorReport```
+> > <br>- Adicionada biblioteca ```SystemRequirements.py```
 > > <br>- Implementação da função ```InputFormat()``` em ```ErrorList.py```
 > > 
 > > <br> 3. Alterações nos módulos ```Linux```, ```Mac``` e ```Windows```:
 > > <br>- Alterações nas bibliotecas ```SplashScreen.py``` nos módulos de sistema.
 > > <br>- Alterações nas bibliotecas ```Linux.py```, ```Mac.py``` e ```Windows.py```
 > > <br>- Alterações nas bibliotecas ```LinuxApp.py```, ```MacApp.py``` e ```WindowsApp.py```
-> > 
 
 #
 
