@@ -22,27 +22,30 @@ def Main():
 
         if Opc == 0:
             BridgeLoop = False
+
         elif Opc == 1:
             Core.ProjectOption = 1
             Core.ProjectType = "PyBridge Blank Project"
-            Core.CreateProject()
+            Core.CreateBridge()
             Core.CreationSuccess()
+
         elif Opc == 2:
             Core.ProjectOption = 2
             Core.ProjectType = "Menu Application Loop Project"
-            Core.CreateProject()
-            Core.ApplyLoopApp()
+            Core.CreateBridge()
             Core.CreationSuccess()
+
         elif Opc == 3:
             Core.ProjectOption = 3
             Core.ProjectType = "Twitter Application Project"
-            Core.CreateProject()
-            Core.ApplyTwitterProject()
+            Core.CreateBridge()
             Core.CreationSuccess()
+
         elif Opc == 4:
             Core.ProjList.clear()
             Core.ListProjects()
             Core.ProjectList()
+
         else:
             print("="*80)
             print(">> Invalid Option!")
