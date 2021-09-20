@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 16/09/2021
+###### Last repository update: 20/09/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
@@ -99,6 +99,29 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 #
 
 ## Log de Atualização
+
+> **BETA 7:**
+> <br> Todo o projeto foi revisado trazendo melhorias consideráveis para o sistema. Entre essas melhorias, a capacidade de listar projetos, criar novos módulos para o sistema já existente e também criar novas bibliotecas para um ou mais ambientes operacionais.
+> > **Novidades:**
+> > <br>**item** 
+
+> > <br><br> **Melhorias:**
+> > <br> 1. Alterações na biblioteca ```Core.py```:
+> > <br>- Melhorias no modelo de criação de projeto: `Menu Application Loop Project`
+> > <br>- Melhorias no modelo de criação de projeto: `Twitter Application Project`
+> > <br>- Remoção da função `ApplyLoopApp()` em `Core.py`
+> > <br>- Remoção da função `ApplyTwitterProject()` em `Core.py`
+> > 
+> > <br> 2. opc2
+> > <br>- item
+> > <br>- item
+> > 
+> > <br> 3. Opc3
+> > <br>- item
+> > <br>- item
+> > <br>- item
+
+#
 
 > **BETA 6:**
 > <br> Todo o projeto foi revisado trazendo melhorias consideráveis para o sistema. Entre essas melhorias, a capacidade de listar projetos, criar novos módulos para o sistema já existente e também criar novas bibliotecas para um ou mais ambientes operacionais.
