@@ -103,20 +103,42 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > **BETA 7:**
 > <br> Todo o projeto foi revisado trazendo melhorias consideráveis para o sistema. Entre essas melhorias, a capacidade de listar projetos, criar novos módulos para o sistema já existente e também criar novas bibliotecas para um ou mais ambientes operacionais.
 > > **Novidades:**
-> > <br>**item** 
+> > <br><br>**Deletar Projetos:** 
+> > <br>- Implementação do menu `DELETE THIS PROJECT` em `Management Options`
+> > <br> **Atenção:** Agora é possível deletar um projeto diretamente pelo PyBridge
+> > <br> Para deletar o projeto, o sistema confirma a exclusão, sendo assim, necessário a entrada da palavra de confirmação para o projeto ser excluido. Assim como mostrado no exemplo abaixo:
+>>
+>>```
+>>================================================================================
+>>>> DELETE THIS PROJECT <<
+>>[Project to delete: MyProject]
+>>================================================================================
+>>>> You`re trying to delete the project "MyProject"
+>>>> THIS OPERATION CAN`T BE UNDONE.
+>>>> BE SURE YOU REALLY WANT TO DELETE THE PROJECT
+>>
+>>>>[!] Are you sure do you want to delete the project "MyProject"? [Y/N]: Y
+>>>>[!] Type "Projects/MyProject" to delete the project: Projects/MyProject
+>>>> Deleting Project...
+>>
+>>```
 
 > > <br><br> **Melhorias:**
-> > <br> 1. Alterações na biblioteca ```Core.py```:
+> > <br> 1. Alterações na biblioteca universal `PyBridge.py`:
+> > <br>- Implementado `win64` na função `Main()`
+> > 
+> > <br> 2. Alterações na biblioteca `Core.py`:
 > > <br>- Melhorias no modelo de criação de projeto: `Menu Application Loop Project`
 > > <br>- Melhorias no modelo de criação de projeto: `Twitter Application Project`
 > > <br>- Remoção da função `ApplyLoopApp()` em `Core.py`
 > > <br>- Remoção da função `ApplyTwitterProject()` em `Core.py`
+> > <br>- Remoção da função `ListProjects()` em `Core.py`
 > > 
-> > <br> 2. opc2
+> > <br> 3. Implementação da opção que excluir um projeto criado pelo PyBridge (Recurso em testes)
 > > <br>- item
 > > <br>- item
 > > 
-> > <br> 3. Opc3
+> > <br> 4. Opc4
 > > <br>- item
 > > <br>- item
 > > <br>- item
