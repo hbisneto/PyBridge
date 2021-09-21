@@ -17,18 +17,6 @@ MajorVersion = sys.version_info[0]
 MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
-
-def ListProjects():
-    try:        
-        BridgeRepo = os.listdir(FileSystem.ProjectsRepo)
-        for Project in BridgeRepo:
-            ProjList.append(Project)
-            if '.DS_Store' in ProjList:
-                ProjList.remove('.DS_Store')
-    except:
-        print("="*80)
-        print(f'>> ERROR: Couldn`t load projects...')
-        print("="*80)
     
 def Explorer():
     ProjectName = str()
@@ -59,6 +47,17 @@ def VerifyFolders():
     ProjectsFolder()
 
 def ProjectList():
+    try:
+        BridgeRepo = os.listdir(FileSystem.ProjectsRepo)
+        for Project in BridgeRepo:
+            ProjList.append(Project)
+            if '.DS_Store' in ProjList:
+                ProjList.remove('.DS_Store')
+    except:
+        print("="*80)
+        print(f'>> ERROR: Couldn`t load projects...')
+        print("="*80)
+    
     BridgeLoop = True
     while BridgeLoop == True:
         print(f'>> Projects List:')
@@ -211,51 +210,85 @@ def ProjOptions():
             print(f'>> [100%] Created Module: "{ModName}"')
         except:
             print(f'>> [!] Could not create "{ModName}" inside root of project...')
+
+    ## Delete a repository project inside "Documents/PyBridge/" folder
+    def DeleteProject(AppliesTo):
+        print("="*80)
+        print(">> DELETE THIS PROJECT <<")
+        print(f'[Project to delete: {ProjList[Opc-1]}]')
+        print("="*80)
+            
+        ConfirmTyping = f'Projects/{ProjList[Opc-1]}'
+        print(f'>> You`re trying to delete the project "{ProjList[Opc-1]}"')
+        print(f'>> THIS OPERATION CAN`T BE UNDONE.\n>> BE SURE YOU REALLY WANT TO DELETE THE PROJECT')
+        print()
+        DeletePrompt = str(input(f'>>[!] Are you sure do you want to delete the project "{ProjList[Opc-1]}"? [Y/N]: '))
+
+        if DeletePrompt == "Y" or DeletePrompt == "y" or DeletePrompt == "1":
+            ConfirmDelete = str(input(f'>>[!] Type "{ConfirmTyping}" to delete the project: '))
+            if ConfirmDelete == ConfirmTyping:
+                print(f'>> Deleting Project...')
+            else:
+                print(f'>> Delete confirmation password do not match!')
+                print(f'>> Could not delete the project folder')
+        else:
+            print(">> Project folder was not deleted")
         
     print(f'0. << Go Back')
     print("="*80)
 
     Opc = int(input(">>[!] Type a number to get options or go back: "))
-    if Opc != 0:
-        AppliesTo = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
 
-        print()
-        print("="*80)
-        print(">> Management Options")
-        print("="*80)
-        
-        print(">> 1. Create Library")
-        print("> Will add a Library in all OS Modules")
-        print("-"*80)
-        
-        print(">> 2. Create Universal Library")
-        print("> Will add a new Library on the root of project")
-        print("-"*80)
+    try:
+        if Opc != 0:
+            AppliesTo = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
 
-        print(">> 3. Create Module")
-        print("> Will add a Module in all OS Modules")
-        print("-"*80)
+            print()
+            print("="*80)
+            print(">> Management Options <<")
+            print("="*80)
+            
+            print(">>[1] - Create Library")
+            print("> Will add a Library in all OS Modules")
+            print("-"*80)
+            
+            print(">>[2] - Create Universal Library")
+            print("> Will add a new Library on the root of project")
+            print("-"*80)
 
-        print(">> 4. Create Universal Module")
-        print("> Will add a new Module on the root of project")
-        
-        print("="*80)
-        SubMenu = int(input(">>[!] Type your choice: "))
-        print("="*80)
+            print(">>[3] - Create Module")
+            print("> Will add a Module in all OS Modules")
+            print("-"*80)
 
-        if SubMenu == 1:
-            CreateLib(AppliesTo)
-        elif SubMenu == 2:
-            CreateUniversalLib(AppliesTo)
-        elif SubMenu == 3:
-            CreateMod(AppliesTo)
-        elif SubMenu == 4:
-            CreateUniversalMod(AppliesTo)
-        
-        print("="*80)
-        print(">> Management Options")
-        print("="*80)
-        print()
+            print(">>[4] - Create Universal Module")
+            print("> Will add a new Module on the root of project")
+            print("-"*80)
+
+            print(">>[5] - DELETE THIS PROJECT")
+            print("> Deletes the project folder and all the contents in it.\n> THIS OPERATION CAN`T BE UNDONE...")
+            print("-"*80)
+
+            print("="*80)
+            SubMenu = int(input(">>[!] Type your choice: "))
+            print("="*80)
+
+            if SubMenu == 1:
+                CreateLib(AppliesTo)
+            elif SubMenu == 2:
+                CreateUniversalLib(AppliesTo)
+            elif SubMenu == 3:
+                CreateMod(AppliesTo)
+            elif SubMenu == 4:
+                CreateUniversalMod(AppliesTo)
+            elif SubMenu == 5:
+                DeleteProject(AppliesTo)
+            
+            print("="*80)
+            print(">> Management Options <<")
+            print("="*80)
+            print()
+    except:
+        ErrorList.InvalidOption()
 
 def CreateArch():
     os.mkdir(EnvironFolders.ErrorReportPath)

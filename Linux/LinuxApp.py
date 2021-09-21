@@ -2,6 +2,7 @@
 ## This file is used to implement code used to run scripts for Linux
 
 from Linux import Core
+from ErrorReport import ErrorList
 
 def Main():
     BridgeLoop = True
@@ -9,13 +10,13 @@ def Main():
 
     while BridgeLoop == True:
         print("="*80)
-        print(">> MENU")
+        print(">> MENU <<")
         print("="*80)
-        print(">> 1. Create Blank Project")
-        print(">> 2. Create a Menu Application Loop Project")
-        print(">> 3. Create Twitter Application Project")
-        print(">> 4. Projects List")
-        print(">> 0. Quit PyBridge")
+        print(">>[1] - Create Blank Project")
+        print(">>[2] - Create a Menu Application Loop Project")
+        print(">>[3] - Create Twitter Application Project")
+        print(">>[4] - Projects List")
+        print(">>[0] - Quit PyBridge")
         print()
         Opc = int(input(">>[!] Type The Item Number: "))
         print("="*80)
@@ -43,14 +44,9 @@ def Main():
 
         elif Opc == 4:
             Core.ProjList.clear()
-            Core.ListProjects()
             Core.ProjectList()
 
         else:
-            print("="*80)
-            print(">> Invalid Option!")
-            print("="*80)
-            print(f'>> You typed an invalid option.\n>> Run the program again!')
-            print("="*80)
+            ErrorList.InvalidOption()
     
 Main()

@@ -25,7 +25,7 @@ def Main():
         Mac.Mac()
         
     ## Windows
-    elif Platform == "win32":
+    elif Platform == "win32" or Platform == "win64":
         from Windows import Windows
         Windows.Windows()
 

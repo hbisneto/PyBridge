@@ -36,3 +36,10 @@ def DirectoryExists():
 
 def InputFormat():
    print("\n\n>> Your input is not valid: Check your input and try again\n\n")
+
+def InvalidOption():
+   print("="*80)
+   print(">> Invalid Option!")
+   print("="*80)
+   print(f'>> You typed an invalid option.\n>> Running the program again!')
+   print("="*80)
