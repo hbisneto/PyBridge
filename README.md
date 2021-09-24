@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 20/09/2021
+###### Last repository update: 24/09/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
@@ -31,6 +31,9 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 
 * **os:** Este módulo fornece uma maneira simples de usar funcionalidades que são dependentes do Sistema Operacional.
 > Leia mais sobre a biblioteca ```os``` em [os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
+
+* **shutil:** O módulo shutil oferece várias operações de alto nível em arquivos e coleções de arquivos. Em particular, são fornecidas funções que possuem suporte a cópia e remoção de arquivos. Para operações em arquivos individuais, veja também o módulo **os**.
+> Leia mais sobre a biblioteca ```shutil``` em [shutil — High-level file operations](https://docs.python.org/3/library/shutil.html)
 
 * **sys:** Este módulo fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador e a funções que interagem fortemente com o interpretador.
 > Leia mais sobre a biblioteca ```sys``` em [sys — System-specific parameters and functions](https://docs.python.org/pt-br/3/library/sys.html)
@@ -105,8 +108,8 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > **Novidades:**
 > > <br><br>**Deletar Projetos:** 
 > > <br>- Implementação do menu `DELETE THIS PROJECT` em `Management Options`
-> > <br> **Atenção:** Agora é possível deletar um projeto diretamente pelo PyBridge
-> > <br> Para deletar o projeto, o sistema confirma a exclusão, sendo assim, necessário a entrada da palavra de confirmação para o projeto ser excluido. Assim como mostrado no exemplo abaixo:
+> > <br> **Atenção:** Agora é possível deletar um projeto diretamente pelo PyBridge.
+> > <br> Para deletar o projeto, o sistema confirma a exclusão, sendo assim, necessário a entrada da palavra de confirmação para o projeto ser excluido. Como mostrado no exemplo abaixo:
 >>
 >>```
 >>================================================================================
@@ -128,6 +131,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br>- Implementado `win64` na função `Main()`
 > > 
 > > <br> 2. Alterações na biblioteca `Core.py`:
+> > <br>- Adição da biblioteca `shutil` em `Core.py`
 > > <br>- Melhorias no modelo de criação de projeto: `Menu Application Loop Project`
 > > <br>- Melhorias no modelo de criação de projeto: `Twitter Application Project`
 > > <br>- Remoção da função `ApplyLoopApp()` em `Core.py`
@@ -135,7 +139,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br>- Remoção da função `ListProjects()` em `Core.py`
 > > 
 > > <br> 3. Implementação da opção que excluir um projeto criado pelo PyBridge (Recurso em testes)
-> > <br>- item
+> > <br>- Correções de erros causados por entrada de usuário não existente entre as opções disponíveis
 > > <br>- item
 > > 
 > > <br> 4. Opc4
