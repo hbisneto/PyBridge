@@ -228,13 +228,25 @@ def ProjOptions():
         if DeletePrompt == "Y" or DeletePrompt == "y" or DeletePrompt == "1":
             ConfirmDelete = str(input(f'>>[!] Type "{ConfirmTyping}" to delete the project: '))
             if ConfirmDelete == ConfirmTyping:
-                print(f'>> Deleting Project...')
                 DeleteDir = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
 
                 try:
+                    print("="*80)
+                    print(f'>> DELETING PROJECT "{ProjList[Opc-1]}" <<')
+                    print("="*80)
+
+                    print(f'>> Project Name: {ProjList[Opc-1]}')
+                    print(f'>> Location: {DeleteDir}')
+                    print()
+                    
                     shutil.rmtree(DeleteDir)
+                    print(f'>> The project "{DeleteDir}" was deleted!')
+                    print("="*80)
+#                    shutil.rmtree(DeleteDir)
+#                    print(f'>> The project "{DeleteDir}" was deleted!')
                 except OSError as e:
                     print(">> [x] Erro: %s - %s." % (e.filename, e.strerror))
+                    print("="*80)
 
             else:
                 print(f'>> Delete confirmation password do not match!')

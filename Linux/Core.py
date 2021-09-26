@@ -5,6 +5,7 @@ import codecs
 import getpass
 import os
 import sys
+import shutil ## New on this version
 from ErrorReport import ErrorList
 from Linux import FileSystem
 
@@ -66,7 +67,7 @@ def ProjectList():
         Count = 0
         for App in ProjList:
             Count += 1
-            print(f'{Count}. {App}')
+            print(f'[{Count}] - {App}')
         
         if Count == 0:
             print("="*80)
@@ -227,14 +228,33 @@ def ProjOptions():
         if DeletePrompt == "Y" or DeletePrompt == "y" or DeletePrompt == "1":
             ConfirmDelete = str(input(f'>>[!] Type "{ConfirmTyping}" to delete the project: '))
             if ConfirmDelete == ConfirmTyping:
-                print(f'>> Deleting Project...')
+                DeleteDir = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
+
+                try:
+                    print("="*80)
+                    print(f'>> DELETING PROJECT "{ProjList[Opc-1]}" <<')
+                    print("="*80)
+
+                    print(f'>> Project Name: {ProjList[Opc-1]}')
+                    print(f'>> Location: {DeleteDir}')
+                    print()
+                    
+                    shutil.rmtree(DeleteDir)
+                    print(f'>> The project "{DeleteDir}" was deleted!')
+                    print("="*80)
+#                    shutil.rmtree(DeleteDir)
+#                    print(f'>> The project "{DeleteDir}" was deleted!')
+                except OSError as e:
+                    print(">> [x] Erro: %s - %s." % (e.filename, e.strerror))
+                    print("="*80)
+
             else:
                 print(f'>> Delete confirmation password do not match!')
                 print(f'>> Could not delete the project folder')
         else:
             print(">> Project folder was not deleted")
         
-    print(f'0. << Go Back')
+    print(f'[0] << Go Back')
     print("="*80)
 
     Opc = int(input(">>[!] Type a number to get options or go back: "))
