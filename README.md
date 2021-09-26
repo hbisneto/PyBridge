@@ -104,7 +104,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 ## Log de Atualização
 
 > **BETA 7:**
-> <br> Todo o projeto foi revisado trazendo melhorias consideráveis para o sistema. Entre essas melhorias, a capacidade de listar projetos, criar novos módulos para o sistema já existente e também criar novas bibliotecas para um ou mais ambientes operacionais.
+> <br> Atualização focada em melhorias tendo como base a versão anterior. Alterando bibliotecas, adicionando recursos, como a nova função `DELETE THIS REPOSITORY`, entre outras melhorias.
 > > **Novidades:**
 > > <br><br>**Deletar Projetos:** 
 > > <br>- Implementação do menu `DELETE THIS PROJECT` em `Management Options`
@@ -125,7 +125,6 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 >>>> Deleting Project...
 >>
 >>```
-
 > > <br><br> **Melhorias:**
 > > <br> 1. Alterações na biblioteca universal `PyBridge.py`:
 > > <br>- Implementado `win64` na função `Main()`
@@ -138,8 +137,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br>- Remoção da função `ApplyTwitterProject()` em `Core.py`
 > > <br>- Remoção da função `ListProjects()` em `Core.py`
 > > 
-> > <br> 3. Implementação da opção que excluir um projeto criado pelo PyBridge (Recurso em testes)
-> > <br>- Correções de erros causados por entrada de usuário não existente entre as opções disponíveis
+> > <br> 3. Opc4
 > > <br>- item
 > > 
 > > <br> 4. Opc4
@@ -227,7 +225,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br>- Adicionada classe ```RequirementsCheck``` em ```ErrorList.py```
 > > <br><br> **3. Requisitos de Sistema**:
 > > <br>- Novo recurso permite determinar um requisito mínimo de sistema (limitado a versões do Python) para que o script possa ser executado.
->> <br> Para permitir a verificação de requisitos mínimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```True```. O valor padrão é ```False```.
+>> <br> Para impedir a verificação de requisitos mínimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```False```. O valor padrão é ```True```.
 <br>Os requisitos mínimos podem ser definidos pelo usuário através das entradas:
 >>
 >>```
