@@ -11,8 +11,8 @@ Require = True
 if Require == True:
    ## Target System
    TargetMajor = 3
-   TargetMinor = 9
-   TargetBuild = 0
+   TargetMinor = 8
+   TargetBuild = 5
    TargetVersion = f'{TargetMajor}.{TargetMinor}.{TargetBuild}'
    ## Target System
 
@@ -28,7 +28,7 @@ if Require == True:
    ## print(f'>> Required version to run: Python {TargetVersion}')
 
    if TargetVersion > CurrentVersion:
-      ErrorList.Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
+      ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
    elif TargetVersion < CurrentVersion:
-      ErrorList.Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
+      ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
 
