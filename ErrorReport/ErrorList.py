@@ -8,18 +8,18 @@ class Raise():
          raise Exception(f'\n\n>> You cannot run the application because it requires Python {TargetVersion} or later. [Current Version: {CurrentVersion}]')
 
       def MinorVersion(self, CurrentVersion, TargetVersion, TargetMinor):
-         print("="*80)
+         print("="*40)
          print(">> PYBRIDGE <<")
-         print("="*80)
+         print("="*40)
          print(">> WARNING <<")
-         print("="*80)
-         print(f'>> Your appication targets a version of Python older than the version currently installed. You may get errors during the process')
-         print("-"*80)
+         print("="*40)
+         print(f'>> Your appication targets a version of Python older than the version currently\ninstalled. You may get errors during the process')
+         print("="*40)
          print(f'- Current Version: {CurrentVersion}')
          print(f'- Target Version: {TargetVersion}')
-         print(f'>> You can change requirements in `SystemRequirements.py` on `ErrorReport` Module')
-
-         print("-"*80)
+         print(f'>> You can change `SystemRequirements.py` on `ErrorReport` Module')
+         print("="*40)
+         print()
 
       def BuildVersion(self, CurrentVersion, TargetVersion, BuildVer):
          raise Exception(f'>> This application only can run on Python {TargetVersion}. [Current Version: {CurrentVersion}]')

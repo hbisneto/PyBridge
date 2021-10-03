@@ -27,6 +27,7 @@ def CreationSuccess():
     print("="*80)
     print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
     print("="*80)
+    print()
 
 def VerifyFolders():
     def BridgeFolder():
@@ -41,7 +42,6 @@ def VerifyFolders():
             os.mkdir(FileSystem.ProjectsRepo)
             print(f'>> PyBridge: "{FileSystem.ProjectsRepo}" created')
         except:
-            print()
             return
 
     BridgeFolder()
@@ -61,7 +61,8 @@ def ProjectList():
     
     BridgeLoop = True
     while BridgeLoop == True:
-        print(f'>> Projects List:')
+        print("="*80)
+        print(f'>> PROJECTS LIST <<')
         print("="*80)
 
         Count = 0
@@ -242,8 +243,6 @@ def ProjOptions():
                     shutil.rmtree(DeleteDir)
                     print(f'>> The project "{DeleteDir}" was deleted!')
                     print("="*80)
-#                    shutil.rmtree(DeleteDir)
-#                    print(f'>> The project "{DeleteDir}" was deleted!')
                 except OSError as e:
                     print(">> [x] Erro: %s - %s." % (e.filename, e.strerror))
                     print("="*80)
@@ -258,39 +257,39 @@ def ProjOptions():
     print("="*80)
 
     Opc = int(input(">>[!] Type a number to get options or go back: "))
+    print()
 
     try:
         if Opc != 0:
             AppliesTo = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
 
-            print()
             print("="*80)
             print(">> Management Options <<")
             print("="*80)
             
             print(">>[1] - Create Library")
             print("> Will add a Library in all OS Modules")
-            print("-"*80)
+            print("="*80)
             
             print(">>[2] - Create Universal Library")
             print("> Will add a new Library on the root of project")
-            print("-"*80)
+            print("="*80)
 
             print(">>[3] - Create Module")
             print("> Will add a Module in all OS Modules")
-            print("-"*80)
+            print("="*80)
 
             print(">>[4] - Create Universal Module")
             print("> Will add a new Module on the root of project")
-            print("-"*80)
+            print("="*80)
 
             print(">>[5] - DELETE THIS PROJECT")
             print("> Deletes the project folder and all the contents in it.\n> THIS OPERATION CAN`T BE UNDONE...")
-            print("-"*80)
-
             print("="*80)
+
             SubMenu = int(input(">>[!] Type your choice: "))
             print("="*80)
+            print()
 
             if SubMenu == 1:
                 CreateLib(AppliesTo)
@@ -1009,13 +1008,13 @@ def CreateTokensFile():
         Tokens.close()
 
 def CreateBridge():
-    print()
+#    print()
     print("="*80)
-    print(">> CREATE PROJECT")
+    print(">> CREATE PROJECT <<")
     print("="*80)
     ProjectName = str(input(">>[!] Project Name: "))
     print(f'>> Creating bridge to the project "{ProjectName}"...')
-    print("-"*80)
+#    print("-"*80)
     print()
     
     try:
@@ -1042,7 +1041,7 @@ def CreateBridge():
     CreateErrorList()
     ## SystemRequirements File
     CreateSystemRequirements()
-    print("-"*80)
+    print("="*80)
     print()
 
     if ProjectOption == 3:
@@ -1057,7 +1056,7 @@ def CreateBridge():
     CreateLinuxSplashScreen()
     ## Linux FileSystem File
     CreateLinuxFileSystem()
-    print("-"*80)
+    print("="*80)
     print()
     
     ### macOS Modules ###
@@ -1069,7 +1068,7 @@ def CreateBridge():
     CreateMacSplashScreen()
     ## Mac FileSystem File
     CreateMacFileSystem()
-    print("-"*80)
+    print("="*80)
     print()
     ### Windows Modules ###
     ## Windows File
@@ -1080,5 +1079,4 @@ def CreateBridge():
     CreateWindowsSplashScreen()
     ## Windows FileSystem File
     CreateWindowsFileSystem()
-    print("-"*80)
-    print()
+    print("="*80)

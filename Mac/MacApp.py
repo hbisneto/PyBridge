@@ -19,7 +19,8 @@ def Main():
         print(">>[0] - Quit PyBridge")
         print()
         Opc = int(input(">>[!] Type The Item Number: "))
-        print("="*80)
+        print()
+#        print("="*80)
 
         if Opc == 0:
             BridgeLoop = False
