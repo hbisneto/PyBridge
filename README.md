@@ -104,7 +104,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 ## Log de Atualização
 
 > **BETA 7:**
-> <br> Atualização focada em melhorias tendo como base a versão anterior. Alterando bibliotecas, adicionando recursos, como a nova função `DELETE THIS REPOSITORY`, entre outras melhorias.
+> <br> Atualização focada em melhorias tendo como base a versão anterior. Alterando bibliotecas e adicionando recursos, como a nova função `DELETE THIS REPOSITORY`.
 > > **Novidades:**
 > > <br><br>**Deletar Projetos:** 
 > > <br>- Implementação do menu `DELETE THIS PROJECT` em `Management Options`
@@ -138,13 +138,13 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br>- Melhorias no modelo de criação de projeto: `Blank Project`
 > > <br>- Melhorias no modelo de criação de projeto: `Menu Application Loop Project`
 > > <br>- Melhorias no modelo de criação de projeto: `Twitter Application Project`
-> > <br>- Adição da referência da pasta de projetos do PyBridge em `FileSystem.py`
+> > <br>- Adição da referência da pasta de projetos do PyBridge em `FileSystem.py` em todos os módulos de sistema
 > > <br>- Remoção da função `ApplyLoopApp()` em `Core.py`
 > > <br>- Remoção da função `ApplyTwitterProject()` em `Core.py`
 > > <br>- Remoção da função `ListProjects()` em `Core.py`
 > > 
-> > <br> 3. Alterações na biblioteca `ErrorList.py` em `ErrorReport` Module:
-> > <br>- Melhor organização na estrutura da biblioteca para obter informações de saída.
+> > <br> 3. Alterações na biblioteca `ErrorList.py` no módulo `ErrorReport`:
+> > <br>- Melhor organização na estrutura da biblioteca para obter informações de saída
 > > 
 > > <br> 4. Alterações na biblioteca `SystemRequirements.py` em `ErrorReport` Module:
 > > <br>- Biblioteca atualizada para executar conforme as atualizações feitas em `ErrorList.py`
