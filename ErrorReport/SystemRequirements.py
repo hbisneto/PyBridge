@@ -11,8 +11,8 @@ Require = True
 if Require == True:
    ## Target System
    TargetMajor = 3
-   TargetMinor = 8
-   TargetBuild = 5
+   TargetMinor = 9
+   TargetBuild = 0
    TargetVersion = f'{TargetMajor}.{TargetMinor}.{TargetBuild}'
    ## Target System
 

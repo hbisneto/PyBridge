@@ -22,6 +22,8 @@ def Main():
     ## Mac    
     elif Platform == "darwin":
         from Mac import Mac
+        from ErrorReport import ErrorList
+        ErrorList.FileExists()
         Mac.Mac()
         
     ## Windows

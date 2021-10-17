@@ -1,6 +1,5 @@
 ## PyBridge 7
 
-
 ## SplashScreen File
 ## This file contains information about your project
 

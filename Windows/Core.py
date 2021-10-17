@@ -5,7 +5,7 @@ import codecs
 import getpass
 import os
 import sys
-import shutil ## New on this version
+import shutil
 from ErrorReport import ErrorList
 from Windows import FileSystem
 
@@ -27,6 +27,7 @@ def CreationSuccess():
     print("="*80)
     print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
     print("="*80)
+    print()
 
 def VerifyFolders():
     def BridgeFolder():
@@ -41,7 +42,6 @@ def VerifyFolders():
             os.mkdir(FileSystem.ProjectsRepo)
             print(f'>> PyBridge: "{FileSystem.ProjectsRepo}" created')
         except:
-            print()
             return
 
     BridgeFolder()
@@ -61,7 +61,8 @@ def ProjectList():
     
     BridgeLoop = True
     while BridgeLoop == True:
-        print(f'>> Projects List:')
+        print("="*80)
+        print(f'>> PROJECTS LIST <<')
         print("="*80)
 
         Count = 0
@@ -242,8 +243,6 @@ def ProjOptions():
                     shutil.rmtree(DeleteDir)
                     print(f'>> The project "{DeleteDir}" was deleted!')
                     print("="*80)
-#                    shutil.rmtree(DeleteDir)
-#                    print(f'>> The project "{DeleteDir}" was deleted!')
                 except OSError as e:
                     print(">> [x] Erro: %s - %s." % (e.filename, e.strerror))
                     print("="*80)
@@ -258,39 +257,44 @@ def ProjOptions():
     print("="*80)
 
     Opc = int(input(">>[!] Type a number to get options or go back: "))
+    print()
 
     try:
         if Opc != 0:
             AppliesTo = f'{FileSystem.ProjectsRepo}{ProjList[Opc - 1]}'
 
-            print()
             print("="*80)
             print(">> Management Options <<")
             print("="*80)
             
-            print(">>[1] - Create Library")
-            print("> Will add a Library in all OS Modules")
-            print("-"*80)
-            
-            print(">>[2] - Create Universal Library")
-            print("> Will add a new Library on the root of project")
-            print("-"*80)
-
-            print(">>[3] - Create Module")
-            print("> Will add a Module in all OS Modules")
-            print("-"*80)
-
-            print(">>[4] - Create Universal Module")
-            print("> Will add a new Module on the root of project")
-            print("-"*80)
-
-            print(">>[5] - DELETE THIS PROJECT")
-            print("> Deletes the project folder and all the contents in it.\n> THIS OPERATION CAN`T BE UNDONE...")
-            print("-"*80)
-
+            print("[1] - Create Library")
+            print("Will add a Library in all OS Modules")
             print("="*80)
+            
+            print("[2] - Create Universal Library")
+            print("Will add a new Library on the root of project")
+            print("="*80)
+
+            print("[3] - Create Module")
+            print("Will add a Module in all OS Modules")
+            print("="*80)
+
+            print("[4] - Create Universal Module")
+            print("Will add a new Module on the root of project")
+            print("="*80)
+
+            print("[5] - DELETE THIS PROJECT")
+            print("Deletes the project folder and all the contents in it.")
+            print("CAUTION: THIS OPERATION CAN`T BE UNDONE...")
+            print("="*80)
+
+            print("[0] - Go Back")
+            print("Navigate back to the main menu")
+            print("="*80)
+
             SubMenu = int(input(">>[!] Type your choice: "))
             print("="*80)
+            print()
 
             if SubMenu == 1:
                 CreateLib(AppliesTo)
@@ -376,11 +380,6 @@ def EnvironFolders():
     EnvironFolders.WindowsAppFile = f'{EnvironFolders.WindowsPath}WindowsApp.py'
     EnvironFolders.SplashWindows = f'{EnvironFolders.WindowsPath}SplashScreen.py'
 
-    ## Run Functions
-    #CreateArch()
-    #CreateFiles()
-    #CreateBridge()
-
 def CreateInitFile():
     ## Launcher Script
     print("="*80)
@@ -395,21 +394,21 @@ def CreateInitFile():
         AppName.write(f'   from sys import platform\n\n')
         AppName.write(f'   ## Local Libraries\n')
         AppName.write(f'   from ErrorReport import ErrorList\n')
-        AppName.write(f'   from Linux import Linux\n')
-        AppName.write(f'   from Mac import Mac\n')
-        AppName.write(f'   from Windows import Windows\n\n')
-        AppName.write(f'   Platform = platform\n\n')
         AppName.write(f'except:\n')
         AppName.write(f'   ErrorList.ImportLib()\n\n')
         AppName.write(f'def Main():\n')
+        AppName.write(f'   Platform = platform\n\n')
         AppName.write(f'   ## Linux\n')
         AppName.write(f'   if Platform == "linux" or Platform == "linux2":\n')
+        AppName.write(f'      from Linux import Linux\n')
         AppName.write(f'      Linux.Linux()\n\n')
         AppName.write(f'   ## Mac\n')
         AppName.write(f'   elif Platform == "darwin":\n')
+        AppName.write(f'      from Mac import Mac\n')
         AppName.write(f'      Mac.Mac()\n\n')
         AppName.write(f'   ## Windows\n')
-        AppName.write(f'   elif Platform == "win32":\n')
+        AppName.write(f'   elif Platform == "win32" or Platform == "win64":\n')
+        AppName.write(f'      from Windows import Windows\n')
         AppName.write(f'      Windows.Windows()\n\n')
         AppName.write(f'Main()')
         AppName.close()
@@ -499,6 +498,8 @@ def CreateLinuxFile():
         LinuxFile.write(f'## Linux File\n')
         LinuxFile.write(f'## This file is used to implement code used to run scripts for Linux\n')
         LinuxFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
+        LinuxFile.write(f'import os\n')
+        LinuxFile.write(f'from Linux import FileSystem\n\n')
         LinuxFile.write(f'def Linux():\n')
         LinuxFile.write(f'   ## NOTE: You can use this function\n')
         LinuxFile.write(f'   ## To load information before the app starts running\n\n')
@@ -645,11 +646,15 @@ def CreateLinuxFileSystem():
         LinuxFS.write(f'import os\n\n')
         LinuxFS.write(f'## Special Directories\n')
         LinuxFS.write(f'CurrentPath = os.getcwd()\n')
-        LinuxFS.write(f'{SUser}\n')
+        LinuxFS.write(f'{SUser}\n\n')
         LinuxFS.write("Desktop = f'{User}Desktop/'\n")
         LinuxFS.write("Documents = f'{User}Documents/'\n")
         LinuxFS.write("Downloads = f'{User}Downloads/'\n")
         LinuxFS.write("Music = f'{User}Music/'\n\n")
+        LinuxFS.write("## Project Directories\n")
+        LinuxFS.write("PyBridgeFolder = f'{Documents}PyBridge/'\n")
+        LinuxFS.write("ProjectsRepo = f'{PyBridgeFolder}Projects/'\n")
+        LinuxFS.write("PythonExtension = '.py'\n")
         LinuxFS.close()
 
 def CreateMacFile():
@@ -663,6 +668,8 @@ def CreateMacFile():
         MacFile.write(f'## Mac File\n')
         MacFile.write(f'## This file is used to implement code used to run scripts for Mac\n')
         MacFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
+        MacFile.write(f'import os\n')
+        MacFile.write(f'from Mac import FileSystem\n\n')
         MacFile.write(f'def Mac():\n')
         MacFile.write(f'   ## NOTE: You can use this function\n')
         MacFile.write(f'   ## To load information before the app starts running\n\n')
@@ -817,7 +824,11 @@ def CreateMacFileSystem():
         MacFS.write("Movies = f'{User}Movies/'\n")
         MacFS.write("Music = f'{User}Music/'\n")
         MacFS.write("Pictures = f'{User}Pictures/'\n")
-        MacFS.write("Public = f'{User}Public/'\n")
+        MacFS.write("Public = f'{User}Public/'\n\n")
+        MacFS.write("## Project Directories\n")
+        MacFS.write("PyBridgeFolder = f'{Documents}PyBridge/'\n")
+        MacFS.write("ProjectsRepo = f'{PyBridgeFolder}Projects/'\n")
+        MacFS.write("PythonExtension = '.py'\n")
         MacFS.close()
 
 def CreateWindowsFile():
@@ -831,6 +842,8 @@ def CreateWindowsFile():
         WindowsFile.write(f'## Windows File\n')
         WindowsFile.write(f'## This file is used to implement code used to run scripts for Windows\n')
         WindowsFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
+        WindowsFile.write(f'import os\n')
+        WindowsFile.write(f'from Windows import FileSystem\n\n')
         WindowsFile.write(f'def Windows():\n')
         WindowsFile.write(f'   ## NOTE: You can use this function\n')
         WindowsFile.write(f'   ## To load information before the app starts running\n\n')
@@ -982,7 +995,11 @@ def CreateWindowsFileSystem():
         WindowsFS.write("LocalAppData = f'{User}AppData/Local/'\n")
         WindowsFS.write("Temp = f'{LocalAppData}Temp'\n")
         WindowsFS.write("Pictures = f'{User}Pictures/'\n")
-        WindowsFS.write("Favorites = f'{User}Favorites/'\n")
+        WindowsFS.write("Favorites = f'{User}Favorites/'\n\n")
+        WindowsFS.write("## Project Directories\n")
+        WindowsFS.write("PyBridgeFolder = f'{Documents}PyBridge/'\n")
+        WindowsFS.write("ProjectsRepo = f'{PyBridgeFolder}Projects/'\n")
+        WindowsFS.write("PythonExtension = '.py'\n")
         WindowsFS.close()
 
 def CreateTokensFile():
@@ -1009,13 +1026,11 @@ def CreateTokensFile():
         Tokens.close()
 
 def CreateBridge():
-    print()
     print("="*80)
-    print(">> CREATE PROJECT")
+    print(">> CREATE PROJECT <<")
     print("="*80)
     ProjectName = str(input(">>[!] Project Name: "))
     print(f'>> Creating bridge to the project "{ProjectName}"...')
-    print("-"*80)
     print()
     
     try:
@@ -1042,7 +1057,7 @@ def CreateBridge():
     CreateErrorList()
     ## SystemRequirements File
     CreateSystemRequirements()
-    print("-"*80)
+    print("="*80)
     print()
 
     if ProjectOption == 3:
@@ -1057,7 +1072,7 @@ def CreateBridge():
     CreateLinuxSplashScreen()
     ## Linux FileSystem File
     CreateLinuxFileSystem()
-    print("-"*80)
+    print("="*80)
     print()
     
     ### macOS Modules ###
@@ -1069,7 +1084,7 @@ def CreateBridge():
     CreateMacSplashScreen()
     ## Mac FileSystem File
     CreateMacFileSystem()
-    print("-"*80)
+    print("="*80)
     print()
     ### Windows Modules ###
     ## Windows File
@@ -1080,5 +1095,4 @@ def CreateBridge():
     CreateWindowsSplashScreen()
     ## Windows FileSystem File
     CreateWindowsFileSystem()
-    print("-"*80)
-    print()
+    print("="*80)

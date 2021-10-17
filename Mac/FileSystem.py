@@ -19,4 +19,4 @@ Public = f'{User}Public/'
 ## Project Directories
 PyBridgeFolder = f'{Documents}PyBridge/'
 ProjectsRepo = f'{PyBridgeFolder}Projects/'
-PythonExtension = ".py"
+PythonExtension = '.py'
