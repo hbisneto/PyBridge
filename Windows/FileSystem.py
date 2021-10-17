@@ -19,4 +19,4 @@ Favorites = f'{User}/Favorites/'
 ## Project Directories
 PyBridgeFolder = f'{Documents}PyBridge/'
 ProjectsRepo = f'{PyBridgeFolder}Projects/'
-PythonExtension = ".py"
+PythonExtension = '.py'

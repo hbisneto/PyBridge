@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 16/09/2021
+###### Last repository update: 17/10/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
@@ -31,6 +31,9 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 
 * **os:** Este módulo fornece uma maneira simples de usar funcionalidades que são dependentes do Sistema Operacional.
 > Leia mais sobre a biblioteca ```os``` em [os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
+
+* **shutil:** O módulo shutil oferece várias operações de alto nível em arquivos e coleções de arquivos. Em particular, são fornecidas funções que possuem suporte a cópia e remoção de arquivos. Para operações em arquivos individuais, veja também o módulo **os**.
+> Leia mais sobre a biblioteca ```shutil``` em [shutil — High-level file operations](https://docs.python.org/3/library/shutil.html)
 
 * **sys:** Este módulo fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador e a funções que interagem fortemente com o interpretador.
 > Leia mais sobre a biblioteca ```sys``` em [sys — System-specific parameters and functions](https://docs.python.org/pt-br/3/library/sys.html)
@@ -99,6 +102,59 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 #
 
 ## Log de Atualização
+
+> **BETA 7:**
+> <br> Atualização focada em melhorias tendo como base a versão anterior. Alterando bibliotecas e adicionando recursos, como a nova função `DELETE THIS REPOSITORY`.
+> > **Novidades:**
+> > <br><br>**Deletar Projetos:** 
+> > <br>- Implementação do menu `DELETE THIS PROJECT` em `Management Options`
+> > <br> **Atenção:** Agora é possível deletar um projeto diretamente pelo PyBridge.
+> > <br> Para deletar o projeto, o sistema confirma a exclusão, sendo assim, necessário a entrada da palavra de confirmação para o projeto ser excluido. Como mostrado no exemplo abaixo:
+>>
+>>
+>>>```
+>>>================================================================================
+>>> DELETE THIS PROJECT <<
+>>>[Project to delete: MyProject]
+>>>================================================================================
+>>> You`re trying to delete the project "MyProject"
+>>> THIS OPERATION CAN`T BE UNDONE.
+>>> BE SURE YOU REALLY WANT TO DELETE THE PROJECT
+>>>
+>>>[!] Are you sure do you want to delete the project "MyProject"? [Y/N]: Y
+>>>[!] Type "Projects/MyProject" to delete the project: Projects/MyProject
+>>> Deleting Project...
+>>>
+>>>```
+>>
+> > <br><br> **Melhorias:**
+> > <br> 1. Alterações na biblioteca universal `PyBridge.py`:
+> > <br>- Implementado `win64` na função `Main()`
+> > 
+> > <br> 2. Alterações na biblioteca `Core.py`:
+> > <br>- Adição da biblioteca `shutil` em `Core.py`
+> > <br>- Alteração do nome do arquivo de execução do programa para `__init__.py`
+> > <br>- Adicionado suporte ao `Win64` no arquivo `__init.py__`
+> > <br>- Melhorias no modelo de criação de projeto: `Blank Project`
+> > <br>- Melhorias no modelo de criação de projeto: `Menu Application Loop Project`
+> > <br>- Melhorias no modelo de criação de projeto: `Twitter Application Project`
+> > <br>- Adição da referência da pasta de projetos do PyBridge em `FileSystem.py` em todos os módulos de sistema
+> > <br>- Remoção da função `ApplyLoopApp()` em `Core.py`
+> > <br>- Remoção da função `ApplyTwitterProject()` em `Core.py`
+> > <br>- Remoção da função `ListProjects()` em `Core.py`
+> > 
+> > <br> 3. Alterações na biblioteca `ErrorList.py` no módulo `ErrorReport`:
+> > <br>- Melhor organização na estrutura da biblioteca para obter informações de saída
+> > 
+> > <br> 4. Alterações na biblioteca `SystemRequirements.py` em `ErrorReport` Module:
+> > <br>- Biblioteca atualizada para executar conforme as atualizações feitas em `ErrorList.py`
+> > 
+> > <br><br> **Correções de erros:**
+> > <br>- Corrigido erro que não importava a biblioteca `FileSystem.py` em `Linux.py`
+> > <br>- Corrigido erro que não importava a biblioteca `FileSystem.py` em `Mac.py`
+> > <br>- Corrigido erro que não importava a biblioteca `FileSystem.py` em `Windows.py`
+
+#
 
 > **BETA 6:**
 > <br> Todo o projeto foi revisado trazendo melhorias consideráveis para o sistema. Entre essas melhorias, a capacidade de listar projetos, criar novos módulos para o sistema já existente e também criar novas bibliotecas para um ou mais ambientes operacionais.
@@ -178,7 +234,7 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br>- Adicionada classe ```RequirementsCheck``` em ```ErrorList.py```
 > > <br><br> **3. Requisitos de Sistema**:
 > > <br>- Novo recurso permite determinar um requisito mínimo de sistema (limitado a versões do Python) para que o script possa ser executado.
->> <br> Para permitir a verificação de requisitos mínimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```True```. O valor padrão é ```False```.
+>> <br> Para impedir a verificação de requisitos mínimos, basta alterar o valor de ```Require```, em ```SystemRequirements.py```, para ```False```. O valor padrão é ```True```.
 <br>Os requisitos mínimos podem ser definidos pelo usuário através das entradas:
 >>
 >>```

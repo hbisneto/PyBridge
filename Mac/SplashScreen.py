@@ -1,3 +1,5 @@
+## PyBridge 7
+
 ## SplashScreen File
 ## This file contains information about your project
 
@@ -7,7 +9,7 @@ import getpass
 
 CurrentYear = date.today().year
 SoftwareName = "PyBridge"
-Version = "BETA 6"
+Version = "BETA 7"
 CopyrightName = "Heitor Bisneto"
 
 Now = datetime.now()
@@ -39,17 +41,21 @@ def Salutation():
         DayPeriod = "Morning"
         print(f'Hello {UserName}. Good {DayPeriod}! - {TimeAccess}')
         print("="*80)
+        print()
     elif Hour >= 12 and Hour < 18:
         DayPeriod = "Afternoon"
         print(f'Hello {UserName}. Good {DayPeriod}! - {TimeAccess}')
         print("="*80)
+        print()
     elif Hour >= 18 and Hour != 0:
         DayPeriod = "Evening"
         print(f'Hello {UserName}. Good {DayPeriod}! - {TimeAccess}')
         print("="*80)
+        print()
     else:
-        print(f'Hello {UserName}. Nice to see you again! - {TimeAccess}')
+        print(f'[:)] Hello {UserName}. Nice to see you again! - {TimeAccess}')
         print("="*80)
+        print()
 
 Main()
 Salutation()

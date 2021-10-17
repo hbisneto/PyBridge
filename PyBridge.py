@@ -22,10 +22,12 @@ def Main():
     ## Mac    
     elif Platform == "darwin":
         from Mac import Mac
+        from ErrorReport import ErrorList
+        ErrorList.FileExists()
         Mac.Mac()
         
     ## Windows
-    elif Platform == "win32":
+    elif Platform == "win32" or Platform == "win64":
         from Windows import Windows
         Windows.Windows()
 
