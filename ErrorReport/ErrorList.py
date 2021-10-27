@@ -41,3 +41,13 @@ def InvalidOption():
    print("="*80)
    print(f'>> You typed an invalid option.\n>> Running the program again!')
    print("="*80)
+
+def BackupFail():
+   print("="*80)
+   print(">> BACKUP CREATION FAILED!")
+   print("="*80)
+   print("[!]" * 20)
+   print(f'>> PyBridge could not create backup for your project folder')
+   print(f'>> Try again later.')
+   print("[!]" * 20)
+   
