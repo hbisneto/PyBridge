@@ -18,6 +18,29 @@ MajorVersion = sys.version_info[0]
 MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
+
+def Backup():
+    Source = f'{FileSystem.ProjectsRepo}'
+    Target = f'{FileSystem.CurrentPath}/Backup'
+
+    print("="*80)
+    try:
+        print("[PyBridge]: Backing up...")
+        print("="*80)
+        shutil.copytree(Source, Target)
+        print("[PyBridge]: Backup creation done!")
+    except shutil.Error as e:
+        ErrorList.BackupFail()
+        print("-"*20)
+        print(e)
+        print("-"*20)
+    except OSError as OS_E:
+        ErrorList.BackupFail()
+        print("-"*20)
+        print(OS_E)
+        print("-"*20)
+    print("="*80)
+    print()
     
 def Explorer():
     ProjectName = str()
