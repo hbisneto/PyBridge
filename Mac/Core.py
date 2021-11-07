@@ -1,5 +1,5 @@
 ## Core
-## This file will process every step of file creation
+## This file will process every step of file creation.
 
 import codecs
 import getpass
