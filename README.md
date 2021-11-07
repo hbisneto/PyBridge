@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 17/10/2021
+###### Last repository update: 07/11/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
@@ -10,7 +10,7 @@ Com o PyBridge é possível a implementação de scripts para:
 3. **Windows**;
 
 > Observação:
-> > O PyBridge nasceu do Python 3.9. Por esse motivo, é recomendado a mesma versão do Python (3.9) ou superior para executar o sistema.
+> > O PyBridge nasceu do Python 3.9. Por esse motivo, é recomendado a mesma versão do Python (versão 3.9) ou superior para executar o sistema.
 
 O PyBridge conta com uma biblioteca de ***tratamento de erros*** padrão que pode ser executada em qualquer ambiente. Todo método implementado dentro da biblioteca pode ser chamado de qualquer parte do código. Desse jeito, não é necessário a implementação da chamada de exceção ```raise RuntimeError()``` dentro do módulo de execução do programa. Basta referenciar a chamada da função condizente com o tratamento que deve ser executado.
 
@@ -103,6 +103,22 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 
 ## Log de Atualização
 
+> **BETA 8:**
+> <br> Atualização inclui nova função de Backup de projetos criados através do PyBridge e corrige alguns pequenos erros relacionados a versão anterior.
+> > **Novidades:**
+> > <br> Adicionada nova opção `Backup projects` em `LinuxApp.py`
+> > <br> Adicionada nova opção `Backup projects` em `MacApp.py`
+> > <br> Adicionada nova opção `Backup projects` em `WindowsApp.py`
+> > <br> Adicionada função `Backup()` em `Core.py` nos modulos de sistema
+> > <br> Adicionada função `BackupFail()` em `ErrorList.py` no modulo `ErrorReport`
+> > <br><br> **Melhorias:**
+> > <br> Corrigido bug de requisito de sistema em `ErrorReport/SystemRequirements.py`
+> > <br> `Linux`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
+> > <br> `Mac`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
+> > <br> `Windows`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
+
+#
+
 > **BETA 7:**
 > <br> Atualização focada em melhorias tendo como base a versão anterior. Alterando bibliotecas e adicionando recursos, como a nova função `DELETE THIS REPOSITORY`.
 > > **Novidades:**
@@ -115,14 +131,14 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 >>>```
 >>>================================================================================
 >>> DELETE THIS PROJECT <<
->>>[Project to delete: MyProject]
+>>>[Project to delete: Hello_World]
 >>>================================================================================
->>> You`re trying to delete the project "MyProject"
+>>> You`re trying to delete the project "Hello_World"
 >>> THIS OPERATION CAN`T BE UNDONE.
 >>> BE SURE YOU REALLY WANT TO DELETE THE PROJECT
 >>>
->>>[!] Are you sure do you want to delete the project "MyProject"? [Y/N]: Y
->>>[!] Type "Projects/MyProject" to delete the project: Projects/MyProject
+>>>[!] Are you sure do you want to delete the project "Hello_World"? [Y/N]: Y
+>>>[!] Type "Projects/Hello_World" to delete the project: Projects/Hello_World
 >>> Deleting Project...
 >>>
 >>>```

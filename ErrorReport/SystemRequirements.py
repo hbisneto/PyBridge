@@ -1,5 +1,5 @@
 ﻿## SystemRequirements File
-## This file is used to check if system matches with the minimum requirements to run
+## This file is used to check if system matches with the minimum requirements to run.
 
 from ErrorReport import ErrorList
 import sys
@@ -28,7 +28,7 @@ if Require == True:
    ## print(f'>> Required version to run: Python {TargetVersion}')
 
    if TargetVersion > CurrentVersion:
-      ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
+      print(f'>> My system current version: Python {CurrentVersion}')
    elif TargetVersion < CurrentVersion:
       ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
 

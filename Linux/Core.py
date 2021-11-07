@@ -1,5 +1,5 @@
 ## Core
-## This file will process every step of file creation
+## This file will process every step of file creation.
 
 import codecs
 import getpass
@@ -18,6 +18,29 @@ MajorVersion = sys.version_info[0]
 MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
+
+def Backup():
+    Source = f'{FileSystem.ProjectsRepo}'
+    Target = f'{FileSystem.CurrentPath}/Backup'
+
+    print("="*80)
+    try:
+        print("[PyBridge]: Backing up...")
+        print("="*80)
+        shutil.copytree(Source, Target)
+        print("[PyBridge]: Backup creation done!")
+    except shutil.Error as e:
+        ErrorList.BackupFail()
+        print("-"*20)
+        print(e)
+        print("-"*20)
+    except OSError as OS_E:
+        ErrorList.BackupFail()
+        print("-"*20)
+        print(OS_E)
+        print("-"*20)
+    print("="*80)
+    print()
     
 def Explorer():
     ProjectName = str()
@@ -988,16 +1011,16 @@ def CreateWindowsFileSystem():
         WindowsFS.write(f'## Special Directories\n')
         WindowsFS.write(f'CurrentPath = os.getcwd()\n')
         WindowsFS.write(f"User = os.environ['USERPROFILE']\n")
-        WindowsFS.write("ApplicationData = f'{User}AppData/Roaming/'\n")
-        WindowsFS.write("Desktop = f'{User}Desktop/'\n")
-        WindowsFS.write("Documents = f'{User}Documents/'\n")
-        WindowsFS.write("Downloads = f'{User}Downloads/'\n")
-        WindowsFS.write("LocalAppData = f'{User}AppData/Local/'\n")
-        WindowsFS.write("Temp = f'{LocalAppData}Temp'\n")
-        WindowsFS.write("Pictures = f'{User}Pictures/'\n")
-        WindowsFS.write("Favorites = f'{User}Favorites/'\n\n")
+        WindowsFS.write("ApplicationData = f'{User}/AppData/Roaming/'\n")
+        WindowsFS.write("Desktop = f'{User}/Desktop/'\n")
+        WindowsFS.write("Documents = f'{User}/Documents/'\n")
+        WindowsFS.write("Downloads = f'{User}/Downloads/'\n")
+        WindowsFS.write("LocalAppData = f'{User}/AppData/Local/'\n")
+        WindowsFS.write("Temp = f'{LocalAppData}/Temp'\n")
+        WindowsFS.write("Pictures = f'{User}/Pictures/'\n")
+        WindowsFS.write("Favorites = f'{User}/Favorites/'\n\n")
         WindowsFS.write("## Project Directories\n")
-        WindowsFS.write("PyBridgeFolder = f'{Documents}PyBridge/'\n")
+        WindowsFS.write("PyBridgeFolder = f'{Documents}/PyBridge/'\n")
         WindowsFS.write("ProjectsRepo = f'{PyBridgeFolder}Projects/'\n")
         WindowsFS.write("PythonExtension = '.py'\n")
         WindowsFS.close()

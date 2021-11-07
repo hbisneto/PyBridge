@@ -1,5 +1,5 @@
 ## WindowsApp File
-## This file is used to implement code used to run scripts for Windows
+## This file is used to implement code used to run scripts for Windows.
 
 from Windows import Core
 from ErrorReport import ErrorList
@@ -16,10 +16,11 @@ def Main():
         print(">>[2] - Create a Menu Application Loop Project")
         print(">>[3] - Create Twitter Application Project")
         print(">>[4] - Projects List")
+        print(">>[5] - Backup Projects")
         print(">>[0] - Quit PyBridge")
         print()
         Opc = int(input(">>[!] Type The Item Number: "))
-        print("="*80)
+        print()
 
         if Opc == 0:
             BridgeLoop = False
@@ -45,6 +46,9 @@ def Main():
         elif Opc == 4:
             Core.ProjList.clear()
             Core.ProjectList()
+            
+        elif Opc == 5:
+            Core.Backup()
 
         else:
             ErrorList.InvalidOption()
