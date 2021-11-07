@@ -4,7 +4,7 @@
 from Windows import Core
 from ErrorReport import ErrorList
 
-dedef Main():
+def Main():
     BridgeLoop = True
     Core.VerifyFolders()
 

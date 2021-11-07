@@ -28,7 +28,7 @@ if Require == True:
    ## print(f'>> Required version to run: Python {TargetVersion}')
 
    if TargetVersion > CurrentVersion:
-      ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
+      print(f'>> My system current version: Python {CurrentVersion}')
    elif TargetVersion < CurrentVersion:
       ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
 
