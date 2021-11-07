@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 27/10/2021
+###### Last repository update: 07/11/2021
 
 Com o PyBridge é possível executar scripts em Python fazendo uma ponte do código implementado no projeto criado com outras plataformas.
 
@@ -111,6 +111,11 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br> Adicionada nova opção `Backup projects` em `WindowsApp.py`
 > > <br> Adicionada função `Backup()` em `Core.py` nos modulos de sistema
 > > <br> Adicionada função `BackupFail()` em `ErrorList.py` no modulo `ErrorReport`
+> > <br><br> **Melhorias:**
+> > <br> Corrigido bug de requisito de sistema em `ErrorReport/SystemRequirements.py`
+> > <br> `Linux`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
+> > <br> `Mac`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
+> > <br> `Windows`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
 
 #
 
