@@ -103,6 +103,15 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 
 ## Log de Atualização
 
+> **BETA 9:**
+> <br> Atualização corrige erros relacionados a versão anterior
+> > **Correções de erros:**
+> > <br> - `Core.py`: Correções de erros na criação do arquivo `FileSystem.py` para `Windows` com a referência do caminho errado, causando o levantamento de uma exceção em momento de execução.
+> > <br> - Correções de erros em `SystemRequirements.py` no módulo `ErrorReport`
+> > <br> - Adicionado tempo de conclusão de backup de projetos
+
+#
+
 > **BETA 8:**
 > <br> Atualização inclui nova função de Backup de projetos criados através do PyBridge e corrige alguns pequenos erros relacionados a versão anterior.
 > > **Novidades:**
