@@ -4,8 +4,8 @@
 import codecs
 import getpass
 import os
-import sys
 import shutil
+import sys
 from datetime import datetime
 from ErrorReport import ErrorList
 from Windows import FileSystem
@@ -21,8 +21,17 @@ BuildVersion = sys.version_info[2]
 ProjList = []
 
 def Backup():
+    Day = datetime.now().day
+    Month = datetime.now().month
+    Year = datetime.now().year
+    Hour = datetime.now().hour
+    Minute = datetime.now().minute
+    Second = datetime.now().second
+
+    DateFormat = f'PB_BKP_{Day}_{Month}_{Year}-{Hour}_{Minute}_{Second}'
+
     Source = f'{FileSystem.ProjectsRepo}'
-    Target = f'{FileSystem.CurrentPath}/Backup'
+    Target = f'{FileSystem.CurrentPath}/Backup/{DateFormat}'
 
     print("="*80)
     try:

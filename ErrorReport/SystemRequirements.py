@@ -1,8 +1,8 @@
 ﻿## SystemRequirements File
 ## This file is used to check if system matches with the minimum requirements to run.
 
-from ErrorReport import ErrorList
 import sys
+from ErrorReport import ErrorList
 
 ## Change "Require" to "False" to skip system check
 Require = True

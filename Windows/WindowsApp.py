@@ -1,8 +1,8 @@
 ## WindowsApp File
 ## This file is used to implement code used to run scripts for Windows.
 
-from Windows import Core
 from ErrorReport import ErrorList
+from Windows import Core
 
 def Main():
     BridgeLoop = True
