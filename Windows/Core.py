@@ -6,6 +6,7 @@ import getpass
 import os
 import sys
 import shutil
+from datetime import datetime
 from ErrorReport import ErrorList
 from Windows import FileSystem
 
@@ -25,10 +26,14 @@ def Backup():
 
     print("="*80)
     try:
+        Start = datetime.now()
         print("[PyBridge]: Backing up...")
         print("="*80)
         shutil.copytree(Source, Target)
         print("[PyBridge]: Backup creation done!")
+        End = datetime.now()
+        Time = End - Start
+        print(f'>> Operation completed in: {Time}')
     except shutil.Error as e:
         ErrorList.BackupFail()
         print("-"*20)
@@ -1016,11 +1021,11 @@ def CreateWindowsFileSystem():
         WindowsFS.write("Documents = f'{User}/Documents/'\n")
         WindowsFS.write("Downloads = f'{User}/Downloads/'\n")
         WindowsFS.write("LocalAppData = f'{User}/AppData/Local/'\n")
-        WindowsFS.write("Temp = f'{LocalAppData}/Temp'\n")
+        WindowsFS.write("Temp = f'{LocalAppData}Temp'\n")
         WindowsFS.write("Pictures = f'{User}/Pictures/'\n")
         WindowsFS.write("Favorites = f'{User}/Favorites/'\n\n")
         WindowsFS.write("## Project Directories\n")
-        WindowsFS.write("PyBridgeFolder = f'{Documents}/PyBridge/'\n")
+        WindowsFS.write("PyBridgeFolder = f'{Documents}PyBridge/'\n")
         WindowsFS.write("ProjectsRepo = f'{PyBridgeFolder}Projects/'\n")
         WindowsFS.write("PythonExtension = '.py'\n")
         WindowsFS.close()

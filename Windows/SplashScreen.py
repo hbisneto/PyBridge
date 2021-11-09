@@ -7,7 +7,7 @@ import getpass
 
 CurrentYear = date.today().year
 SoftwareName = "PyBridge"
-Version = "BETA 8"
+Version = "BETA 9"
 CopyrightName = "Heitor Bisneto"
 
 Now = datetime.now()
