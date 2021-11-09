@@ -112,7 +112,6 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br> - Correções de erros no recurso de Backup de projetos
 > > <br> - Adicionado tempo de conclusão de backup de projetos
 > > <br> - Melhorias nos módulos de sistema foram aplicadas
->
 
 #
 
@@ -129,8 +128,6 @@ As seguintes bibliotecas foram usadas para a implementação da ferramenta:
 > > <br> `Linux`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
 > > <br> `Mac`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
 > > <br> `Windows`: Corrigido módulo `FileSystem.py` em projetos criados pelo PyBridge
->
->
 
 #
 
