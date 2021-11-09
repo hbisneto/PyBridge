@@ -1,8 +1,8 @@
 ## LinuxApp File
-## This file is used to implement code used to run scripts for Linux
+## This file is used to implement code used to run scripts for Linux.
 
-from Linux import Core
 from ErrorReport import ErrorList
+from Linux import Core
 
 de Main():
     BridgeLoop = True

@@ -3,6 +3,8 @@
 
 import os
 
+PythonExtension = '.py'
+
 ## Special Directories
 CurrentPath = os.getcwd()
 User = f'/home/{os.environ["USER"]}/'
@@ -15,4 +17,3 @@ Music = f'{User}Music/'
 ## Project Directories
 PyBridgeFolder = f'{Documents}PyBridge/'
 ProjectsRepo = f'{PyBridgeFolder}Projects/'
-PythonExtension = '.py'

@@ -1,8 +1,8 @@
 ## MacApp File
-## This file is used to implement code used to run scripts for Mac
+## This file is used to implement code used to run scripts for Mac.
 
-from Mac import Core
 from ErrorReport import ErrorList
+from Mac import Core
 
 def Main():
     BridgeLoop = True
