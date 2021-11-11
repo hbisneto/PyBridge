@@ -432,7 +432,7 @@ def CreateInitFile():
         AppName.write(f'   ## Local Libraries\n')
         AppName.write(f'   from ErrorReport import ErrorList\n')
         AppName.write(f'except:\n')
-        AppName.write(f'   ErrorList.ImportLib()\n\n')
+        AppName.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
         AppName.write(f'def Main():\n')
         AppName.write(f'   Platform = platform\n\n')
         AppName.write(f'   ## Linux\n')
