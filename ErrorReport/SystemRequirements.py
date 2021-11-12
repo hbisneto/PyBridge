@@ -1,5 +1,5 @@
 ﻿## SystemRequirements File
-## This file is used to check if system matches with the minimum requirements to run.
+## This file is used to check if system matches with the minimum requirements to run
 
 import sys
 from ErrorReport import ErrorList

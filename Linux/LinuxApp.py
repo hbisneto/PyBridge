@@ -1,5 +1,5 @@
 ## LinuxApp File
-## This file is used to implement code used to run scripts for Linux.
+## This file is used to implement code used to run scripts for Linux
 
 from ErrorReport import ErrorList
 from Linux import Core
@@ -24,6 +24,7 @@ de Main():
 
         if Opc == 0:
             BridgeLoop = False
+            quit()
 
         elif Opc == 1:
             Core.ProjectOption = 1

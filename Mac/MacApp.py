@@ -1,5 +1,5 @@
 ## MacApp File
-## This file is used to implement code used to run scripts for Mac.
+## This file is used to implement code used to run scripts for Mac
 
 from ErrorReport import ErrorList
 from Mac import Core
@@ -24,6 +24,7 @@ def Main():
 
         if Opc == 0:
             BridgeLoop = False
+            quit()
 
         elif Opc == 1:
             Core.ProjectOption = 1
