@@ -1,4 +1,4 @@
-## Linux File
+## Linux File.
 ## This file is used to implement code used to run scripts for Linux
 ## Codes implemented here, will run before the script starts running.
 
