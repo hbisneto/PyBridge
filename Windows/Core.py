@@ -10,7 +10,7 @@ from datetime import datetime
 from ErrorReport import ErrorList
 from Windows import FileSystem
 
-PPythonExtension = ".py"
+PythonExtension = ".py"
 ProjectType = ""
 ProjectOption = 0
 TweetStr = "{Tweet}"
@@ -135,9 +135,7 @@ def ProjOptions():
                 LocalLib.write(f'   from Linux import Linux\n\n')
                 LocalLib.write(f'   Platform = platform\n\n')
                 LocalLib.write(f'except:\n')
-                LocalLib.write(f'   Separator = "="*80\n')
-                LocalLib.write(f'   Message = ">> Couldn`t Import Libraries:\n>> Check if the libraries are installed and run the program again."\n')
-                LocalLib.write(f'   raise RuntimeError("\n\n\n" + Separator + "\n" + Message + "\n" + Separator)\n\n')
+                LocalLib.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
                 LocalLib.write(f'def Main():\n')
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
@@ -158,9 +156,7 @@ def ProjOptions():
                 LocalLib.write(f'   from Mac import Mac\n\n')
                 LocalLib.write(f'   Platform = platform\n\n')
                 LocalLib.write(f'except:\n')
-                LocalLib.write(f'   Separator = "="*80\n')
-                LocalLib.write(f'   Message = ">> Couldn`t Import Libraries:\n>> Check if the libraries are installed and run the program again."\n')
-                LocalLib.write(f'   raise RuntimeError("\n\n\n" + Separator + "\n" + Message + "\n" + Separator)\n\n')
+                LocalLib.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
                 LocalLib.write(f'def Main():\n')
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
@@ -181,9 +177,7 @@ def ProjOptions():
                 LocalLib.write(f'   from Windows import Windows\n\n')
                 LocalLib.write(f'   Platform = platform\n\n')
                 LocalLib.write(f'except:\n')
-                LocalLib.write(f'   Separator = "="*80\n')
-                LocalLib.write(f'   Message = ">> Couldn`t Import Libraries:\n>> Check if the libraries are installed and run the program again."\n')
-                LocalLib.write(f'   raise RuntimeError("\n\n\n" + Separator + "\n" + Message + "\n" + Separator)\n\n')
+                LocalLib.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
                 LocalLib.write(f'def Main():\n')
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
@@ -236,9 +230,7 @@ def ProjOptions():
                 UniversalLib.write(f'   from Windows import Windows\n\n')
                 UniversalLib.write(f'   Platform = platform\n\n')
                 UniversalLib.write(f'except:\n')
-                UniversalLib.write(f'   Separator = "="*80\n')
-                UniversalLib.write(f'   Message = ">> Couldn`t Import Libraries:\n>> Check if the libraries are installed and run the program again."\n')
-                UniversalLib.write(f'   raise RuntimeError("\n\n\n" + Separator + "\n" + Message + "\n" + Separator)\n\n')
+                UniversalLib.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
                 UniversalLib.write(f'def Main():\n')
                 UniversalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 UniversalLib.write(f'Main()')
