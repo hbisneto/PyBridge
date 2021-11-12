@@ -50,4 +50,3 @@ def BackupFail():
    print(f'>> PyBridge could not create backup for your project folder')
    print(f'>> Try again later.')
    print("[!]" * 20)
-   

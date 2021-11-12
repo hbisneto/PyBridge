@@ -24,6 +24,7 @@ def Main():
 
         if Opc == 0:
             BridgeLoop = False
+            quit()
 
         elif Opc == 1:
             Core.ProjectOption = 1
