@@ -1,5 +1,5 @@
-## WindowsApp File.
-## This file is used to implement code used to run scripts for Windows.
+## WindowsApp File
+## This file is used to implement code used to run scripts for Windows
 
 from ErrorReport import ErrorList
 from Windows import Core

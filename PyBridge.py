@@ -3,7 +3,7 @@
 ## Here the contents will be processed to choose the best platform to go
 
 try:
-    ## Imported Libraries
+    ## Native Libraries
     from sys import platform
 
     ## Local Libraries

@@ -1,5 +1,5 @@
-## Core.
-## This file will process every step of file creation.
+## Core
+## This file will process every step of file creation
 
 import codecs
 import getpass
@@ -534,11 +534,6 @@ def CreateSystemRequirements():
         Requirements.write(f'   ## Uncomment to see information about your system\n')
         Requirements.write("   ## print(f'>> My system current version: Python {CurrentVersion}')\n")
         Requirements.write("   ## print(f'>> Required version to run: Python {TargetVersion}')\n\n")
-##        Requirements.write(f'   if TargetVersion > CurrentVersion:\n')
-##        Requirements.write(f'      ErrorList.Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)\n')
-##        Requirements.write(f'   elif TargetVersion < CurrentVersion:\n')
-##        Requirements.write(f'      ErrorList.Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n\n')
-
         Requirements.write(f'   if TargetVersion > CurrentVersion:\n')
         Requirements.write(f'      if CurrentVersion == "3.10.0":\n')
         Requirements.write(f'         ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n')

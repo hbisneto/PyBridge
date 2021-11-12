@@ -1,4 +1,4 @@
-﻿## ErrorList File.
+﻿## ErrorList File
 ## This file contains events that's raised when the program must to stop
 
 class Raise():

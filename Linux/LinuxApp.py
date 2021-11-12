@@ -1,5 +1,5 @@
-## LinuxApp File.
-## This file is used to implement code used to run scripts for Linux.
+## LinuxApp File
+## This file is used to implement code used to run scripts for Linux
 
 from ErrorReport import ErrorList
 from Linux import Core

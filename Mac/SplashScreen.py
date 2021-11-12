@@ -1,4 +1,4 @@
-## SplashScreen File.
+## SplashScreen File
 ## This file contains information about your project
 
 import getpass
