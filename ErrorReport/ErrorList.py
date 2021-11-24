@@ -42,6 +42,11 @@ def InvalidOption():
    print(f'>> You typed an invalid option.\n>> Running the program again!')
    print("="*80)
 
+def ProjectsLoadFail():
+   print("="*80)
+   print(f'>> ERROR: Couldn`t load projects...')
+   print("="*80)
+
 def BackupFail():
    print("="*80)
    print(">> BACKUP CREATION FAILED!")

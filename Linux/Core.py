@@ -10,7 +10,6 @@ from datetime import datetime
 from ErrorReport import ErrorList
 from Linux import FileSystem
 
-PythonExtension = ".py"
 ProjectType = ""
 ProjectOption = 0
 TweetStr = "{Tweet}"
@@ -119,9 +118,9 @@ def ProjOptions():
     ## Create Local Library (Inside all OS Modules)
     def CreateLib(AppliesTo):
         LibName = str(input(">>[!] Type the Lib name: "))
-        LinuxLibLocation = f'{AppliesTo}/Linux/{LibName}{PythonExtension}'
-        MacLibLocation = f'{AppliesTo}/Mac/{LibName}{PythonExtension}'
-        WindowsLibLocation = f'{AppliesTo}/Windows/{LibName}{PythonExtension}'
+        LinuxLibLocation = f'{AppliesTo}/Linux/{LibName}{FileSystem.PythonExtension}'
+        MacLibLocation = f'{AppliesTo}/Mac/{LibName}{FileSystem.PythonExtension}'
+        WindowsLibLocation = f'{AppliesTo}/Windows/{LibName}{FileSystem.PythonExtension}'
 
         try:
             with codecs.open(LinuxLibLocation, "w", "utf-8-sig") as LocalLib:
@@ -140,9 +139,9 @@ def ProjOptions():
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
                 LocalLib.close()
-            print(f'>> [100%] Created Linux Library: "{LibName}{PythonExtension}"')
+            print(f'>> [100%] Created Linux Library: "{LibName}{FileSystem.PythonExtension}"')
         except:
-            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Linux" module')
+            print(f'>> [!] Skipped creation of "{LibName}{FileSystem.PythonExtension}" in "Linux" module')
 
         try:
             with codecs.open(MacLibLocation, "w", "utf-8-sig") as LocalLib:
@@ -161,9 +160,9 @@ def ProjOptions():
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
                 LocalLib.close()
-            print(f'>> [100%] Created Mac Library: "{LibName}{PythonExtension}"')
+            print(f'>> [100%] Created Mac Library: "{LibName}{FileSystem.PythonExtension}"')
         except:
-            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Mac" module')
+            print(f'>> [!] Skipped creation of "{LibName}{FileSystem.PythonExtension}" in "Mac" module')
 
         try:
             with codecs.open(WindowsLibLocation, "w", "utf-8-sig") as LocalLib:
@@ -182,9 +181,9 @@ def ProjOptions():
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
                 LocalLib.close()
-            print(f'>> [100%] Created Windows Library: "{LibName}{PythonExtension}"')
+            print(f'>> [100%] Created Windows Library: "{LibName}{FileSystem.PythonExtension}"')
         except:
-            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Windows" module')
+            print(f'>> [!] Skipped creation of "{LibName}{FileSystem.PythonExtension}" in "Windows" module')
 
     ## Create Local Module (Inside all OS Modules)
     def CreateMod(AppliesTo):
@@ -214,7 +213,7 @@ def ProjOptions():
     ## Create an Universal Library (Inside the root of project)
     def CreateUniversalLib(AppliesTo):
         LibName = str(input(">>[!] Type the Lib name: "))
-        LibFileLocation = f'{AppliesTo}/{LibName}{PythonExtension}'
+        LibFileLocation = f'{AppliesTo}/{LibName}{FileSystem.PythonExtension}'
 
         try:
             with codecs.open(LibFileLocation, "w", "utf-8-sig") as UniversalLib:
@@ -235,9 +234,9 @@ def ProjOptions():
                 UniversalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 UniversalLib.write(f'Main()')
                 UniversalLib.close()
-            print(f'>> [100%] Created Library: "{LibName}{PythonExtension}"')
+            print(f'>> [100%] Created Library: "{LibName}{FileSystem.PythonExtension}"')
         except:
-            print(f'>> [!] Could not create "{LibName}{PythonExtension}" inside root of project...')
+            print(f'>> [!] Could not create "{LibName}{FileSystem.PythonExtension}" inside root of project...')
 
     ## Create an Universal Module (Inside the root of project)
     def CreateUniversalMod(AppliesTo):

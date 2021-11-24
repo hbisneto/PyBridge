@@ -6,7 +6,7 @@ from datetime import datetime
 
 CurrentYear = datetime.now().year
 SoftwareName = "PyBridge"
-Version = "BETA 9"
+Version = "1.1"
 CopyrightName = "Heitor Bisneto"
 
 Now = datetime.now()
