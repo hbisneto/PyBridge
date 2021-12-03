@@ -19,6 +19,12 @@ MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
 
+### PyBridge 1.1 implementation ###
+def MakeZip(MyZip):
+    print(">> Making ZIP File <<")
+    shutil.make_archive(MyZip, 'zip', MyZip)
+### PyBridge 1.1 implementation ###
+
 def Backup():
     Day = datetime.now().day
     Month = datetime.now().month
@@ -39,6 +45,11 @@ def Backup():
         print("="*80)
         shutil.copytree(Source, Target)
         print("[PyBridge]: Backup creation done!")
+
+        ### PyBridge 1.1 implementation ###
+        MakeZip(MyZip = Target)
+        ### PyBridge 1.1 implementation ###
+
         End = datetime.now()
         Time = End - Start
         print(f'>> Operation completed in: {Time}')
