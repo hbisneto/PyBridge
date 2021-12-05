@@ -6,7 +6,7 @@ from datetime import datetime
 
 CurrentYear = datetime.now().year
 SoftwareName = "PyBridge"
-Version = "BETA 9"
+Version = "1.1"
 CopyrightName = "Heitor Bisneto"
 
 Now = datetime.now()
@@ -47,7 +47,7 @@ def Salutation():
         print(f'Hello {UserName}. Good {DayPeriod}! - {TimeAccess}')
         print("="*80)
     else:
-        print(f'Hello {UserName}. Nice to see you again! - {TimeAccess}')
+        print(f'Hello {UserName}. Nice to see you! - {TimeAccess}')
         print("="*80)
         
 Main()

@@ -10,7 +10,6 @@ from datetime import datetime
 from ErrorReport import ErrorList
 from Linux import FileSystem
 
-PythonExtension = ".py"
 ProjectType = ""
 ProjectOption = 0
 TweetStr = "{Tweet}"
@@ -28,10 +27,14 @@ def Backup():
     Minute = datetime.now().minute
     Second = datetime.now().second
 
-    DateFormat = f'PB_BKP_{Day}_{Month}_{Year}-{Hour}_{Minute}_{Second}'
+    DateFormat = f'PyBridge_BKP_{Day}_{Month}_{Year}-{Hour}_{Minute}_{Second}'
 
     Source = f'{FileSystem.ProjectsRepo}'
     Target = f'{FileSystem.CurrentPath}/Backup/{DateFormat}'
+
+    def MakeZip(MyZip):
+        print("[Backup Option]: Creating compressed file...")
+        shutil.make_archive(MyZip, 'zip', MyZip)
 
     print("="*80)
     try:
@@ -43,6 +46,19 @@ def Backup():
         End = datetime.now()
         Time = End - Start
         print(f'>> Operation completed in: {Time}')
+
+        BKPInput = str(input("[Backup Option]: Do you want to create a compressed backup file? [Y/N]: "))
+        if BKPInput == "Y" or BKPInput == "y" or BKPInput == "1":
+            MakeZip(MyZip = Target)
+            print("[Backup Option]: Compressed file creation done!")
+            try:
+                shutil.rmtree(Target)
+            except OSError as DirError:
+                ErrorList.CompressBackupFail()
+                print(DirError)
+        else:
+            print(f'>> Operation completed in: {Time}')
+            
     except shutil.Error as e:
         ErrorList.BackupFail()
         print("-"*20)
@@ -119,9 +135,9 @@ def ProjOptions():
     ## Create Local Library (Inside all OS Modules)
     def CreateLib(AppliesTo):
         LibName = str(input(">>[!] Type the Lib name: "))
-        LinuxLibLocation = f'{AppliesTo}/Linux/{LibName}{PythonExtension}'
-        MacLibLocation = f'{AppliesTo}/Mac/{LibName}{PythonExtension}'
-        WindowsLibLocation = f'{AppliesTo}/Windows/{LibName}{PythonExtension}'
+        LinuxLibLocation = f'{AppliesTo}/Linux/{LibName}{FileSystem.PythonExtension}'
+        MacLibLocation = f'{AppliesTo}/Mac/{LibName}{FileSystem.PythonExtension}'
+        WindowsLibLocation = f'{AppliesTo}/Windows/{LibName}{FileSystem.PythonExtension}'
 
         try:
             with codecs.open(LinuxLibLocation, "w", "utf-8-sig") as LocalLib:
@@ -140,9 +156,9 @@ def ProjOptions():
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
                 LocalLib.close()
-            print(f'>> [100%] Created Linux Library: "{LibName}{PythonExtension}"')
+            print(f'>> [100%] Created Linux Library: "{LibName}{FileSystem.PythonExtension}"')
         except:
-            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Linux" module')
+            print(f'>> [!] Skipped creation of "{LibName}{FileSystem.PythonExtension}" in "Linux" module')
 
         try:
             with codecs.open(MacLibLocation, "w", "utf-8-sig") as LocalLib:
@@ -161,9 +177,9 @@ def ProjOptions():
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
                 LocalLib.close()
-            print(f'>> [100%] Created Mac Library: "{LibName}{PythonExtension}"')
+            print(f'>> [100%] Created Mac Library: "{LibName}{FileSystem.PythonExtension}"')
         except:
-            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Mac" module')
+            print(f'>> [!] Skipped creation of "{LibName}{FileSystem.PythonExtension}" in "Mac" module')
 
         try:
             with codecs.open(WindowsLibLocation, "w", "utf-8-sig") as LocalLib:
@@ -182,9 +198,9 @@ def ProjOptions():
                 LocalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 LocalLib.write(f'Main()')
                 LocalLib.close()
-            print(f'>> [100%] Created Windows Library: "{LibName}{PythonExtension}"')
+            print(f'>> [100%] Created Windows Library: "{LibName}{FileSystem.PythonExtension}"')
         except:
-            print(f'>> [!] Skipped creation of "{LibName}{PythonExtension}" in "Windows" module')
+            print(f'>> [!] Skipped creation of "{LibName}{FileSystem.PythonExtension}" in "Windows" module')
 
     ## Create Local Module (Inside all OS Modules)
     def CreateMod(AppliesTo):
@@ -214,7 +230,7 @@ def ProjOptions():
     ## Create an Universal Library (Inside the root of project)
     def CreateUniversalLib(AppliesTo):
         LibName = str(input(">>[!] Type the Lib name: "))
-        LibFileLocation = f'{AppliesTo}/{LibName}{PythonExtension}'
+        LibFileLocation = f'{AppliesTo}/{LibName}{FileSystem.PythonExtension}'
 
         try:
             with codecs.open(LibFileLocation, "w", "utf-8-sig") as UniversalLib:
@@ -235,9 +251,9 @@ def ProjOptions():
                 UniversalLib.write(f'   print(">> Custom Universal Library")\n\n')
                 UniversalLib.write(f'Main()')
                 UniversalLib.close()
-            print(f'>> [100%] Created Library: "{LibName}{PythonExtension}"')
+            print(f'>> [100%] Created Library: "{LibName}{FileSystem.PythonExtension}"')
         except:
-            print(f'>> [!] Could not create "{LibName}{PythonExtension}" inside root of project...')
+            print(f'>> [!] Could not create "{LibName}{FileSystem.PythonExtension}" inside root of project...')
 
     ## Create an Universal Module (Inside the root of project)
     def CreateUniversalMod(AppliesTo):
@@ -533,7 +549,6 @@ def CreateSystemRequirements():
         Requirements.write(f'         ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)\n')
         Requirements.write(f'   elif TargetVersion < CurrentVersion:\n')
         Requirements.write(f'      ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n')
-
         Requirements.close()
 
 def CreateLinuxFile():
