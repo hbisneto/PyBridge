@@ -52,6 +52,15 @@ def BackupFail():
    print(">> BACKUP CREATION FAILED!")
    print("="*80)
    print("[!]" * 20)
-   print(f'>> PyBridge could not create backup for your project folder')
+   print(f'>> PyBridge could not create backup for your projects folder')
+   print(f'>> Try again later.')
+   print("[!]" * 20)
+
+def CompressBackupFail():
+   print("="*80)
+   print(">> COMPRESSED FILE CREATION FAILED!")
+   print("="*80)
+   print("[!]" * 20)
+   print(f'>> PyBridge could not create a compressed file from your backup')
    print(f'>> Try again later.')
    print("[!]" * 20)

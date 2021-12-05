@@ -47,7 +47,7 @@ def Salutation():
         print(f'Hello {UserName}. Good {DayPeriod}! - {TimeAccess}')
         print("="*80)
     else:
-        print(f'Hello {UserName}. Nice to see you again! - {TimeAccess}')
+        print(f'Hello {UserName}. Nice to see you! - {TimeAccess}')
         print("="*80)
         
 Main()

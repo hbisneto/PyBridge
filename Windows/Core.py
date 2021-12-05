@@ -19,12 +19,6 @@ MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
 
-### PyBridge 1.1 implementation ###
-def MakeZip(MyZip):
-    print(">> Making ZIP File <<")
-    shutil.make_archive(MyZip, 'zip', MyZip)
-### PyBridge 1.1 implementation ###
-
 def Backup():
     Day = datetime.now().day
     Month = datetime.now().month
@@ -33,10 +27,14 @@ def Backup():
     Minute = datetime.now().minute
     Second = datetime.now().second
 
-    DateFormat = f'PB_BKP_{Day}_{Month}_{Year}-{Hour}_{Minute}_{Second}'
+    DateFormat = f'PyBridge_BKP_{Day}_{Month}_{Year}-{Hour}_{Minute}_{Second}'
 
     Source = f'{FileSystem.ProjectsRepo}'
     Target = f'{FileSystem.CurrentPath}/Backup/{DateFormat}'
+
+    def MakeZip(MyZip):
+        print("[Backup Option]: Creating compressed file...")
+        shutil.make_archive(MyZip, 'zip', MyZip)
 
     print("="*80)
     try:
@@ -45,14 +43,22 @@ def Backup():
         print("="*80)
         shutil.copytree(Source, Target)
         print("[PyBridge]: Backup creation done!")
-
-        ### PyBridge 1.1 implementation ###
-        MakeZip(MyZip = Target)
-        ### PyBridge 1.1 implementation ###
-
         End = datetime.now()
         Time = End - Start
         print(f'>> Operation completed in: {Time}')
+
+        BKPInput = str(input("[Backup Option]: Do you want to create a compressed backup file? [Y/N]: "))
+        if BKPInput == "Y" or BKPInput == "y" or BKPInput == "1":
+            MakeZip(MyZip = Target)
+            print("[Backup Option]: Compressed file creation done!")
+            try:
+                shutil.rmtree(Target)
+            except OSError as DirError:
+                ErrorList.CompressBackupFail()
+                print(DirError)
+        else:
+            print(f'>> Operation completed in: {Time}')
+            
     except shutil.Error as e:
         ErrorList.BackupFail()
         print("-"*20)
@@ -543,7 +549,6 @@ def CreateSystemRequirements():
         Requirements.write(f'         ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)\n')
         Requirements.write(f'   elif TargetVersion < CurrentVersion:\n')
         Requirements.write(f'      ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n')
-
         Requirements.close()
 
 def CreateLinuxFile():
