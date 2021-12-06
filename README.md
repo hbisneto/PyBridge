@@ -213,12 +213,7 @@ The following libraries were used to implement the tool:
 │ ├── Mac.py
 │ ├── MacApp.py
 │ ├── FileSystem.py
-│ └── SplashScreen.pTipos de tradução
-Tradução de textos
-Texto de origem
-917 / 5000
-Resultados de tradução
-y
+│ └── SplashScreen.py
 ├── Windows
 │ ├── Windows.py
 │ ├── WindowsApp.py
