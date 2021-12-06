@@ -53,7 +53,7 @@ The following modules are part of PyBridge:
 Below is a list of examples of Python programs created using PyBridge
 
 - **GetInfo:** Get the filename, creation date and modification date of a file anywhere, on any platform.
-<br>[GetInfo: PyBridge Sample Application](https://github.com/hbisneto/JoKenPo)
+<br>[GetInfo: PyBridge Sample Application](https://github.com/hbisneto/GetInfo/)
 
 - **JoKenPo:** Famous game known as "Rock, Paper and Scissors".
 <br>[JoKenPo: PyBridge Sample Application](https://github.com/hbisneto/JoKenPo)
