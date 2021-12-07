@@ -471,7 +471,20 @@ def CreateReadmeFile():
     print("> Creating 'README' File...")
     with codecs.open(EnvironFolders.ReadmeFile, "w", "utf-8-sig") as Readme:
         Readme.write(f'# {Explorer.ProjectName}\n\n')
-        Readme.write(f'This project was created using PyBridge\n')
+        Readme.write(f'This project was created using [PyBridge](https://github.com/hbisneto/PyBridge)\n\n')
+        Readme.write(f'## Requirements\n\n')
+        Readme.write(f'{Explorer.ProjectName} requires Python {MajorVersion}.{MinorVersion}.{BuildVersion} or later to run\n\n')
+        Readme.write(f'## Installation\n\n')
+        Readme.write(f'```\n')
+        Readme.write(f'pip install {Explorer.ProjectName}\n')
+        Readme.write(f'```\n\n')
+        Readme.write(f'## External Links\n\n')
+        Readme.write(f'Here is some external links that you can use in your `README.md` file.\n\n')
+        Readme.write(f'- [First Link](https://google.com)\n')
+        Readme.write(f'- [Second Link](https://google.com)\n')
+        Readme.write(f'- [Third Link](https://google.com)\n\n')
+        Readme.write(f'#\n\n')
+        Readme.write(f'Copyright © {datetime.now().year} {getpass.getuser().capitalize()}. All rights reserved.')
         Readme.close()
 
 def CreateErrorList():
