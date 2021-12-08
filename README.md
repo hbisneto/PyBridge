@@ -195,8 +195,10 @@ The following libraries were used to implement the tool:
 
 > The use of the tweepy library is optional and only mandatory in cases of "Twitter Application Project" created in PyBridge.
 
+#
+
 * **requests:** Requests is an elegant and simple HTTP library for Python, built for human beings.
-    - Read more about the ```requests ``` library at [Requests: HTTP for Humans™](https://docs.python-requests.org/en/latest/)
+    - Read more about the ```requests``` library at [Requests: HTTP for Humans™](https://docs.python-requests.org/en/latest/)
 
 > The use of the requests library is mandatory in cases of "Download Sample Projects" on PyBridge.
 
