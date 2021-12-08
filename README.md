@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 07/12/2021
+###### Last repository update: 08/12/2021
 
 With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
 
@@ -175,6 +175,9 @@ The following libraries were used to implement the tool:
 * **os:** This module provides a simple way to use functionality that is OS dependent.
     - Read more about the ```os``` library at [os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
 
+* **pathlib:** This module offers classes representing filesystem paths with semantics appropriate for different operating systems. Path classes are divided between pure paths, which provide purely computational operations without I/O, and concrete paths, which inherit from pure paths but also provide I/O operations.
+    - Read more about the ```pathlib ``` library at [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
+
 * **shutil:** The shutil module provides several high-level operations on files and file collections. In particular, functions are provided that support copying and removing files. For operations on individual files, see also the **os** module.
     - Read more about the ```shutil``` library in [shutil — High-level file operations](https://docs.python.org/3/library/shutil.html)
 
@@ -191,6 +194,11 @@ The following libraries were used to implement the tool:
     - Read more about the ```tweepy``` library at [tweepy — An easy-to-use Python library for accessing the Twitter API](https://docs.tweepy.org/en/stable/)
 
 > The use of the tweepy library is optional and only mandatory in cases of "Twitter Application Project" created in PyBridge.
+
+* **requests:** Requests is an elegant and simple HTTP library for Python, built for human beings.
+    - Read more about the ```requests ``` library at [Requests: HTTP for Humans™](https://docs.python-requests.org/en/latest/)
+
+> The use of the requests library is mandatory in cases of "Download Sample Projects" on PyBridge.
 
 #
 
