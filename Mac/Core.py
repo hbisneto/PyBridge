@@ -4,11 +4,13 @@
 import codecs
 import getpass
 import os
+import requests ## NEW TO THIS VERSION (IMPLEMENT IN README)
 import shutil
 import sys
 from datetime import datetime
 from ErrorReport import ErrorList
 from Mac import FileSystem
+from pathlib import Path ## NEW TO THIS VERSION (IMPLEMENT IN README)
 
 ProjectType = ""
 ProjectOption = 0
@@ -1110,6 +1112,92 @@ def CreateTokensFile():
         Tokens.write(f'## Create an API Object\n')
         Tokens.write(f'Twitter = tweepy.API(Auth, wait_on_rate_limit = True)')
         Tokens.close()
+
+class DownloadSample():
+    def GetInfo(self):
+        print("="*80)
+        print(">> DOWNLOADING GETINFO SAMPLE... <<")
+        print("="*80)
+        print("[Status]: Downloading 'GetInfo'... <<")
+        print("="*80)
+
+        try:
+            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
+            print('[Status]: Verifying repository to download...')
+        except:
+            print('[Status]: Verifying repository to download...')
+
+        try:
+            os.mkdir(f'{FileSystem.CurrentPath}/Sample/GetInfo/')
+            print("[Status]: Starting Download...")
+        except:
+            print("[Status]: Starting Download...")
+            print("[Status]: The project seems to be in the path, already!")
+
+        URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
+        From = f'{FileSystem.CurrentPath}/main.zip'
+        To = f'{FileSystem.CurrentPath}/Sample/GetInfo/main.zip'
+
+        ServerResponse = requests.get(URL, stream = True)
+        FileName = URL.split("/")[-1]
+        with open(FileName, 'wb') as f:
+            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
+                if Chunk:
+                    f.write(Chunk)
+
+        print("[Status]: 'GetInfo' download 100% completed!")
+        print("[Status]: Verifying 'GetInfo'...")
+        try:
+            Path(From).rename(To)
+            print("[Done]: 'GetInfo' download process complete!")
+            print("="*80)
+        except:
+            Path(From).rename(To)
+            print("[Done]: 'GetInfo' download process complete!")
+            print("="*80)
+
+    def Jokenpo(self):
+        print("="*80)
+        print(">> DOWNLOADING JOKENPO SAMPLE... <<")
+        print("="*80)
+        print("[Status]: Downloading 'JoKenPo'... <<")
+        print("="*80)
+
+        try:
+            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
+            print('[Status]: Verifying repository to download...')
+        except:
+            print('[Status]: Verifying repository to download...')
+
+        try:
+            os.mkdir(f'{FileSystem.CurrentPath}/Sample/JoKenPo/')
+            print("[Status]: Starting Download...")
+        except:
+            print("[Status]: Starting Download...")
+            print("[Status]: The project seems to be in the path, already!")
+            
+
+        URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
+        From = f'{FileSystem.CurrentPath}/main.zip'
+        To = f'{FileSystem.CurrentPath}/Sample/JoKenPo/main.zip'
+
+        ServerResponse = requests.get(URL, stream = True)
+        FileName = URL.split("/")[-1]
+        with open(FileName, 'wb') as f:
+            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
+                if Chunk:
+                    f.write(Chunk)
+
+        print("[Status]: 'JoKenPo' download 100% completed!")
+        print("[Status]: Verifying 'GetInfo'...")
+        try:
+            Path(From).rename(To)
+            print("[Done]: 'JoKenPo' download process complete!")
+            print("="*80)
+        except:
+            Path(From).rename(To)
+            print("[Done]: 'JoKenPo' download process complete!")
+            print("="*80)
 
 def CreateBridge():
     print("="*80)

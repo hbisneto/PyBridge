@@ -4,11 +4,12 @@
 from ErrorReport import ErrorList
 from Linux import Core
 
-de Main():
+def Main():
     BridgeLoop = True
     Core.VerifyFolders()
 
     while BridgeLoop == True:
+        print()
         print("="*80)
         print(">> MENU <<")
         print("="*80)
@@ -17,6 +18,7 @@ de Main():
         print(">>[3] - Create Twitter Application Project")
         print(">>[4] - Projects List")
         print(">>[5] - Backup Projects")
+        print(">>[6] - Sample Projects...")
         print(">>[0] - Quit PyBridge")
         print()
         Opc = int(input(">>[!] Type The Item Number: "))
@@ -50,6 +52,25 @@ de Main():
             
         elif Opc == 5:
             Core.Backup()
+
+        elif Opc == 6:
+            print("="*80)
+            print(">> DOWNLOAD SAMPLE CODE <<")
+            print("="*80)
+            print('>>[1] - Download "GetInfo"...')
+            print('>>[2] - Download "JoKenPo"')
+            print('>>[0] - << Go Back')
+            print()
+            UserOption = int(input('>>[!] Type The Item Number: '))
+
+            if UserOption == 0:
+                print("="*80)
+            elif UserOption == 1:
+                Core.DownloadSample().GetInfo()
+            elif UserOption == 2:
+                Core.DownloadSample().Jokenpo()
+            else:
+                ErrorList.InvalidOption()
 
         else:
             ErrorList.InvalidOption()
