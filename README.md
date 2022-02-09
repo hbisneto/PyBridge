@@ -274,4 +274,4 @@ For information about update logs, access [RELEASES](https://github.com/hbisneto
 
 #
 
-Copyright © 2021 Heitor Bisneto. All rights reserved.
+Copyright © 2022 Heitor Bisneto. All rights reserved.
