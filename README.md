@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 08/12/2021
+###### Last repository update: 10/02/2022
 
 With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
 
@@ -274,4 +274,4 @@ For information about update logs, access [RELEASES](https://github.com/hbisneto
 
 #
 
-Copyright © 2021 Heitor Bisneto. All rights reserved.
+Copyright © 2021 - 2022 Heitor Bisneto. All rights reserved.

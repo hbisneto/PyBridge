@@ -24,16 +24,16 @@ class Raise():
          raise Exception(f'>> This application only can run on Python {TargetVersion}. [Current Version: {CurrentVersion}]')
 
 def ImportLib():
-   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")
+   raise RuntimeError("\n\n\n>> Could not import library: Check if the libraries are installed and run the program again.")
 
 def FileExists():
-   raise RuntimeError(">> The file already exists!")
+   raise RuntimeError("\n\n\n>> The file already exists!")
 
 def DirectoryExists():
-   raise RuntimeError(">> The directory already exists!")
+   raise RuntimeError("\n\n\n>> The directory already exists!")
 
 def InputFormat():
-   print("\n\n>> Your input is not valid: Check your input and try again\n\n")
+   print("\n\n\n>> Your input is not valid: Check your input and try again\n\n")
 
 def InvalidOption():
    print("="*80)
@@ -51,16 +51,16 @@ def BackupFail():
    print("="*80)
    print(">> BACKUP CREATION FAILED!")
    print("="*80)
-   print("[!]" * 20)
+   print("[=]" * 20)
    print(f'>> PyBridge could not create backup for your projects folder')
    print(f'>> Try again later.')
-   print("[!]" * 20)
+   print("[=]" * 20)
 
 def CompressBackupFail():
    print("="*80)
    print(">> COMPRESSED FILE CREATION FAILED!")
    print("="*80)
-   print("[!]" * 20)
+   print("[=]" * 20)
    print(f'>> PyBridge could not create a compressed file from your backup')
    print(f'>> Try again later.')
-   print("[!]" * 20)
+   print("[=]" * 20)
