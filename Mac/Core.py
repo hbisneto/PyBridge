@@ -11,6 +11,7 @@ from datetime import datetime
 from ErrorReport import ErrorList
 from Mac import FileSystem
 from pathlib import Path ## NEW TO THIS VERSION (IMPLEMENT IN README)
+from zipfile import ZipFile
 
 ProjectType = ""
 ProjectOption = 0
@@ -1155,6 +1156,11 @@ class DownloadSample():
             Path(From).rename(To)
             print("[Done]: 'GetInfo' download process complete!")
             print("="*80)
+        
+        with ZipFile(To, 'r') as zipObj:
+            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/GetInfo/main')
+        print("[Done]: 'main' extraction process complete!")
+        print("="*80)
 
     def Jokenpo(self):
         print("="*80)
@@ -1198,6 +1204,11 @@ class DownloadSample():
             Path(From).rename(To)
             print("[Done]: 'JoKenPo' download process complete!")
             print("="*80)
+        
+        with ZipFile(To, 'r') as zipObj:
+            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/JoKenPo/main')
+        print("[Done]: 'main' extraction process complete!")
+        print("="*80)
 
 def CreateBridge():
     print("="*80)
