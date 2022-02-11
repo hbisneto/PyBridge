@@ -185,7 +185,7 @@ The following libraries were used to implement the tool:
     - Read more about the ```sys``` library at [sys — System-specific parameters and functions](https://docs.python.org/en-us/3/library/sys.html)
 
 * **zipfile:** The ZIP file format is a common archive and compression standard. This module provides tools to create, read, write, append, and list a ZIP file. Any advanced use of this module will require an understanding of the format, as defined in [PKZIP Application Note](https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT).
-    - Read more about the ```zipfile``` library at [zipfile — Work with ZIP archives¶](https://docs.python.org/3/library/zipfile.html)
+    - Read more about the ```zipfile``` library at [zipfile — Work with ZIP archives](https://docs.python.org/3/library/zipfile.html)
 
 #
 
