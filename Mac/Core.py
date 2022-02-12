@@ -1231,9 +1231,6 @@ def CreateBridge():
         ErrorList.FileExists()
         
     ### Project Structure ###
-    # EnvironFolders()
-    # CreateArch()
-    # CreateFiles()
     CreateEnvironment()
     ## Init File
     CreateInitFile()

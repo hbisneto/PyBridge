@@ -12,7 +12,7 @@ if Require == True:
    ## Target System
    TargetMajor = 3
    TargetMinor = 9
-   TargetBuild = 0
+   TargetBuild = 10
    TargetVersion = f'{TargetMajor}.{TargetMinor}.{TargetBuild}'
    ## Target System
 
