@@ -4,13 +4,14 @@
 import codecs
 import getpass
 import os
-import requests ## NEW TO THIS VERSION (IMPLEMENT IN README)
+import requests
 import shutil
 import sys
 from datetime import datetime
 from ErrorReport import ErrorList
 from Linux import FileSystem
-from pathlib import Path ## NEW TO THIS VERSION (IMPLEMENT IN README)
+from pathlib import Path
+from zipfile import ZipFile
 
 ProjectType = ""
 ProjectOption = 0
@@ -20,6 +21,102 @@ MajorVersion = sys.version_info[0]
 MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
+
+class DownloadSample():
+    def GetInfo(self):
+        print("="*80)
+        print(">> DOWNLOADING GETINFO SAMPLE... <<")
+        print("="*80)
+        print("[Status]: Downloading 'GetInfo'... <<")
+        print("="*80)
+
+        try:
+            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
+            print('[Status]: Verifying repository to download...')
+        except:
+            print('[Status]: Verifying repository to download...')
+
+        try:
+            os.mkdir(f'{FileSystem.CurrentPath}/Sample/GetInfo/')
+            print("[Status]: Starting Download...")
+        except:
+            print("[Status]: Starting Download...")
+            print("[Status]: The project seems to be in the path, already!")
+
+        URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
+        From = f'{FileSystem.CurrentPath}/main.zip'
+        To = f'{FileSystem.CurrentPath}/Sample/GetInfo/main.zip'
+
+        ServerResponse = requests.get(URL, stream = True)
+        FileName = URL.split("/")[-1]
+        with open(FileName, 'wb') as f:
+            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
+                if Chunk:
+                    f.write(Chunk)
+
+        print("[Status]: 'GetInfo' download 100% completed!")
+        print("[Status]: Verifying 'GetInfo'...")
+        try:
+            Path(From).rename(To)
+            print("[Done]: 'GetInfo' download process complete!")
+            print("="*80)
+        except:
+            Path(From).rename(To)
+            print("[Done]: 'GetInfo' download process complete!")
+            print("="*80)
+        
+        with ZipFile(To, 'r') as zipObj:
+            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/GetInfo/main')
+        print("[Done]: 'main' extraction process complete!")
+        print("="*80)
+
+    def Jokenpo(self):
+        print("="*80)
+        print(">> DOWNLOADING JOKENPO SAMPLE... <<")
+        print("="*80)
+        print("[Status]: Downloading 'JoKenPo'... <<")
+        print("="*80)
+
+        try:
+            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
+            print('[Status]: Verifying repository to download...')
+        except:
+            print('[Status]: Verifying repository to download...')
+
+        try:
+            os.mkdir(f'{FileSystem.CurrentPath}/Sample/JoKenPo/')
+            print("[Status]: Starting Download...")
+        except:
+            print("[Status]: Starting Download...")
+            print("[Status]: The project seems to be in the path, already!")
+            
+
+        URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
+        From = f'{FileSystem.CurrentPath}/main.zip'
+        To = f'{FileSystem.CurrentPath}/Sample/JoKenPo/main.zip'
+
+        ServerResponse = requests.get(URL, stream = True)
+        FileName = URL.split("/")[-1]
+        with open(FileName, 'wb') as f:
+            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
+                if Chunk:
+                    f.write(Chunk)
+
+        print("[Status]: 'JoKenPo' download 100% completed!")
+        print("[Status]: Verifying 'GetInfo'...")
+        try:
+            Path(From).rename(To)
+            print("[Done]: 'JoKenPo' download process complete!")
+            print("="*80)
+        except:
+            Path(From).rename(To)
+            print("[Done]: 'JoKenPo' download process complete!")
+            print("="*80)
+        
+        with ZipFile(To, 'r') as zipObj:
+            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/JoKenPo/main')
+        print("[Done]: 'main' extraction process complete!")
+        print("="*80)
 
 def Backup():
     Day = datetime.now().day
@@ -77,12 +174,6 @@ def Backup():
 def Explorer():
     ProjectName = str()
     FolderLocation = str()
-    
-def CreationSuccess():
-    print("="*80)
-    print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
-    print("="*80)
-    print()
 
 def VerifyFolders():
     def BridgeFolder():
@@ -110,9 +201,7 @@ def ProjectList():
             if '.DS_Store' in ProjList:
                 ProjList.remove('.DS_Store')
     except:
-        print("="*80)
-        print(f'>> ERROR: Couldn`t load projects...')
-        print("="*80)
+        ErrorList.ProjectsLoadFail()
     
     BridgeLoop = True
     while BridgeLoop == True:
@@ -369,71 +458,77 @@ def ProjOptions():
     except:
         ErrorList.InvalidOption()
 
-def CreateArch():
-    os.mkdir(EnvironFolders.ErrorReportPath)
-    os.mkdir(EnvironFolders.LinuxPath)
-    os.mkdir(EnvironFolders.MacPath)
-    os.mkdir(EnvironFolders.WindowsPath)
+def CreateEnvironment():
+    ## Environment Folders
+    CreateEnvironment.ErrorReportPath = f'{Explorer.FolderLocation}ErrorReport/'
+    CreateEnvironment.LinuxPath = f'{Explorer.FolderLocation}Linux/'
+    CreateEnvironment.MacPath = f'{Explorer.FolderLocation}Mac/'
+    CreateEnvironment.WindowsPath = f'{Explorer.FolderLocation}Windows/'
 
-def CreateFiles():
     ## Environment Files
-    UserAppName = open(EnvironFolders.UserAppName, "w")
-    ReadmeFile = open(EnvironFolders.ReadmeFile, "w")
-    ErrorListFile = open(EnvironFolders.ErrorListFile, "w")
-    SystemRequirements = open(EnvironFolders.SystemRequirements, "w")
+    CreateEnvironment.UserAppName = f'{Explorer.FolderLocation}__init__.py'
+    CreateEnvironment.TokensFile = f'{Explorer.FolderLocation}Tokens.py'
+    CreateEnvironment.ReadmeFile = f'{Explorer.FolderLocation}README.md'
+    CreateEnvironment.ErrorListFile = f'{CreateEnvironment.ErrorReportPath}ErrorList.py'
+    CreateEnvironment.SystemRequirements = f'{CreateEnvironment.ErrorReportPath}SystemRequirements.py'
     
     ## Linux
-    LinuxFS = open(EnvironFolders.LinuxFS, "w")
-    LinuxFile = open(EnvironFolders.LinuxFile, "w")
-    LinuxAppFile = open(EnvironFolders.LinuxAppFile, "w")
-    SplashLinux = open(EnvironFolders.SplashLinux, "w")
-
+    CreateEnvironment.LinuxFS = f'{CreateEnvironment.LinuxPath}FileSystem.py'
+    CreateEnvironment.LinuxFile = f'{CreateEnvironment.LinuxPath}Linux.py'
+    CreateEnvironment.LinuxAppFile = f'{CreateEnvironment.LinuxPath}LinuxApp.py'
+    CreateEnvironment.SplashLinux = f'{CreateEnvironment.LinuxPath}SplashScreen.py'
+    
     ## Mac
-    MacFS = open(EnvironFolders.MacFS, "w")
-    MacFile = open(EnvironFolders.MacFile, "w")
-    MacAppFile = open(EnvironFolders.MacAppFile, "w")
-    SplashMac = open(EnvironFolders.SplashMac, "w")
+    CreateEnvironment.MacFS = f'{CreateEnvironment.MacPath}FileSystem.py'
+    CreateEnvironment.MacFile = f'{CreateEnvironment.MacPath}Mac.py'
+    CreateEnvironment.MacAppFile = f'{CreateEnvironment.MacPath}MacApp.py'
+    CreateEnvironment.SplashMac = f'{CreateEnvironment.MacPath}SplashScreen.py'
 
     ## Windows
-    WindowsFS = open(EnvironFolders.WindowsFS, "w")
-    WindowsFile = open(EnvironFolders.WindowsFile, "w")
-    WindowsAppFile = open(EnvironFolders.WindowsAppFile, "w")
-    SplashWindows = open(EnvironFolders.SplashWindows, "w")
+    CreateEnvironment.WindowsFS = f'{CreateEnvironment.WindowsPath}FileSystem.py'
+    CreateEnvironment.WindowsFile = f'{CreateEnvironment.WindowsPath}Windows.py'
+    CreateEnvironment.WindowsAppFile = f'{CreateEnvironment.WindowsPath}WindowsApp.py'
+    CreateEnvironment.SplashWindows = f'{CreateEnvironment.WindowsPath}SplashScreen.py'
+
+    # Create Archtecture
+    try:
+        os.mkdir(CreateEnvironment.ErrorReportPath)
+        os.mkdir(CreateEnvironment.LinuxPath)
+        os.mkdir(CreateEnvironment.MacPath)
+        os.mkdir(CreateEnvironment.WindowsPath)
+    except:
+        print("="*80)
+        print(">> Preparing Project Architecture...")
+        print("="*80)
+        print(">> Project Architecture Created!")
+
+    # Create Files
+    ## Environment Files
+    UserAppName = open(CreateEnvironment.UserAppName, "w")
+    ReadmeFile = open(CreateEnvironment.ReadmeFile, "w")
+    ErrorListFile = open(CreateEnvironment.ErrorListFile, "w")
+    SystemRequirements = open(CreateEnvironment.SystemRequirements, "w")
+    
+    ## Linux
+    LinuxFS = open(CreateEnvironment.LinuxFS, "w")
+    LinuxFile = open(CreateEnvironment.LinuxFile, "w")
+    LinuxAppFile = open(CreateEnvironment.LinuxAppFile, "w")
+    SplashLinux = open(CreateEnvironment.SplashLinux, "w")
+
+    ## Mac
+    MacFS = open(CreateEnvironment.MacFS, "w")
+    MacFile = open(CreateEnvironment.MacFile, "w")
+    MacAppFile = open(CreateEnvironment.MacAppFile, "w")
+    SplashMac = open(CreateEnvironment.SplashMac, "w")
+
+    ## Windows
+    WindowsFS = open(CreateEnvironment.WindowsFS, "w")
+    WindowsFile = open(CreateEnvironment.WindowsFile, "w")
+    WindowsAppFile = open(CreateEnvironment.WindowsAppFile, "w")
+    SplashWindows = open(CreateEnvironment.SplashWindows, "w")
 
     if ProjectOption == 3:
-        TokensFile = open(EnvironFolders.TokensFile, "w")
-
-def EnvironFolders():
-    ## Environment Folders
-    EnvironFolders.ErrorReportPath = f'{Explorer.FolderLocation}ErrorReport/'
-    EnvironFolders.LinuxPath = f'{Explorer.FolderLocation}Linux/'
-    EnvironFolders.MacPath = f'{Explorer.FolderLocation}Mac/'
-    EnvironFolders.WindowsPath = f'{Explorer.FolderLocation}Windows/'
-
-    ## Environment Files
-    EnvironFolders.UserAppName = f'{Explorer.FolderLocation}__init__.py'
-    EnvironFolders.TokensFile = f'{Explorer.FolderLocation}Tokens.py'
-    EnvironFolders.ReadmeFile = f'{Explorer.FolderLocation}README.md'
-    EnvironFolders.ErrorListFile = f'{EnvironFolders.ErrorReportPath}ErrorList.py'
-    EnvironFolders.SystemRequirements = f'{EnvironFolders.ErrorReportPath}SystemRequirements.py'
-    
-    ## Linux
-    EnvironFolders.LinuxFS = f'{EnvironFolders.LinuxPath}FileSystem.py'
-    EnvironFolders.LinuxFile = f'{EnvironFolders.LinuxPath}Linux.py'
-    EnvironFolders.LinuxAppFile = f'{EnvironFolders.LinuxPath}LinuxApp.py'
-    EnvironFolders.SplashLinux = f'{EnvironFolders.LinuxPath}SplashScreen.py'
-    
-    ## Mac
-    EnvironFolders.MacFS = f'{EnvironFolders.MacPath}FileSystem.py'
-    EnvironFolders.MacFile = f'{EnvironFolders.MacPath}Mac.py'
-    EnvironFolders.MacAppFile = f'{EnvironFolders.MacPath}MacApp.py'
-    EnvironFolders.SplashMac = f'{EnvironFolders.MacPath}SplashScreen.py'
-
-    ## Windows
-    EnvironFolders.WindowsFS = f'{EnvironFolders.WindowsPath}FileSystem.py'
-    EnvironFolders.WindowsFile = f'{EnvironFolders.WindowsPath}Windows.py'
-    EnvironFolders.WindowsAppFile = f'{EnvironFolders.WindowsPath}WindowsApp.py'
-    EnvironFolders.SplashWindows = f'{EnvironFolders.WindowsPath}SplashScreen.py'
+        TokensFile = open(CreateEnvironment.TokensFile, "w")
 
 def CreateInitFile():
     ## Launcher Script
@@ -441,7 +536,7 @@ def CreateInitFile():
     print(f'>> {ProjectType} <<')
     print("="*80)
     
-    with codecs.open(EnvironFolders.UserAppName, "w", "utf-8-sig") as AppName:
+    with codecs.open(CreateEnvironment.UserAppName, "w", "utf-8-sig") as AppName:
         AppName.write(f'## __init__.py File\n')
         AppName.write(f'## Here the contents will be processed to choose the best platform to go\n\n')
         AppName.write(f'try:\n')
@@ -471,7 +566,7 @@ def CreateInitFile():
 def CreateReadmeFile():
     ## README File
     print("> Creating 'README' File...")
-    with codecs.open(EnvironFolders.ReadmeFile, "w", "utf-8-sig") as Readme:
+    with codecs.open(CreateEnvironment.ReadmeFile, "w", "utf-8-sig") as Readme:
         Readme.write(f'# {Explorer.ProjectName}\n\n')
         Readme.write(f'This project was created using [PyBridge](https://github.com/hbisneto/PyBridge)\n\n')
         Readme.write(f'## Requirements\n\n')
@@ -492,7 +587,7 @@ def CreateReadmeFile():
 def CreateErrorList():
     ## Exception Triggers
     print("> Creating ErrorReports Module...")
-    with codecs.open(EnvironFolders.ErrorListFile, "w", "utf-8-sig") as Exceptions:
+    with codecs.open(CreateEnvironment.ErrorListFile, "w", "utf-8-sig") as Exceptions:
         Exceptions.write(f'## ErrorList File\n')
         Exceptions.write(f'## This file contains events thats raised when the program must to stop\n\n')
         Exceptions.write(f'class Raise():\n')
@@ -533,7 +628,7 @@ def CreateErrorList():
 def CreateSystemRequirements():
     ## System Requirements File
     print("> Creating SystemRequirements Library...")
-    with codecs.open(EnvironFolders.SystemRequirements, "w", "utf-8-sig") as Requirements:
+    with codecs.open(CreateEnvironment.SystemRequirements, "w", "utf-8-sig") as Requirements:
         Requirements.write(f'## SystemRequirements File\n')
         Requirements.write(f'## This file is used to check if system matches with the minimum requirements to run\n\n')
         Requirements.write(f'import sys\n')
@@ -573,7 +668,7 @@ def CreateLinuxFile():
     
     ## Linux File
     print("> Creating Linux Library...")
-    with codecs.open(EnvironFolders.LinuxFile, "w", "utf-8-sig") as LinuxFile:
+    with codecs.open(CreateEnvironment.LinuxFile, "w", "utf-8-sig") as LinuxFile:
         LinuxFile.write(f'## Linux File\n')
         LinuxFile.write(f'## This file is used to implement code used to run scripts for Linux\n')
         LinuxFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
@@ -594,7 +689,7 @@ def CreateLinuxAppFile():
     ## LinuxApp File
     if ProjectOption == 1:
         print("> Creating LinuxApp Library...")
-        with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
+        with codecs.open(CreateEnvironment.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
             LinuxAppFile.write(f'## LinuxApp File\n')
             LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
             LinuxAppFile.write(f'from ErrorReport import ErrorList\n')
@@ -607,7 +702,7 @@ def CreateLinuxAppFile():
     elif ProjectOption == 2:
         print(">> Applying Loop Application on Environment on Linux...\n>> Please wait...")
         print("> Creating LinuxApp Library...")
-        with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
+        with codecs.open(CreateEnvironment.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
             LinuxAppFile.write(f'## LinuxApp File\n')
             LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
             LinuxAppFile.write(f'from ErrorReport import ErrorList\n')
@@ -638,7 +733,7 @@ def CreateLinuxAppFile():
             LinuxAppFile.close()
 
     elif ProjectOption == 3:
-        with codecs.open(EnvironFolders.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
+        with codecs.open(CreateEnvironment.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
             LinuxAppFile.write(f'## LinuxApp File\n')
             LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
             LinuxAppFile.write(f'import Tokens\n')
@@ -671,7 +766,7 @@ def CreateLinuxAppFile():
 def CreateLinuxSplashScreen():
     ## Linux SplashScreen
     if ProjectOption == 3:
-        with codecs.open(EnvironFolders.SplashLinux, "w", "utf-8-sig") as SplashLinux:
+        with codecs.open(CreateEnvironment.SplashLinux, "w", "utf-8-sig") as SplashLinux:
             SplashLinux.write(f'## SplashScreen File\n')
             SplashLinux.write(f'## This file contains information about your project\n\n')
             SplashLinux.write(f'from datetime import date\n\n')
@@ -682,10 +777,10 @@ def CreateLinuxSplashScreen():
             SplashLinux.write(f'print("Name:", SoftwareName)\n')
             SplashLinux.write(f'print("Version:", Version)\n')
             SplashLinux.write(f'print("Created By:", CopyrightName)\n\n')
-            SplashLinux.write(f'if CurrentYear == 2021:\n')
-            SplashLinux.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
+            SplashLinux.write(f'if CurrentYear == 2022:\n')
+            SplashLinux.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n')
             SplashLinux.write(f'else:\n')
-            SplashLinux.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
+            SplashLinux.write(f'   print("Copyright © 2022 -", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n\n')
             SplashLinux.write(f'print("="*80)\n')
             SplashLinux.write("print(f'[{SoftwareName} for Linux] - Running...')\n")
             SplashLinux.write(f'print("="*80)\n')
@@ -695,7 +790,7 @@ def CreateLinuxSplashScreen():
             SplashLinux.close()
     else:
         print("> Creating SplashScreen...")
-        with codecs.open(EnvironFolders.SplashLinux, "w", "utf-8-sig") as SplashLinux:
+        with codecs.open(CreateEnvironment.SplashLinux, "w", "utf-8-sig") as SplashLinux:
             SplashLinux.write(f'## SplashScreen File\n')
             SplashLinux.write(f'## This file contains information about your project\n\n')
             SplashLinux.write(f'from datetime import date\n\n')
@@ -706,10 +801,10 @@ def CreateLinuxSplashScreen():
             SplashLinux.write(f'print("Name:", SoftwareName)\n')
             SplashLinux.write(f'print("Version:", Version)\n')
             SplashLinux.write(f'print("Created By:", CopyrightName)\n\n')
-            SplashLinux.write(f'if CurrentYear == 2021:\n')
-            SplashLinux.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
+            SplashLinux.write(f'if CurrentYear == 2022:\n')
+            SplashLinux.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n')
             SplashLinux.write(f'else:\n')
-            SplashLinux.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
+            SplashLinux.write(f'   print("Copyright © 2022 -", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n\n')
             SplashLinux.write(f'print("="*80)\n')
             SplashLinux.write("print(f'[{SoftwareName} for Linux] - Running...')\n")
             SplashLinux.write(f'print("="*80)\n')
@@ -719,7 +814,7 @@ def CreateLinuxSplashScreen():
 def CreateLinuxFileSystem():
     ## Linux FileSystem
     print("> Creating Linux FileSystem Library...")
-    with codecs.open(EnvironFolders.LinuxFS, "w", "utf-8-sig") as LinuxFS:
+    with codecs.open(CreateEnvironment.LinuxFS, "w", "utf-8-sig") as LinuxFS:
         Linux = "User = f'/home/{os.environ"
         FileSystem = '["USER"]}/'
         SUser = f"{Linux}{FileSystem}'"
@@ -746,7 +841,7 @@ def CreateMacFile():
 
     ## Mac File
     print("> Creating Mac Library...")
-    with codecs.open(EnvironFolders.MacFile, "w", "utf-8-sig") as MacFile:
+    with codecs.open(CreateEnvironment.MacFile, "w", "utf-8-sig") as MacFile:
         MacFile.write(f'## Mac File\n')
         MacFile.write(f'## This file is used to implement code used to run scripts for Mac\n')
         MacFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
@@ -767,7 +862,7 @@ def CreateMacAppFile():
     ## MacApp File
     if ProjectOption == 1:
         print("> Creating MacApp Library...")
-        with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
+        with codecs.open(CreateEnvironment.MacAppFile, "w", "utf-8-sig") as MacAppFile:
             MacAppFile.write(f'## MacApp File\n')
             MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
             MacAppFile.write(f'from ErrorReport import ErrorList\n')
@@ -780,7 +875,7 @@ def CreateMacAppFile():
     elif ProjectOption == 2:
         print(">> Applying Loop Application on Environment on Mac...\n>> Please wait...")
         print("> Creating MacApp Library...")
-        with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
+        with codecs.open(CreateEnvironment.MacAppFile, "w", "utf-8-sig") as MacAppFile:
             MacAppFile.write(f'## MacApp File\n')
             MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
             MacAppFile.write(f'from ErrorReport import ErrorList\n')
@@ -811,7 +906,7 @@ def CreateMacAppFile():
             MacAppFile.close()
 
     elif ProjectOption == 3:
-        with codecs.open(EnvironFolders.MacAppFile, "w", "utf-8-sig") as MacAppFile:
+        with codecs.open(CreateEnvironment.MacAppFile, "w", "utf-8-sig") as MacAppFile:
             MacAppFile.write(f'## MacApp File\n')
             MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
             MacAppFile.write(f'import Tokens\n')
@@ -844,7 +939,7 @@ def CreateMacAppFile():
 def CreateMacSplashScreen():
     ## Mac SplashScreen
     if ProjectOption == 3:
-        with codecs.open(EnvironFolders.SplashMac, "w", "utf-8-sig") as SplashMac:
+        with codecs.open(CreateEnvironment.SplashMac, "w", "utf-8-sig") as SplashMac:
             SplashMac.write(f'## SplashScreen File\n')
             SplashMac.write(f'## This file contains information about your project\n\n')
             SplashMac.write(f'from datetime import date\n\n')
@@ -855,10 +950,10 @@ def CreateMacSplashScreen():
             SplashMac.write(f'print("Name:", SoftwareName)\n')
             SplashMac.write(f'print("Version:", Version)\n')
             SplashMac.write(f'print("Created By:", CopyrightName)\n\n')
-            SplashMac.write(f'if CurrentYear == 2021:\n')
-            SplashMac.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
+            SplashMac.write(f'if CurrentYear == 2022:\n')
+            SplashMac.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n')
             SplashMac.write(f'else:\n')
-            SplashMac.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
+            SplashMac.write(f'   print("Copyright © 2022 -", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n\n')
             SplashMac.write(f'print("="*80)\n')
             SplashMac.write("print(f'[{SoftwareName} for Mac] - Running...')\n")
             SplashMac.write(f'print("="*80)\n')
@@ -868,7 +963,7 @@ def CreateMacSplashScreen():
             SplashMac.close()
     else:
         print("> Creating SplashScreen...")
-        with codecs.open(EnvironFolders.SplashMac, "w", "utf-8-sig") as SplashMac:
+        with codecs.open(CreateEnvironment.SplashMac, "w", "utf-8-sig") as SplashMac:
             SplashMac.write(f'## SplashScreen File\n')
             SplashMac.write(f'## This file contains information about your project\n\n')
             SplashMac.write(f'from datetime import date\n\n')
@@ -879,10 +974,10 @@ def CreateMacSplashScreen():
             SplashMac.write(f'print("Name:", SoftwareName)\n')
             SplashMac.write(f'print("Version:", Version)\n')
             SplashMac.write(f'print("Created By:", CopyrightName)\n\n')
-            SplashMac.write(f'if CurrentYear == 2021:\n')
-            SplashMac.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
+            SplashMac.write(f'if CurrentYear == 2022:\n')
+            SplashMac.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n')
             SplashMac.write(f'else:\n')
-            SplashMac.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
+            SplashMac.write(f'   print("Copyright © 2022 -", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n\n')
             SplashMac.write(f'print("="*80)\n')
             SplashMac.write("print(f'[{SoftwareName} for Mac] - Running...')\n")
             SplashMac.write(f'print("="*80)\n')
@@ -892,7 +987,7 @@ def CreateMacSplashScreen():
 def CreateMacFileSystem():
     ## Mac FileSystem
     print("> Creating Mac FileSystem Library...")
-    with codecs.open(EnvironFolders.MacFS, "w", "utf-8-sig") as MacFS:
+    with codecs.open(CreateEnvironment.MacFS, "w", "utf-8-sig") as MacFS:
         Mac = "User = f'/Users/{os.environ"
         FileSystem = '["USER"]}/'
         SUser = f"{Mac}{FileSystem}'"
@@ -923,7 +1018,7 @@ def CreateWindowsFile():
     
     ## Windows File
     print("> Creating Windows Library...")
-    with codecs.open(EnvironFolders.WindowsFile, "w", "utf-8-sig") as WindowsFile:
+    with codecs.open(CreateEnvironment.WindowsFile, "w", "utf-8-sig") as WindowsFile:
         WindowsFile.write(f'## Windows File\n')
         WindowsFile.write(f'## This file is used to implement code used to run scripts for Windows\n')
         WindowsFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
@@ -944,7 +1039,7 @@ def CreateWindowsAppFile():
     ## WindowsApp File
     if ProjectOption == 1:
         print("> Creating WindowsApp Library...")
-        with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
+        with codecs.open(CreateEnvironment.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
             WindowsAppFile.write(f'## WindowsApp File\n')
             WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
             WindowsAppFile.write(f'from ErrorReport import ErrorList\n')
@@ -957,7 +1052,7 @@ def CreateWindowsAppFile():
     elif ProjectOption == 2:
         print(">> Applying Loop Application on Environment on Windows...\n>> Please wait...")
         print("> Creating WindowsApp Library...")
-        with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
+        with codecs.open(CreateEnvironment.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
             WindowsAppFile.write(f'## WindowsApp File\n')
             WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
             WindowsAppFile.write(f'from ErrorReport import ErrorList\n')
@@ -988,7 +1083,7 @@ def CreateWindowsAppFile():
             WindowsAppFile.close()
         
     elif ProjectOption == 3:
-        with codecs.open(EnvironFolders.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
+        with codecs.open(CreateEnvironment.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
             WindowsAppFile.write(f'## WindowsApp File\n')
             WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
             WindowsAppFile.write(f'import Tokens\n')
@@ -1021,7 +1116,7 @@ def CreateWindowsAppFile():
 def CreateWindowsSplashScreen():
     ## Windows SplashScreen
     if ProjectOption == 3:
-        with codecs.open(EnvironFolders.SplashWindows, "w", "utf-8-sig") as SplashWindows:
+        with codecs.open(CreateEnvironment.SplashWindows, "w", "utf-8-sig") as SplashWindows:
             SplashWindows.write(f'## SplashScreen File\n')
             SplashWindows.write(f'## This file contains information about your project\n\n')
             SplashWindows.write(f'from datetime import date\n\n')
@@ -1032,10 +1127,10 @@ def CreateWindowsSplashScreen():
             SplashWindows.write(f'print("Name:", SoftwareName)\n')
             SplashWindows.write(f'print("Version:", Version)\n')
             SplashWindows.write(f'print("Created By:", CopyrightName)\n\n')
-            SplashWindows.write(f'if CurrentYear == 2021:\n')
-            SplashWindows.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
+            SplashWindows.write(f'if CurrentYear == 2022:\n')
+            SplashWindows.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n')
             SplashWindows.write(f'else:\n')
-            SplashWindows.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
+            SplashWindows.write(f'   print("Copyright © 2022 -", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n\n')
             SplashWindows.write(f'print("="*80)\n')
             SplashWindows.write("print(f'[{SoftwareName} for Windows] - Running...')\n")
             SplashWindows.write(f'print("="*80)\n')
@@ -1045,7 +1140,7 @@ def CreateWindowsSplashScreen():
             SplashWindows.close()
     else:
         print("> Creating SplashScreen...")
-        with codecs.open(EnvironFolders.SplashWindows, "w", "utf-8-sig") as SplashWindows:
+        with codecs.open(CreateEnvironment.SplashWindows, "w", "utf-8-sig") as SplashWindows:
             SplashWindows.write(f'## SplashScreen File\n')
             SplashWindows.write(f'## This file contains information about your project\n\n')
             SplashWindows.write(f'from datetime import date\n\n')
@@ -1056,10 +1151,10 @@ def CreateWindowsSplashScreen():
             SplashWindows.write(f'print("Name:", SoftwareName)\n')
             SplashWindows.write(f'print("Version:", Version)\n')
             SplashWindows.write(f'print("Created By:", CopyrightName)\n\n')
-            SplashWindows.write(f'if CurrentYear == 2021:\n')
-            SplashWindows.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName, "All rights reserved.")\n')
+            SplashWindows.write(f'if CurrentYear == 2022:\n')
+            SplashWindows.write(f'   print("Copyright ©", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n')
             SplashWindows.write(f'else:\n')
-            SplashWindows.write(f'   print("Copyright © 2021 -", CurrentYear, "|", CopyrightName, "All rights reserved.")\n\n')
+            SplashWindows.write(f'   print("Copyright © 2022 -", CurrentYear, "|", CopyrightName + ".", "All rights reserved.")\n\n')
             SplashWindows.write(f'print("="*80)\n')
             SplashWindows.write("print(f'[{SoftwareName} for Windows] - Running...')\n")
             SplashWindows.write(f'print("="*80)\n')
@@ -1069,7 +1164,7 @@ def CreateWindowsSplashScreen():
 def CreateWindowsFileSystem():
     ## Windows FileSystem
     print("> Creating Windows FileSystem Library...")
-    with codecs.open(EnvironFolders.WindowsFS, "w", "utf-8-sig") as WindowsFS:
+    with codecs.open(CreateEnvironment.WindowsFS, "w", "utf-8-sig") as WindowsFS:
         WindowsFS.write(f'## FileSystem\n')
         WindowsFS.write(f'## This file contains some default directories of your system\n\n')
         WindowsFS.write(f'import os\n\n')
@@ -1093,7 +1188,7 @@ def CreateWindowsFileSystem():
 def CreateTokensFile():
     ## Tokens File
     print(">> Applying Twitter Application on Environment...\n>> Please wait...")
-    with codecs.open(EnvironFolders.TokensFile, "w", "utf-8-sig") as Tokens:
+    with codecs.open(CreateEnvironment.TokensFile, "w", "utf-8-sig") as Tokens:
         Tokens.write(f'## Tokens\n')
         Tokens.write(f'## Setup and connect you Twitter account here!\n')
         Tokens.write(f'# Note: DO NOT share your tokens\n')
@@ -1113,92 +1208,6 @@ def CreateTokensFile():
         Tokens.write(f'Twitter = tweepy.API(Auth, wait_on_rate_limit = True)')
         Tokens.close()
 
-class DownloadSample():
-    def GetInfo(self):
-        print("="*80)
-        print(">> DOWNLOADING GETINFO SAMPLE... <<")
-        print("="*80)
-        print("[Status]: Downloading 'GetInfo'... <<")
-        print("="*80)
-
-        try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
-            print('[Status]: Verifying repository to download...')
-        except:
-            print('[Status]: Verifying repository to download...')
-
-        try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/GetInfo/')
-            print("[Status]: Starting Download...")
-        except:
-            print("[Status]: Starting Download...")
-            print("[Status]: The project seems to be in the path, already!")
-
-        URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
-        From = f'{FileSystem.CurrentPath}/main.zip'
-        To = f'{FileSystem.CurrentPath}/Sample/GetInfo/main.zip'
-
-        ServerResponse = requests.get(URL, stream = True)
-        FileName = URL.split("/")[-1]
-        with open(FileName, 'wb') as f:
-            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
-                if Chunk:
-                    f.write(Chunk)
-
-        print("[Status]: 'GetInfo' download 100% completed!")
-        print("[Status]: Verifying 'GetInfo'...")
-        try:
-            Path(From).rename(To)
-            print("[Done]: 'GetInfo' download process complete!")
-            print("="*80)
-        except:
-            Path(From).rename(To)
-            print("[Done]: 'GetInfo' download process complete!")
-            print("="*80)
-
-    def Jokenpo(self):
-        print("="*80)
-        print(">> DOWNLOADING JOKENPO SAMPLE... <<")
-        print("="*80)
-        print("[Status]: Downloading 'JoKenPo'... <<")
-        print("="*80)
-
-        try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
-            print('[Status]: Verifying repository to download...')
-        except:
-            print('[Status]: Verifying repository to download...')
-
-        try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/JoKenPo/')
-            print("[Status]: Starting Download...")
-        except:
-            print("[Status]: Starting Download...")
-            print("[Status]: The project seems to be in the path, already!")
-            
-
-        URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
-        From = f'{FileSystem.CurrentPath}/main.zip'
-        To = f'{FileSystem.CurrentPath}/Sample/JoKenPo/main.zip'
-
-        ServerResponse = requests.get(URL, stream = True)
-        FileName = URL.split("/")[-1]
-        with open(FileName, 'wb') as f:
-            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
-                if Chunk:
-                    f.write(Chunk)
-
-        print("[Status]: 'JoKenPo' download 100% completed!")
-        print("[Status]: Verifying 'GetInfo'...")
-        try:
-            Path(From).rename(To)
-            print("[Done]: 'JoKenPo' download process complete!")
-            print("="*80)
-        except:
-            Path(From).rename(To)
-            print("[Done]: 'JoKenPo' download process complete!")
-            print("="*80)
-
 def CreateBridge():
     print("="*80)
     print(">> CREATE PROJECT <<")
@@ -1212,17 +1221,18 @@ def CreateBridge():
         os.mkdir(FolderLocation)
         Explorer.ProjectName = ProjectName
         Explorer.FolderLocation = FolderLocation
-        EnvironFolders()
+        CreateEnvironment()
     except:
         print()
+        print("="*80)
         print(">> Could not create your project:")
         print(f'> Check if "{ProjectName}" already exists and try again.')
+        print("="*80)
+        # ErrorList.Log(Message = "Criar arquivo de LOG: Arquivo já existente!", Location = FileSystem.CurrentPath + "NomeArquivo.log")
         ErrorList.FileExists()
         
     ### Project Structure ###
-    EnvironFolders()
-    CreateArch()
-    CreateFiles()
+    CreateEnvironment()
     ## Init File
     CreateInitFile()
     ## Readme File
@@ -1260,6 +1270,7 @@ def CreateBridge():
     CreateMacFileSystem()
     print("="*80)
     print()
+
     ### Windows Modules ###
     ## Windows File
     CreateWindowsFile()
@@ -1269,4 +1280,10 @@ def CreateBridge():
     CreateWindowsSplashScreen()
     ## Windows FileSystem File
     CreateWindowsFileSystem()
+
+    print("="*80)
+    print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
+    print("="*80)
+    print()
+
     print("="*80)

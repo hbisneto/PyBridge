@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 08/12/2021
+###### Last repository update: 14/02/2022
 
 With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
 
@@ -179,10 +179,13 @@ The following libraries were used to implement the tool:
     - Read more about the ```pathlib ``` library at [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
 
 * **shutil:** The shutil module provides several high-level operations on files and file collections. In particular, functions are provided that support copying and removing files. For operations on individual files, see also the **os** module.
-    - Read more about the ```shutil``` library in [shutil — High-level file operations](https://docs.python.org/3/library/shutil.html)
+    - Read more about the ```shutil``` library at [shutil — High-level file operations](https://docs.python.org/3/library/shutil.html)
 
 * **sys:** This module provides access to some variables used or maintained by the interpreter and functions that interact strongly with the interpreter.
     - Read more about the ```sys``` library at [sys — System-specific parameters and functions](https://docs.python.org/en-us/3/library/sys.html)
+
+* **zipfile:** The ZIP file format is a common archive and compression standard. This module provides tools to create, read, write, append, and list a ZIP file. Any advanced use of this module will require an understanding of the format, as defined in [PKZIP Application Note](https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT).
+    - Read more about the ```zipfile``` library at [zipfile — Work with ZIP archives](https://docs.python.org/3/library/zipfile.html)
 
 #
 
@@ -261,7 +264,7 @@ The following libraries were used to implement the tool:
 
 #
 
-# Updates
+# Update Logs
 
 For information about update logs, access [RELEASES](https://github.com/hbisneto/PyBridge/releases) page on this repository.
 
@@ -274,4 +277,4 @@ For information about update logs, access [RELEASES](https://github.com/hbisneto
 
 #
 
-Copyright © 2021 Heitor Bisneto. All rights reserved.
+Copyright © 2021 - 2022 Heitor Bisneto. All rights reserved.

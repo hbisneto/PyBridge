@@ -13,13 +13,13 @@ def Main():
         print("="*80)
         print(">> MENU <<")
         print("="*80)
-        print(">>[1] - Create Blank Project")
-        print(">>[2] - Create a Menu Application Loop Project")
-        print(">>[3] - Create Twitter Application Project")
-        print(">>[4] - Projects List")
-        print(">>[5] - Backup Projects")
-        print(">>[6] - Sample Projects...")
-        print(">>[0] - Quit PyBridge")
+        print("[1] - Create Blank Project")
+        print("[2] - Create a Menu Application Loop Project")
+        print("[3] - Create Twitter Application Project")
+        print("[4] - Projects List")
+        print("[5] - Backup Projects")
+        print("[6] - Sample Projects...")
+        print("[0] - Quit PyBridge")
         print()
         Opc = int(input(">>[!] Type The Item Number: "))
         print()
@@ -32,19 +32,16 @@ def Main():
             Core.ProjectOption = 1
             Core.ProjectType = "PyBridge Blank Project"
             Core.CreateBridge()
-            Core.CreationSuccess()
 
         elif Opc == 2:
             Core.ProjectOption = 2
             Core.ProjectType = "Menu Application Loop Project"
             Core.CreateBridge()
-            Core.CreationSuccess()
 
         elif Opc == 3:
             Core.ProjectOption = 3
             Core.ProjectType = "Twitter Application Project"
             Core.CreateBridge()
-            Core.CreationSuccess()
 
         elif Opc == 4:
             Core.ProjList.clear()
