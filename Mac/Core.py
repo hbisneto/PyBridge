@@ -1228,6 +1228,7 @@ def CreateBridge():
         print(">> Could not create your project:")
         print(f'> Check if "{ProjectName}" already exists and try again.')
         print("="*80)
+        # ErrorList.Log(Message = "Criar arquivo de LOG: Arquivo já existente!", Location = FileSystem.CurrentPath + "NomeArquivo.log")
         ErrorList.FileExists()
         
     ### Project Structure ###

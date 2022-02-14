@@ -1,6 +1,11 @@
 ﻿## ErrorList File
 ## This file contains events that's raised when the program must to stop
 
+# import codecs
+# import os
+
+# CurrentPath = os.getcwd()
+
 class Raise():
    class Requirements():
       def MajorVersion(self, CurrentVersion, TargetVersion, TargetMajor):
@@ -64,3 +69,12 @@ def CompressBackupFail():
    print(f'>> PyBridge could not create a compressed file from your backup')
    print(f'>> Try again later.')
    print("[=]" * 20)
+
+# def Log(Message, Location):
+#    ## LogFile File
+#    Location = CurrentPath + "Control.log"
+#    print(">> Creating LogFile...\n>> Please wait...")
+#    with codecs.open(Location, "w", "utf-8-sig") as LogFile:
+#       LogFile.write(Message)
+#       LogFile.close()
+#    print("LogFile created: " + Message, Location)
