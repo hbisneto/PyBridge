@@ -32,19 +32,16 @@ def Main():
             Core.ProjectOption = 1
             Core.ProjectType = "PyBridge Blank Project"
             Core.CreateBridge()
-            Core.CreationSuccess()
 
         elif Opc == 2:
             Core.ProjectOption = 2
             Core.ProjectType = "Menu Application Loop Project"
             Core.CreateBridge()
-            Core.CreationSuccess()
 
         elif Opc == 3:
             Core.ProjectOption = 3
             Core.ProjectType = "Twitter Application Project"
             Core.CreateBridge()
-            Core.CreationSuccess()
 
         elif Opc == 4:
             Core.ProjList.clear()
