@@ -137,9 +137,9 @@ Name: Hello World
 Version: 1.0
 Created By: YOU
 Copyright © 2021 | YOU All rights reserved.
-================================================== ====================
+==================================================
 [Hello World for Mac] - Running...
-================================================== ====================
+==================================================
 # End of SplashScreen
 # Load SystemRequirements
 
