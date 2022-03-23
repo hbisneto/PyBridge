@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 14/02/2022
+###### Last repository update: 23/03/2022
 
 With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
 
@@ -137,9 +137,9 @@ Name: Hello World
 Version: 1.0
 Created By: YOU
 Copyright © 2021 | YOU All rights reserved.
-================================================== ====================
+==================================================
 [Hello World for Mac] - Running...
-================================================== ====================
+==================================================
 # End of SplashScreen
 # Load SystemRequirements
 
@@ -277,4 +277,4 @@ For information about update logs, access [RELEASES](https://github.com/hbisneto
 
 #
 
-Copyright © 2021 - 2022 Heitor Bisneto. All rights reserved.
+Copyright © 2021–2022 Heitor Bisneto. All rights reserved.
