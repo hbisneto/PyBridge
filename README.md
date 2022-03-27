@@ -1,5 +1,9 @@
-# PyBridge
+# PyBridge 2.0
 ###### Last repository update: 27/03/2022
+
+> **WARNING NOTE**:
+>> The use of this version of PyBridge is not recommended YET. It's in update process and soon will be available for download.
+<br>If you want to contribute to this repository, send your pull request to the code on [Official PyBridge Repository](https://www.github.com/hbisneto/PyBridge)
 
 With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
 
