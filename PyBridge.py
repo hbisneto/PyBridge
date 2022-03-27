@@ -7,7 +7,7 @@ try:
     from sys import platform
 
     ## Local Libraries
-    from ErrorReport import ErrorList
+    from exception import Exceptions
 
 except:
     Separator = "="*80

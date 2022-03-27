@@ -14,7 +14,7 @@ def Mac():
     from Mac import SplashScreen
 
     ## Lets check system requirements
-    from ErrorReport import SystemRequirements
+    from system import Requirements
     
     ## Start App for Mac
     from Mac import MacApp

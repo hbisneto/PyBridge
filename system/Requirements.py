@@ -2,7 +2,7 @@
 ## This file is used to check if system matches with the minimum requirements to run
 
 import sys
-from ErrorReport import ErrorList
+from exception import Exceptions
 
 ## Change "Require" to "False" to skip system check
 Require = True
@@ -28,7 +28,7 @@ if Require == True:
    ## print(f'>> Required version to run: Python {TargetVersion}')
 
    if TargetVersion > CurrentVersion:
-      ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
+      Exceptions.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
    elif TargetVersion < CurrentVersion:
-      ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
+      Exceptions.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
 
