@@ -3,18 +3,18 @@
 ## Codes implemented here, will run before the script starts running
 
 import os
-from Windows import Core
-from Windows import FileSystem
+from windows import Core
+from windows import FileSystem
 
 def Windows():
     ## NOTE: You can use this function
     ## To load information before the app starts running
 
     ## Lets run the SplashScreen
-    from Windows import SplashScreen
+    from windows import SplashScreen
 
     ## Lets check system requirements
-    from ErrorReport import SystemRequirements
+    from system import Requirements
     
     ## Start App for Windows
-    from Windows import WindowsApp
+    from windows import WindowsApp

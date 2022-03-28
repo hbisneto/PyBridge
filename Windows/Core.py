@@ -8,8 +8,8 @@ import requests
 import shutil
 import sys
 from datetime import datetime
-from ErrorReport import ErrorList
-from Windows import FileSystem
+from exception import ErrorList
+from windows import FileSystem
 from pathlib import Path
 from zipfile import ZipFile
 

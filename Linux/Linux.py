@@ -3,18 +3,18 @@
 ## Codes implemented here, will run before the script starts running
 
 import os
-from Linux import Core
-from Linux import FileSystem
+from linux import Core
+from linux import FileSystem
 
 def Linux():
     ## NOTE: You can use this function
     ## To load information before the app starts running
 
     ## Lets run the SplashScreen
-    from Linux import SplashScreen
+    from linux import SplashScreen
 
     ## Lets check system requirements
-    from ErrorReport import SystemRequirements
+    from system import Requirements
 
     ## Start App for Linux
-    from Linux import LinuxApp
+    from linux import LinuxApp

@@ -3,18 +3,18 @@
 ## Codes implemented here, will run before the script starts running
 
 import os
-from Mac import Core
-from Mac import FileSystem
+from mac import Core
+from mac import FileSystem
 
 def Mac():
     ## NOTE: You can use this function
     ## To load information before the app starts running
 
     ## Lets run the SplashScreen
-    from Mac import SplashScreen
+    from mac import SplashScreen
 
     ## Lets check system requirements
     from system import Requirements
     
     ## Start App for Mac
-    from Mac import MacApp
+    from mac import MacApp

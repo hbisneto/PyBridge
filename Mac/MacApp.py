@@ -2,7 +2,7 @@
 ## This file is used to implement code used to run scripts for Mac
 
 from exception import Exceptions
-from Mac import Core
+from mac import Core
 
 def Main():
     BridgeLoop = True
