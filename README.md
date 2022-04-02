@@ -1,5 +1,5 @@
 # PyBridge
-###### Last repository update: 23/03/2022
+###### Last repository update: 02/04/2022
 
 With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
 
@@ -176,7 +176,7 @@ The following libraries were used to implement the tool:
     - Read more about the ```os``` library at [os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
 
 * **pathlib:** This module offers classes representing filesystem paths with semantics appropriate for different operating systems. Path classes are divided between pure paths, which provide purely computational operations without I/O, and concrete paths, which inherit from pure paths but also provide I/O operations.
-    - Read more about the ```pathlib ``` library at [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
+    - Read more about the ```pathlib``` library at [pathlib — Object-oriented filesystem paths](https://docs.python.org/3/library/pathlib.html)
 
 * **shutil:** The shutil module provides several high-level operations on files and file collections. In particular, functions are provided that support copying and removing files. For operations on individual files, see also the **os** module.
     - Read more about the ```shutil``` library at [shutil — High-level file operations](https://docs.python.org/3/library/shutil.html)
