@@ -16,7 +16,7 @@ class Raise():
          print("="*40)
          print(f'- Current Version: {CurrentVersion}')
          print(f'- Target Version: {TargetVersion}')
-         print(f'>> You can change `SystemRequirements.py` on `ErrorReport` Module')
+         print(f'>> You can change `Requirements.py` on `system` Module')
          print("="*40)
          print()
 

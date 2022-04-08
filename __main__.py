@@ -1,3 +1,8 @@
+##################################################################################
+###         DO NOT USE PYBRIDGE 2.0 YET. THE SYSTEM IS INSTABLE FOR A WHILE    ###
+###                          USE PYBRIDGE 1.4 INSTEAD                          ###
+##################################################################################
+
 ## PyBridge File
 ## This file is used to first run your application
 ## Here the contents will be processed to choose the best platform to go
