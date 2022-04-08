@@ -1,7 +1,7 @@
 ## WindowsApp File
 ## This file is used to implement code used to run scripts for Windows
 
-from ErrorReport import ErrorList
+from exception import Exceptions
 from windows import Core
 
 def Main():
@@ -67,9 +67,9 @@ def Main():
             elif UserOption == 2:
                 Core.DownloadSample().Jokenpo()
             else:
-                ErrorList.InvalidOption()
+                Exceptions.InvalidOption()
 
         else:
-            ErrorList.InvalidOption()
+            Exceptions.InvalidOption()
     
 Main()

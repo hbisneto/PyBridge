@@ -8,7 +8,7 @@ import requests
 import shutil
 import sys
 from datetime import datetime
-from exception import ErrorList
+from exception import Exceptions
 from linux import FileSystem
 from pathlib import Path
 from zipfile import ZipFile
