@@ -36,10 +36,10 @@ if REQUIRE == True:
          AllowKey = False
       else:
          if MinorVersion < TargetMinor:
-             AllowKey = False
+            AllowKey = False
          else:
-             if BuildVersion < TargetBuild:
-                 AllowKey = False
+            if BuildVersion < TargetBuild:
+               AllowKey = False
                  
       if AllowKey == False:
          ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
@@ -53,10 +53,10 @@ if REQUIRE == True:
          ShowWarn = True
       else:
          if MinorVersion > TargetMinor:
-             ShowWarn = True
+            ShowWarn = True
          else:
-             if BuildVersion > TargetBuild:
-                 ShowWarn = True
+            if BuildVersion > TargetBuild:
+               ShowWarn = True
                  
       if ShowWarn == True:
          ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
