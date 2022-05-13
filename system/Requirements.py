@@ -42,7 +42,8 @@ if REQUIRE == True:
                  AllowKey = False
                  
       if AllowKey == False:
-         Exceptions.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
+         # Exceptions.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
+         Exceptions.Throw.MajorVersion(CurrentVersion, TargetVersion, MajorVersion)
 
    def CheckMinorVersion():
       ## Note: if this key is set to True, the system will warn evertime it runs
@@ -59,7 +60,8 @@ if REQUIRE == True:
                  ShowWarn = True
                  
       if ShowWarn == True:
-         Exceptions.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
+         # Exceptions.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
+         Exceptions.Throw.MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
 
    CheckMajorVersion()
    CheckMinorVersion()

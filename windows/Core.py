@@ -1226,7 +1226,8 @@ def CreateBridge():
         print(f'> Check if "{ProjectName}" already exists and try again.')
         print("="*80)
         # Exceptions.Log(Message = "Criar arquivo de LOG: Arquivo já existente!", Location = FileSystem.CurrentPath + "NomeArquivo.log")
-        Exceptions.FileExists()
+        # Exceptions.FileExists()
+        Exceptions.Throw.FileExists()
         
     ### Project Structure ###
     CreateEnvironment()
@@ -1282,5 +1283,3 @@ def CreateBridge():
     print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
     print("="*80)
     print()
-
-    print("="*80)
