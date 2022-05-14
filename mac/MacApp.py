@@ -69,10 +69,8 @@ def Main():
                 elif UserOption == 2:
                     Core.DownloadSample().Jokenpo()
                 else:
-                    # Exceptions.InvalidOption()
                     Exceptions.Throw.InvalidOption()
             else:
-                # Exceptions.InvalidOption()
                 Exceptions.Throw.InvalidOption()
         except:
             Exceptions.Throw.InvalidOption()
