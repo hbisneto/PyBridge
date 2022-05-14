@@ -72,8 +72,3 @@ class Raise:
     print("[=]" * 20)
 
 Throw = Raise(">> An Exception occurred:")
-
-# Throw.FileExists()
-# Throw.DirectoryExists()
-
-#Exceptions.Throw.FileExists()
