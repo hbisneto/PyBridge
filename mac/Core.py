@@ -153,21 +153,21 @@ def Backup():
             try:
                 shutil.rmtree(Target)
             except OSError as DirError:
-                Exceptions.CompressBackupFail()
+                Exceptions.Throw.CompressBackupFail()
                 print(DirError)
         else:
             print(f'>> Operation completed in: {Time}')
             
     except shutil.Error as e:
-        Exceptions.BackupFail()
-        print("-"*20)
+        Exceptions.Throw.BackupFail()
+        print("*" * 40)
         print(e)
-        print("-"*20)
+        print("*" * 40)
     except OSError as OS_E:
-        Exceptions.BackupFail()
-        print("-"*20)
+        Exceptions.Throw.BackupFail()
+        print("*" * 40)
         print(OS_E)
-        print("-"*20)
+        print("*" * 40)
     print("="*80)
     print()
     
@@ -201,7 +201,7 @@ def ProjectList():
             if '.DS_Store' in ProjList:
                 ProjList.remove('.DS_Store')
     except:
-        Exceptions.ProjectsLoadFail()
+        Exceptions.Throw.ProjectsLoadFail()
     
     BridgeLoop = True
     while BridgeLoop == True:
@@ -456,7 +456,7 @@ def ProjOptions():
             print("="*80)
             print()
     except:
-        Exceptions.InvalidOption()
+        Exceptions.Throw.InvalidOption()
 
 def CreateEnvironment():
     ## Environment Folders
@@ -1226,7 +1226,7 @@ def CreateBridge():
         print(f'> Check if "{ProjectName}" already exists and try again.')
         print("="*80)
         # Exceptions.Log(Message = "Criar arquivo de LOG: Arquivo já existente!", Location = FileSystem.CurrentPath + "NomeArquivo.log")
-        Exceptions.FileExists()
+        Exceptions.Throw.FileExists()
         
     ### Project Structure ###
     CreateEnvironment()
@@ -1282,5 +1282,3 @@ def CreateBridge():
     print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
     print("="*80)
     print()
-
-    print("="*80)

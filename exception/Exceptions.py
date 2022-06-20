@@ -53,27 +53,22 @@ class Raise:
     print(f'>> ERROR: Couldn`t load projects...')
     print("=" * 80)
 
-  def BackupFail():
+  def BackupFail(self):
     print("=" * 80)
-    print(">> BACKUP CREATION FAILED!")
+    print(f'{self.exctype} BACKUP CREATION FAILED!')
     print("=" * 80)
-    print("[=]" * 20)
+    print("*" * 40)
     print(f'>> PyBridge could not create backup for your projects folder')
     print(f'>> Try again later.')
-    print("[=]" * 20)
+    print("*" * 40)
 
-  def CompressBackupFail():
+  def CompressBackupFail(self):
     print("=" * 80)
-    print(">> COMPRESSED FILE CREATION FAILED!")
+    print(f'{self.exctype} COMPRESSED FILE CREATION FAILED!')
     print("=" * 80)
-    print("[=]" * 20)
+    print("*" * 40)
     print(f'>> PyBridge could not create a compressed file from your backup')
     print(f'>> Try again later.')
-    print("[=]" * 20)
+    print("*" * 40)
 
 Throw = Raise(">> An Exception occurred:")
-
-# Throw.FileExists()
-# Throw.DirectoryExists()
-
-#Exceptions.Throw.FileExists()

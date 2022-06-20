@@ -153,21 +153,21 @@ def Backup():
             try:
                 shutil.rmtree(Target)
             except OSError as DirError:
-                Exceptions.CompressBackupFail()
+                Exceptions.Throw.CompressBackupFail()
                 print(DirError)
         else:
             print(f'>> Operation completed in: {Time}')
             
     except shutil.Error as e:
-        Exceptions.BackupFail()
-        print("-"*20)
+        Exceptions.Throw.BackupFail()
+        print("*" * 40)
         print(e)
-        print("-"*20)
+        print("*" * 40)
     except OSError as OS_E:
-        Exceptions.BackupFail()
-        print("-"*20)
+        Exceptions.Throw.BackupFail()
+        print("*" * 40)
         print(OS_E)
-        print("-"*20)
+        print("*" * 40)
     print("="*80)
     print()
     
@@ -201,7 +201,7 @@ def ProjectList():
             if '.DS_Store' in ProjList:
                 ProjList.remove('.DS_Store')
     except:
-        Exceptions.ProjectsLoadFail()
+        Exceptions.Throw.ProjectsLoadFail()
     
     BridgeLoop = True
     while BridgeLoop == True:
@@ -226,9 +226,9 @@ def ProjOptions():
     ## Create Local Library (Inside all OS Modules)
     def CreateLib(AppliesTo):
         LibName = str(input(">>[!] Type the Lib name: "))
-        LinuxLibLocation = f'{AppliesTo}/Linux/{LibName}{FileSystem.PythonExtension}'
-        MacLibLocation = f'{AppliesTo}/Mac/{LibName}{FileSystem.PythonExtension}'
-        WindowsLibLocation = f'{AppliesTo}/Windows/{LibName}{FileSystem.PythonExtension}'
+        LinuxLibLocation = f'{AppliesTo}/linux/{LibName}{FileSystem.PythonExtension}'
+        MacLibLocation = f'{AppliesTo}/mac/{LibName}{FileSystem.PythonExtension}'
+        WindowsLibLocation = f'{AppliesTo}/windows/{LibName}{FileSystem.PythonExtension}'
 
         try:
             with codecs.open(LinuxLibLocation, "w", "utf-8-sig") as LocalLib:
@@ -239,7 +239,7 @@ def ProjOptions():
                 LocalLib.write(f'   from sys import platform\n\n')
                 LocalLib.write(f'   ## Local Libraries\n')
                 LocalLib.write(f'   from exception import Exceptions\n')
-                LocalLib.write(f'   from Linux import Linux\n\n')
+                LocalLib.write(f'   from linux import Linux\n\n')
                 LocalLib.write(f'   Platform = platform\n\n')
                 LocalLib.write(f'except:\n')
                 LocalLib.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
@@ -260,7 +260,7 @@ def ProjOptions():
                 LocalLib.write(f'   from sys import platform\n\n')
                 LocalLib.write(f'   ## Local Libraries\n')
                 LocalLib.write(f'   from exception import Exceptions\n')
-                LocalLib.write(f'   from Mac import Mac\n\n')
+                LocalLib.write(f'   from mac import Mac\n\n')
                 LocalLib.write(f'   Platform = platform\n\n')
                 LocalLib.write(f'except:\n')
                 LocalLib.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
@@ -281,7 +281,7 @@ def ProjOptions():
                 LocalLib.write(f'   from sys import platform\n\n')
                 LocalLib.write(f'   ## Local Libraries\n')
                 LocalLib.write(f'   from exception import Exceptions\n')
-                LocalLib.write(f'   from Windows import Windows\n\n')
+                LocalLib.write(f'   from windows import Windows\n\n')
                 LocalLib.write(f'   Platform = platform\n\n')
                 LocalLib.write(f'except:\n')
                 LocalLib.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
@@ -296,9 +296,9 @@ def ProjOptions():
     ## Create Local Module (Inside all OS Modules)
     def CreateMod(AppliesTo):
         ModName = str(input(">>[!] Type the module name: "))
-        LinuxModLocation = f'{AppliesTo}/Linux/{ModName}'
-        MacModLocation = f'{AppliesTo}/Mac/{ModName}'
-        WindowsModLocation = f'{AppliesTo}/Windows/{ModName}'
+        LinuxModLocation = f'{AppliesTo}/linux/{ModName}'
+        MacModLocation = f'{AppliesTo}/mac/{ModName}'
+        WindowsModLocation = f'{AppliesTo}/windows/{ModName}'
 
         try:
             os.mkdir(LinuxModLocation)
@@ -332,9 +332,9 @@ def ProjOptions():
                 UniversalLib.write(f'   from sys import platform\n\n')
                 UniversalLib.write(f'   ## Local Libraries\n')
                 UniversalLib.write(f'   from exception import Exceptions\n')
-                UniversalLib.write(f'   from Linux import Linux\n')
-                UniversalLib.write(f'   from Mac import Mac\n')
-                UniversalLib.write(f'   from Windows import Windows\n\n')
+                UniversalLib.write(f'   from linux import Linux\n')
+                UniversalLib.write(f'   from mac import Mac\n')
+                UniversalLib.write(f'   from windows import Windows\n\n')
                 UniversalLib.write(f'   Platform = platform\n\n')
                 UniversalLib.write(f'except:\n')
                 UniversalLib.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
@@ -456,21 +456,21 @@ def ProjOptions():
             print("="*80)
             print()
     except:
-        Exceptions.InvalidOption()
+        Exceptions.Throw.InvalidOption()
 
 def CreateEnvironment():
     ## Environment Folders
     CreateEnvironment.exceptionPath = f'{Explorer.FolderLocation}exception/'
-    CreateEnvironment.LinuxPath = f'{Explorer.FolderLocation}Linux/'
-    CreateEnvironment.MacPath = f'{Explorer.FolderLocation}Mac/'
-    CreateEnvironment.WindowsPath = f'{Explorer.FolderLocation}Windows/'
+    CreateEnvironment.LinuxPath = f'{Explorer.FolderLocation}linux/'
+    CreateEnvironment.MacPath = f'{Explorer.FolderLocation}mac/'
+    CreateEnvironment.WindowsPath = f'{Explorer.FolderLocation}windows/'
 
     ## Environment Files
     CreateEnvironment.UserAppName = f'{Explorer.FolderLocation}__init__.py'
     CreateEnvironment.TokensFile = f'{Explorer.FolderLocation}Tokens.py'
     CreateEnvironment.ReadmeFile = f'{Explorer.FolderLocation}README.md'
     CreateEnvironment.ExceptionsFile = f'{CreateEnvironment.exceptionPath}Exceptions.py'
-    CreateEnvironment.SystemRequirements = f'{CreateEnvironment.exceptionPath}SystemRequirements.py'
+    CreateEnvironment.Requirements = f'{CreateEnvironment.exceptionPath}Requirements.py'
     
     ## Linux
     CreateEnvironment.LinuxFS = f'{CreateEnvironment.LinuxPath}FileSystem.py'
@@ -507,7 +507,7 @@ def CreateEnvironment():
     UserAppName = open(CreateEnvironment.UserAppName, "w")
     ReadmeFile = open(CreateEnvironment.ReadmeFile, "w")
     ExceptionsFile = open(CreateEnvironment.ExceptionsFile, "w")
-    SystemRequirements = open(CreateEnvironment.SystemRequirements, "w")
+    Requirements = open(CreateEnvironment.Requirements, "w")
     
     ## Linux
     LinuxFS = open(CreateEnvironment.LinuxFS, "w")
@@ -550,16 +550,16 @@ def CreateInitFile():
         AppName.write(f'   Platform = platform\n\n')
         AppName.write(f'   ## Linux\n')
         AppName.write(f'   if Platform == "linux" or Platform == "linux2":\n')
-        AppName.write(f'      from Linux import Linux\n')
-        AppName.write(f'      Linux.Linux()\n\n')
+        AppName.write(f'      from linux import Linux\n')
+        AppName.write(f'      linux.Linux()\n\n')
         AppName.write(f'   ## Mac\n')
         AppName.write(f'   elif Platform == "darwin":\n')
-        AppName.write(f'      from Mac import Mac\n')
-        AppName.write(f'      Mac.Mac()\n\n')
+        AppName.write(f'      from mac import Mac\n')
+        AppName.write(f'      mac.Mac()\n\n')
         AppName.write(f'   ## Windows\n')
         AppName.write(f'   elif Platform == "win32" or Platform == "win64":\n')
-        AppName.write(f'      from Windows import Windows\n')
-        AppName.write(f'      Windows.Windows()\n\n')
+        AppName.write(f'      from windows import Windows\n')
+        AppName.write(f'      windows.Windows()\n\n')
         AppName.write(f'Main()')
         AppName.close()
 
@@ -604,7 +604,7 @@ def CreateExceptions():
         Exceptions.write(f'         print("="*80)\n')
         Exceptions.write("         print(f'- Current Version: {CurrentVersion}')\n")
         Exceptions.write("         print(f'- Target Version: {TargetVersion}')\n")
-        Exceptions.write("         print(f'>> You can change `SystemRequirements.py` on `exception` Module')\n")
+        Exceptions.write("         print(f'>> You can change `Requirements.py` on `exception` Module')\n")
         Exceptions.write(f'         print("="*80)\n')
         Exceptions.write(f'         print()\n\n')
         Exceptions.write(f'      def BuildVersion(self, CurrentVersion, TargetVersion, BuildVer):\n')
@@ -625,11 +625,11 @@ def CreateExceptions():
         Exceptions.write(f'   print("="*80)\n')
         Exceptions.close()
 
-def CreateSystemRequirements():
+def CreateRequirements():
     ## System Requirements File
-    print("> Creating SystemRequirements Library...")
-    with codecs.open(CreateEnvironment.SystemRequirements, "w", "utf-8-sig") as Requirements:
-        Requirements.write(f'## SystemRequirements File\n')
+    print("> Creating Requirements Library...")
+    with codecs.open(CreateEnvironment.Requirements, "w", "utf-8-sig") as Requirements:
+        Requirements.write(f'## Requirements File\n')
         Requirements.write(f'## This file is used to check if system matches with the minimum requirements to run\n\n')
         Requirements.write(f'import sys\n')
         Requirements.write(f'from exception import Exceptions\n\n')
@@ -670,16 +670,16 @@ def CreateLinuxFile():
         LinuxFile.write(f'## This file is used to implement code used to run scripts for Linux\n')
         LinuxFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
         LinuxFile.write(f'import os\n')
-        LinuxFile.write(f'from Linux import FileSystem\n\n')
+        LinuxFile.write(f'from linux import FileSystem\n\n')
         LinuxFile.write(f'def Linux():\n')
         LinuxFile.write(f'   ## NOTE: You can use this function\n')
         LinuxFile.write(f'   ## To load information before the app starts running\n\n')
         LinuxFile.write(f'   ## Lets run the SplashScreen\n')
-        LinuxFile.write(f'   from Linux import SplashScreen\n\n')
+        LinuxFile.write(f'   from linux import SplashScreen\n\n')
         LinuxFile.write(f'   ## Lets check system requirements\n')
-        LinuxFile.write(f'   from exception import SystemRequirements\n\n')
+        LinuxFile.write(f'   from exception import Requirements\n\n')
         LinuxFile.write(f'   ## Start App for Linux\n')
-        LinuxFile.write(f'   from Linux import LinuxApp\n\n')
+        LinuxFile.write(f'   from linux import LinuxApp\n\n')
         LinuxFile.close()
 
 def CreateLinuxAppFile():
@@ -690,7 +690,7 @@ def CreateLinuxAppFile():
             LinuxAppFile.write(f'## LinuxApp File\n')
             LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
             LinuxAppFile.write(f'from exception import Exceptions\n')
-            LinuxAppFile.write(f'from Linux import FileSystem\n\n')
+            LinuxAppFile.write(f'from linux import FileSystem\n\n')
             LinuxAppFile.write(f'def Main():\n')
             LinuxAppFile.write(f'   print("Hello World!")\n\n')
             LinuxAppFile.write(f'Main()\n')
@@ -703,7 +703,7 @@ def CreateLinuxAppFile():
             LinuxAppFile.write(f'## LinuxApp File\n')
             LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
             LinuxAppFile.write(f'from exception import Exceptions\n')
-            LinuxAppFile.write(f'from Linux import FileSystem\n\n')
+            LinuxAppFile.write(f'from linux import FileSystem\n\n')
             LinuxAppFile.write(f'def Main():\n')
             LinuxAppFile.write(f'   while True:\n')
             LinuxAppFile.write(f'      print("="*80)\n')
@@ -735,7 +735,7 @@ def CreateLinuxAppFile():
             LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
             LinuxAppFile.write(f'import Tokens\n')
             LinuxAppFile.write(f'from exception import Exceptions\n')
-            LinuxAppFile.write(f'from Linux import FileSystem\n\n')
+            LinuxAppFile.write(f'from linux import FileSystem\n\n')
             LinuxAppFile.write(f'def NewTweet():\n')
             LinuxAppFile.write(f'   print("="*80)\n')
             LinuxAppFile.write(f'   print("NEW TWEET")\n')
@@ -843,16 +843,16 @@ def CreateMacFile():
         MacFile.write(f'## This file is used to implement code used to run scripts for Mac\n')
         MacFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
         MacFile.write(f'import os\n')
-        MacFile.write(f'from Mac import FileSystem\n\n')
+        MacFile.write(f'from mac import FileSystem\n\n')
         MacFile.write(f'def Mac():\n')
         MacFile.write(f'   ## NOTE: You can use this function\n')
         MacFile.write(f'   ## To load information before the app starts running\n\n')
         MacFile.write(f'   ## Lets run the SplashScreen\n')
-        MacFile.write(f'   from Mac import SplashScreen\n\n')
+        MacFile.write(f'   from mac import SplashScreen\n\n')
         MacFile.write(f'   ## Lets check system requirements\n')
-        MacFile.write(f'   from exception import SystemRequirements\n\n')
+        MacFile.write(f'   from exception import Requirements\n\n')
         MacFile.write(f'   ## Start App for Mac\n')
-        MacFile.write(f'   from Mac import MacApp\n\n')
+        MacFile.write(f'   from mac import MacApp\n\n')
         MacFile.close()
 
 def CreateMacAppFile():
@@ -863,7 +863,7 @@ def CreateMacAppFile():
             MacAppFile.write(f'## MacApp File\n')
             MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
             MacAppFile.write(f'from exception import Exceptions\n')
-            MacAppFile.write(f'from Mac import FileSystem\n\n')
+            MacAppFile.write(f'from mac import FileSystem\n\n')
             MacAppFile.write(f'def Main():\n')
             MacAppFile.write(f'   print("Hello World!")\n\n')
             MacAppFile.write(f'Main()\n')
@@ -876,7 +876,7 @@ def CreateMacAppFile():
             MacAppFile.write(f'## MacApp File\n')
             MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
             MacAppFile.write(f'from exception import Exceptions\n')
-            MacAppFile.write(f'from Mac import FileSystem\n\n')
+            MacAppFile.write(f'from mac import FileSystem\n\n')
             MacAppFile.write(f'def Main():\n')
             MacAppFile.write(f'   while True:\n')
             MacAppFile.write(f'      print("="*80)\n')
@@ -908,7 +908,7 @@ def CreateMacAppFile():
             MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
             MacAppFile.write(f'import Tokens\n')
             MacAppFile.write(f'from exception import Exceptions\n')
-            MacAppFile.write(f'from Mac import FileSystem\n\n')
+            MacAppFile.write(f'from mac import FileSystem\n\n')
             MacAppFile.write(f'def NewTweet():\n')
             MacAppFile.write(f'   print("="*80)\n')
             MacAppFile.write(f'   print("NEW TWEET")\n')
@@ -1020,16 +1020,16 @@ def CreateWindowsFile():
         WindowsFile.write(f'## This file is used to implement code used to run scripts for Windows\n')
         WindowsFile.write(f'## Codes implemented here, will run before the script starts running.\n\n')
         WindowsFile.write(f'import os\n')
-        WindowsFile.write(f'from Windows import FileSystem\n\n')
+        WindowsFile.write(f'from windows import FileSystem\n\n')
         WindowsFile.write(f'def Windows():\n')
         WindowsFile.write(f'   ## NOTE: You can use this function\n')
         WindowsFile.write(f'   ## To load information before the app starts running\n\n')
         WindowsFile.write(f'   ## Lets run the SplashScreen\n')
-        WindowsFile.write(f'   from Windows import SplashScreen\n\n')
+        WindowsFile.write(f'   from windows import SplashScreen\n\n')
         WindowsFile.write(f'   ## Lets check system requirements\n')
-        WindowsFile.write(f'   from exception import SystemRequirements\n\n')
+        WindowsFile.write(f'   from exception import Requirements\n\n')
         WindowsFile.write(f'   ## Start App for Windows\n')
-        WindowsFile.write(f'   from Windows import WindowsApp\n\n')
+        WindowsFile.write(f'   from windows import WindowsApp\n\n')
         WindowsFile.close()
 
 def CreateWindowsAppFile():
@@ -1040,7 +1040,7 @@ def CreateWindowsAppFile():
             WindowsAppFile.write(f'## WindowsApp File\n')
             WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
             WindowsAppFile.write(f'from exception import Exceptions\n')
-            WindowsAppFile.write(f'from Windows import FileSystem\n\n')
+            WindowsAppFile.write(f'from windows import FileSystem\n\n')
             WindowsAppFile.write(f'def Main():\n')
             WindowsAppFile.write(f'   print("Hello World!")\n\n') 
             WindowsAppFile.write(f'Main()\n')
@@ -1053,7 +1053,7 @@ def CreateWindowsAppFile():
             WindowsAppFile.write(f'## WindowsApp File\n')
             WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
             WindowsAppFile.write(f'from exception import Exceptions\n')
-            WindowsAppFile.write(f'from Windows import FileSystem\n\n')
+            WindowsAppFile.write(f'from windows import FileSystem\n\n')
             WindowsAppFile.write(f'def Main():\n')
             WindowsAppFile.write(f'   while True:\n')
             WindowsAppFile.write(f'      print("="*80)\n')
@@ -1085,7 +1085,7 @@ def CreateWindowsAppFile():
             WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
             WindowsAppFile.write(f'import Tokens\n')
             WindowsAppFile.write(f'from exception import Exceptions\n')
-            WindowsAppFile.write(f'from Windows import FileSystem\n\n')
+            WindowsAppFile.write(f'from windows import FileSystem\n\n')
             WindowsAppFile.write(f'def NewTweet():\n')
             WindowsAppFile.write(f'   print("="*80)\n')
             WindowsAppFile.write(f'   print("NEW TWEET")\n')
@@ -1226,7 +1226,6 @@ def CreateBridge():
         print(f'> Check if "{ProjectName}" already exists and try again.')
         print("="*80)
         # Exceptions.Log(Message = "Criar arquivo de LOG: Arquivo já existente!", Location = FileSystem.CurrentPath + "NomeArquivo.log")
-        # Exceptions.FileExists()
         Exceptions.Throw.FileExists()
         
     ### Project Structure ###
@@ -1237,8 +1236,8 @@ def CreateBridge():
     CreateReadmeFile()
     ## Exceptions File
     CreateExceptions()
-    ## SystemRequirements File
-    CreateSystemRequirements()
+    ## Requirements File
+    CreateRequirements()
     print("="*80)
     print()
 
