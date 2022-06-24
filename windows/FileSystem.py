@@ -19,5 +19,7 @@ Pictures = f'{User}/Pictures/'
 Favorites = f'{User}/Favorites/'
 
 ## Project Directories
+Backup = f'{CurrentPath}/Backup/'
+Sample = f'{CurrentPath}/Sample/'
 PyBridgeFolder = f'{Documents}PyBridge/'
 ProjectsRepo = f'{PyBridgeFolder}Projects/'

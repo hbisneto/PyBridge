@@ -15,5 +15,7 @@ Downloads = f'{User}Downloads/'
 Music = f'{User}Music/'
 
 ## Project Directories
+Backup = f'{CurrentPath}/Backup/'
+Sample = f'{CurrentPath}/Sample/'
 PyBridgeFolder = f'{Documents}PyBridge/'
 ProjectsRepo = f'{PyBridgeFolder}Projects/'

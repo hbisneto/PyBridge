@@ -23,12 +23,13 @@ BuildVersion = sys.version_info[2]
 ProjList = []
 
 class DownloadSample():
-    try:
-        os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
-    except:
-        print()
 
     def GetInfo(self):
+        try:
+            os.mkdir(f'{FileSystem.Sample}')
+        except:
+            print()
+
         print("="*80)
         print(">> DOWNLOADING GETINFO SAMPLE... <<")
         print("="*80)
@@ -36,7 +37,8 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/GetInfo/')
+            os.mkdir(f'{FileSystem.Sample}GetInfo/')
+            # os.mkdir(f'{FileSystem.Sample}GetInfo/')
         except:
             print("[Status]: The project seems to be in the path, already!")
             return
@@ -46,7 +48,7 @@ class DownloadSample():
 
         URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
         From = f'{FileSystem.CurrentPath}/main.zip'
-        To = f'{FileSystem.CurrentPath}/Sample/GetInfo/main.zip'
+        To = f'{FileSystem.Sample}GetInfo/main.zip'
 
         ServerResponse = requests.get(URL, stream = True)
         FileName = URL.split("/")[-1]
@@ -66,11 +68,15 @@ class DownloadSample():
             return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/GetInfo/')
+            zipObj.extractall(f'{FileSystem.Sample}GetInfo/')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
     def Jokenpo(self):
+        try:
+            os.mkdir(f'{FileSystem.Sample}')
+        except:
+            print()
         print("="*80)
         print(">> DOWNLOADING JOKENPO SAMPLE... <<")
         print("="*80)
@@ -78,7 +84,7 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/JoKenPo/')
+            os.mkdir(f'{FileSystem.Sample}JoKenPo/')
         except:
             print("[Status]: The project seems to be in the path, already!")
             return
@@ -88,7 +94,7 @@ class DownloadSample():
 
         URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
         From = f'{FileSystem.CurrentPath}/main.zip'
-        To = f'{FileSystem.CurrentPath}/Sample/JoKenPo/main.zip'
+        To = f'{FileSystem.Sample}JoKenPo/main.zip'
 
         ServerResponse = requests.get(URL, stream = True)
         FileName = URL.split("/")[-1]
@@ -107,7 +113,7 @@ class DownloadSample():
             return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/JoKenPo/')
+            zipObj.extractall(f'{FileSystem.Sample}JoKenPo/')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
