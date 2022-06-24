@@ -23,6 +23,11 @@ BuildVersion = sys.version_info[2]
 ProjList = []
 
 class DownloadSample():
+    try:
+        os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
+    except:
+        print()
+
     def GetInfo(self):
         print("="*80)
         print(">> DOWNLOADING GETINFO SAMPLE... <<")
@@ -31,17 +36,13 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
-            print('[Status]: Verifying repository to download...')
-        except:
-            print('[Status]: Verifying repository to download...')
-
-        try:
             os.mkdir(f'{FileSystem.CurrentPath}/Sample/GetInfo/')
-            print("[Status]: Starting Download...")
         except:
-            print("[Status]: Starting Download...")
             print("[Status]: The project seems to be in the path, already!")
+            return
+
+        print("[Status]: Starting Download...")
+        print('[Status]: Verifying repository to download...')
 
         URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
         From = f'{FileSystem.CurrentPath}/main.zip'
@@ -56,17 +57,16 @@ class DownloadSample():
 
         print("[Status]: 'GetInfo' download 100% completed!")
         print("[Status]: Verifying 'GetInfo'...")
+        print("[Done]: 'GetInfo' download process complete!")
+
         try:
             Path(From).rename(To)
-            print("[Done]: 'GetInfo' download process complete!")
             print("="*80)
         except:
-            Path(From).rename(To)
-            print("[Done]: 'GetInfo' download process complete!")
-            print("="*80)
+            return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/GetInfo/main')
+            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/GetInfo/')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
@@ -78,18 +78,13 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
-            print('[Status]: Verifying repository to download...')
-        except:
-            print('[Status]: Verifying repository to download...')
-
-        try:
             os.mkdir(f'{FileSystem.CurrentPath}/Sample/JoKenPo/')
-            print("[Status]: Starting Download...")
         except:
-            print("[Status]: Starting Download...")
             print("[Status]: The project seems to be in the path, already!")
-            
+            return
+        
+        print("[Status]: Starting Download...")
+        print('[Status]: Verifying repository to download...')
 
         URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
         From = f'{FileSystem.CurrentPath}/main.zip'
@@ -103,18 +98,16 @@ class DownloadSample():
                     f.write(Chunk)
 
         print("[Status]: 'JoKenPo' download 100% completed!")
-        print("[Status]: Verifying 'GetInfo'...")
+        print("[Status]: Verifying 'JoKenPo'...")
         try:
             Path(From).rename(To)
             print("[Done]: 'JoKenPo' download process complete!")
             print("="*80)
         except:
-            Path(From).rename(To)
-            print("[Done]: 'JoKenPo' download process complete!")
-            print("="*80)
+            return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/JoKenPo/main')
+            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/JoKenPo/')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
@@ -154,7 +147,6 @@ def Backup():
                 shutil.rmtree(Target)
             except OSError as DirError:
                 Exceptions.Throw.CompressBackupFail()
-                print(DirError)
         else:
             print(f'>> Operation completed in: {Time}')
             

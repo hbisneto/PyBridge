@@ -19,6 +19,8 @@ PyBridge 2.0:
 3. Renamed Module "Mac" to "mac"
 4. Renamed Module "Windows" to "windows"
 • Projects create using PyBridge will follow PyBridge FileSystem standards (See "Structure of Projects Created by PyBridge" in README.MD file in the root of project)
+• Added ability to download more sample codes
+• Improvements when downloading samples
 ```
 
 #
