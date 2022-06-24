@@ -21,6 +21,8 @@ PyBridge 2.0:
 • Projects create using PyBridge will follow PyBridge FileSystem standards (See "Structure of Projects Created by PyBridge" in README.MD file in the root of project)
 • Added ability to download more sample codes
 • Improvements when downloading samples
+• Added Backup reference to FileSystem.py
+• Added Samples reference to FileSystem.py
 ```
 
 #
