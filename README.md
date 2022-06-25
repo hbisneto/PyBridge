@@ -5,32 +5,7 @@
 >> The use of this version of PyBridge is not recommended YET. It's in update process and soon will be available for download.
 <br>If you want to contribute to this repository, send your pull request to the code on [Official PyBridge Repository](https://www.github.com/hbisneto/PyBridge)
 
-## Update Logs (Released Versions)
-
-```
-PyBridge 2.0:
-
-• Added new native library: time
-• Added Module "system" to PyBridge
-• Added Library "Logs.py" to "system" module
-• Added Library "Requirements.py" to "system" module
-• Added Backup reference to FileSystem.py
-• Added Samples reference to FileSystem.py
-• Added .gitignore to projects created by PyBridge
-• Added .gitignore to PyBridge
-• Updated modules and libraries to improve system ("SystemRequirements.py" is deprecated. Use "Requirements.py" instead)
-1. Renamed Module "ErrorReport" to "exception"
-2. Renamed Module "Linux" to "linux"
-3. Renamed Module "Mac" to "mac"
-4. Renamed Module "Windows" to "windows"
-• Projects create using PyBridge will follow PyBridge FileSystem standards (See "Structure of Projects Created by PyBridge" in README.MD file in the root of project)
-• Added ability to download more sample codes
-• Improvements in "Download Samples" feature
-```
-
 #
-
-<br>
 
 With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
 
