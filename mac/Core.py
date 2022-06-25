@@ -22,6 +22,7 @@ MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
 
+## Download Sample Codes
 class DownloadSample():
 
     def GetInfo(self):
@@ -38,7 +39,6 @@ class DownloadSample():
 
         try:
             os.mkdir(f'{FileSystem.Sample}GetInfo/')
-            # os.mkdir(f'{FileSystem.Sample}GetInfo/')
         except:
             print("[Status]: The project seems to be in the path, already!")
             return
@@ -117,6 +117,7 @@ class DownloadSample():
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
+## Backup Projects (Saved in Documents > PyBridge > Projects)
 def Backup():
     Day = datetime.now().day
     Month = datetime.now().month
@@ -168,11 +169,13 @@ def Backup():
         print("*" * 40)
     print("="*80)
     print()
-    
+
+## System Explorer
 def Explorer():
     ProjectName = str()
     FolderLocation = str()
 
+## Folders Verified to assure PyBridge Will Run Properly
 def VerifyFolders():
     def BridgeFolder():
         try:
@@ -191,6 +194,7 @@ def VerifyFolders():
     BridgeFolder()
     ProjectsFolder()
 
+## List PyBridge Projects (Saved in Documents > PyBridge > Projects)
 def ProjectList():
     try:
         BridgeRepo = os.listdir(FileSystem.ProjectsRepo)
@@ -220,8 +224,8 @@ def ProjectList():
         BridgeLoop = False
         ProjOptions()
 
+## Create Local Library (Inside all OS Modules)
 def ProjOptions():
-    ## Create Local Library (Inside all OS Modules)
     def CreateLib(AppliesTo):
         LibName = str(input(">>[!] Type the Lib name: "))
         LinuxLibLocation = f'{AppliesTo}/linux/{LibName}{FileSystem.PythonExtension}'
@@ -456,6 +460,7 @@ def ProjOptions():
     except:
         Exceptions.Throw.InvalidOption()
 
+## Create Environment Folders for the Bridge to Run
 def CreateEnvironment():
     ## Environment Folders
     CreateEnvironment.exceptionPath = f'{Explorer.FolderLocation}exception/'
@@ -467,7 +472,7 @@ def CreateEnvironment():
     CreateEnvironment.UserAppName = f'{Explorer.FolderLocation}__init__.py'
     CreateEnvironment.TokensFile = f'{Explorer.FolderLocation}Tokens.py'
     CreateEnvironment.ReadmeFile = f'{Explorer.FolderLocation}README.md'
-    CreateEnvironment.GitIgnoreFile = f'{Explorer.FolderLocation}MyFile.gitignore'
+    CreateEnvironment.GitIgnoreFile = f'{Explorer.FolderLocation}.gitignore'
     CreateEnvironment.ExceptionsFile = f'{CreateEnvironment.exceptionPath}Exceptions.py'
     CreateEnvironment.Requirements = f'{CreateEnvironment.exceptionPath}Requirements.py'
     
@@ -530,8 +535,8 @@ def CreateEnvironment():
     if ProjectOption == 3:
         TokensFile = open(CreateEnvironment.TokensFile, "w")
 
+## Launcher Script
 def CreateInitFile():
-    ## Launcher Script
     print("="*80)
     print(f'>> {ProjectType} <<')
     print("="*80)
@@ -563,8 +568,8 @@ def CreateInitFile():
         AppName.write(f'Main()')
         AppName.close()
 
+## README File
 def CreateReadmeFile():
-    ## README File
     print("> Creating 'README' File...")
     with codecs.open(CreateEnvironment.ReadmeFile, "w", "utf-8-sig") as Readme:
         Readme.write(f'# {Explorer.ProjectName}\n\n')
@@ -584,175 +589,145 @@ def CreateReadmeFile():
         Readme.write(f'Copyright © {datetime.now().year} {getpass.getuser().capitalize()}. All rights reserved.')
         Readme.close()
 
+## .GITIGNORE File
 def CreateGitIgnoreFile():
-    ## .GITIGNORE File
     print("> Creating 'README' File...")
     with codecs.open(CreateEnvironment.GitIgnoreFile, "w", "utf-8-sig") as GitIgnore:
-        GitIgnore.write(f'__pycache__/')
-        GitIgnore.write(f'# Byte-compiled / optimized / DLL files')
-        GitIgnore.write(f'*.py[cod]')
-        GitIgnore.write(f'*$py.class')
-
-        GitIgnore.write(f'# C extensions')
-        GitIgnore.write(f'*.so')
-
-        GitIgnore.write(f'# Distribution / packaging')
-        GitIgnore.write(f'.Python')
-        GitIgnore.write(f'build/')
-        GitIgnore.write(f'develop-eggs/')
-        GitIgnore.write(f'dist/')
-        GitIgnore.write(f'downloads/')
-        GitIgnore.write(f'eggs/')
-        GitIgnore.write(f'.eggs/')
-        GitIgnore.write(f'lib/')
-        GitIgnore.write(f'lib64/')
-        GitIgnore.write(f'parts/')
-        GitIgnore.write(f'sdist/')
-        GitIgnore.write(f'var/')
-        GitIgnore.write(f'wheels/')
-        GitIgnore.write(f'share/python-wheels/')
-        GitIgnore.write(f'*.egg-info/')
-        GitIgnore.write(f'.installed.cfg')
-        GitIgnore.write(f'*.egg')
-        GitIgnore.write(f'MANIFEST')
-
-        GitIgnore.write(f'# PyInstaller')
-        GitIgnore.write(f'#  Usually these files are written by a python script from a template')
-        GitIgnore.write(f'#  before PyInstaller builds the exe, so as to inject date/other infos into it.')
-        GitIgnore.write(f'*.manifest')
-        GitIgnore.write(f'*.spec')
-
-        GitIgnore.write(f'# Installer logs')
-        GitIgnore.write(f'pip-log.txt')
-        GitIgnore.write(f'pip-delete-this-directory.txt')
-
-        GitIgnore.write(f'# Unit test / coverage reports')
-        GitIgnore.write(f'htmlcov/')
-        GitIgnore.write(f'.tox/')
-        GitIgnore.write(f'.nox/')
-        GitIgnore.write(f'.coverage')
-        GitIgnore.write(f'.coverage.*')
-        GitIgnore.write(f'.cache')
-        GitIgnore.write(f'nosetests.xml')
-        GitIgnore.write(f'coverage.xml')
-        GitIgnore.write(f'*.cover')
-        GitIgnore.write(f'*.py,cover')
-        GitIgnore.write(f'.hypothesis/')
-        GitIgnore.write(f'.pytest_cache/')
-        GitIgnore.write(f'cover/')
-
-        GitIgnore.write(f'# Translations')
-        GitIgnore.write(f'*.mo')
-        GitIgnore.write(f'*.pot')
-
-        GitIgnore.write(f'# Django stuff:')
-        GitIgnore.write(f'*.log')
-        GitIgnore.write(f'local_settings.py')
-        GitIgnore.write(f'db.sqlite3')
-        GitIgnore.write(f'db.sqlite3-journal')
-
-        GitIgnore.write(f'# Flask stuff:')
-        GitIgnore.write(f'instance/')
-        GitIgnore.write(f'.webassets-cache')
-
-        GitIgnore.write(f'# Scrapy stuff:')
-        GitIgnore.write(f'.scrapy')
-
-        GitIgnore.write(f'# Sphinx documentation')
-        GitIgnore.write(f'docs/_build/')
-
-        GitIgnore.write(f'# PyBuilder')
-        GitIgnore.write(f'.pybuilder/')
-        GitIgnore.write(f'target/')
-
-        GitIgnore.write(f'# Jupyter Notebook')
-        GitIgnore.write(f'.ipynb_checkpoints')
-
-        GitIgnore.write(f'# IPython')
-        GitIgnore.write(f'profile_default/')
-        GitIgnore.write(f'ipython_config.py')
-
-        GitIgnore.write(f'# pyenv')
-        GitIgnore.write(f'#   For a library or package, you might want to ignore these files since the code is')
-        GitIgnore.write(f'#   intended to run in multiple environments; otherwise, check them in:')
-        GitIgnore.write(f'# .python-version')
-
-        GitIgnore.write(f'# pipenv')
-        GitIgnore.write(f'#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.')
-        GitIgnore.write(f'#   However, in case of collaboration, if having platform-specific dependencies or dependencies')
-        GitIgnore.write(f"#   having no cross-platform support, pipenv may install dependencies that don't work, or not")
-        GitIgnore.write(f'#   install all needed dependencies.')
-        GitIgnore.write(f'#Pipfile.lock')
-
-        GitIgnore.write(f'# poetry')
-        GitIgnore.write(f'#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.')
-        GitIgnore.write(f'#   This is especially recommended for binary packages to ensure reproducibility, and is more')
-        GitIgnore.write(f'#   commonly ignored for libraries.')
-        GitIgnore.write(f'#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control')
-        GitIgnore.write(f'#poetry.lock')
-
-        GitIgnore.write(f'# pdm')
-        GitIgnore.write(f'#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.')
-        GitIgnore.write(f'#pdm.lock')
-        GitIgnore.write(f'#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it')
-        GitIgnore.write(f'#   in version control.')
-        GitIgnore.write(f'#   https://pdm.fming.dev/#use-with-ide')
-        GitIgnore.write(f'.pdm.toml')
-
-        GitIgnore.write(f'# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm')
-        GitIgnore.write(f'__pypackages__/')
-
-        GitIgnore.write(f'# Celery stuff')
-        GitIgnore.write(f'celerybeat-schedule')
-        GitIgnore.write(f'celerybeat.pid')
-
-        GitIgnore.write(f'# SageMath parsed files')
-        GitIgnore.write(f'*.sage.py')
-
-        GitIgnore.write(f'# Environments')
-        GitIgnore.write(f'.env')
-        GitIgnore.write(f'.venv')
-        GitIgnore.write(f'env/')
-        GitIgnore.write(f'venv/')
-        GitIgnore.write(f'ENV/')
-        GitIgnore.write(f'env.bak/')
-        GitIgnore.write(f'venv.bak/')
-
-        GitIgnore.write(f'# Spyder project settings')
-        GitIgnore.write(f'.spyderproject')
-        GitIgnore.write(f'.spyproject')
-
-        GitIgnore.write(f'# Rope project settings')
-        GitIgnore.write(f'.ropeproject')    
-
-        GitIgnore.write(f'# mkdocs documentation')
-        GitIgnore.write(f'/site')
-
-        GitIgnore.write(f'# mypy')
-        GitIgnore.write(f'.mypy_cache/')
-        GitIgnore.write(f'.dmypy.json')
-        GitIgnore.write(f'dmypy.json')
-
-        GitIgnore.write(f'# Pyre type checker')
-        GitIgnore.write(f'.pyre/')
-
-        GitIgnore.write(f'# pytype static type analyzer')
-        GitIgnore.write(f'.pytype/')
-
-        GitIgnore.write(f'# Cython debug symbols')
-        GitIgnore.write(f'cython_debug/')
-        
-        GitIgnore.write(f'# PyCharm')
-        GitIgnore.write(f'#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can')
-        GitIgnore.write(f'#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore')
-        GitIgnore.write(f'#  and can be added to the global gitignore or merged into this file.  For a more nuclear')
-        GitIgnore.write(f'#  option (not recommended) you can uncomment the following to ignore the entire idea folder.')
+        GitIgnore.write(f'__pycache__/\n')
+        GitIgnore.write(f'# Byte-compiled / optimized / DLL files\n')
+        GitIgnore.write(f'*.py[cod]\n')
+        GitIgnore.write(f'*$py.class\n\n')
+        GitIgnore.write(f'# C extensions\n')
+        GitIgnore.write(f'*.so\n\n')
+        GitIgnore.write(f'# Distribution / packaging\n')
+        GitIgnore.write(f'.Python\n')
+        GitIgnore.write(f'build/\n')
+        GitIgnore.write(f'develop-eggs/\n')
+        GitIgnore.write(f'dist/\n')
+        GitIgnore.write(f'downloads/\n')
+        GitIgnore.write(f'eggs/\n')
+        GitIgnore.write(f'.eggs/\n')
+        GitIgnore.write(f'lib/\n')
+        GitIgnore.write(f'lib64/\n')
+        GitIgnore.write(f'parts/\n')
+        GitIgnore.write(f'sdist/\n')
+        GitIgnore.write(f'var/\n')
+        GitIgnore.write(f'wheels/\n')
+        GitIgnore.write(f'share/python-wheels/\n')
+        GitIgnore.write(f'*.egg-info/\n')
+        GitIgnore.write(f'.installed.cfg\n')
+        GitIgnore.write(f'*.egg\n')
+        GitIgnore.write(f'MANIFEST\n\n')
+        GitIgnore.write(f'# PyInstaller\n')
+        GitIgnore.write(f'#  Usually these files are written by a python script from a template\n')
+        GitIgnore.write(f'#  before PyInstaller builds the exe, so as to inject date/other infos into it.\n')
+        GitIgnore.write(f'*.manifest\n')
+        GitIgnore.write(f'*.spec\n\n\n')
+        GitIgnore.write(f'# Installer logs\n')
+        GitIgnore.write(f'pip-log.txt\n')
+        GitIgnore.write(f'pip-delete-this-directory.txt\n\n')
+        GitIgnore.write(f'# Unit test / coverage reports\n')
+        GitIgnore.write(f'htmlcov/\n')
+        GitIgnore.write(f'.tox/\n')
+        GitIgnore.write(f'.nox/\n')
+        GitIgnore.write(f'.coverage\n')
+        GitIgnore.write(f'.coverage.*\n')
+        GitIgnore.write(f'.cache\n')
+        GitIgnore.write(f'nosetests.xml\n')
+        GitIgnore.write(f'coverage.xml\n')
+        GitIgnore.write(f'*.cover\n')
+        GitIgnore.write(f'*.py,cover\n')
+        GitIgnore.write(f'.hypothesis/\n')
+        GitIgnore.write(f'.pytest_cache/\n')
+        GitIgnore.write(f'cover/\n\n')
+        GitIgnore.write(f'# Translations\n')
+        GitIgnore.write(f'*.mo\n')
+        GitIgnore.write(f'*.pot\n\n')
+        GitIgnore.write(f'# Django stuff:\n')
+        GitIgnore.write(f'*.log\n')
+        GitIgnore.write(f'local_settings.py\n')
+        GitIgnore.write(f'db.sqlite3\n')
+        GitIgnore.write(f'db.sqlite3-journal\n\n')
+        GitIgnore.write(f'# Flask stuff:\n')
+        GitIgnore.write(f'instance/\n')
+        GitIgnore.write(f'.webassets-cache\n\n')
+        GitIgnore.write(f'# Scrapy stuff:\n')
+        GitIgnore.write(f'.scrapy\n\n')
+        GitIgnore.write(f'# Sphinx documentation\n')
+        GitIgnore.write(f'docs/_build/\n\n')
+        GitIgnore.write(f'# PyBuilder\n')
+        GitIgnore.write(f'.pybuilder/\n')
+        GitIgnore.write(f'target/\n\n')
+        GitIgnore.write(f'# Jupyter Notebook\n')
+        GitIgnore.write(f'.ipynb_checkpoints\n\n')
+        GitIgnore.write(f'# IPython\n')
+        GitIgnore.write(f'profile_default/\n')
+        GitIgnore.write(f'ipython_config.py\n\n')
+        GitIgnore.write(f'# pyenv\n')
+        GitIgnore.write(f'#   For a library or package, you might want to ignore these files since the code is\n')
+        GitIgnore.write(f'#   intended to run in multiple environments; otherwise, check them in:\n')
+        GitIgnore.write(f'# .python-version\n\n')
+        GitIgnore.write(f'# pipenv\n')
+        GitIgnore.write(f'#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.\n')
+        GitIgnore.write(f'#   However, in case of collaboration, if having platform-specific dependencies or dependencies\n')
+        GitIgnore.write(f"#   having no cross-platform support, pipenv may install dependencies that don't work, or not\n")
+        GitIgnore.write(f'#   install all needed dependencies.\n')
+        GitIgnore.write(f'#Pipfile.lock\n\n')
+        GitIgnore.write(f'# poetry\n')
+        GitIgnore.write(f'#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.\n')
+        GitIgnore.write(f'#   This is especially recommended for binary packages to ensure reproducibility, and is more\n')
+        GitIgnore.write(f'#   commonly ignored for libraries.\n')
+        GitIgnore.write(f'#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control\n')
+        GitIgnore.write(f'#poetry.lock\n\n')
+        GitIgnore.write(f'# pdm\n')
+        GitIgnore.write(f'#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.\n')
+        GitIgnore.write(f'#pdm.lock\n')
+        GitIgnore.write(f'#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it\n')
+        GitIgnore.write(f'#   in version control.\n')
+        GitIgnore.write(f'#   https://pdm.fming.dev/#use-with-ide\n')
+        GitIgnore.write(f'.pdm.toml\n\n')
+        GitIgnore.write(f'# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm\n')
+        GitIgnore.write(f'__pypackages__/\n\n')
+        GitIgnore.write(f'# Celery stuff\n')
+        GitIgnore.write(f'celerybeat-schedule\n')
+        GitIgnore.write(f'celerybeat.pid\n\n')
+        GitIgnore.write(f'# SageMath parsed files\n')
+        GitIgnore.write(f'*.sage.py\n\n')
+        GitIgnore.write(f'# Environments\n')
+        GitIgnore.write(f'.env\n')
+        GitIgnore.write(f'.venv\n')
+        GitIgnore.write(f'env/\n')
+        GitIgnore.write(f'venv/\n')
+        GitIgnore.write(f'ENV/\n')
+        GitIgnore.write(f'env.bak/\n')
+        GitIgnore.write(f'venv.bak/\n\n')
+        GitIgnore.write(f'# Spyder project settings\n')
+        GitIgnore.write(f'.spyderproject\n')
+        GitIgnore.write(f'.spyproject\n\n')
+        GitIgnore.write(f'# Rope project settings\n')
+        GitIgnore.write(f'.ropeproject\n\n')    
+        GitIgnore.write(f'# mkdocs documentation\n')
+        GitIgnore.write(f'/site\n\n')
+        GitIgnore.write(f'# mypy\n')
+        GitIgnore.write(f'.mypy_cache/\n')
+        GitIgnore.write(f'.dmypy.json\n')
+        GitIgnore.write(f'dmypy.json\n\n')
+        GitIgnore.write(f'# Pyre type checker\n')
+        GitIgnore.write(f'.pyre/\n\n')
+        GitIgnore.write(f'# pytype static type analyzer\n')
+        GitIgnore.write(f'.pytype/\n\n')
+        GitIgnore.write(f'# Cython debug symbols\n')
+        GitIgnore.write(f'cython_debug/\n\n')
+        GitIgnore.write(f'# PyCharm\n')
+        GitIgnore.write(f'#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can\n')
+        GitIgnore.write(f'#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore\n')
+        GitIgnore.write(f'#  and can be added to the global gitignore or merged into this file.  For a more nuclear\n')
+        GitIgnore.write(f'#  option (not recommended) you can uncomment the following to ignore the entire idea folder.\n')
         GitIgnore.write(f'#.idea/')
         GitIgnore.close()
 
-
+## Exception Triggers
 def CreateExceptions():
-    ## Exception Triggers
     print("> Creating exceptions Module...")
     with codecs.open(CreateEnvironment.ExceptionsFile, "w", "utf-8-sig") as Exceptions:
         Exceptions.write(f'## Exceptions File\n')
@@ -792,8 +767,8 @@ def CreateExceptions():
         Exceptions.write(f'   print("="*80)\n')
         Exceptions.close()
 
+## System Requirements File
 def CreateRequirements():
-    ## System Requirements File
     print("> Creating Requirements Library...")
     with codecs.open(CreateEnvironment.Requirements, "w", "utf-8-sig") as Requirements:
         Requirements.write(f'## Requirements File\n')
@@ -825,12 +800,12 @@ def CreateRequirements():
         Requirements.write(f'      Exceptions.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n')
         Requirements.close()
 
+## Linux File
 def CreateLinuxFile():
     print("="*80)
     print(">> Creating Linux Modules <<")
     print("="*80)
     
-    ## Linux File
     print("> Creating Linux Library...")
     with codecs.open(CreateEnvironment.LinuxFile, "w", "utf-8-sig") as LinuxFile:
         LinuxFile.write(f'## Linux File\n')
@@ -849,8 +824,8 @@ def CreateLinuxFile():
         LinuxFile.write(f'   from linux import LinuxApp\n\n')
         LinuxFile.close()
 
+## LinuxApp File
 def CreateLinuxAppFile():
-    ## LinuxApp File
     if ProjectOption == 1:
         print("> Creating LinuxApp Library...")
         with codecs.open(CreateEnvironment.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
@@ -927,8 +902,8 @@ def CreateLinuxAppFile():
             LinuxAppFile.write(f'Main()\n')
             LinuxAppFile.close()
 
+## Linux SplashScreen
 def CreateLinuxSplashScreen():
-    ## Linux SplashScreen
     if ProjectOption == 3:
         with codecs.open(CreateEnvironment.SplashLinux, "w", "utf-8-sig") as SplashLinux:
             SplashLinux.write(f'## SplashScreen File\n')
@@ -975,8 +950,8 @@ def CreateLinuxSplashScreen():
             SplashLinux.write(f'print()\n')
             SplashLinux.close()
 
+## Linux FileSystem
 def CreateLinuxFileSystem():
-    ## Linux FileSystem
     print("> Creating Linux FileSystem Library...")
     with codecs.open(CreateEnvironment.LinuxFS, "w", "utf-8-sig") as LinuxFS:
         Linux = "User = f'/home/{os.environ"
@@ -1022,8 +997,8 @@ def CreateMacFile():
         MacFile.write(f'   from mac import MacApp\n\n')
         MacFile.close()
 
+## MacApp File
 def CreateMacAppFile():
-    ## MacApp File
     if ProjectOption == 1:
         print("> Creating MacApp Library...")
         with codecs.open(CreateEnvironment.MacAppFile, "w", "utf-8-sig") as MacAppFile:
@@ -1100,8 +1075,8 @@ def CreateMacAppFile():
             MacAppFile.write(f'Main()\n')
             MacAppFile.close()
 
+## Mac SplashScreen
 def CreateMacSplashScreen():
-    ## Mac SplashScreen
     if ProjectOption == 3:
         with codecs.open(CreateEnvironment.SplashMac, "w", "utf-8-sig") as SplashMac:
             SplashMac.write(f'## SplashScreen File\n')
@@ -1148,8 +1123,8 @@ def CreateMacSplashScreen():
             SplashMac.write(f'print()\n')
             SplashMac.close()
 
+## Mac FileSystem
 def CreateMacFileSystem():
-    ## Mac FileSystem
     print("> Creating Mac FileSystem Library...")
     with codecs.open(CreateEnvironment.MacFS, "w", "utf-8-sig") as MacFS:
         Mac = "User = f'/Users/{os.environ"
@@ -1175,12 +1150,12 @@ def CreateMacFileSystem():
         MacFS.write("PythonExtension = '.py'\n")
         MacFS.close()
 
+## Windows File
 def CreateWindowsFile():
     print("="*80)
     print(">> Creating Windows Modules <<")
     print("="*80)
     
-    ## Windows File
     print("> Creating Windows Library...")
     with codecs.open(CreateEnvironment.WindowsFile, "w", "utf-8-sig") as WindowsFile:
         WindowsFile.write(f'## Windows File\n')
@@ -1199,8 +1174,8 @@ def CreateWindowsFile():
         WindowsFile.write(f'   from windows import WindowsApp\n\n')
         WindowsFile.close()
 
+## WindowsApp File
 def CreateWindowsAppFile():
-    ## WindowsApp File
     if ProjectOption == 1:
         print("> Creating WindowsApp Library...")
         with codecs.open(CreateEnvironment.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
@@ -1277,8 +1252,8 @@ def CreateWindowsAppFile():
             WindowsAppFile.write(f'Main()\n')
             WindowsAppFile.close()
         
+## Windows SplashScreen
 def CreateWindowsSplashScreen():
-    ## Windows SplashScreen
     if ProjectOption == 3:
         with codecs.open(CreateEnvironment.SplashWindows, "w", "utf-8-sig") as SplashWindows:
             SplashWindows.write(f'## SplashScreen File\n')
@@ -1325,8 +1300,8 @@ def CreateWindowsSplashScreen():
             SplashWindows.write(f'print()\n')
             SplashWindows.close()
 
+## Windows FileSystem
 def CreateWindowsFileSystem():
-    ## Windows FileSystem
     print("> Creating Windows FileSystem Library...")
     with codecs.open(CreateEnvironment.WindowsFS, "w", "utf-8-sig") as WindowsFS:
         WindowsFS.write(f'## FileSystem\n')
@@ -1349,8 +1324,8 @@ def CreateWindowsFileSystem():
         WindowsFS.write("PythonExtension = '.py'\n")
         WindowsFS.close()
 
+## Tokens File
 def CreateTokensFile():
-    ## Tokens File
     print(">> Applying Twitter Application on Environment...\n>> Please wait...")
     with codecs.open(CreateEnvironment.TokensFile, "w", "utf-8-sig") as Tokens:
         Tokens.write(f'## Tokens\n')
@@ -1372,6 +1347,7 @@ def CreateTokensFile():
         Tokens.write(f'Twitter = tweepy.API(Auth, wait_on_rate_limit = True)')
         Tokens.close()
 
+## Create The Bridge (After Everything Is Ready)
 def CreateBridge():
     print("="*80)
     print(">> CREATE PROJECT <<")
