@@ -7,6 +7,7 @@ import os
 import requests
 import shutil
 import sys
+import time
 from datetime import datetime
 from ErrorReport import ErrorList
 from Mac import FileSystem
@@ -22,8 +23,15 @@ MinorVersion = sys.version_info[1]
 BuildVersion = sys.version_info[2]
 ProjList = []
 
+## Download Sample Codes
 class DownloadSample():
+
     def GetInfo(self):
+        try:
+            os.mkdir(f'{FileSystem.Sample}')
+        except:
+            print()
+
         print("="*80)
         print(">> DOWNLOADING GETINFO SAMPLE... <<")
         print("="*80)
@@ -31,46 +39,51 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
-            print('[Status]: Verifying repository to download...')
+            os.mkdir(f'{FileSystem.Sample}GetInfo/')
         except:
-            print('[Status]: Verifying repository to download...')
-
-        try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/GetInfo/')
-            print("[Status]: Starting Download...")
-        except:
-            print("[Status]: Starting Download...")
             print("[Status]: The project seems to be in the path, already!")
+            return
 
-        URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
-        From = f'{FileSystem.CurrentPath}/main.zip'
-        To = f'{FileSystem.CurrentPath}/Sample/GetInfo/main.zip'
+        print("[Status]: Starting Download...")
+        print('[Status]: Verifying repository to download...')
 
-        ServerResponse = requests.get(URL, stream = True)
-        FileName = URL.split("/")[-1]
-        with open(FileName, 'wb') as f:
-            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
-                if Chunk:
-                    f.write(Chunk)
+        try:
+            URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
+            From = f'{FileSystem.CurrentPath}/main.zip'
+            To = f'{FileSystem.Sample}GetInfo/main.zip'
 
-        print("[Status]: 'GetInfo' download 100% completed!")
-        print("[Status]: Verifying 'GetInfo'...")
+            ServerResponse = requests.get(URL, stream = True)
+            FileName = URL.split("/")[-1]
+            with open(FileName, 'wb') as f:
+                for Chunk in ServerResponse.iter_content(chunk_size = 1024):
+                    if Chunk:
+                        f.write(Chunk)
+            print("[Status]: 'GetInfo' download 100% completed!")
+            print("[Status]: Verifying 'GetInfo'...")
+            print("[Done]: 'GetInfo' download process complete!")
+        except:
+            print("[ERROR]: Could't connect to the server!")
+            print(f'[Process]: Cleaning cache...')
+            time.sleep(3)
+            shutil.rmtree(f'{FileSystem.Sample}GetInfo/')
+            print("[Process]: Cache cleaned!")
+            
         try:
             Path(From).rename(To)
-            print("[Done]: 'GetInfo' download process complete!")
             print("="*80)
         except:
-            Path(From).rename(To)
-            print("[Done]: 'GetInfo' download process complete!")
-            print("="*80)
+            return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/GetInfo/main')
+            zipObj.extractall(f'{FileSystem.Sample}GetInfo/')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
     def Jokenpo(self):
+        try:
+            os.mkdir(f'{FileSystem.Sample}')
+        except:
+            print()
         print("="*80)
         print(">> DOWNLOADING JOKENPO SAMPLE... <<")
         print("="*80)
@@ -78,43 +91,43 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/')
-            print('[Status]: Verifying repository to download...')
+            os.mkdir(f'{FileSystem.Sample}JoKenPo/')
         except:
-            print('[Status]: Verifying repository to download...')
-
-        try:
-            os.mkdir(f'{FileSystem.CurrentPath}/Sample/JoKenPo/')
-            print("[Status]: Starting Download...")
-        except:
-            print("[Status]: Starting Download...")
             print("[Status]: The project seems to be in the path, already!")
-            
+            return
+        
+        print("[Status]: Starting Download...")
+        print('[Status]: Verifying repository to download...')
 
-        URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
-        From = f'{FileSystem.CurrentPath}/main.zip'
-        To = f'{FileSystem.CurrentPath}/Sample/JoKenPo/main.zip'
+        try:
+            URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
+            From = f'{FileSystem.CurrentPath}/main.zip'
+            To = f'{FileSystem.Sample}JoKenPo/main.zip'
 
-        ServerResponse = requests.get(URL, stream = True)
-        FileName = URL.split("/")[-1]
-        with open(FileName, 'wb') as f:
-            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
-                if Chunk:
-                    f.write(Chunk)
+            ServerResponse = requests.get(URL, stream = True)
+            FileName = URL.split("/")[-1]
+            with open(FileName, 'wb') as f:
+                for Chunk in ServerResponse.iter_content(chunk_size = 1024):
+                    if Chunk:
+                        f.write(Chunk)
+            print("[Status]: 'JoKenPo' download 100% completed!")
+            print("[Status]: Verifying 'JoKenPo'...")
+        except:
+            print("[ERROR]: Could't connect to the server!")
+            print(f'[Process]: Cleaning cache...')
+            time.sleep(3)
+            shutil.rmtree(f'{FileSystem.Sample}JoKenPo/')
+            print("[Process]: Cache cleaned!")
 
-        print("[Status]: 'JoKenPo' download 100% completed!")
-        print("[Status]: Verifying 'GetInfo'...")
         try:
             Path(From).rename(To)
             print("[Done]: 'JoKenPo' download process complete!")
             print("="*80)
         except:
-            Path(From).rename(To)
-            print("[Done]: 'JoKenPo' download process complete!")
-            print("="*80)
+            return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.CurrentPath}/Sample/JoKenPo/main')
+            zipObj.extractall(f'{FileSystem.Sample}JoKenPo/')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
@@ -469,6 +482,7 @@ def CreateEnvironment():
     CreateEnvironment.UserAppName = f'{Explorer.FolderLocation}__init__.py'
     CreateEnvironment.TokensFile = f'{Explorer.FolderLocation}Tokens.py'
     CreateEnvironment.ReadmeFile = f'{Explorer.FolderLocation}README.md'
+    CreateEnvironment.GitIgnoreFile = f'{Explorer.FolderLocation}.gitignore'
     CreateEnvironment.ErrorListFile = f'{CreateEnvironment.ErrorReportPath}ErrorList.py'
     CreateEnvironment.SystemRequirements = f'{CreateEnvironment.ErrorReportPath}SystemRequirements.py'
     
@@ -506,6 +520,7 @@ def CreateEnvironment():
     ## Environment Files
     UserAppName = open(CreateEnvironment.UserAppName, "w")
     ReadmeFile = open(CreateEnvironment.ReadmeFile, "w")
+    GitIgnoreFile = open(CreateEnvironment.GitIgnoreFile, "w")
     ErrorListFile = open(CreateEnvironment.ErrorListFile, "w")
     SystemRequirements = open(CreateEnvironment.SystemRequirements, "w")
     
@@ -583,6 +598,143 @@ def CreateReadmeFile():
         Readme.write(f'#\n\n')
         Readme.write(f'Copyright © {datetime.now().year} {getpass.getuser().capitalize()}. All rights reserved.')
         Readme.close()
+
+## .GITIGNORE File
+def CreateGitIgnoreFile():
+    print("> Creating '.gitignore' File...")
+    with codecs.open(CreateEnvironment.GitIgnoreFile, "w", "utf-8-sig") as GitIgnore:
+        GitIgnore.write(f'__pycache__/\n')
+        GitIgnore.write(f'# Byte-compiled / optimized / DLL files\n')
+        GitIgnore.write(f'*.py[cod]\n')
+        GitIgnore.write(f'*$py.class\n\n')
+        GitIgnore.write(f'# C extensions\n')
+        GitIgnore.write(f'*.so\n\n')
+        GitIgnore.write(f'# Distribution / packaging\n')
+        GitIgnore.write(f'.Python\n')
+        GitIgnore.write(f'build/\n')
+        GitIgnore.write(f'develop-eggs/\n')
+        GitIgnore.write(f'dist/\n')
+        GitIgnore.write(f'downloads/\n')
+        GitIgnore.write(f'eggs/\n')
+        GitIgnore.write(f'.eggs/\n')
+        GitIgnore.write(f'lib/\n')
+        GitIgnore.write(f'lib64/\n')
+        GitIgnore.write(f'parts/\n')
+        GitIgnore.write(f'sdist/\n')
+        GitIgnore.write(f'var/\n')
+        GitIgnore.write(f'wheels/\n')
+        GitIgnore.write(f'share/python-wheels/\n')
+        GitIgnore.write(f'*.egg-info/\n')
+        GitIgnore.write(f'.installed.cfg\n')
+        GitIgnore.write(f'*.egg\n')
+        GitIgnore.write(f'MANIFEST\n\n')
+        GitIgnore.write(f'# PyInstaller\n')
+        GitIgnore.write(f'#  Usually these files are written by a python script from a template\n')
+        GitIgnore.write(f'#  before PyInstaller builds the exe, so as to inject date/other infos into it.\n')
+        GitIgnore.write(f'*.manifest\n')
+        GitIgnore.write(f'*.spec\n\n\n')
+        GitIgnore.write(f'# Installer logs\n')
+        GitIgnore.write(f'pip-log.txt\n')
+        GitIgnore.write(f'pip-delete-this-directory.txt\n\n')
+        GitIgnore.write(f'# Unit test / coverage reports\n')
+        GitIgnore.write(f'htmlcov/\n')
+        GitIgnore.write(f'.tox/\n')
+        GitIgnore.write(f'.nox/\n')
+        GitIgnore.write(f'.coverage\n')
+        GitIgnore.write(f'.coverage.*\n')
+        GitIgnore.write(f'.cache\n')
+        GitIgnore.write(f'nosetests.xml\n')
+        GitIgnore.write(f'coverage.xml\n')
+        GitIgnore.write(f'*.cover\n')
+        GitIgnore.write(f'*.py,cover\n')
+        GitIgnore.write(f'.hypothesis/\n')
+        GitIgnore.write(f'.pytest_cache/\n')
+        GitIgnore.write(f'cover/\n\n')
+        GitIgnore.write(f'# Translations\n')
+        GitIgnore.write(f'*.mo\n')
+        GitIgnore.write(f'*.pot\n\n')
+        GitIgnore.write(f'# Django stuff:\n')
+        GitIgnore.write(f'*.log\n')
+        GitIgnore.write(f'local_settings.py\n')
+        GitIgnore.write(f'db.sqlite3\n')
+        GitIgnore.write(f'db.sqlite3-journal\n\n')
+        GitIgnore.write(f'# Flask stuff:\n')
+        GitIgnore.write(f'instance/\n')
+        GitIgnore.write(f'.webassets-cache\n\n')
+        GitIgnore.write(f'# Scrapy stuff:\n')
+        GitIgnore.write(f'.scrapy\n\n')
+        GitIgnore.write(f'# Sphinx documentation\n')
+        GitIgnore.write(f'docs/_build/\n\n')
+        GitIgnore.write(f'# PyBuilder\n')
+        GitIgnore.write(f'.pybuilder/\n')
+        GitIgnore.write(f'target/\n\n')
+        GitIgnore.write(f'# Jupyter Notebook\n')
+        GitIgnore.write(f'.ipynb_checkpoints\n\n')
+        GitIgnore.write(f'# IPython\n')
+        GitIgnore.write(f'profile_default/\n')
+        GitIgnore.write(f'ipython_config.py\n\n')
+        GitIgnore.write(f'# pyenv\n')
+        GitIgnore.write(f'#   For a library or package, you might want to ignore these files since the code is\n')
+        GitIgnore.write(f'#   intended to run in multiple environments; otherwise, check them in:\n')
+        GitIgnore.write(f'# .python-version\n\n')
+        GitIgnore.write(f'# pipenv\n')
+        GitIgnore.write(f'#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.\n')
+        GitIgnore.write(f'#   However, in case of collaboration, if having platform-specific dependencies or dependencies\n')
+        GitIgnore.write(f"#   having no cross-platform support, pipenv may install dependencies that don't work, or not\n")
+        GitIgnore.write(f'#   install all needed dependencies.\n')
+        GitIgnore.write(f'#Pipfile.lock\n\n')
+        GitIgnore.write(f'# poetry\n')
+        GitIgnore.write(f'#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.\n')
+        GitIgnore.write(f'#   This is especially recommended for binary packages to ensure reproducibility, and is more\n')
+        GitIgnore.write(f'#   commonly ignored for libraries.\n')
+        GitIgnore.write(f'#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control\n')
+        GitIgnore.write(f'#poetry.lock\n\n')
+        GitIgnore.write(f'# pdm\n')
+        GitIgnore.write(f'#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.\n')
+        GitIgnore.write(f'#pdm.lock\n')
+        GitIgnore.write(f'#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it\n')
+        GitIgnore.write(f'#   in version control.\n')
+        GitIgnore.write(f'#   https://pdm.fming.dev/#use-with-ide\n')
+        GitIgnore.write(f'.pdm.toml\n\n')
+        GitIgnore.write(f'# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm\n')
+        GitIgnore.write(f'__pypackages__/\n\n')
+        GitIgnore.write(f'# Celery stuff\n')
+        GitIgnore.write(f'celerybeat-schedule\n')
+        GitIgnore.write(f'celerybeat.pid\n\n')
+        GitIgnore.write(f'# SageMath parsed files\n')
+        GitIgnore.write(f'*.sage.py\n\n')
+        GitIgnore.write(f'# Environments\n')
+        GitIgnore.write(f'.env\n')
+        GitIgnore.write(f'.venv\n')
+        GitIgnore.write(f'env/\n')
+        GitIgnore.write(f'venv/\n')
+        GitIgnore.write(f'ENV/\n')
+        GitIgnore.write(f'env.bak/\n')
+        GitIgnore.write(f'venv.bak/\n\n')
+        GitIgnore.write(f'# Spyder project settings\n')
+        GitIgnore.write(f'.spyderproject\n')
+        GitIgnore.write(f'.spyproject\n\n')
+        GitIgnore.write(f'# Rope project settings\n')
+        GitIgnore.write(f'.ropeproject\n\n')    
+        GitIgnore.write(f'# mkdocs documentation\n')
+        GitIgnore.write(f'/site\n\n')
+        GitIgnore.write(f'# mypy\n')
+        GitIgnore.write(f'.mypy_cache/\n')
+        GitIgnore.write(f'.dmypy.json\n')
+        GitIgnore.write(f'dmypy.json\n\n')
+        GitIgnore.write(f'# Pyre type checker\n')
+        GitIgnore.write(f'.pyre/\n\n')
+        GitIgnore.write(f'# pytype static type analyzer\n')
+        GitIgnore.write(f'.pytype/\n\n')
+        GitIgnore.write(f'# Cython debug symbols\n')
+        GitIgnore.write(f'cython_debug/\n\n')
+        GitIgnore.write(f'# PyCharm\n')
+        GitIgnore.write(f'#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can\n')
+        GitIgnore.write(f'#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore\n')
+        GitIgnore.write(f'#  and can be added to the global gitignore or merged into this file.  For a more nuclear\n')
+        GitIgnore.write(f'#  option (not recommended) you can uncomment the following to ignore the entire idea folder.\n')
+        GitIgnore.write(f'#.idea/')
+        GitIgnore.close()
 
 def CreateErrorList():
     ## Exception Triggers
@@ -1270,6 +1422,8 @@ def CreateBridge():
     CreateInitFile()
     ## Readme File
     CreateReadmeFile()
+    ## GitIgnore File
+    CreateGitIgnoreFile()
     ## ErrorList File
     CreateErrorList()
     ## SystemRequirements File
