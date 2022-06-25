@@ -7,6 +7,7 @@ import os
 import requests
 import shutil
 import sys
+import time
 from datetime import datetime
 from exception import Exceptions
 from mac import FileSystem
@@ -46,21 +47,27 @@ class DownloadSample():
         print("[Status]: Starting Download...")
         print('[Status]: Verifying repository to download...')
 
-        URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
-        From = f'{FileSystem.CurrentPath}/main.zip'
-        To = f'{FileSystem.Sample}GetInfo/main.zip'
+        try:
+            URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
+            From = f'{FileSystem.CurrentPath}/main.zip'
+            To = f'{FileSystem.Sample}GetInfo/main.zip'
 
-        ServerResponse = requests.get(URL, stream = True)
-        FileName = URL.split("/")[-1]
-        with open(FileName, 'wb') as f:
-            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
-                if Chunk:
-                    f.write(Chunk)
-
-        print("[Status]: 'GetInfo' download 100% completed!")
-        print("[Status]: Verifying 'GetInfo'...")
-        print("[Done]: 'GetInfo' download process complete!")
-
+            ServerResponse = requests.get(URL, stream = True)
+            FileName = URL.split("/")[-1]
+            with open(FileName, 'wb') as f:
+                for Chunk in ServerResponse.iter_content(chunk_size = 1024):
+                    if Chunk:
+                        f.write(Chunk)
+            print("[Status]: 'GetInfo' download 100% completed!")
+            print("[Status]: Verifying 'GetInfo'...")
+            print("[Done]: 'GetInfo' download process complete!")
+        except:
+            print("[ERROR]: Could't connect to the server!")
+            print(f'[Process]: Cleaning cache...')
+            time.sleep(3)
+            shutil.rmtree(f'{FileSystem.Sample}GetInfo/')
+            print("[Process]: Cache cleaned!")
+            
         try:
             Path(From).rename(To)
             print("="*80)
@@ -92,19 +99,26 @@ class DownloadSample():
         print("[Status]: Starting Download...")
         print('[Status]: Verifying repository to download...')
 
-        URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
-        From = f'{FileSystem.CurrentPath}/main.zip'
-        To = f'{FileSystem.Sample}JoKenPo/main.zip'
+        try:
+            URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
+            From = f'{FileSystem.CurrentPath}/main.zip'
+            To = f'{FileSystem.Sample}JoKenPo/main.zip'
 
-        ServerResponse = requests.get(URL, stream = True)
-        FileName = URL.split("/")[-1]
-        with open(FileName, 'wb') as f:
-            for Chunk in ServerResponse.iter_content(chunk_size = 1024):
-                if Chunk:
-                    f.write(Chunk)
+            ServerResponse = requests.get(URL, stream = True)
+            FileName = URL.split("/")[-1]
+            with open(FileName, 'wb') as f:
+                for Chunk in ServerResponse.iter_content(chunk_size = 1024):
+                    if Chunk:
+                        f.write(Chunk)
+            print("[Status]: 'JoKenPo' download 100% completed!")
+            print("[Status]: Verifying 'JoKenPo'...")
+        except:
+            print("[ERROR]: Could't connect to the server!")
+            print(f'[Process]: Cleaning cache...')
+            time.sleep(3)
+            shutil.rmtree(f'{FileSystem.Sample}JoKenPo/')
+            print("[Process]: Cache cleaned!")
 
-        print("[Status]: 'JoKenPo' download 100% completed!")
-        print("[Status]: Verifying 'JoKenPo'...")
         try:
             Path(From).rename(To)
             print("[Done]: 'JoKenPo' download process complete!")
@@ -463,6 +477,7 @@ def ProjOptions():
 ## Create Environment Folders for the Bridge to Run
 def CreateEnvironment():
     ## Environment Folders
+    CreateEnvironment.systemPath = f'{Explorer.FolderLocation}system/'
     CreateEnvironment.exceptionPath = f'{Explorer.FolderLocation}exception/'
     CreateEnvironment.LinuxPath = f'{Explorer.FolderLocation}linux/'
     CreateEnvironment.MacPath = f'{Explorer.FolderLocation}mac/'
@@ -474,7 +489,7 @@ def CreateEnvironment():
     CreateEnvironment.ReadmeFile = f'{Explorer.FolderLocation}README.md'
     CreateEnvironment.GitIgnoreFile = f'{Explorer.FolderLocation}.gitignore'
     CreateEnvironment.ExceptionsFile = f'{CreateEnvironment.exceptionPath}Exceptions.py'
-    CreateEnvironment.Requirements = f'{CreateEnvironment.exceptionPath}Requirements.py'
+    CreateEnvironment.Requirements = f'{CreateEnvironment.systemPath}Requirements.py'
     
     ## Linux
     CreateEnvironment.LinuxFS = f'{CreateEnvironment.LinuxPath}FileSystem.py'
@@ -496,6 +511,7 @@ def CreateEnvironment():
 
     # Create Archtecture
     try:
+        os.mkdir(CreateEnvironment.systemPath)
         os.mkdir(CreateEnvironment.exceptionPath)
         os.mkdir(CreateEnvironment.LinuxPath)
         os.mkdir(CreateEnvironment.MacPath)
@@ -591,7 +607,7 @@ def CreateReadmeFile():
 
 ## .GITIGNORE File
 def CreateGitIgnoreFile():
-    print("> Creating 'README' File...")
+    print("> Creating '.gitignore' File...")
     with codecs.open(CreateEnvironment.GitIgnoreFile, "w", "utf-8-sig") as GitIgnore:
         GitIgnore.write(f'__pycache__/\n')
         GitIgnore.write(f'# Byte-compiled / optimized / DLL files\n')
