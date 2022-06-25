@@ -23,6 +23,8 @@ PyBridge 2.0:
 • Improvements when downloading samples
 • Added Backup reference to FileSystem.py
 • Added Samples reference to FileSystem.py
+• Added .gitignore to projects created by PyBridge
+• Added .gitignore to PyBridge
 ```
 
 #

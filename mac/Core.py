@@ -467,6 +467,7 @@ def CreateEnvironment():
     CreateEnvironment.UserAppName = f'{Explorer.FolderLocation}__init__.py'
     CreateEnvironment.TokensFile = f'{Explorer.FolderLocation}Tokens.py'
     CreateEnvironment.ReadmeFile = f'{Explorer.FolderLocation}README.md'
+    CreateEnvironment.GitIgnoreFile = f'{Explorer.FolderLocation}MyFile.gitignore'
     CreateEnvironment.ExceptionsFile = f'{CreateEnvironment.exceptionPath}Exceptions.py'
     CreateEnvironment.Requirements = f'{CreateEnvironment.exceptionPath}Requirements.py'
     
@@ -504,6 +505,7 @@ def CreateEnvironment():
     ## Environment Files
     UserAppName = open(CreateEnvironment.UserAppName, "w")
     ReadmeFile = open(CreateEnvironment.ReadmeFile, "w")
+    GitIgnoreFile = open(CreateEnvironment.GitIgnoreFile, "w")
     ExceptionsFile = open(CreateEnvironment.ExceptionsFile, "w")
     Requirements = open(CreateEnvironment.Requirements, "w")
     
@@ -581,6 +583,173 @@ def CreateReadmeFile():
         Readme.write(f'#\n\n')
         Readme.write(f'Copyright © {datetime.now().year} {getpass.getuser().capitalize()}. All rights reserved.')
         Readme.close()
+
+def CreateGitIgnoreFile():
+    ## .GITIGNORE File
+    print("> Creating 'README' File...")
+    with codecs.open(CreateEnvironment.GitIgnoreFile, "w", "utf-8-sig") as GitIgnore:
+        GitIgnore.write(f'__pycache__/')
+        GitIgnore.write(f'# Byte-compiled / optimized / DLL files')
+        GitIgnore.write(f'*.py[cod]')
+        GitIgnore.write(f'*$py.class')
+
+        GitIgnore.write(f'# C extensions')
+        GitIgnore.write(f'*.so')
+
+        GitIgnore.write(f'# Distribution / packaging')
+        GitIgnore.write(f'.Python')
+        GitIgnore.write(f'build/')
+        GitIgnore.write(f'develop-eggs/')
+        GitIgnore.write(f'dist/')
+        GitIgnore.write(f'downloads/')
+        GitIgnore.write(f'eggs/')
+        GitIgnore.write(f'.eggs/')
+        GitIgnore.write(f'lib/')
+        GitIgnore.write(f'lib64/')
+        GitIgnore.write(f'parts/')
+        GitIgnore.write(f'sdist/')
+        GitIgnore.write(f'var/')
+        GitIgnore.write(f'wheels/')
+        GitIgnore.write(f'share/python-wheels/')
+        GitIgnore.write(f'*.egg-info/')
+        GitIgnore.write(f'.installed.cfg')
+        GitIgnore.write(f'*.egg')
+        GitIgnore.write(f'MANIFEST')
+
+        GitIgnore.write(f'# PyInstaller')
+        GitIgnore.write(f'#  Usually these files are written by a python script from a template')
+        GitIgnore.write(f'#  before PyInstaller builds the exe, so as to inject date/other infos into it.')
+        GitIgnore.write(f'*.manifest')
+        GitIgnore.write(f'*.spec')
+
+        GitIgnore.write(f'# Installer logs')
+        GitIgnore.write(f'pip-log.txt')
+        GitIgnore.write(f'pip-delete-this-directory.txt')
+
+        GitIgnore.write(f'# Unit test / coverage reports')
+        GitIgnore.write(f'htmlcov/')
+        GitIgnore.write(f'.tox/')
+        GitIgnore.write(f'.nox/')
+        GitIgnore.write(f'.coverage')
+        GitIgnore.write(f'.coverage.*')
+        GitIgnore.write(f'.cache')
+        GitIgnore.write(f'nosetests.xml')
+        GitIgnore.write(f'coverage.xml')
+        GitIgnore.write(f'*.cover')
+        GitIgnore.write(f'*.py,cover')
+        GitIgnore.write(f'.hypothesis/')
+        GitIgnore.write(f'.pytest_cache/')
+        GitIgnore.write(f'cover/')
+
+        GitIgnore.write(f'# Translations')
+        GitIgnore.write(f'*.mo')
+        GitIgnore.write(f'*.pot')
+
+        GitIgnore.write(f'# Django stuff:')
+        GitIgnore.write(f'*.log')
+        GitIgnore.write(f'local_settings.py')
+        GitIgnore.write(f'db.sqlite3')
+        GitIgnore.write(f'db.sqlite3-journal')
+
+        GitIgnore.write(f'# Flask stuff:')
+        GitIgnore.write(f'instance/')
+        GitIgnore.write(f'.webassets-cache')
+
+        GitIgnore.write(f'# Scrapy stuff:')
+        GitIgnore.write(f'.scrapy')
+
+        GitIgnore.write(f'# Sphinx documentation')
+        GitIgnore.write(f'docs/_build/')
+
+        GitIgnore.write(f'# PyBuilder')
+        GitIgnore.write(f'.pybuilder/')
+        GitIgnore.write(f'target/')
+
+        GitIgnore.write(f'# Jupyter Notebook')
+        GitIgnore.write(f'.ipynb_checkpoints')
+
+        GitIgnore.write(f'# IPython')
+        GitIgnore.write(f'profile_default/')
+        GitIgnore.write(f'ipython_config.py')
+
+        GitIgnore.write(f'# pyenv')
+        GitIgnore.write(f'#   For a library or package, you might want to ignore these files since the code is')
+        GitIgnore.write(f'#   intended to run in multiple environments; otherwise, check them in:')
+        GitIgnore.write(f'# .python-version')
+
+        GitIgnore.write(f'# pipenv')
+        GitIgnore.write(f'#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.')
+        GitIgnore.write(f'#   However, in case of collaboration, if having platform-specific dependencies or dependencies')
+        GitIgnore.write(f"#   having no cross-platform support, pipenv may install dependencies that don't work, or not")
+        GitIgnore.write(f'#   install all needed dependencies.')
+        GitIgnore.write(f'#Pipfile.lock')
+
+        GitIgnore.write(f'# poetry')
+        GitIgnore.write(f'#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.')
+        GitIgnore.write(f'#   This is especially recommended for binary packages to ensure reproducibility, and is more')
+        GitIgnore.write(f'#   commonly ignored for libraries.')
+        GitIgnore.write(f'#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control')
+        GitIgnore.write(f'#poetry.lock')
+
+        GitIgnore.write(f'# pdm')
+        GitIgnore.write(f'#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.')
+        GitIgnore.write(f'#pdm.lock')
+        GitIgnore.write(f'#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it')
+        GitIgnore.write(f'#   in version control.')
+        GitIgnore.write(f'#   https://pdm.fming.dev/#use-with-ide')
+        GitIgnore.write(f'.pdm.toml')
+
+        GitIgnore.write(f'# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm')
+        GitIgnore.write(f'__pypackages__/')
+
+        GitIgnore.write(f'# Celery stuff')
+        GitIgnore.write(f'celerybeat-schedule')
+        GitIgnore.write(f'celerybeat.pid')
+
+        GitIgnore.write(f'# SageMath parsed files')
+        GitIgnore.write(f'*.sage.py')
+
+        GitIgnore.write(f'# Environments')
+        GitIgnore.write(f'.env')
+        GitIgnore.write(f'.venv')
+        GitIgnore.write(f'env/')
+        GitIgnore.write(f'venv/')
+        GitIgnore.write(f'ENV/')
+        GitIgnore.write(f'env.bak/')
+        GitIgnore.write(f'venv.bak/')
+
+        GitIgnore.write(f'# Spyder project settings')
+        GitIgnore.write(f'.spyderproject')
+        GitIgnore.write(f'.spyproject')
+
+        GitIgnore.write(f'# Rope project settings')
+        GitIgnore.write(f'.ropeproject')    
+
+        GitIgnore.write(f'# mkdocs documentation')
+        GitIgnore.write(f'/site')
+
+        GitIgnore.write(f'# mypy')
+        GitIgnore.write(f'.mypy_cache/')
+        GitIgnore.write(f'.dmypy.json')
+        GitIgnore.write(f'dmypy.json')
+
+        GitIgnore.write(f'# Pyre type checker')
+        GitIgnore.write(f'.pyre/')
+
+        GitIgnore.write(f'# pytype static type analyzer')
+        GitIgnore.write(f'.pytype/')
+
+        GitIgnore.write(f'# Cython debug symbols')
+        GitIgnore.write(f'cython_debug/')
+        
+        GitIgnore.write(f'# PyCharm')
+        GitIgnore.write(f'#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can')
+        GitIgnore.write(f'#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore')
+        GitIgnore.write(f'#  and can be added to the global gitignore or merged into this file.  For a more nuclear')
+        GitIgnore.write(f'#  option (not recommended) you can uncomment the following to ignore the entire idea folder.')
+        GitIgnore.write(f'#.idea/')
+        GitIgnore.close()
+
 
 def CreateExceptions():
     ## Exception Triggers
@@ -1232,6 +1401,8 @@ def CreateBridge():
     CreateInitFile()
     ## Readme File
     CreateReadmeFile()
+    ## GitIgnore File
+    CreateGitIgnoreFile()
     ## Exceptions File
     CreateExceptions()
     ## Requirements File
