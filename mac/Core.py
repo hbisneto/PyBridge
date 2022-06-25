@@ -39,7 +39,7 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.Sample}GetInfo/')
+            os.mkdir(f'{FileSystem.GetInfo}')
         except:
             print("[Status]: The project seems to be in the path, already!")
             return
@@ -50,7 +50,7 @@ class DownloadSample():
         try:
             URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
             From = f'{FileSystem.CurrentPath}/main.zip'
-            To = f'{FileSystem.Sample}GetInfo/main.zip'
+            To = f'{FileSystem.GetInfo}main.zip'
 
             ServerResponse = requests.get(URL, stream = True)
             FileName = URL.split("/")[-1]
@@ -65,7 +65,7 @@ class DownloadSample():
             print("[ERROR]: Could't connect to the server!")
             print(f'[Process]: Cleaning cache...')
             time.sleep(3)
-            shutil.rmtree(f'{FileSystem.Sample}GetInfo/')
+            shutil.rmtree(f'{FileSystem.GetInfo}')
             print("[Process]: Cache cleaned!")
             
         try:
@@ -75,7 +75,7 @@ class DownloadSample():
             return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.Sample}GetInfo/')
+            zipObj.extractall(f'{FileSystem.GetInfo}')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
@@ -91,7 +91,7 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.Sample}JoKenPo/')
+            os.mkdir(f'{FileSystem.JoKenPo}')
         except:
             print("[Status]: The project seems to be in the path, already!")
             return
@@ -102,7 +102,7 @@ class DownloadSample():
         try:
             URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
             From = f'{FileSystem.CurrentPath}/main.zip'
-            To = f'{FileSystem.Sample}JoKenPo/main.zip'
+            To = f'{FileSystem.JoKenPo}main.zip'
 
             ServerResponse = requests.get(URL, stream = True)
             FileName = URL.split("/")[-1]
@@ -116,7 +116,7 @@ class DownloadSample():
             print("[ERROR]: Could't connect to the server!")
             print(f'[Process]: Cleaning cache...')
             time.sleep(3)
-            shutil.rmtree(f'{FileSystem.Sample}JoKenPo/')
+            shutil.rmtree(f'{FileSystem.JoKenPo}')
             print("[Process]: Cache cleaned!")
 
         try:
@@ -127,7 +127,7 @@ class DownloadSample():
             return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.Sample}JoKenPo/')
+            zipObj.extractall(f'{FileSystem.JoKenPo}')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
@@ -572,15 +572,15 @@ def CreateInitFile():
         AppName.write(f'   ## Linux\n')
         AppName.write(f'   if Platform == "linux" or Platform == "linux2":\n')
         AppName.write(f'      from linux import Linux\n')
-        AppName.write(f'      linux.Linux()\n\n')
+        AppName.write(f'      Linux.Linux()\n\n')
         AppName.write(f'   ## Mac\n')
         AppName.write(f'   elif Platform == "darwin":\n')
         AppName.write(f'      from mac import Mac\n')
-        AppName.write(f'      mac.Mac()\n\n')
+        AppName.write(f'      Mac.Mac()\n\n')
         AppName.write(f'   ## Windows\n')
         AppName.write(f'   elif Platform == "win32" or Platform == "win64":\n')
         AppName.write(f'      from windows import Windows\n')
-        AppName.write(f'      windows.Windows()\n\n')
+        AppName.write(f'      Windows.Windows()\n\n')
         AppName.write(f'Main()')
         AppName.close()
 
@@ -1008,7 +1008,7 @@ def CreateMacFile():
         MacFile.write(f'   ## Lets run the SplashScreen\n')
         MacFile.write(f'   from mac import SplashScreen\n\n')
         MacFile.write(f'   ## Lets check system requirements\n')
-        MacFile.write(f'   from exception import Requirements\n\n')
+        MacFile.write(f'   from system import Requirements\n\n')
         MacFile.write(f'   ## Start App for Mac\n')
         MacFile.write(f'   from mac import MacApp\n\n')
         MacFile.close()

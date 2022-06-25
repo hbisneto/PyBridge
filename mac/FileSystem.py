@@ -1,5 +1,6 @@
 ## FileSystem
 ## This file contains some default directories of your system
+## You can use this file to implement custom directories used by your application
 
 import os
 
@@ -21,5 +22,7 @@ Public = f'{User}Public/'
 ## Project Directories
 Backup = f'{CurrentPath}/Backup/'
 Sample = f'{CurrentPath}/Sample/'
+GetInfo = f'{Sample}GetInfo/'
+JoKenPo = f'{Sample}JoKenPo/'
 PyBridgeFolder = f'{Documents}PyBridge/'
 ProjectsRepo = f'{PyBridgeFolder}Projects/'
