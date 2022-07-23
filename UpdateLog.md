@@ -11,6 +11,7 @@
 - Added .gitignore to projects created by PyBridge
 - Added .gitignore to PyBridge
 - Added ability to download more sample codes
+- Added ability to create a Jupyter Notebook project
 
 
 ## Changes
