@@ -5,24 +5,24 @@ WarnSpacing = '\n\n\n'
 class Raise:
   # class Requirements():
   def MajorVersion(self, CurrentVersion, TargetVersion, TargetMajor):
-      raise Exception(f'{WarnSpacing}>> You cannot run the application because it requires Python {TargetVersion} or later. [Current Version: {CurrentVersion}]')
+    raise Exception(f'{WarnSpacing}>> You cannot run the application because it requires Python {TargetVersion} or later. [Current Version: {CurrentVersion}]')
 
   def MinorVersion(self, CurrentVersion, TargetVersion, TargetMinor):
-      print("="*40)
-      print(">> PYBRIDGE <<")
-      print("="*40)
-      print(">> WARNING <<")
-      print("="*40)
-      print(f'>> Your appication targets a version of Python older than the version currently\ninstalled. You may get errors during the process')
-      print("="*40)
-      print(f'- Current Version: {CurrentVersion}')
-      print(f'- Target Version: {TargetVersion}')
-      print(f'>> You can change `Requirements.py` on `system` Module')
-      print("="*40)
-      print()
+    print("="*40)
+    print(">> PYBRIDGE <<")
+    print("="*40)
+    print(">> WARNING <<")
+    print("="*40)
+    print(f'>> Your appication targets a version of Python older than the version currently\ninstalled. You may get errors during the process')
+    print("="*40)
+    print(f'- Current Version: {CurrentVersion}')
+    print(f'- Target Version: {TargetVersion}')
+    print(f'>> You can change `Requirements.py` on `system` Module')
+    print("="*40)
+    print()
 
   def BuildVersion(self, CurrentVersion, TargetVersion, BuildVer):
-      raise Exception(f'>> This application only can run on Python {TargetVersion}. [Current Version: {CurrentVersion}]')
+    raise Exception(f'>> This application only can run on Python {TargetVersion}. [Current Version: {CurrentVersion}]')
 
 
   def __init__(self, exctype):
@@ -39,6 +39,13 @@ class Raise:
 
   def InputFormat():
     print(">> Your input is not valid: Check your input and try again\n\n")
+  
+  def ProgramQuit(self):
+    print("=" * 80)
+    print(f'{self.exctype} The program was already closed!')
+    print("=" * 80)
+    print(f'>> The program has been closed and couldn`t be restored.\n>> Run the program again!')
+    print("=" * 80)
 
   def InvalidOption(self):
     print(f'{WarnSpacing}')

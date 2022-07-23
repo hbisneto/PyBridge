@@ -491,23 +491,24 @@ def CreateEnvironment():
     CreateEnvironment.ExceptionsFile = f'{CreateEnvironment.exceptionPath}Exceptions.py'
     CreateEnvironment.Requirements = f'{CreateEnvironment.systemPath}Requirements.py'
     
-    ## Linux
-    CreateEnvironment.LinuxFS = f'{CreateEnvironment.LinuxPath}FileSystem.py'
-    CreateEnvironment.LinuxFile = f'{CreateEnvironment.LinuxPath}Linux.py'
-    CreateEnvironment.LinuxAppFile = f'{CreateEnvironment.LinuxPath}LinuxApp.py'
-    CreateEnvironment.SplashLinux = f'{CreateEnvironment.LinuxPath}SplashScreen.py'
     
-    ## Mac
+    if ProjectOption != 4:
+        ## Linux
+        CreateEnvironment.LinuxFile = f'{CreateEnvironment.LinuxPath}Linux.py'
+        CreateEnvironment.LinuxAppFile = f'{CreateEnvironment.LinuxPath}LinuxApp.py'
+        CreateEnvironment.SplashLinux = f'{CreateEnvironment.LinuxPath}SplashScreen.py'
+        ## Mac
+        CreateEnvironment.MacFile = f'{CreateEnvironment.MacPath}Mac.py'
+        CreateEnvironment.MacAppFile = f'{CreateEnvironment.MacPath}MacApp.py'
+        CreateEnvironment.SplashMac = f'{CreateEnvironment.MacPath}SplashScreen.py'
+        ## Windows
+        CreateEnvironment.WindowsFile = f'{CreateEnvironment.WindowsPath}Windows.py'
+        CreateEnvironment.WindowsAppFile = f'{CreateEnvironment.WindowsPath}WindowsApp.py'
+        CreateEnvironment.SplashWindows = f'{CreateEnvironment.WindowsPath}SplashScreen.py'
+    # FileSystems
+    CreateEnvironment.LinuxFS = f'{CreateEnvironment.LinuxPath}FileSystem.py'
     CreateEnvironment.MacFS = f'{CreateEnvironment.MacPath}FileSystem.py'
-    CreateEnvironment.MacFile = f'{CreateEnvironment.MacPath}Mac.py'
-    CreateEnvironment.MacAppFile = f'{CreateEnvironment.MacPath}MacApp.py'
-    CreateEnvironment.SplashMac = f'{CreateEnvironment.MacPath}SplashScreen.py'
-
-    ## Windows
     CreateEnvironment.WindowsFS = f'{CreateEnvironment.WindowsPath}FileSystem.py'
-    CreateEnvironment.WindowsFile = f'{CreateEnvironment.WindowsPath}Windows.py'
-    CreateEnvironment.WindowsAppFile = f'{CreateEnvironment.WindowsPath}WindowsApp.py'
-    CreateEnvironment.SplashWindows = f'{CreateEnvironment.WindowsPath}SplashScreen.py'
 
     # Create Archtecture
     try:
@@ -530,26 +531,29 @@ def CreateEnvironment():
     ExceptionsFile = open(CreateEnvironment.ExceptionsFile, "w")
     Requirements = open(CreateEnvironment.Requirements, "w")
     
-    ## Linux
-    LinuxFS = open(CreateEnvironment.LinuxFS, "w")
-    LinuxFile = open(CreateEnvironment.LinuxFile, "w")
-    LinuxAppFile = open(CreateEnvironment.LinuxAppFile, "w")
-    SplashLinux = open(CreateEnvironment.SplashLinux, "w")
-
-    ## Mac
-    MacFS = open(CreateEnvironment.MacFS, "w")
-    MacFile = open(CreateEnvironment.MacFile, "w")
-    MacAppFile = open(CreateEnvironment.MacAppFile, "w")
-    SplashMac = open(CreateEnvironment.SplashMac, "w")
-
-    ## Windows
-    WindowsFS = open(CreateEnvironment.WindowsFS, "w")
-    WindowsFile = open(CreateEnvironment.WindowsFile, "w")
-    WindowsAppFile = open(CreateEnvironment.WindowsAppFile, "w")
-    SplashWindows = open(CreateEnvironment.SplashWindows, "w")
-
     if ProjectOption == 3:
         TokensFile = open(CreateEnvironment.TokensFile, "w")
+    
+    if ProjectOption != 4:
+        ## Linux
+        LinuxFile = open(CreateEnvironment.LinuxFile, "w")
+        LinuxAppFile = open(CreateEnvironment.LinuxAppFile, "w")
+        SplashLinux = open(CreateEnvironment.SplashLinux, "w")
+
+        ## Mac
+        MacFile = open(CreateEnvironment.MacFile, "w")
+        MacAppFile = open(CreateEnvironment.MacAppFile, "w")
+        SplashMac = open(CreateEnvironment.SplashMac, "w")
+
+        ## Windows
+        WindowsFile = open(CreateEnvironment.WindowsFile, "w")
+        WindowsAppFile = open(CreateEnvironment.WindowsAppFile, "w")
+        SplashWindows = open(CreateEnvironment.SplashWindows, "w")
+
+    # FileSystems
+    LinuxFS = open(CreateEnvironment.LinuxFS, "w")
+    MacFS = open(CreateEnvironment.MacFS, "w")
+    WindowsFS = open(CreateEnvironment.WindowsFS, "w")
 
 ## Launcher Script
 def CreateInitFile():
@@ -1363,8 +1367,7 @@ def CreateTokensFile():
         Tokens.write(f'Twitter = tweepy.API(Auth, wait_on_rate_limit = True)')
         Tokens.close()
 
-## Create The Bridge (After Everything Is Ready)
-def CreateBridge():
+def SetupProject():
     print("="*80)
     print(">> CREATE PROJECT <<")
     print("="*80)
@@ -1377,7 +1380,6 @@ def CreateBridge():
         os.mkdir(FolderLocation)
         Explorer.ProjectName = ProjectName
         Explorer.FolderLocation = FolderLocation
-        CreateEnvironment()
     except:
         print()
         print("="*80)
@@ -1386,7 +1388,13 @@ def CreateBridge():
         print("="*80)
         # Exceptions.Log(Message = "Criar arquivo de LOG: Arquivo já existente!", Location = FileSystem.CurrentPath + "NomeArquivo.log")
         Exceptions.Throw.FileExists()
-        
+
+
+## Create The Bridge (After Everything Is Ready)
+def CreateBridge():
+    ### Setup Project
+    SetupProject()
+
     ### Project Structure ###
     CreateEnvironment()
     ## Init File
@@ -1402,42 +1410,48 @@ def CreateBridge():
     print("="*80)
     print()
 
-    if ProjectOption == 3:
-        CreateTokensFile()
+    if ProjectOption != 4:
+        if ProjectOption == 3:
+            CreateTokensFile()
 
-    ### Linux Module ###
-    ## Linux File
-    CreateLinuxFile()
-    ## LinuxApp File
-    CreateLinuxAppFile()
-    ## Linux SplashScreen File
-    CreateLinuxSplashScreen()
-    ## Linux FileSystem File
-    CreateLinuxFileSystem()
-    print("="*80)
-    print()
-    
-    ### macOS Modules ###
-    ## Mac File
-    CreateMacFile()
-    ## MacApp File
-    CreateMacAppFile()
-    ## Mac SplashScreen File
-    CreateMacSplashScreen()
-    ## Mac FileSystem File
-    CreateMacFileSystem()
-    print("="*80)
-    print()
+        ### Linux Module ###
+        ## Linux File
+        CreateLinuxFile()
+        ## LinuxApp File
+        CreateLinuxAppFile()
+        ## Linux SplashScreen File
+        CreateLinuxSplashScreen()
+        ## Linux FileSystem File
+        CreateLinuxFileSystem()
+        print("="*80)
+        print()
+        
+        ### macOS Modules ###
+        ## Mac File
+        CreateMacFile()
+        ## MacApp File
+        CreateMacAppFile()
+        ## Mac SplashScreen File
+        CreateMacSplashScreen()
+        ## Mac FileSystem File
+        CreateMacFileSystem()
+        print("="*80)
+        print()
 
-    ### Windows Modules ###
-    ## Windows File
-    CreateWindowsFile()
-    ## WindowsApp File
-    CreateWindowsAppFile()
-    ## Windows SplashScreen File
-    CreateWindowsSplashScreen()
-    ## Windows FileSystem File
-    CreateWindowsFileSystem()
+        ### Windows Modules ###
+        ## Windows File
+        CreateWindowsFile()
+        ## WindowsApp File
+        CreateWindowsAppFile()
+        ## Windows SplashScreen File
+        CreateWindowsSplashScreen()
+        ## Windows FileSystem File
+        CreateWindowsFileSystem()
+    else:
+        # Create Jupyter Notebook
+        CreateLinuxFileSystem()
+        CreateMacFileSystem()
+        CreateWindowsFileSystem()
 
     print("="*80)
     print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
