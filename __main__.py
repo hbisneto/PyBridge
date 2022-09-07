@@ -1,6 +1,6 @@
 ##################################################################################
 ###         DO NOT USE PYBRIDGE 2.0 YET. THE SYSTEM IS INSTABLE FOR A WHILE    ###
-###                          USE PYBRIDGE 1.4.1 INSTEAD                        ###
+###                          USE PYBRIDGE 1.5.0 INSTEAD                        ###
 ##################################################################################
 
 ## PyBridge File
