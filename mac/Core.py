@@ -795,14 +795,14 @@ def CreateExceptions():
 def CreateRequirements():
     print("> Creating Requirements Library...")
     with codecs.open(CreateEnvironment.Requirements, "w", "utf-8-sig") as Requirements:
-        Requirements.write(f'## Requirements File\n')
+        Requirements.write(f'## SystemRequirements File\n')
         Requirements.write(f'## This file is used to check if system matches with the minimum requirements to run\n\n')
         Requirements.write(f'import sys\n')
         Requirements.write(f'from exception import Exceptions\n\n')
-        Requirements.write(f'## Change "Require" to "False" to skip system check\n')
-        Requirements.write(f'Require = True\n')
-        Requirements.write(f'## Change "Require" to "True" to allow system check\n\n')
-        Requirements.write(f'if Require == True:\n')
+        Requirements.write(f'## Change "REQUIRE" to "False" to skip system check\n')
+        Requirements.write(f'REQUIRE = True\n')
+        Requirements.write(f'## Change "REQUIRE" to "True" to allow system check\n\n')
+        Requirements.write(f'if REQUIRE == True:\n')
         Requirements.write(f'   ## Target System\n')
         Requirements.write(f'   TargetMajor = {MajorVersion}\n')
         Requirements.write(f'   TargetMinor = {MinorVersion}\n')
@@ -818,10 +818,36 @@ def CreateRequirements():
         Requirements.write(f'   ## Uncomment to see information about your system\n')
         Requirements.write("   ## print(f'>> My system current version: Python {CurrentVersion}')\n")
         Requirements.write("   ## print(f'>> Required version to run: Python {TargetVersion}')\n\n")
-        Requirements.write(f'   if TargetVersion > CurrentVersion:\n')
-        Requirements.write(f'      Exceptions.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)\n')
-        Requirements.write(f'   elif TargetVersion < CurrentVersion:\n')
-        Requirements.write(f'      Exceptions.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n')
+        Requirements.write(f'   def CheckMajorVersion():\n')
+        Requirements.write(f'      ## Note: if this key is set to False, the system won`t run even if meets requirements\n')
+        Requirements.write(f'      AllowKey = True\n')
+        Requirements.write(f'      ## Note: if this key is set to False, the system won`t run even if meets requirements\n\n')
+        Requirements.write(f'      if MajorVersion < TargetMajor:\n')
+        Requirements.write(f'         AllowKey = False\n')
+        Requirements.write(f'      else:\n')
+        Requirements.write(f'         if MinorVersion < TargetMinor:\n')
+        Requirements.write(f'            AllowKey = False\n')
+        Requirements.write(f'         else:\n')
+        Requirements.write(f'            if BuildVersion < TargetBuild:\n')
+        Requirements.write(f'               AllowKey = False\n\n')
+        Requirements.write(f'      if AllowKey == False:\n')
+        Requirements.write(f'         ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)\n\n')
+        Requirements.write(f'   def CheckMinorVersion():\n')
+        Requirements.write(f'      ## Note: if this key is set to True, the system will warn evertime it runs\n')
+        Requirements.write(f'      ShowWarn = False\n')
+        Requirements.write(f'      ## Note: if this key is set to True, the system will warn evertime it runs\n\n')
+        Requirements.write(f'      if MajorVersion > TargetMajor:\n')
+        Requirements.write(f'         ShowWarn = True\n')
+        Requirements.write(f'      else:\n')
+        Requirements.write(f'         if MinorVersion > TargetMinor:\n')
+        Requirements.write(f'            ShowWarn = True\n')
+        Requirements.write(f'         else:\n')
+        Requirements.write(f'            if BuildVersion > TargetBuild:\n')
+        Requirements.write(f'               ShowWarn = True\n\n')  
+        Requirements.write(f'      if ShowWarn == True:\n')
+        Requirements.write(f'         ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n\n')
+        Requirements.write(f'   CheckMajorVersion()\n')
+        Requirements.write(f'   CheckMinorVersion()')
         Requirements.close()
 
 ## Linux File
@@ -997,6 +1023,7 @@ def CreateLinuxFileSystem():
         LinuxFS.write("PythonExtension = '.py'\n")
         LinuxFS.close()
 
+## Mac File
 def CreateMacFile():
     print("="*80)
     print(">> Creating Mac Modules <<")
@@ -1556,6 +1583,7 @@ def CreateJupyterNotebook():
         JupyterFile.write('}\n')
         JupyterFile.close()
 
+## Setup Project
 def SetupProject():
     print("="*80)
     print(">> CREATE PROJECT <<")
@@ -1577,7 +1605,6 @@ def SetupProject():
         print("="*80)
         # Exceptions.Log(Message = "Criar arquivo de LOG: Arquivo já existente!", Location = FileSystem.CurrentPath + "NomeArquivo.log")
         Exceptions.Throw.FileExists()
-
 
 ## Create The Bridge (After Everything Is Ready)
 def CreateBridge():
@@ -1637,7 +1664,7 @@ def CreateBridge():
         ## Windows FileSystem File
         CreateWindowsFileSystem()
     else:
-        # Create Jupyter Notebook
+        ## Create Jupyter Notebook
         CreateJupyterNotebook()
         CreateLinuxFileSystem()
         CreateMacFileSystem()

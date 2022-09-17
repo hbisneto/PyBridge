@@ -12,7 +12,7 @@ try:
     from sys import platform
 
     ## Local Libraries
-    from exception import Exceptions
+    ##from exception import Exceptions
 
 except:
     separator = "="*80
