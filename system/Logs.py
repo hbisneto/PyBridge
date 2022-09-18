@@ -11,7 +11,7 @@ from datetime import datetime
 def CreateLogFile(filename, processname, log_type, message):
 
     ## Scheme
-    # MES X HH:mm:ss Computername NomeModuloOuFuncao <console>: Mensagem de console que será inserida no arquivo.
+    # JAN XX HH:mm:ss Computername ModuleNameOrFunc <console>: Console message
 
     ## Date format
     current_day = int(datetime.now().day)
@@ -35,21 +35,32 @@ def CreateLogFile(filename, processname, log_type, message):
         ## 3: Error
         ## 4: Deploy
         
-        if int(log_type) == 0:
-            console = "<Default>"
-        if int(log_type) == 1:
+        # if int(log_type) == 0:
+        #     console = "<Default>"
+        if str(log_type) == '1':
             console = "<Information>"
-        elif int(log_type) == 2:
+        elif str(log_type) == '2':
             console = "<Warning>"
-        elif int(log_type) == 3:
+        elif str(log_type) == '3':
             console = "<Error>"
-        elif int(log_type) == 4:
+        elif str(log_type) == '4':
             console = "<Deploy>"
+        elif str(log_type) == '5':
+            console = "<CustomLabel>"
+        elif str(log_type) == 'NULL':
+            console = ""
         else:
             console = "<Default>"
     except:
         console = "<Default>"
     ## Console Type
+
+    if filename == "NULL":
+        filename = "LOG.py"
+    if processname == "NULL":
+        processname = ""
+    if log_type == 'NULL':
+        log_type = ""
     
     try:
         with codecs.open(filename, "a", "utf-8-sig") as logfile:
@@ -59,4 +70,6 @@ def CreateLogFile(filename, processname, log_type, message):
     except:
         print(f'>> [!] Couldn`t create LogFile.')
 
-CreateLogFile(filename = "Arquivo.py", processname = "Teste6_2", log_type = 5, message = "Minha mensagem")
+CreateLogFile("Stage.py", "Stage_TestName", '2', "Stage Test Process Running...")
+CreateLogFile('NULL','NULL', 'NULL', 'This kinda log is most used when you need to print a report.')
+#CreateLogFile(filename = "Arquivo.py", processname = "Teste6_2", log_type = 5, message = "Minha mensagem")

@@ -1,4 +1,4 @@
-## ErrorList File
+## Exceptions File
 ## This file contains events that's raised when the program must to stop
 WarnSpacing = '\n\n\n'
 
