@@ -1,11 +1,9 @@
 ## Exceptions File
 ## This file contains events that's raised when the program must to stop
-WarnSpacing = '\n\n\n'
 
 class Raise:
-  # class Requirements():
   def MajorVersion(self, CurrentVersion, TargetVersion, TargetMajor):
-    raise Exception(f'{WarnSpacing}>> You cannot run the application because it requires Python {TargetVersion} or later. [Current Version: {CurrentVersion}]')
+    raise Exception(f'>> You cannot run the application because it requires Python {TargetVersion} or later. [Current Version: {CurrentVersion}]')
 
   def MinorVersion(self, CurrentVersion, TargetVersion, TargetMinor):
     print("="*40)
@@ -24,38 +22,42 @@ class Raise:
   def BuildVersion(self, CurrentVersion, TargetVersion, BuildVer):
     raise Exception(f'>> This application only can run on Python {TargetVersion}. [Current Version: {CurrentVersion}]')
 
-
   def __init__(self, exctype):
     self.exctype = exctype
 
   def FileExists(self):
-    raise Exception(f'{WarnSpacing}{self.exctype} The file already exists')
+    raise Exception(f'{self.exctype} The file already exists')
   
   def DirectoryExists(self):
-    raise Exception(f'{WarnSpacing}{self.exctype} The directory already exists')
+    raise Exception(f'{self.exctype} The directory already exists')
   
   def ImportLib():
    raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")
 
-  def InputFormat():
+  def InputFormat(self):
+    print("=" * 80)
+    print(f'{self.exctype} INVALID INPUT')
+    print("=" * 80)
     print(">> Your input is not valid: Check your input and try again\n\n")
+    print("=" * 80)
   
   def ProgramQuit(self):
     print("=" * 80)
-    print(f'{self.exctype} The program was already closed!')
+    print(f'{self.exctype} PYBRIDGE HAS QUIT!')
     print("=" * 80)
     print(f'>> The program has been closed and couldn`t be restored.\n>> Run the program again!')
     print("=" * 80)
 
   def InvalidOption(self):
-    print(f'{WarnSpacing}')
     print("=" * 80)
-    print(f'{self.exctype} Invalid Option!')
+    print(f'{self.exctype} INVALID OPTION')
     print("=" * 80)
     print(f'>> You typed an invalid option.\n>> Running the program again!')
     print("=" * 80)
 
-  def ProjectsLoadFail():
+  def ProjectsLoadFail(self):
+    print("=" * 80)
+    print(f'{self.exctype} PROJECT LOADING FAILED!')
     print("=" * 80)
     print(f'>> ERROR: Couldn`t load projects...')
     print("=" * 80)

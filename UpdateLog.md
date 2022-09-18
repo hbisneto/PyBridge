@@ -1,5 +1,8 @@
 # PyBridge (update log)
 
+PyBridge allows you to create a project that can be ran in the main platforms (Linux, macOS and Windows).
+PyBridge has a native library making it easy to access your FileSystem such as "Downloads", "Documents" and "Desktop" folders in all platforms.
+
 ## News
 
 - Added new native library: time
