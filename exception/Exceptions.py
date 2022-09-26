@@ -6,17 +6,17 @@ class Raise:
     raise Exception(f'>> You cannot run the application because it requires Python {TargetVersion} or later. [Current Version: {CurrentVersion}]')
 
   def MinorVersion(self, CurrentVersion, TargetVersion, TargetMinor):
-    print("="*40)
+    print('=' * 80)
     print(">> PYBRIDGE <<")
-    print("="*40)
+    print('=' * 80)
     print(">> WARNING <<")
-    print("="*40)
+    print('=' * 80)
     print(f'>> Your appication targets a version of Python older than the version currently\ninstalled. You may get errors during the process')
-    print("="*40)
+    print('=' * 80)
     print(f'- Current Version: {CurrentVersion}')
     print(f'- Target Version: {TargetVersion}')
     print(f'>> You can change `Requirements.py` on `system` Module')
-    print("="*40)
+    print('=' * 80)
     print()
 
   def BuildVersion(self, CurrentVersion, TargetVersion, BuildVer):
@@ -66,18 +66,18 @@ class Raise:
     print("=" * 80)
     print(f'{self.exctype} BACKUP CREATION FAILED!')
     print("=" * 80)
-    print("*" * 40)
+    print("*" * 80)
     print(f'>> PyBridge could not create backup for your projects folder')
     print(f'>> Try again later.')
-    print("*" * 40)
+    print("*" * 80)
 
   def CompressBackupFail(self):
     print("=" * 80)
     print(f'{self.exctype} COMPRESSED FILE CREATION FAILED!')
     print("=" * 80)
-    print("*" * 40)
+    print("*" * 80)
     print(f'>> PyBridge could not create a compressed file from your backup')
     print(f'>> Try again later.')
-    print("*" * 40)
+    print("*" * 80)
 
 Throw = Raise(">> An Exception occurred:")

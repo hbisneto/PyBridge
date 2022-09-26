@@ -29,7 +29,10 @@ def Main():
 
             if Opc == 0:
                 BridgeLoop = False
-                quit()
+                try:
+                    quit()
+                except:
+                    return
 
             elif Opc == 1:
                 Core.ProjectOption = 1

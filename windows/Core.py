@@ -173,14 +173,14 @@ def Backup():
             
     except shutil.Error as e:
         Exceptions.Throw.BackupFail()
-        print("*" * 40)
+        print("*" * 80)
         print(e)
-        print("*" * 40)
+        print("*" * 80)
     except OSError as OS_E:
         Exceptions.Throw.BackupFail()
-        print("*" * 40)
+        print("*" * 80)
         print(OS_E)
-        print("*" * 40)
+        print("*" * 80)
     print("="*80)
     print()
 

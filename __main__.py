@@ -1,6 +1,6 @@
 ##################################################################################
 ###         DO NOT USE PYBRIDGE 2.0 YET. THE SYSTEM IS INSTABLE FOR A WHILE    ###
-###                          USE PYBRIDGE 1.5.0 INSTEAD                        ###
+###                          USE PYBRIDGE 1.5 INSTEAD                          ###
 ##################################################################################
 
 ## PyBridge File
@@ -12,10 +12,10 @@ try:
     from sys import platform
 
     ## Local Libraries
-    ##from exception import Exceptions
+    ## from exception import Exceptions
 
 except:
-    separator = "="*80
+    separator = "=" * 80
     message = ">> Couldn`t Import Libraries:\n>> Check if the libraries are installed and run the program again."
     raise RuntimeError("\n\n\n" + separator + "\n" + message + "\n" + separator)
 
