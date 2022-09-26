@@ -1,5 +1,5 @@
-# PyBridge 2.0
-###### Last repository update: 23/07/2022
+# PyBridge 2.0 (BETA VERSION)
+###### Last repository update: 26/09/2022
 
 > **WARNING NOTE**:
 >> The use of this version of PyBridge is not recommended YET. It's in update process and soon will be available for download.
