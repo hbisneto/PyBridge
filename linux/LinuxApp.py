@@ -1,5 +1,5 @@
 ## LinuxApp File
-## This file is used to implement code used to run scripts for Linux
+## This file is used to implement code used to run scripts for Mac
 
 from exception import Exceptions
 from linux import Core
@@ -16,9 +16,10 @@ def Main():
         print("[1] - Create Blank Project")
         print("[2] - Create a Menu Application Loop Project")
         print("[3] - Create Twitter Application Project")
-        print("[4] - Projects List")
-        print("[5] - Backup Projects")
-        print("[6] - Sample Projects...")
+        print("[4] - Create a Jupyter Notebook")
+        print("[5] - Projects List")
+        print("[6] - Backup Projects")
+        print("[7] - Sample Projects...")
         print("[0] - Quit PyBridge")
         print()
 
@@ -28,7 +29,10 @@ def Main():
 
             if Opc == 0:
                 BridgeLoop = False
-                quit()
+                try:
+                    quit()
+                except:
+                    return
 
             elif Opc == 1:
                 Core.ProjectOption = 1
@@ -46,13 +50,18 @@ def Main():
                 Core.CreateBridge()
 
             elif Opc == 4:
+                Core.ProjectOption = 4
+                Core.ProjectType = "Jupyter Notebook Project"
+                Core.CreateBridge()
+
+            elif Opc == 5:
                 Core.ProjList.clear()
                 Core.ProjectList()
                 
-            elif Opc == 5:
+            elif Opc == 6:
                 Core.Backup()
 
-            elif Opc == 6:
+            elif Opc == 7:
                 print("="*80)
                 print(">> DOWNLOAD SAMPLE CODE <<")
                 print("="*80)
@@ -73,5 +82,5 @@ def Main():
             else:
                 Exceptions.Throw.InvalidOption()
         except:
-            Exceptions.Throw.InvalidOption()
+            Exceptions.Throw.ProgramQuit()
 Main()
