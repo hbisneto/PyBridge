@@ -908,7 +908,7 @@ def CreateLinuxFile():
         LinuxFile.write(f'   ## Lets run the SplashScreen\n')
         LinuxFile.write(f'   from linux import SplashScreen\n\n')
         LinuxFile.write(f'   ## Lets check system requirements\n')
-        LinuxFile.write(f'   from exception import Requirements\n\n')
+        LinuxFile.write(f'   from system import Requirements\n\n')
         LinuxFile.write(f'   ## Start App for Linux\n')
         LinuxFile.write(f'   from linux import LinuxApp\n\n')
         LinuxFile.close()
