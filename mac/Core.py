@@ -1259,7 +1259,7 @@ def CreateWindowsFile():
         WindowsFile.write(f'   ## Lets run the SplashScreen\n')
         WindowsFile.write(f'   from windows import SplashScreen\n\n')
         WindowsFile.write(f'   ## Lets check system requirements\n')
-        WindowsFile.write(f'   from exception import Requirements\n\n')
+        WindowsFile.write(f'   from system import Requirements\n\n')
         WindowsFile.write(f'   ## Start App for Windows\n')
         WindowsFile.write(f'   from windows import WindowsApp\n\n')
         WindowsFile.close()
