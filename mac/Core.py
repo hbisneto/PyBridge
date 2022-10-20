@@ -527,7 +527,7 @@ def CreateEnvironment():
 
     # Create Files
     ## Environment Files
-    UserAppName = open(CreateEnvironment.UserAppName, "w")
+    # UserAppName = open(CreateEnvironment.UserAppName, "w")
     ReadmeFile = open(CreateEnvironment.ReadmeFile, "w")
     GitIgnoreFile = open(CreateEnvironment.GitIgnoreFile, "w")
     ExceptionsFile = open(CreateEnvironment.ExceptionsFile, "w")
@@ -540,6 +540,8 @@ def CreateEnvironment():
         JupyterFile = open(CreateEnvironment.JupyterFile, "w")
     
     if ProjectOption != 4:
+        UserAppName = open(CreateEnvironment.UserAppName, "w")
+        
         ## Linux
         LinuxFile = open(CreateEnvironment.LinuxFile, "w")
         LinuxAppFile = open(CreateEnvironment.LinuxAppFile, "w")
@@ -1650,8 +1652,6 @@ def CreateBridge():
 
     ### Project Structure ###
     CreateEnvironment()
-    ## Init File
-    CreateInitFile()
     ## Readme File
     CreateReadmeFile()
     ## GitIgnore File
@@ -1664,6 +1664,8 @@ def CreateBridge():
     print()
 
     if ProjectOption != 4:
+        ## Init File
+        CreateInitFile()
         if ProjectOption == 3:
             CreateTokensFile()
 

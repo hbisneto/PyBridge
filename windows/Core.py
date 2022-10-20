@@ -39,7 +39,7 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.Sample}GetInfo/')
+            os.mkdir(f'{FileSystem.GetInfo}')
         except:
             print("[Status]: The project seems to be in the path, already!")
             return
@@ -50,7 +50,7 @@ class DownloadSample():
         try:
             URL = "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"
             From = f'{FileSystem.CurrentPath}/main.zip'
-            To = f'{FileSystem.Sample}GetInfo/main.zip'
+            To = f'{FileSystem.GetInfo}main.zip'
 
             ServerResponse = requests.get(URL, stream = True)
             FileName = URL.split("/")[-1]
@@ -65,7 +65,7 @@ class DownloadSample():
             print("[ERROR]: Could't connect to the server!")
             print(f'[Process]: Cleaning cache...')
             time.sleep(3)
-            shutil.rmtree(f'{FileSystem.Sample}GetInfo/')
+            shutil.rmtree(f'{FileSystem.GetInfo}')
             print("[Process]: Cache cleaned!")
             
         try:
@@ -75,7 +75,7 @@ class DownloadSample():
             return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.Sample}GetInfo/')
+            zipObj.extractall(f'{FileSystem.GetInfo}')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
@@ -91,7 +91,7 @@ class DownloadSample():
         print("="*80)
 
         try:
-            os.mkdir(f'{FileSystem.Sample}JoKenPo/')
+            os.mkdir(f'{FileSystem.JoKenPo}')
         except:
             print("[Status]: The project seems to be in the path, already!")
             return
@@ -102,7 +102,7 @@ class DownloadSample():
         try:
             URL = "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"
             From = f'{FileSystem.CurrentPath}/main.zip'
-            To = f'{FileSystem.Sample}JoKenPo/main.zip'
+            To = f'{FileSystem.JoKenPo}main.zip'
 
             ServerResponse = requests.get(URL, stream = True)
             FileName = URL.split("/")[-1]
@@ -116,7 +116,7 @@ class DownloadSample():
             print("[ERROR]: Could't connect to the server!")
             print(f'[Process]: Cleaning cache...')
             time.sleep(3)
-            shutil.rmtree(f'{FileSystem.Sample}JoKenPo/')
+            shutil.rmtree(f'{FileSystem.JoKenPo}')
             print("[Process]: Cache cleaned!")
 
         try:
@@ -127,7 +127,7 @@ class DownloadSample():
             return
         
         with ZipFile(To, 'r') as zipObj:
-            zipObj.extractall(f'{FileSystem.Sample}JoKenPo/')
+            zipObj.extractall(f'{FileSystem.JoKenPo}')
         print("[Done]: 'main' extraction process complete!")
         print("="*80)
 
@@ -488,26 +488,29 @@ def CreateEnvironment():
     CreateEnvironment.TokensFile = f'{Explorer.FolderLocation}Tokens.py'
     CreateEnvironment.ReadmeFile = f'{Explorer.FolderLocation}README.md'
     CreateEnvironment.GitIgnoreFile = f'{Explorer.FolderLocation}.gitignore'
+    CreateEnvironment.JupyterFile = f'{Explorer.FolderLocation}{Explorer.ProjectName}.ipynb'
     CreateEnvironment.ExceptionsFile = f'{CreateEnvironment.exceptionPath}Exceptions.py'
     CreateEnvironment.Requirements = f'{CreateEnvironment.systemPath}Requirements.py'
     
-    ## Linux
-    CreateEnvironment.LinuxFS = f'{CreateEnvironment.LinuxPath}FileSystem.py'
-    CreateEnvironment.LinuxFile = f'{CreateEnvironment.LinuxPath}Linux.py'
-    CreateEnvironment.LinuxAppFile = f'{CreateEnvironment.LinuxPath}LinuxApp.py'
-    CreateEnvironment.SplashLinux = f'{CreateEnvironment.LinuxPath}SplashScreen.py'
     
-    ## Mac
-    CreateEnvironment.MacFS = f'{CreateEnvironment.MacPath}FileSystem.py'
-    CreateEnvironment.MacFile = f'{CreateEnvironment.MacPath}Mac.py'
-    CreateEnvironment.MacAppFile = f'{CreateEnvironment.MacPath}MacApp.py'
-    CreateEnvironment.SplashMac = f'{CreateEnvironment.MacPath}SplashScreen.py'
+    if ProjectOption != 4:
+        ## Linux
+        CreateEnvironment.LinuxFile = f'{CreateEnvironment.LinuxPath}Linux.py'
+        CreateEnvironment.LinuxAppFile = f'{CreateEnvironment.LinuxPath}LinuxApp.py'
+        CreateEnvironment.SplashLinux = f'{CreateEnvironment.LinuxPath}SplashScreen.py'
+        ## Mac
+        CreateEnvironment.MacFile = f'{CreateEnvironment.MacPath}Mac.py'
+        CreateEnvironment.MacAppFile = f'{CreateEnvironment.MacPath}MacApp.py'
+        CreateEnvironment.SplashMac = f'{CreateEnvironment.MacPath}SplashScreen.py'
+        ## Windows
+        CreateEnvironment.WindowsFile = f'{CreateEnvironment.WindowsPath}Windows.py'
+        CreateEnvironment.WindowsAppFile = f'{CreateEnvironment.WindowsPath}WindowsApp.py'
+        CreateEnvironment.SplashWindows = f'{CreateEnvironment.WindowsPath}SplashScreen.py'
 
-    ## Windows
+    # FileSystems
+    CreateEnvironment.LinuxFS = f'{CreateEnvironment.LinuxPath}FileSystem.py'
+    CreateEnvironment.MacFS = f'{CreateEnvironment.MacPath}FileSystem.py'
     CreateEnvironment.WindowsFS = f'{CreateEnvironment.WindowsPath}FileSystem.py'
-    CreateEnvironment.WindowsFile = f'{CreateEnvironment.WindowsPath}Windows.py'
-    CreateEnvironment.WindowsAppFile = f'{CreateEnvironment.WindowsPath}WindowsApp.py'
-    CreateEnvironment.SplashWindows = f'{CreateEnvironment.WindowsPath}SplashScreen.py'
 
     # Create Archtecture
     try:
@@ -524,32 +527,40 @@ def CreateEnvironment():
 
     # Create Files
     ## Environment Files
-    UserAppName = open(CreateEnvironment.UserAppName, "w")
+    # UserAppName = open(CreateEnvironment.UserAppName, "w")
     ReadmeFile = open(CreateEnvironment.ReadmeFile, "w")
     GitIgnoreFile = open(CreateEnvironment.GitIgnoreFile, "w")
     ExceptionsFile = open(CreateEnvironment.ExceptionsFile, "w")
     Requirements = open(CreateEnvironment.Requirements, "w")
     
-    ## Linux
-    LinuxFS = open(CreateEnvironment.LinuxFS, "w")
-    LinuxFile = open(CreateEnvironment.LinuxFile, "w")
-    LinuxAppFile = open(CreateEnvironment.LinuxAppFile, "w")
-    SplashLinux = open(CreateEnvironment.SplashLinux, "w")
-
-    ## Mac
-    MacFS = open(CreateEnvironment.MacFS, "w")
-    MacFile = open(CreateEnvironment.MacFile, "w")
-    MacAppFile = open(CreateEnvironment.MacAppFile, "w")
-    SplashMac = open(CreateEnvironment.SplashMac, "w")
-
-    ## Windows
-    WindowsFS = open(CreateEnvironment.WindowsFS, "w")
-    WindowsFile = open(CreateEnvironment.WindowsFile, "w")
-    WindowsAppFile = open(CreateEnvironment.WindowsAppFile, "w")
-    SplashWindows = open(CreateEnvironment.SplashWindows, "w")
-
     if ProjectOption == 3:
         TokensFile = open(CreateEnvironment.TokensFile, "w")
+    
+    if ProjectOption == 4:
+        JupyterFile = open(CreateEnvironment.JupyterFile, "w")
+    
+    if ProjectOption != 4:
+        UserAppName = open(CreateEnvironment.UserAppName, "w")
+        
+        ## Linux
+        LinuxFile = open(CreateEnvironment.LinuxFile, "w")
+        LinuxAppFile = open(CreateEnvironment.LinuxAppFile, "w")
+        SplashLinux = open(CreateEnvironment.SplashLinux, "w")
+
+        ## Mac
+        MacFile = open(CreateEnvironment.MacFile, "w")
+        MacAppFile = open(CreateEnvironment.MacAppFile, "w")
+        SplashMac = open(CreateEnvironment.SplashMac, "w")
+
+        ## Windows
+        WindowsFile = open(CreateEnvironment.WindowsFile, "w")
+        WindowsAppFile = open(CreateEnvironment.WindowsAppFile, "w")
+        SplashWindows = open(CreateEnvironment.SplashWindows, "w")
+
+    # FileSystems
+    LinuxFS = open(CreateEnvironment.LinuxFS, "w")
+    MacFS = open(CreateEnvironment.MacFS, "w")
+    WindowsFS = open(CreateEnvironment.WindowsFS, "w")
 
 ## Launcher Script
 def CreateInitFile():
@@ -572,15 +583,15 @@ def CreateInitFile():
         AppName.write(f'   ## Linux\n')
         AppName.write(f'   if Platform == "linux" or Platform == "linux2":\n')
         AppName.write(f'      from linux import Linux\n')
-        AppName.write(f'      linux.Linux()\n\n')
+        AppName.write(f'      Linux.Linux()\n\n')
         AppName.write(f'   ## Mac\n')
         AppName.write(f'   elif Platform == "darwin":\n')
         AppName.write(f'      from mac import Mac\n')
-        AppName.write(f'      mac.Mac()\n\n')
+        AppName.write(f'      Mac.Mac()\n\n')
         AppName.write(f'   ## Windows\n')
         AppName.write(f'   elif Platform == "win32" or Platform == "win64":\n')
         AppName.write(f'      from windows import Windows\n')
-        AppName.write(f'      windows.Windows()\n\n')
+        AppName.write(f'      Windows.Windows()\n\n')
         AppName.write(f'Main()')
         AppName.close()
 
@@ -747,54 +758,90 @@ def CreateExceptions():
     print("> Creating exceptions Module...")
     with codecs.open(CreateEnvironment.ExceptionsFile, "w", "utf-8-sig") as Exceptions:
         Exceptions.write(f'## Exceptions File\n')
-        Exceptions.write(f'## This file contains events thats raised when the program must to stop\n\n')
-        Exceptions.write(f'class Raise():\n')
-        Exceptions.write(f'   class Requirements():\n')
-        Exceptions.write(f'      def MajorVersion(self, CurrentVersion, TargetVersion, TargetMajor):\n')
-        Exceptions.write("         raise Exception(f'>> You cannot run the application because it requires Python {TargetVersion} or later. [Current Version: {CurrentVersion}]')\n\n")
-        Exceptions.write(f'      def MinorVersion(self, CurrentVersion, TargetVersion, TargetMinor):\n')
-        Exceptions.write(f'         print("="*80)\n')
-        Exceptions.write(f'         print(">> PYBRIDGE <<")\n')
-        Exceptions.write(f'         print("="*80)\n')
-        Exceptions.write(f'         print(">> WARNING <<")\n')
-        Exceptions.write(f'         print("="*80)\n')
-        Exceptions.write("         print(f'>> Your appication targets a version of Python older than the version currently installed. You may get errors during the process')\n")
-        Exceptions.write(f'         print("="*80)\n')
-        Exceptions.write("         print(f'- Current Version: {CurrentVersion}')\n")
-        Exceptions.write("         print(f'- Target Version: {TargetVersion}')\n")
-        Exceptions.write("         print(f'>> You can change `Requirements.py` on `exception` Module')\n")
-        Exceptions.write(f'         print("="*80)\n')
-        Exceptions.write(f'         print()\n\n')
-        Exceptions.write(f'      def BuildVersion(self, CurrentVersion, TargetVersion, BuildVer):\n')
-        Exceptions.write("         raise Exception(f'>> This application only can run on Python {TargetVersion}. [Current Version: {CurrentVersion}]')\n\n")
-        Exceptions.write(f'def ImportLib():\n')
+        Exceptions.write(f'## This file contains events that`s raised when the program must to stop\n\n')
+        Exceptions.write(f'class Raise:\n')
+        Exceptions.write(f'  def MajorVersion(self, CurrentVersion, TargetVersion, TargetMajor):\n')
+        Exceptions.write("    raise Exception(f'>> You cannot run the application because it requires Python {TargetVersion} or later. [Current Version: {CurrentVersion}]')\n\n")
+        Exceptions.write(f'  def MinorVersion(self, CurrentVersion, TargetVersion, TargetMinor):\n')
+        Exceptions.write(f"    print('=' * 80)\n")
+        Exceptions.write(f'    print(">> PYBRIDGE <<")\n')
+        Exceptions.write(f"    print('=' * 80)\n")
+        Exceptions.write(f'    print(">> WARNING <<")\n')
+        Exceptions.write(f"    print('=' * 80)\n")
+        Exceptions.write("    print(f'>> Your appication targets a version of Python older than the version currently installed. You may get errors during the process')\n")
+        Exceptions.write(f"    print('=' * 80)\n")
+        Exceptions.write("    print(f'- Current Version: {CurrentVersion}')\n")
+        Exceptions.write("    print(f'- Target Version: {TargetVersion}')\n")
+        Exceptions.write("    print(f'>> You can change `Requirements.py` on `system` Module')\n")
+        Exceptions.write(f"    print('=' * 80)\n")
+        Exceptions.write(f'    print()\n\n')
+        Exceptions.write(f'  def BuildVersion(self, CurrentVersion, TargetVersion, BuildVer):\n')
+        Exceptions.write("    raise Exception(f'>> This application only can run on Python {TargetVersion}. [Current Version: {CurrentVersion}]')\n\n")
+        Exceptions.write(f'  def __init__(self, exctype):\n')
+        Exceptions.write(f'    self.exctype = exctype\n\n')
+        Exceptions.write(f'  def FileExists(self):\n')
+        Exceptions.write("    raise Exception(f'{self.exctype} The file already exists')\n\n")
+        Exceptions.write(f'  def DirectoryExists(self):\n')
+        Exceptions.write("    raise Exception(f'{self.exctype} The directory already exists')\n\n")
+        Exceptions.write(f'  def ImportLib():\n')
         Exceptions.write(f'   raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")\n\n')
-        Exceptions.write(f'def FileExists():\n')
-        Exceptions.write(f'   raise RuntimeError(">> The file already exists!")\n\n')
-        Exceptions.write(f'def DirectoryExists():\n')
-        Exceptions.write(f'   raise RuntimeError(">> The directory already exists!")\n\n')
-        Exceptions.write(f'def InputFormat():\n')
-        Exceptions.write(f'   print(">> Your input is not valid: Check your input and try again")\n\n')
-        Exceptions.write(f'def InvalidOption():\n')
-        Exceptions.write(f'   print("="*80)\n')
-        Exceptions.write(f'   print(">> Invalid Option!")\n')
-        Exceptions.write(f'   print("="*80)\n')
-        Exceptions.write("   print(f'>> You typed an invalid option. Run the program again!')\n")
-        Exceptions.write(f'   print("="*80)\n')
+        Exceptions.write(f'  def InputFormat(self):\n')
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'{self.exctype} INVALID INPUT')\n")
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write(f'    print(">> Your input is not valid: Check your input and try again")\n')
+        Exceptions.write(f'    print("=" * 80)\n\n')
+        Exceptions.write(f'  def ProgramQuit(self):\n')
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'{self.exctype} PYBRIDGE HAS QUIT!')\n")
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'>> The program has been closed and couldn`t be restored.')\n")
+        Exceptions.write("    print(f'>> Run the program again!')\n")
+        Exceptions.write(f'    print("=" * 80)\n\n')
+        Exceptions.write(f'  def InvalidOption(self):\n')
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'{self.exctype} INVALID OPTION')\n")
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'>> You typed an invalid option.')\n")
+        Exceptions.write("    print(f'>> Running the program again!')\n")
+        Exceptions.write(f'    print("=" * 80)\n\n')
+        Exceptions.write(f'  def ProjectsLoadFail(self):\n')
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'{self.exctype} PROJECT LOADING FAILED!')\n")
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'>> ERROR: Couldn`t load projects...')\n")
+        Exceptions.write(f'    print("=" * 80)\n\n')
+        Exceptions.write(f'  def BackupFail(self):\n')
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'{self.exctype} BACKUP CREATION FAILED!')\n")
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write(f'    print("*" * 80)\n')
+        Exceptions.write("    print(f'>> PyBridge could not create backup for your projects folder')\n")
+        Exceptions.write("    print(f'>> Try again later.')\n")
+        Exceptions.write(f'    print("*" * 80)\n\n')
+        Exceptions.write(f'  def CompressBackupFail(self):\n')
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'{self.exctype} COMPRESSED FILE CREATION FAILED!')\n")
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write(f'    print("=" * 80)\n')
+        Exceptions.write("    print(f'>> PyBridge could not create a compressed file from your backup')\n")
+        Exceptions.write("    print(f'>> Try again later.')\n")
+        Exceptions.write(f'    print("=" * 80)\n\n')
+        Exceptions.write(f'Throw = Raise(">> An Exception occurred:")')
         Exceptions.close()
 
 ## System Requirements File
 def CreateRequirements():
     print("> Creating Requirements Library...")
     with codecs.open(CreateEnvironment.Requirements, "w", "utf-8-sig") as Requirements:
-        Requirements.write(f'## Requirements File\n')
+        Requirements.write(f'## SystemRequirements File\n')
         Requirements.write(f'## This file is used to check if system matches with the minimum requirements to run\n\n')
         Requirements.write(f'import sys\n')
         Requirements.write(f'from exception import Exceptions\n\n')
-        Requirements.write(f'## Change "Require" to "False" to skip system check\n')
-        Requirements.write(f'Require = True\n')
-        Requirements.write(f'## Change "Require" to "True" to allow system check\n\n')
-        Requirements.write(f'if Require == True:\n')
+        Requirements.write(f'## Change "REQUIRE" to "False" to skip system check\n')
+        Requirements.write(f'REQUIRE = True\n')
+        Requirements.write(f'## Change "REQUIRE" to "True" to allow system check\n\n')
+        Requirements.write(f'if REQUIRE == True:\n')
         Requirements.write(f'   ## Target System\n')
         Requirements.write(f'   TargetMajor = {MajorVersion}\n')
         Requirements.write(f'   TargetMinor = {MinorVersion}\n')
@@ -810,10 +857,36 @@ def CreateRequirements():
         Requirements.write(f'   ## Uncomment to see information about your system\n')
         Requirements.write("   ## print(f'>> My system current version: Python {CurrentVersion}')\n")
         Requirements.write("   ## print(f'>> Required version to run: Python {TargetVersion}')\n\n")
-        Requirements.write(f'   if TargetVersion > CurrentVersion:\n')
-        Requirements.write(f'      Exceptions.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)\n')
-        Requirements.write(f'   elif TargetVersion < CurrentVersion:\n')
-        Requirements.write(f'      Exceptions.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n')
+        Requirements.write(f'   def CheckMajorVersion():\n')
+        Requirements.write(f'      ## Note: if this key is set to False, the system won`t run even if meets requirements\n')
+        Requirements.write(f'      AllowKey = True\n')
+        Requirements.write(f'      ## Note: if this key is set to False, the system won`t run even if meets requirements\n\n')
+        Requirements.write(f'      if MajorVersion < TargetMajor:\n')
+        Requirements.write(f'         AllowKey = False\n')
+        Requirements.write(f'      else:\n')
+        Requirements.write(f'         if MinorVersion < TargetMinor:\n')
+        Requirements.write(f'            AllowKey = False\n')
+        Requirements.write(f'         else:\n')
+        Requirements.write(f'            if BuildVersion < TargetBuild:\n')
+        Requirements.write(f'               AllowKey = False\n\n')
+        Requirements.write(f'      if AllowKey == False:\n')
+        Requirements.write(f'         ErrorList.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)\n\n')
+        Requirements.write(f'   def CheckMinorVersion():\n')
+        Requirements.write(f'      ## Note: if this key is set to True, the system will warn evertime it runs\n')
+        Requirements.write(f'      ShowWarn = False\n')
+        Requirements.write(f'      ## Note: if this key is set to True, the system will warn evertime it runs\n\n')
+        Requirements.write(f'      if MajorVersion > TargetMajor:\n')
+        Requirements.write(f'         ShowWarn = True\n')
+        Requirements.write(f'      else:\n')
+        Requirements.write(f'         if MinorVersion > TargetMinor:\n')
+        Requirements.write(f'            ShowWarn = True\n')
+        Requirements.write(f'         else:\n')
+        Requirements.write(f'            if BuildVersion > TargetBuild:\n')
+        Requirements.write(f'               ShowWarn = True\n\n')  
+        Requirements.write(f'      if ShowWarn == True:\n')
+        Requirements.write(f'         ErrorList.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)\n\n')
+        Requirements.write(f'   CheckMajorVersion()\n')
+        Requirements.write(f'   CheckMinorVersion()')
         Requirements.close()
 
 ## Linux File
@@ -989,6 +1062,7 @@ def CreateLinuxFileSystem():
         LinuxFS.write("PythonExtension = '.py'\n")
         LinuxFS.close()
 
+## Mac File
 def CreateMacFile():
     print("="*80)
     print(">> Creating Mac Modules <<")
@@ -1008,7 +1082,7 @@ def CreateMacFile():
         MacFile.write(f'   ## Lets run the SplashScreen\n')
         MacFile.write(f'   from mac import SplashScreen\n\n')
         MacFile.write(f'   ## Lets check system requirements\n')
-        MacFile.write(f'   from exception import Requirements\n\n')
+        MacFile.write(f'   from system import Requirements\n\n')
         MacFile.write(f'   ## Start App for Mac\n')
         MacFile.write(f'   from mac import MacApp\n\n')
         MacFile.close()
@@ -1363,8 +1437,193 @@ def CreateTokensFile():
         Tokens.write(f'Twitter = tweepy.API(Auth, wait_on_rate_limit = True)')
         Tokens.close()
 
-## Create The Bridge (After Everything Is Ready)
-def CreateBridge():
+## Jupyter Notebook File
+def CreateJupyterNotebook():
+    print(">> Applying Jupyter Notebook on Environment...\n>> Please wait...")
+    with codecs.open(CreateEnvironment.JupyterFile, "w", "utf-8-sig") as JupyterFile:
+        JupyterFile.write('{\n')
+        JupyterFile.write(' "cells": [\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "markdown",\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## External Packages",')
+        JupyterFile.write('    "Packages to set before you go",')
+        JupyterFile.write('    "<br>Uncomment the code below to install dependencies"')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "code",\n')
+        JupyterFile.write('   "execution_count": null,\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "outputs": [],\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "# !pip install pandas",')
+        JupyterFile.write('    "# !pip install numpy",')
+        JupyterFile.write('    "# !pip install qgrid",\n')
+        JupyterFile.write('    "# !pip install matplotlib",')
+        JupyterFile.write('    "# !pip install seaborn"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "markdown",\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## Check PyBridge Libraries",')
+        JupyterFile.write('    "Required libraries will be imported before you run your Jupyter Notebook"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "code",\n')
+        JupyterFile.write('   "execution_count": null,\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "outputs": [],\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## __init__.py File",\n')
+        JupyterFile.write('    "## Here the contents will be processed to choose the best platform to go",')
+        JupyterFile.write('    "",')
+        JupyterFile.write('    "try:",')
+        JupyterFile.write('    "   ## Imported Libraries",')
+        JupyterFile.write('    "   from sys import platform",')
+        JupyterFile.write('    "",')
+        JupyterFile.write('    "   ## Local Libraries",')
+        JupyterFile.write('    "   from exception import Exceptions",')
+        JupyterFile.write('    "except:",')
+        JupyterFile.write('    "   raise RuntimeError(\'>> Could not import library: Check if the libraries are installed and run the program again.\')"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "markdown",\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## Linux Imports",\n')
+        JupyterFile.write('    "Imports to use in Linux Environments"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "code",\n')
+        JupyterFile.write('   "execution_count": null,\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "outputs": [],\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## Linux",\n')
+        JupyterFile.write('    "if platform == \\"linux\\" or platform == \\"linux2\\":",\n')
+        JupyterFile.write('    "   from linux import FileSystem"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "markdown",\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## macOS Imports",\n')
+        JupyterFile.write('    "Imports to use in macOS Environments"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "code",\n')
+        JupyterFile.write('   "execution_count": null,\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "outputs": [],\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## Mac",\n')
+        JupyterFile.write('    "if platform == \\"darwin\\":",\n')
+        JupyterFile.write('    "   from mac import FileSystem"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "markdown",\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## Windows Imports",')
+        JupyterFile.write('    "Imports to use in Windows Environments"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "code",\n')
+        JupyterFile.write('   "execution_count": null,\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "outputs": [],\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## Windows",\n')
+        JupyterFile.write('    "if platform == \\"win32\\" or platform == \\"win64\\":",\n')
+        JupyterFile.write('    "   from windows import FileSystem"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "markdown",\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "# Code Implementation",\n')
+        JupyterFile.write('    "Here you will implement your code to be executed after imports"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "code",\n')
+        JupyterFile.write('   "execution_count": null,\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "outputs": [],\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "## Examples to make your journey easier",\n')
+        JupyterFile.write('    "## Note: Replace the code below with your implementation",\n')
+        JupyterFile.write('    "",\n')
+        JupyterFile.write('    "# Get the path of your Desktop folder:",\n')
+        JupyterFile.write("    \"print(\'{0}{1}'.format('Your Desktop Folder: \', FileSystem.Desktop))\",\n")
+        JupyterFile.write('    "\\n",\n')
+        JupyterFile.write('    "# Get the path of your Documents folder:",\n')
+        JupyterFile.write("    \"print(f\'Your Documents Folder: {FileSystem.Documents}\')\",\n")
+        JupyterFile.write('    "\\n",\n')
+        JupyterFile.write('    "# Hello World!",\n')
+        JupyterFile.write('    "print(\\"Hello World!\\")",\n')
+        JupyterFile.write('    "",\n')
+        JupyterFile.write('    "# Math Sum",\n')
+        JupyterFile.write('    "print(\\">> 2 + 3 =\\", 2 + 3)",\n')
+        JupyterFile.write('    "",\n')
+        JupyterFile.write('    "# Throw an Exception using native library",\n')
+        JupyterFile.write('    "Exceptions.Throw.FileExists()"\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  {\n')
+        JupyterFile.write('   "cell_type": "markdown",\n')
+        JupyterFile.write('   "metadata": {},\n')
+        JupyterFile.write('   "source": [\n')
+        JupyterFile.write('    "#",\n')
+        JupyterFile.write('    "",\n')
+        JupyterFile.write(f'    "Copyright © {datetime.now().year} {getpass.getuser().capitalize()}. All rights reserved."\n')
+        JupyterFile.write('   ]\n')
+        JupyterFile.write('  }\n')
+        JupyterFile.write(' ],\n')
+        JupyterFile.write(' "metadata": {\n')
+        JupyterFile.write('  "kernelspec": {\n')
+        JupyterFile.write('   "display_name": "Python 3.10.4 64-bit",\n')
+        JupyterFile.write('   "language": "python",\n')
+        JupyterFile.write('   "name": "python3"\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  "language_info": {\n')
+        JupyterFile.write('   "codemirror_mode": {\n')
+        JupyterFile.write('    "name": "ipython",\n')
+        JupyterFile.write('    "version": 3\n')
+        JupyterFile.write('   },\n')
+        JupyterFile.write('   "file_extension": ".py",\n')
+        JupyterFile.write('   "mimetype": "text/x-python",\n')
+        JupyterFile.write('   "name": "python",\n')
+        JupyterFile.write('   "nbconvert_exporter": "python",\n')
+        JupyterFile.write('   "pygments_lexer": "ipython3",\n')
+        JupyterFile.write('   "version": "3.10.5"\n')
+        JupyterFile.write('  },\n')
+        JupyterFile.write('  "orig_nbformat": 4,\n')
+        JupyterFile.write('  "vscode": {\n')
+        JupyterFile.write('   "interpreter": {\n')
+        JupyterFile.write('    "hash": "aee8b7b246df8f9039afb4144a1f6fd8d2ca17a180786b69acc140d282b71a49"\n')
+        JupyterFile.write('   }\n')
+        JupyterFile.write('  }\n')
+        JupyterFile.write(' },\n')
+        JupyterFile.write(' "nbformat": 4,\n')
+        JupyterFile.write(' "nbformat_minor": 2\n')
+        JupyterFile.write('}\n')
+        JupyterFile.close()
+
+## Setup Project
+def SetupProject():
     print("="*80)
     print(">> CREATE PROJECT <<")
     print("="*80)
@@ -1377,7 +1636,6 @@ def CreateBridge():
         os.mkdir(FolderLocation)
         Explorer.ProjectName = ProjectName
         Explorer.FolderLocation = FolderLocation
-        CreateEnvironment()
     except:
         print()
         print("="*80)
@@ -1386,11 +1644,14 @@ def CreateBridge():
         print("="*80)
         # Exceptions.Log(Message = "Criar arquivo de LOG: Arquivo já existente!", Location = FileSystem.CurrentPath + "NomeArquivo.log")
         Exceptions.Throw.FileExists()
-        
+
+## Create The Bridge (After Everything Is Ready)
+def CreateBridge():
+    ### Setup Project
+    SetupProject()
+
     ### Project Structure ###
     CreateEnvironment()
-    ## Init File
-    CreateInitFile()
     ## Readme File
     CreateReadmeFile()
     ## GitIgnore File
@@ -1402,42 +1663,51 @@ def CreateBridge():
     print("="*80)
     print()
 
-    if ProjectOption == 3:
-        CreateTokensFile()
+    if ProjectOption != 4:
+        ## Init File
+        CreateInitFile()
+        if ProjectOption == 3:
+            CreateTokensFile()
 
-    ### Linux Module ###
-    ## Linux File
-    CreateLinuxFile()
-    ## LinuxApp File
-    CreateLinuxAppFile()
-    ## Linux SplashScreen File
-    CreateLinuxSplashScreen()
-    ## Linux FileSystem File
-    CreateLinuxFileSystem()
-    print("="*80)
-    print()
-    
-    ### macOS Modules ###
-    ## Mac File
-    CreateMacFile()
-    ## MacApp File
-    CreateMacAppFile()
-    ## Mac SplashScreen File
-    CreateMacSplashScreen()
-    ## Mac FileSystem File
-    CreateMacFileSystem()
-    print("="*80)
-    print()
+        ### Linux Module ###
+        ## Linux File
+        CreateLinuxFile()
+        ## LinuxApp File
+        CreateLinuxAppFile()
+        ## Linux SplashScreen File
+        CreateLinuxSplashScreen()
+        ## Linux FileSystem File
+        CreateLinuxFileSystem()
+        print("="*80)
+        print()
+        
+        ### macOS Modules ###
+        ## Mac File
+        CreateMacFile()
+        ## MacApp File
+        CreateMacAppFile()
+        ## Mac SplashScreen File
+        CreateMacSplashScreen()
+        ## Mac FileSystem File
+        CreateMacFileSystem()
+        print("="*80)
+        print()
 
-    ### Windows Modules ###
-    ## Windows File
-    CreateWindowsFile()
-    ## WindowsApp File
-    CreateWindowsAppFile()
-    ## Windows SplashScreen File
-    CreateWindowsSplashScreen()
-    ## Windows FileSystem File
-    CreateWindowsFileSystem()
+        ### Windows Modules ###
+        ## Windows File
+        CreateWindowsFile()
+        ## WindowsApp File
+        CreateWindowsAppFile()
+        ## Windows SplashScreen File
+        CreateWindowsSplashScreen()
+        ## Windows FileSystem File
+        CreateWindowsFileSystem()
+    else:
+        ## Create Jupyter Notebook
+        CreateJupyterNotebook()
+        CreateLinuxFileSystem()
+        CreateMacFileSystem()
+        CreateWindowsFileSystem()
 
     print("="*80)
     print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
