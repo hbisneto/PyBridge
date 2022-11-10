@@ -445,7 +445,7 @@ def ProjOptions():
 
             print("[5] - DELETE THIS PROJECT")
             print("Deletes the project folder and all the contents in it.")
-            print("CAUTION: THIS OPERATION CAN`T BE UNDONE...")
+            print("CAUTION: THIS OPERATION CANNOT BE UNDONE...")
             print("="*80)
 
             print("[0] - Go Back")
