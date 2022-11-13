@@ -42,7 +42,6 @@ if REQUIRE == True:
                  AllowKey = False
                  
       if AllowKey == False:
-         # Exceptions.Raise().Requirements().MajorVersion(CurrentVersion, TargetVersion, TargetMajor)
          Exceptions.Throw.MajorVersion(CurrentVersion, TargetVersion, MajorVersion)
 
    def CheckMinorVersion():
@@ -60,7 +59,6 @@ if REQUIRE == True:
                  ShowWarn = True
                  
       if ShowWarn == True:
-         # Exceptions.Raise().Requirements().MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
          Exceptions.Throw.MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
 
    CheckMajorVersion()
