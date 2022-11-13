@@ -118,7 +118,7 @@ Copyright © 2021 | YOU All rights reserved.
 ==================================================
 
 Traceback (most recent call last):
-    File "/Users/bisneto/Documents/PyBridge/Projects/Hello World/__init__.py", line 31, in <module>
+    File "/Users/YOU/Documents/PyBridge/Projects/Hello World/__init__.py", line 31, in <module>
     Main()
   File "/Users/YOU/Documents/PyBridge/Projects/Hello World/__init__.py", line 24, in Main
     Mac.Mac()
@@ -148,7 +148,7 @@ Copyright © 2022 | YOU All rights reserved.
 # Load SystemRequirements
 
 Traceback (most recent call last):
-    File "/Users/bisneto/Documents/PyBridge/Projects/Hello World/__init__.py", line 31, in <module>
+    File "/Users/YOU/Documents/PyBridge/Projects/Hello World/__init__.py", line 31, in <module>
     Main()
   File "/Users/YOU/Documents/PyBridge/Projects/Hello World/__init__.py", line 24, in Main
     Mac.Mac()
