@@ -16,5 +16,9 @@ def Linux():
     ## Lets check system requirements
     from system import Requirements
 
+    ### You just need to run ONCE: Be sure you commented this code after first run
+    Requirements.InstallDependencies()
+    ### You just need to run ONCE: Be sure you commented this code after first run
+
     ## Start App for Linux
     from linux import LinuxApp

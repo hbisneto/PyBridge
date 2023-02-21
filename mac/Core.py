@@ -598,8 +598,11 @@ def CreateInitFile():
 def CreateReadmeFile():
     print("> Creating 'README' File...")
     with codecs.open(CreateEnvironment.ReadmeFile, "w", "utf-8-sig") as Readme:
+        Readme.write('---\n')
+        Readme.write(f'This project was created using [PyBridge](https://github.com/hbisneto/PyBridge)\n')
+        Readme.write('\n')
+        Readme.write('---\n\n')
         Readme.write(f'# {Explorer.ProjectName}\n\n')
-        Readme.write(f'This project was created using [PyBridge](https://github.com/hbisneto/PyBridge)\n\n')
         Readme.write(f'## Requirements\n\n')
         Readme.write(f'{Explorer.ProjectName} requires Python {MajorVersion}.{MinorVersion}.{BuildVersion} or later to run\n\n')
         Readme.write(f'## Installation\n\n')

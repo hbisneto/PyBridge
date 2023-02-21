@@ -187,6 +187,9 @@ The following libraries were used to implement the tool:
 * **shutil:** The shutil module provides several high-level operations on files and file collections. In particular, functions are provided that support copying and removing files. For operations on individual files, see also the **os** module.
     - Read more about the ```shutil``` library at [shutil — High-level file operations](https://docs.python.org/3.9/library/shutil.html)
 
+* **subprocess:** The subprocess module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes. This module intends to replace several older modules and functions
+    - Read more about the ```subprocess``` library at [subprocess — Subprocess management](https://docs.python.org/3.9/library/subprocess.html)
+
 * **sys:** This module provides access to some variables used or maintained by the interpreter and functions that interact strongly with the interpreter.
     - Read more about the ```sys``` library at [sys — System-specific parameters and functions](https://docs.python.org/3.9/library/sys.html)
 

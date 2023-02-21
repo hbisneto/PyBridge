@@ -15,6 +15,10 @@ def Windows():
 
     ## Lets check system requirements
     from system import Requirements
+
+    ### You just need to run ONCE: Be sure you commented this code after first run
+    Requirements.InstallDependencies()
+    ### You just need to run ONCE: Be sure you commented this code after first run
     
     ## Start App for Windows
     from windows import WindowsApp
