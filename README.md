@@ -309,6 +309,48 @@ The following libraries were used to implement the tool:
 
 For more information about update logs, access [RELEASES](https://github.com/hbisneto/PyBridge/releases) page on this repository.
 
+## New on PyBridge 2.1:
+
+- **Added "Install Dependencies" feature:** Now, when you run PyBridge, all the system dependencies (like Python Libraries and Modules) will be installed globally.
+<br><br>
+You can prevent dependencies to be installed by commenting the code on System Module Libraries (linux, mac and windows).
+
+	```
+	## Mac File (PyBridge > mac > Mac.py)
+	## This file is used to implement code used to run scripts for Mac
+	## Codes implemented here, will run before the script starts running
+	
+	import os
+	from mac import Core
+	from mac import FileSystem
+	
+	def Mac():
+	    ## NOTE: You can use this function
+	    ## To load information before the app starts running
+
+	    ## Lets run the SplashScreen
+	    from mac import SplashScreen
+	
+	    ## Lets check system requirements
+	    from system import Requirements
+	
+	    ### YOU JUST NEED TO RUN ONCE: Be sure you commented this code after first run
+	    Requirements.InstallDependencies()
+	    ### YOU JUST NEED TO RUN ONCE: Be sure you commented this code after first run
+	    
+	    ## Start App for Mac
+	    from mac import MacApp
+	```
+
+- **Improvements in PyBridge README file:** Added information about new native library `subprocess`
+- Improvements in some files created by PyBridge when creating a new project
+- **Added new "Create Core" feature:** Now PyBridge syncs the Core.py library from all systems. It's just choose the main Core.py file and it will be copied to another system modules dealing with necessary imports.
+- Improved System Logs (in `Logs.py`)
+- Improved System Requirements (in `Requirements.py`): 
+	- Added new `InstallDependencies` function. 
+	- Removed `CheckMajorVersion` and `CheckMinorVersion` functions from library (added `CheckVersion` function instead)
+- asdasd
+
 # Contribute to this repository:
 
 - If you found any error and can send the correction, I'll thank you immensely!
@@ -318,4 +360,4 @@ For more information about update logs, access [RELEASES](https://github.com/hbi
 
 #
 
-Copyright © 2021–2022 Heitor Bisneto. All rights reserved.
+Copyright © 2021–2023 Heitor Bisneto. All rights reserved.
