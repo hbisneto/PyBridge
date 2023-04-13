@@ -313,7 +313,7 @@ For more information about update logs, access [RELEASES](https://github.com/hbi
 
 - **Added "Install Dependencies" feature:** Now, when you run PyBridge, all the system dependencies (like Python Libraries and Modules) will be installed globally.
 <br><br>
-You can prevent dependencies to be installed by commenting the code on System Module Libraries (linux, mac and windows).
+You can prevent dependencies to be installed by commenting the code on System Module Libraries (**linux**, **mac** and **windows**).
 
 	```
 	## Mac File (PyBridge > mac > Mac.py)
