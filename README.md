@@ -349,7 +349,7 @@ You can prevent dependencies to be installed by commenting the code on System Mo
 - Improved System Requirements (in `Requirements.py`): 
 	- Added new `InstallDependencies` function. 
 	- Removed `CheckMajorVersion` and `CheckMinorVersion` functions from library (added `CheckVersion` function instead)
-- asdasd
+- Added attributes description to the libraries
 
 # Contribute to this repository:
 
