@@ -1,3 +1,15 @@
+"""
+Logs.py
+
+- This file is used to store logs from your system when running
+
+```
+from system import Logs
+
+def main():
+  CreateLogFile(filename, processname, log_type, message)
+```
+"""
 ## Logs File
 ## This file is used to store logs from your system when running
 
@@ -69,4 +81,4 @@ def CreateLogFile(filename, processname, log_type, message):
 # CreateLogFile('NULL','NULL', 'NULL', 'This kinda log is most used when you need to print a report.')
 #CreateLogFile(filename = "Arquivo.py", processname = "Teste6_2", log_type = 5, message = "Minha mensagem")
 
-CreateLogFile("TestFile.log", "SomeProcess", 1, "Your process has been terminated")
+# CreateLogFile("TestFile.log", "SomeProcess", 1, "Your process has been terminated")

@@ -1,6 +1,12 @@
+"""
+Linux.py
+
+- This file is used to implement code used to run scripts for Linux
+- Codes implemented here, will run before the main script starts running
+"""
 ## Linux File
 ## This file is used to implement code used to run scripts for Linux
-## Codes implemented here, will run before the script starts running
+## Codes implemented here, will run before the main script starts running
 
 import os
 from linux import Core
@@ -19,6 +25,6 @@ def Linux():
     ### You just need to run ONCE: Be sure you commented this code after first run
     Requirements.InstallDependencies()
     ### You just need to run ONCE: Be sure you commented this code after first run
-
+    
     ## Start App for Linux
     from linux import LinuxApp

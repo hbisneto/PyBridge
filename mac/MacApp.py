@@ -1,12 +1,18 @@
+"""
+MacApp.py
+
+- This file is used to implement code used to run scripts for Mac
+"""
 ## MacApp File
 ## This file is used to implement code used to run scripts for Mac
 
 from exception import Exceptions
 from mac import Core
+from mac import FileSystem
 
 def Main():
     BridgeLoop = True
-    Core.VerifyFolders()
+    FileSystem.VerifyFolders()
 
     while BridgeLoop == True:
         print()

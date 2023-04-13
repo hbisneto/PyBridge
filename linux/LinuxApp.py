@@ -1,12 +1,18 @@
+"""
+LinuxApp.py
+
+- This file is used to implement code used to run scripts for Linux
+"""
 ## LinuxApp File
 ## This file is used to implement code used to run scripts for Linux
 
 from exception import Exceptions
 from linux import Core
+from linux import FileSystem
 
 def Main():
     BridgeLoop = True
-    Core.VerifyFolders()
+    FileSystem.VerifyFolders()
 
     while BridgeLoop == True:
         print()

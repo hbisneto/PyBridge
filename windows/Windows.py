@@ -1,3 +1,9 @@
+"""
+Windows.py
+
+- This file is used to implement code used to run scripts for Windows
+- Codes implemented here, will run before the main script starts running
+"""
 ## Windows File
 ## This file is used to implement code used to run scripts for Windows
 ## Codes implemented here, will run before the script starts running

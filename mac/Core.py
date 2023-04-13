@@ -1,5 +1,10 @@
+"""
+Core.py
+
+- This file will process every step of bridge creation
+"""
 ## Core
-## This file will process every step of file creation
+## This file will process every step of bridge creation
 
 import codecs
 import getpass
@@ -189,24 +194,24 @@ def Explorer():
     ProjectName = str()
     FolderLocation = str()
 
-## Folders Verified to assure PyBridge Will Run Properly
-def VerifyFolders():
-    def BridgeFolder():
-        try:
-            os.mkdir(FileSystem.PyBridgeFolder)
-            print(f'>> PyBridge: "{FileSystem.PyBridgeFolder}" created')
-        except:
-            return
+# ## Folders Verified to assure PyBridge Will Run Properly
+# def VerifyFolders():
+#     def BridgeFolder():
+#         try:
+#             os.mkdir(FileSystem.PyBridgeFolder)
+#             print(f'>> PyBridge: "{FileSystem.PyBridgeFolder}" created')
+#         except:
+#             return
 
-    def ProjectsFolder():
-        try:
-            os.mkdir(FileSystem.ProjectsRepo)
-            print(f'>> PyBridge: "{FileSystem.ProjectsRepo}" created')
-        except:
-            return
+#     def ProjectsFolder():
+#         try:
+#             os.mkdir(FileSystem.ProjectsRepo)
+#             print(f'>> PyBridge: "{FileSystem.ProjectsRepo}" created')
+#         except:
+#             return
 
-    BridgeFolder()
-    ProjectsFolder()
+#     BridgeFolder()
+#     ProjectsFolder()
 
 ## List PyBridge Projects (Saved in Documents > PyBridge > Projects)
 def ProjectList():

@@ -1,3 +1,8 @@
+"""
+SplashScreen.py
+
+- This file contains information about your project
+"""
 ## SplashScreen File
 ## This file contains information about your project
 
