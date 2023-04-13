@@ -1,3 +1,25 @@
+"""
+Exceptions.py
+
+- This file contains events raised when the program must to stop:
+
+```
+from exception import Exceptions
+
+def main():
+  Exceptions.Throw.FileExists()
+```
+Output:
+
+```
+Traceback (most recent call last):
+  File "/YourProject/mac/MacApp.py", line 11, in Main
+    Exceptions.Throw.FileExists()
+  File "/YourProject/exception/Exceptions.py", line 53, in FileExists
+    raise Exception(f'{self.exctype} The file already exists')
+Exception: >> An Exception occurred: The file already exists
+```
+"""
 ## Exceptions File
 ## This file contains events that's raised when the program must to stop
 
@@ -31,7 +53,7 @@ class Raise:
   def DirectoryExists(self):
     raise Exception(f'{self.exctype} The directory already exists')
   
-  def ImportLib():
+  def ImportLib(self):
    raise RuntimeError(">> Could not import library: Check if the libraries are installed and run the program again.")
 
   def InputFormat(self):
