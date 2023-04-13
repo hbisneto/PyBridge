@@ -10,21 +10,27 @@ Windows.py
 
 import os
 from windows import Core
+from windows import SplashScreen
+from system import Requirements
 from windows import FileSystem
+from windows import WindowsApp
 
 def Windows():
     ## NOTE: You can use this function
     ## To load information before the app starts running
 
     ## Lets run the SplashScreen
-    from windows import SplashScreen
+    SplashScreen.Show()
 
     ## Lets check system requirements
-    from system import Requirements
+    Requirements.CheckVersion()
 
     ### You just need to run ONCE: Be sure you commented this code after first run
     Requirements.InstallDependencies()
     ### You just need to run ONCE: Be sure you commented this code after first run
+
+    ### Verify environment folders
+    FileSystem.VerifyFolders()
     
-    ## Start App for Windows
-    from windows import WindowsApp
+    ## Start App for Mac
+    WindowsApp.Run()

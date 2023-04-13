@@ -10,21 +10,27 @@ Linux.py
 
 import os
 from linux import Core
+from linux import SplashScreen
+from system import Requirements
 from linux import FileSystem
+from linux import LinuxApp
 
 def Linux():
     ## NOTE: You can use this function
     ## To load information before the app starts running
 
     ## Lets run the SplashScreen
-    from linux import SplashScreen
+    SplashScreen.Show()
 
     ## Lets check system requirements
-    from system import Requirements
+    Requirements.CheckVersion()
 
     ### You just need to run ONCE: Be sure you commented this code after first run
     Requirements.InstallDependencies()
     ### You just need to run ONCE: Be sure you commented this code after first run
+
+    ### Verify environment folders
+    FileSystem.VerifyFolders()
     
-    ## Start App for Linux
-    from linux import LinuxApp
+    ## Start App for Mac
+    LinuxApp.Run()

@@ -10,21 +10,27 @@ Mac.py
 
 import os
 from mac import Core
+from mac import SplashScreen
+from system import Requirements
 from mac import FileSystem
+from mac import MacApp
 
 def Mac():
     ## NOTE: You can use this function
     ## To load information before the app starts running
 
     ## Lets run the SplashScreen
-    from mac import SplashScreen
+    SplashScreen.Show()
 
     ## Lets check system requirements
-    from system import Requirements
+    Requirements.CheckVersion()
 
     ### You just need to run ONCE: Be sure you commented this code after first run
     Requirements.InstallDependencies()
     ### You just need to run ONCE: Be sure you commented this code after first run
+
+    ### Verify environment folders
+    FileSystem.VerifyFolders()
     
     ## Start App for Mac
-    from mac import MacApp
+    MacApp.Run()

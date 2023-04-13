@@ -21,7 +21,7 @@ Second = int(Now.strftime("%S"))
 TimeAccess = Now.strftime("%H:%M:%S")
 UserName = getpass.getuser().capitalize()
 
-def Main():    
+def Show():    
     print("="*80)
     print(f'[{SoftwareName} for Windows] - Running...')
     print("="*80)
@@ -36,6 +36,7 @@ def Main():
     else:
         print(f'Copyright © 2021 - {CurrentYear} | {CopyrightName}. All rights reserved.')
         print("="*80)
+    Salutation()
 
 def Salutation():
     
@@ -54,6 +55,3 @@ def Salutation():
     else:
         print(f'Hello {UserName}. Nice to see you! - {TimeAccess}')
         print("="*80)
-        
-Main()
-Salutation()

@@ -91,5 +91,3 @@ if REQUIRE == True:
       cmd = subprocess.getoutput("pip install requests")
       print("Detalhes: ", cmd)
       print("=" * 80)
-
-   CheckVersion()

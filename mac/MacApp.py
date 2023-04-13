@@ -10,9 +10,8 @@ from exception import Exceptions
 from mac import Core
 from mac import FileSystem
 
-def Main():
+def Run():
     BridgeLoop = True
-    FileSystem.VerifyFolders()
 
     while BridgeLoop == True:
         print()
@@ -112,5 +111,3 @@ def NewProjectMenu():
             Exceptions.Throw.InvalidOption()
     except:
         Exceptions.Throw.InvalidOption()
-
-Main()
