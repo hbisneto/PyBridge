@@ -349,7 +349,8 @@ You can prevent dependencies to be installed by commenting the code on System Mo
 - Improved System Requirements (in `Requirements.py`): 
 	- Added new `InstallDependencies` function. 
 	- Removed `CheckMajorVersion` and `CheckMinorVersion` functions from library (added `CheckVersion` function instead)
-- asdasd
+- Fixed a bug when user input text instead of a number in MenuOption
+- Improved Jupyter Notebooks file
 
 # Contribute to this repository:
 

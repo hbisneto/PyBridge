@@ -1,4 +1,4 @@
-## Core
+﻿## Core
 ## This file will process every step of file creation
 
 import codecs
@@ -210,7 +210,6 @@ def VerifyFolders():
 
 ## List PyBridge Projects (Saved in Documents > PyBridge > Projects)
 def ProjectList():
-    ProjList.clear()
     try:
         BridgeRepo = os.listdir(FileSystem.ProjectsRepo)
         for Project in BridgeRepo:
@@ -418,6 +417,7 @@ def ProjOptions():
     print("="*80)
 
     Opc = int(input(">>[!] Type a number to get options or go back: "))
+    print()
 
     try:
         if Opc != 0:
@@ -940,7 +940,7 @@ def CreateLinuxAppFile():
             LinuxAppFile.write(f'def Main():\n')
             LinuxAppFile.write(f'   while True:\n')
             LinuxAppFile.write(f'      print("="*80)\n')
-            LinuxAppFile.write(f'      print(">> Options Menu <<")\n')
+            LinuxAppFile.write(f'      print(">> Options Menu<<")\n')
             LinuxAppFile.write(f'      print(">> 1. Option One")\n')
             LinuxAppFile.write(f'      print(">> 2. Option Two")\n')
             LinuxAppFile.write(f'      print(">> 3. Option Three")\n\n')
@@ -1114,7 +1114,7 @@ def CreateMacAppFile():
             MacAppFile.write(f'def Main():\n')
             MacAppFile.write(f'   while True:\n')
             MacAppFile.write(f'      print("="*80)\n')
-            MacAppFile.write(f'      print(">> Options Menu <<")\n')
+            MacAppFile.write(f'      print(">> Options Menu<<")\n')
             MacAppFile.write(f'      print(">> 1. Option One")\n')
             MacAppFile.write(f'      print(">> 2. Option Two")\n')
             MacAppFile.write(f'      print(">> 3. Option Three")\n\n')
@@ -1291,7 +1291,7 @@ def CreateWindowsAppFile():
             WindowsAppFile.write(f'def Main():\n')
             WindowsAppFile.write(f'   while True:\n')
             WindowsAppFile.write(f'      print("="*80)\n')
-            WindowsAppFile.write(f'      print(">> Options Menu <<")\n')
+            WindowsAppFile.write(f'      print(">> Options Menu<<")\n')
             WindowsAppFile.write(f'      print(">> 1. Option One")\n')
             WindowsAppFile.write(f'      print(">> 2. Option Two")\n')
             WindowsAppFile.write(f'      print(">> 3. Option Three")\n\n')
@@ -1481,9 +1481,9 @@ def CreateJupyterNotebook():
         JupyterFile.write('   "metadata": {},\n')
         JupyterFile.write('   "outputs": [],\n')
         JupyterFile.write('   "source": [\n')
-        # JupyterFile.write('    "## __init__.py File",\n')
-        # JupyterFile.write('    "## Here the contents will be processed to choose the best platform to go",')
-        # JupyterFile.write('    "",')
+        JupyterFile.write('    "## __init__.py File",\n')
+        JupyterFile.write('    "## Here the contents will be processed to choose the best platform to go",')
+        JupyterFile.write('    "",')
         JupyterFile.write('    "try:",')
         JupyterFile.write('    "   ## Imported Libraries",')
         JupyterFile.write('    "   from sys import platform",')
