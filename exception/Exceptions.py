@@ -60,7 +60,7 @@ class Raise:
     print("=" * 80)
     print(f'{self.exctype} INVALID INPUT')
     print("=" * 80)
-    print(">> Your input is not valid: Check your input and try again\n\n")
+    print(">> Your input is not valid: Check your input and try again")
     print("=" * 80)
   
   def ProgramQuit(self):
