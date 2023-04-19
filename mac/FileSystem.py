@@ -34,8 +34,8 @@ JoKenPo = f'{Sample}JoKenPo/'
 PyBridgeFolder = f'{Documents}PyBridge/'
 ProjectsRepo = f'{PyBridgeFolder}Projects/'
 
-### OTHER IMPLEMENTATION
-# Folders Verified to assure PyBridge Will Run Properly
+## OTHER IMPLEMENTATION
+## Folders verified to assure PyBridge will run properly
 def VerifyFolders():
     try:
         os.mkdir(PyBridgeFolder)

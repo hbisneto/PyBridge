@@ -1,3 +1,8 @@
+### PyBridge sets to ignore
+.DS_Store
+NEWS.md
+### PyBridge sets to ignore
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -158,6 +163,3 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
-
-# .DS_Store
-.DS_Store

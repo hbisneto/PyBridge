@@ -194,25 +194,6 @@ def Explorer():
     ProjectName = str()
     FolderLocation = str()
 
-# ## Folders Verified to assure PyBridge Will Run Properly
-# def VerifyFolders():
-#     def BridgeFolder():
-#         try:
-#             os.mkdir(FileSystem.PyBridgeFolder)
-#             print(f'>> PyBridge: "{FileSystem.PyBridgeFolder}" created')
-#         except:
-#             return
-
-#     def ProjectsFolder():
-#         try:
-#             os.mkdir(FileSystem.ProjectsRepo)
-#             print(f'>> PyBridge: "{FileSystem.ProjectsRepo}" created')
-#         except:
-#             return
-
-#     BridgeFolder()
-#     ProjectsFolder()
-
 ## List PyBridge Projects (Saved in Documents > PyBridge > Projects)
 def ProjectList():
     ProjList.clear()
@@ -569,10 +550,6 @@ def CreateEnvironment():
 
 ## Launcher Script
 def CreateInitFile():
-    print("="*80)
-    print(f'>> {ProjectType} <<')
-    print("="*80)
-    
     with codecs.open(CreateEnvironment.UserAppName, "w", "utf-8-sig") as AppName:
         AppName.write(f'## __init__.py File\n')
         AppName.write(f'## Here the contents will be processed to choose the best platform to go\n\n')
@@ -1657,6 +1634,10 @@ def SetupProject():
 def CreateBridge():
     ### Setup Project
     SetupProject()
+    
+    print("="*80)
+    print(f'>> {ProjectType} <<')
+    print("="*80)
 
     ### Project Structure ###
     CreateEnvironment()
