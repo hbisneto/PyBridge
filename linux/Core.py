@@ -1649,6 +1649,8 @@ def CreateBridge():
     ### Setup Project
     SetupProject()
 
+    startTime = time.time()
+
     ### Project Structure ###
     CreateEnvironment()
     ## Readme File
@@ -1712,3 +1714,11 @@ def CreateBridge():
     print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
     print("="*80)
     print()
+    endTime = time.time()
+    timeTaken = endTime-startTime
+
+    if timeTaken < 1:
+        print("Your project was created in less than a second.")
+
+    else:
+        print(f"Your project was created in  {timeTaken:.2f} seconds.")
