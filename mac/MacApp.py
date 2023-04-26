@@ -8,6 +8,7 @@ MacApp.py
 
 from exception import Exceptions
 from mac import Core
+from mac import SplashScreen
 from system import Services
 
 def Run():
@@ -32,7 +33,7 @@ def Run():
             if Opc == 0:
                 BridgeLoop = False
                 print("=" * 80)
-                print("[PyBridge for Mac] - Encerrado")
+                print(f'[{SplashScreen.SoftwareName}] - Quit')
                 print("=" * 80)
                 try:
                     quit()
@@ -68,28 +69,25 @@ def NewProjectMenu():
 
     try:
         Opc = int(input(">>[!] Type The Item Number: "))
+        Core.ProjectOption = Opc
         print()
 
         if Opc == 0:
             return
 
         elif Opc == 1:
-            Core.ProjectOption = 1
             Core.ProjectType = "PyBridge Blank Project"
             Core.CreateBridge()
 
         elif Opc == 2:
-            Core.ProjectOption = 2
             Core.ProjectType = "Menu Application Loop Project"
             Core.CreateBridge()
 
         elif Opc == 3:
-            Core.ProjectOption = 3
             Core.ProjectType = "Twitter Application Project"
             Core.CreateBridge()
 
         elif Opc == 4:
-            Core.ProjectOption = 4
             Core.ProjectType = "Jupyter Notebook Project"
             Core.CreateBridge()
 

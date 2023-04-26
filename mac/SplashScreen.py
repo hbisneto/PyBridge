@@ -10,7 +10,7 @@ import getpass
 from datetime import datetime
 
 CurrentYear = datetime.now().year
-SoftwareName = "PyBridge"
+SoftwareName = "PyBridge for Mac"
 Version = "2.1"
 CopyrightName = "Heitor Bisneto"
 
@@ -23,7 +23,7 @@ UserName = getpass.getuser().capitalize()
 
 def Show():    
     print("="*80)
-    print(f'[{SoftwareName} for Mac] - Running...')
+    print(f'[{SoftwareName}] - Running...')
     print("="*80)
 
     print(f'Name: {SoftwareName}')

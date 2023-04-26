@@ -1612,6 +1612,8 @@ def SetupProject():
     print("="*80)
     print(">> CREATE PROJECT <<")
     print("="*80)
+    print(f'>> {ProjectType} <<')
+    print("="*80)
     ProjectName = str(input(">>[!] Project Name: "))
     print(f'>> Creating bridge to the project "{ProjectName}"...')
     print()
@@ -1634,13 +1636,10 @@ def SetupProject():
 def CreateBridge():
     ### Setup Project
     SetupProject()
-    
-    print("="*80)
-    print(f'>> {ProjectType} <<')
-    print("="*80)
-
+    startTime = time.time()
     ### Project Structure ###
     CreateEnvironment()
+    
     ## Readme File
     CreateReadmeFile()
     ## GitIgnore File
@@ -1699,6 +1698,12 @@ def CreateBridge():
         CreateWindowsFileSystem()
 
     print("="*80)
-    print(f'>> The bridge to the project "{Explorer.ProjectName}" was created successfully!')
+    endTime = time.time()
+    timeTaken = endTime-startTime
+
+    if timeTaken < 1:
+        print(f'>> The bridge to the project "{Explorer.ProjectName}" was created in less than a second')
+    else:
+        print(f'>> The bridge to the project "{Explorer.ProjectName}" was created in {timeTaken:.2f}')
     print("="*80)
     print()
