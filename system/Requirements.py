@@ -60,7 +60,7 @@ if REQUIRE == True:
          print("=" * 80)
          print("[!]: PIP Version: [Getting information about installed PIP version...]")
          print("=" * 80)
-         cmd = subprocess.getoutput("pip --version")
+         cmd = subprocess.getoutput("sudo pip --version")
          print("Details: ", cmd)
          print("=" * 80)
 
