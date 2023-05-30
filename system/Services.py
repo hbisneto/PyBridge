@@ -17,7 +17,9 @@ SAMPLEFOLDER = f'{CURRENTLOCATION}/Sample/'
 
 SAMPLES = {
     0:["GetInfo", "https://github.com/hbisneto/GetInfo/archive/refs/heads/main.zip"],
-    1:["JoKenPo", "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"]
+    1:["JoKenPo", "https://github.com/hbisneto/JoKenPo/archive/refs/heads/main.zip"],
+    2:["MyTimeline", "https://github.com/hbisneto/MyTimeline/archive/refs/heads/main.zip"],
+    3:["JupyterBridge", "https://github.com/hbisneto/JupyterBridge/archive/refs/heads/main.zip"]
     ## 3:["AppName", "ZipURL"]
 }
 
@@ -25,8 +27,10 @@ def DownloadSamplesMenu():
     print("="*80)
     print(">> DOWNLOAD SAMPLE CODE <<")
     print("="*80)
-    print('[1] - Download GetInfo Sample Code')
-    print('[2] - Download JoKenPo Sample Code')
+    print('[1] - Download GetInfo')
+    print('[2] - Download JoKenPo')
+    print('[3] - Download MyTimeline')
+    print('[4] - Download JupyterBridge')
     print('[0] - << Go Back')
     print()
     UserOption = int(input('>>[!] Type The Item Number: '))
