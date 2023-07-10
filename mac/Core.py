@@ -563,10 +563,6 @@ def CreateEnvironment():
 
 ## Launcher Script
 def CreateInitFile():
-    print("="*80)
-    print(f'>> {ProjectType} <<')
-    print("="*80)
-    
     with codecs.open(CreateEnvironment.UserAppName, "w", "utf-8-sig") as AppName:
         AppName.write(f'## __init__.py File\n')
         AppName.write(f'## Here the contents will be processed to choose the best platform to go\n\n')
@@ -914,8 +910,8 @@ def CreateLinuxFile():
 
 ## LinuxApp File
 def CreateLinuxAppFile():
+    print("> Creating LinuxApp Library...")
     if ProjectOption == 1:
-        print("> Creating LinuxApp Library...")
         with codecs.open(CreateEnvironment.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
             LinuxAppFile.write(f'## LinuxApp File\n')
             LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
@@ -927,8 +923,6 @@ def CreateLinuxAppFile():
             LinuxAppFile.close()
             
     elif ProjectOption == 2:
-        print(">> Applying Loop Application on Environment on Linux...\n>> Please wait...")
-        print("> Creating LinuxApp Library...")
         with codecs.open(CreateEnvironment.LinuxAppFile, "w", "utf-8-sig") as LinuxAppFile:
             LinuxAppFile.write(f'## LinuxApp File\n')
             LinuxAppFile.write(f'## This file is used to implement code used to run scripts for Linux\n\n')
@@ -1088,8 +1082,8 @@ def CreateMacFile():
 
 ## MacApp File
 def CreateMacAppFile():
+    print("> Creating MacApp Library...")
     if ProjectOption == 1:
-        print("> Creating MacApp Library...")
         with codecs.open(CreateEnvironment.MacAppFile, "w", "utf-8-sig") as MacAppFile:
             MacAppFile.write(f'## MacApp File\n')
             MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
@@ -1101,8 +1095,6 @@ def CreateMacAppFile():
             MacAppFile.close()
 
     elif ProjectOption == 2:
-        print(">> Applying Loop Application on Environment on Mac...\n>> Please wait...")
-        print("> Creating MacApp Library...")
         with codecs.open(CreateEnvironment.MacAppFile, "w", "utf-8-sig") as MacAppFile:
             MacAppFile.write(f'## MacApp File\n')
             MacAppFile.write(f'## This file is used to implement code used to run scripts for Mac\n\n')
@@ -1265,8 +1257,8 @@ def CreateWindowsFile():
 
 ## WindowsApp File
 def CreateWindowsAppFile():
+    print("> Creating WindowsApp Library...")
     if ProjectOption == 1:
-        print("> Creating WindowsApp Library...")
         with codecs.open(CreateEnvironment.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
             WindowsAppFile.write(f'## WindowsApp File\n')
             WindowsAppFile.write(f'## This file is used to implement code used to run scripts for Windows\n\n')
@@ -1278,7 +1270,6 @@ def CreateWindowsAppFile():
             WindowsAppFile.close()
             
     elif ProjectOption == 2:
-        print(">> Applying Loop Application on Environment on Windows...\n>> Please wait...")
         print("> Creating WindowsApp Library...")
         with codecs.open(CreateEnvironment.WindowsAppFile, "w", "utf-8-sig") as WindowsAppFile:
             WindowsAppFile.write(f'## WindowsApp File\n')
@@ -1415,7 +1406,10 @@ def CreateWindowsFileSystem():
 
 ## Tokens File
 def CreateTokensFile():
-    print(">> Applying Twitter Application on Environment...\n>> Please wait...")
+    print("="*80)
+    print(">> Applying Twitter Application on Environment...")
+    print("="*80)
+    print()
     with codecs.open(CreateEnvironment.TokensFile, "w", "utf-8-sig") as Tokens:
         Tokens.write(f'## Tokens\n')
         Tokens.write(f'## Setup and connect you Twitter account here!\n')
@@ -1438,7 +1432,10 @@ def CreateTokensFile():
 
 ## Jupyter Notebook File
 def CreateJupyterNotebook():
-    print(">> Applying Jupyter Notebook on Environment...\n>> Please wait...")
+    print("="*80)
+    print(">> Applying Jupyter Notebook on Environment...")
+    print("="*80)
+    print()
     with codecs.open(CreateEnvironment.JupyterFile, "w", "utf-8-sig") as JupyterFile:
         JupyterFile.write('{\n')
         JupyterFile.write(' "cells": [\n')
@@ -1635,6 +1632,11 @@ def SetupProject():
         os.mkdir(FolderLocation)
         Explorer.ProjectName = ProjectName
         Explorer.FolderLocation = FolderLocation
+
+        print("="*80)
+        print(f'>> {ProjectType} <<')
+        print("="*80)
+        print(f'> Creating Libraries and Files...')
     except:
         print()
         print("="*80)
@@ -1651,7 +1653,6 @@ def CreateBridge():
 
     startTime = time.time()
 
-    ### Project Structure ###
     CreateEnvironment()
     ## Readme File
     CreateReadmeFile()
@@ -1706,6 +1707,7 @@ def CreateBridge():
     else:
         ## Create Jupyter Notebook
         CreateJupyterNotebook()
+        print("="*80)
         CreateLinuxFileSystem()
         CreateMacFileSystem()
         CreateWindowsFileSystem()
@@ -1720,6 +1722,5 @@ def CreateBridge():
 
     if timeTaken < 1:
         print("Your project was created in less than a second.")
-
     else:
         print(f"Your project was created in  {timeTaken:.2f} seconds.")
