@@ -1,9 +1,12 @@
-﻿## Requirements File
-## This file is used to check if system matches with the minimum requirements to run
+﻿"""
+### requirements.py
+
+- This file is used to check if system matches with the minimum requirements to run
+"""
 
 import sys
 import subprocess
-from exception import Exceptions
+from exceptions import exception as ex
 
 ## Change "REQUIRE" to "False" to skip system check
 REQUIRE = True
@@ -11,63 +14,46 @@ REQUIRE = True
 
 if REQUIRE == True:
    ## Target System
-   TargetMajor = 3
-   TargetMinor = 9
-   TargetBuild = 0
-   TargetVersion = f'{TargetMajor}.{TargetMinor}.{TargetBuild}'
+   target_major = 3
+   target_minor = 9
+   target_build = 0
+   target_version = f'{target_major}.{target_minor}.{target_build}'
+   target_ver_str = f'{target_major}{target_minor}{target_build}'
+   target_ver_int = int(target_ver_str)
    ## Target System
 
    ## Current System
-   MajorVersion = sys.version_info[0]
-   MinorVersion = sys.version_info[1]
-   BuildVersion = sys.version_info[2]
-   CurrentVersion = f'{MajorVersion}.{MinorVersion}.{BuildVersion}'
+   current_major = sys.version_info[0]
+   current_minor = sys.version_info[1]
+   current_build = sys.version_info[2]
+   current_version = f'{current_major}.{current_minor}.{current_build}'
+   current_ver_str = f'{current_major}{current_minor}{current_build}'
+   current_ver_int = int(current_ver_str)
    ## Current System
 
    ## Uncomment to see information about your system
-   ## print(f'>> My system current version: Python {CurrentVersion}')
-   ## print(f'>> Required version to run: Python {TargetVersion}')
+   ## print(f'>> My system current version: Python {current_version}')
+   ## print(f'>> Required version to run: Python {target_version}')
 
-   def CheckVersion():
-      ## Note: if this key is set to False, the system won`t run even if meets requirements
-      AllowKey = True
-      ## Note: if this key is set to False, the system won`t run even if meets requirements
-
-      ## Note: if this key is set to True, the system will warn evertime it runs
-      ShowWarn = True
-      ## Note: if this key is set to True, the system will warn evertime it runs
-
-      if TargetVersion == CurrentVersion:
-         return
+   def check_version():
+      if target_ver_int < current_ver_int:
+         ex.throw.minor_version(current_version, target_version)
+      elif target_ver_int > current_ver_int:
+         ex.throw.major_version(current_version, target_version)
       else:
-         if MajorVersion < TargetMajor:
-            AllowKey = False
-            ShowWarn = True
-         else:
-            if MinorVersion < TargetMinor:
-               AllowKey = False
-               ShowWarn = True
-            else:
-               if BuildVersion < TargetBuild:
-                  AllowKey = False
-                  ShowWarn = True
+         pass
 
-      if AllowKey == False:
-         Exceptions.Throw.MajorVersion(CurrentVersion, TargetVersion, MajorVersion)
-      
-      if ShowWarn == True:
-         Exceptions.Throw.MinorVersion(CurrentVersion, TargetVersion, TargetMinor)
-
-   def InstallDependencies():
+   def install_dependencies():
+      print()
       print("=" * 80)
       print(">> INSTALL DEPENDENCIES <<")
       print("=" * 80)
-      UserInput = str(input("[!] >> Do you wish to install dependencies? [Y/n]: "))
+      user_input = str(input("[ ! ] >> Do you wish to install dependencies? [Y/n]: "))
 
-      if UserInput == "Y" or UserInput == "y" or UserInput == "1":
+      if user_input == "Y" or user_input == "y" or user_input == "1":
          # show pip version
          print("=" * 80)
-         print("[!]: PIP Version: [Getting information about installed PIP version...]")
+         print("[ ! ]: PIP Version: [Getting information about installed PIP version...]")
          print("=" * 80)
          cmd = subprocess.getoutput("pip --version")
          print("Details: ", cmd)
@@ -76,7 +62,7 @@ if REQUIRE == True:
          # Update pip
          print()
          print("=" * 80)
-         print("[!]: Checking necessary packages: [Updating pip e pip3]")
+         print("[ ! ]: Checking necessary packages: [Updating pip e pip3]")
          print("=" * 80)
          cmd = subprocess.getoutput("pip install --upgrade pip")
          print("Details: ", cmd)
@@ -87,7 +73,7 @@ if REQUIRE == True:
          # Install Requests
          print()
          print("=" * 80)
-         print("[!]: Checking necessary packages: [Installing/updating requests]")
+         print("[ ! ]: Checking necessary packages: [Installing/updating requests]")
          print("=" * 80)
          cmd = subprocess.getoutput("pip install requests")
          print("Details: ", cmd)
@@ -95,5 +81,3 @@ if REQUIRE == True:
       else:
          print("=" * 80)
          return
-
-   CheckVersion()

@@ -1,28 +1,36 @@
-## Logs File
-## This file is used to store logs from your system when running
+"""
+### logs.py
+
+- This file is used to store logs from your system when running
+
+> This linrary is still in tests. Send your pull-request
+"""
 
 import codecs
+import os
+import socket
 import platform
 from datetime import datetime
+############from exception import Exceptions
 
 def CreateLogFile(filename, processname, log_type, message):
 
     ## Scheme
     # JAN XX HH:mm:ss Computername ModuleNameOrFunc <console>: Console message
 
-    ## DATE FORMAT
+    ## Date format
     current_day = int(datetime.now().day)
     current_month = int(datetime.now().month)
     current_year = int(datetime.now().year)
     current_hour = datetime.now().strftime('%H:%M:%S')
     month_array = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
-    ## DATE FORMAT
+    ## Date format
 
-    ## COMPUTER INFORMATION
+    ## Computer information
     COMPUTER_NAME = platform.node()
-    ## COMPUTER INFORMATION
+    ## Computer information
 
-    ## CONSOLE TYPE
+    ## Console Type
     console = ""
     
     try:
@@ -32,6 +40,8 @@ def CreateLogFile(filename, processname, log_type, message):
         ## 3: Error
         ## 4: Deploy
         
+        # if int(log_type) == 0:
+        #     console = "<Default>"
         if str(log_type) == '1':
             console = "<Information>"
         elif str(log_type) == '2':
@@ -48,7 +58,7 @@ def CreateLogFile(filename, processname, log_type, message):
             console = "<Default>"
     except:
         console = "<Default>"
-    ## CONSOLE TYPE
+    ## Console Type
 
     if filename == "NULL":
         filename = "LOG.py"
@@ -65,8 +75,6 @@ def CreateLogFile(filename, processname, log_type, message):
     except:
         print(f'>> [!] Couldn`t create LogFile.')
 
-# CreateLogFile("Stage.py", "Stage_TestName", '2', "Stage Test Process Running...")
-# CreateLogFile('NULL','NULL', 'NULL', 'This kinda log is most used when you need to print a report.')
+CreateLogFile("Stage.py", "Stage_TestName", '2', "Stage Test Process Running...")
+CreateLogFile('NULL','NULL', 'NULL', 'This kinda log is most used when you need to print a report.')
 #CreateLogFile(filename = "Arquivo.py", processname = "Teste6_2", log_type = 5, message = "Minha mensagem")
-
-CreateLogFile("TestFile.log", "SomeProcess", 1, "Your process has been terminated")
