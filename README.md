@@ -155,7 +155,7 @@ You have the option to download four different example projects. Each of these p
 
 ##### Twitter Application Sample
 
-- **MyTimeline:** Get your Twitter home timeline".
+- **MyTimeline:** Get your Twitter home timeline.
 <br>[MyTimeline: PyBridge Sample Application](https://github.com/hbisneto/MyTimeline)
 
 ##### Jupyter NoteBook Sample
