@@ -1,7 +1,8 @@
 # PyBridge 3.0
 ###### Last repository update: 10/11/2023
 
-With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
+PyBridge is an application that generates code files and Jupyter Notebooks with ease and efficiency.
+Jupyter Notebooks are a popular tool for data scientists and programmers to write and share code, as well as to document their work. PyBridge makes it easier to create these files by automating the process and providing a user-friendly interface. With PyBridge, you can generate code files and Jupyter Notebooks quickly and efficiently, without having to worry about the details of the process. I hope this helps!
 
 With PyBridge it is possible to create scripts that will run on:
 
@@ -9,14 +10,14 @@ With PyBridge it is possible to create scripts that will run on:
 2. **macOS**;
 3. **Windows**;
 
-**PyBridge is a program entirely developed in Python. To run the program, open the `__main__.py` file located at the root of this project.**
+**PyBridge is a program entirely developed in Python. To run the program, open the `__init__.py` file located at the root of this project.**
 
 > Note:
 >> PyBridge was born from Python 3.9. For this reason, the same version of Python (version 3.9) or higher is recommended to run the system.
 
 PyBridge has a standard ***error handling*** library that can run in any environment. Every method implemented within the library can be called from any part of the code. That way, it is not necessary to implement the ```raise RuntimeError()``` exception call inside the program's runtime library. Just import the module and reference the function call according to the treatment that must be executed.
 
-> Note: Read more about the `exception` module in **PyBridge Modules** below.
+> Note: Read more about the `exceptions` module in **PyBridge Modules** below.
 
 #
 
