@@ -1,4 +1,4 @@
-# PyBridge 2.0
+# PyBridge 3.0
 ###### Last repository update: 12/11/2022
 
 With PyBridge it is possible to run Python scripts by bridging the code implemented in the project created with other platforms.
