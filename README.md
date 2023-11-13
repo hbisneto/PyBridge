@@ -149,17 +149,17 @@ You have the option to download four different example projects. Each of these p
 
 ##### Menu Loop Application Sample
 
-- **JoKenPo:** Famous game known as "Rock, Paper and Scissors".
+- **JoKenPo:** Famous game known as "Rock, Paper and Scissors.
 <br>[JoKenPo: PyBridge Sample Application](https://github.com/hbisneto/JoKenPo)
 
 ##### Twitter Application Sample
 
-- **MyTimeline:** Get your Twitter home timeline".
+- **MyTimeline:** Get your Twitter home timeline.
 <br>[MyTimeline: PyBridge Sample Application](https://github.com/hbisneto/MyTimeline)
 
 ##### Jupyter NoteBook Sample
 
-- **MyTimeline:** Get your Twitter home timeline".
+- **MyTimeline:** Get your Twitter home timeline.
 <br>[MyTimeline: PyBridge Sample Application](https://github.com/hbisneto/MyTimeline)
 
 These example codes can be very useful to better understand how PyBridge works and to inspire your own projects. Take advantage of this feature to explore even more possibilities with PyBridge!
