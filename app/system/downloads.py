@@ -44,8 +44,7 @@ def download_samples():
     app_url = DICT_SAMPLES[opt-1][1]
 
     # Verify if Samples folder exists
-    wr.create_directory(samples_folder)
-    wr.create_directory(f'{samples_folder}/{app_name}')
+    wr.create_directory(f'{samples_folder}/{app_name}', create_subdirs=True)
     download_sample_item(app_name, app_url)
 
 def download_sample_item(appname, url):
@@ -71,6 +70,7 @@ def download_sample_item(appname, url):
         print(f'[Process]: Cleaning cache...')
         time.sleep(3)
         shutil.rmtree(f'{samples_folder}/{appname}/')
+        shutil.rmtree
         print("[Process]: Cache cleaned!")
         
     try:

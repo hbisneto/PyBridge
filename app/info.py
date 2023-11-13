@@ -30,8 +30,8 @@ HOUR = int(NOW.strftime("%H"))
 TIME_ACCESS = NOW.strftime("%H:%M:%S")
 
 ### UNCOMMENT TO USE VARIABLES
-# Minute = int(Now.strftime("%M"))
-# Second = int(Now.strftime("%S"))
+# MINUTE = int(Now.strftime("%M"))
+# SECOND = int(Now.strftime("%S"))
 ### UNCOMMENT TO USE VARIABLES
         
 def load_splashscreen():
