@@ -2,7 +2,7 @@
 ###### Last repository update: 10/11/2023
 
 PyBridge is an application that generates code files and Jupyter Notebooks with ease and efficiency.
-Jupyter Notebooks are a popular tool for data scientists and programmers to write and share code, as well as to document their work. PyBridge makes it easier to create these files by automating the process and providing a user-friendly interface. With PyBridge, you can generate code files and Jupyter Notebooks quickly and efficiently, without having to worry about the details of the process. I hope this helps!
+Jupyter Notebooks are a popular tool for data scientists and programmers to write and share code, as well as to document their work. PyBridge makes it easier to create these files by automating the process and providing a user-friendly interface. With PyBridge, you can generate code files and Jupyter Notebooks quickly and efficiently, without having to worry about the details of the process.
 
 With PyBridge it is possible to create scripts that will run on:
 
